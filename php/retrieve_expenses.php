@@ -46,12 +46,14 @@ foreach ($resultset as $result) {
 }
 
 // Calculate percentages (expense type/income amount * 100)...
-$fixed_percentage = (($fixed/$current_income)*100);
-$variable_percentage = (($variable/$current_income)*100);
-$debt_percentage = (($debt/$current_income)*100);
-$savings_percentage = (($savings/$current_income)*100);
-$fun_percentage = (($fun/$current_income)*100);
-$other_percentage = (($other/$current_income)*100);
+if ($current_income != 0) {
+    $fixed_percentage = (($fixed/$current_income)*100);
+    $variable_percentage = (($variable/$current_income)*100);
+    $debt_percentage = (($debt/$current_income)*100);
+    $savings_percentage = (($savings/$current_income)*100);
+    $fun_percentage = (($fun/$current_income)*100);
+    $other_percentage = (($other/$current_income)*100);
+}
 
 // Calculate total amount left to budget with...
 $total_amount_spent = $fixed + $variable + $debt + $savings + $fun + $other;
