@@ -92,8 +92,6 @@ em {
   font-weight: bold;
 }
 
-/* "Expenses" boxes */
-
 /* Spending Type Text */
 .Fixed::after,
 .Variable::after,
@@ -126,27 +124,6 @@ em {
 .Other::after {
   content: "";
   border-right: 1rem solid lightgray;
-}
-
-/* Fade out */
-.fade-out {
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-
-/* Reformat graph when 'Enlarge Graph' button is clicked (this class is added with js) */
-.reformat-graph {
-  height: auto;
-  flex-direction: column;
-}
-.reformat-graph .progress-bar {
-  overflow: visible;
-}
-.reformat-graph .progress-bar .graph-spending-percentage {
-  margin-top: 0.8rem;
-}
-.reformat-graph .progress-bar .graph-spending-amount {
-  margin-bottom: 0.8rem;
 }
 
 /* Printing Media Queries */
@@ -184,4 +161,20 @@ em {
   .progress-bar .graph-spending-amount {
     margin-bottom: 0.8rem;
   }
+}
+
+/* Keyframe animations */
+@keyframes bar-graph-slide-in {
+  from {
+    transform: scaleX(0)
+  }
+
+  to {
+    transform: scaleX(1)
+  }
+}
+
+#graph > .progress-bar {
+  transform-origin: 0% 0%;
+  animation: bar-graph-slide-in .5s;
 }
