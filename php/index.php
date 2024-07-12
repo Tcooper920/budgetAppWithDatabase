@@ -12,6 +12,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     </head>
 
     <body class="dark-blue-background white">
@@ -27,7 +28,7 @@
                 <h1 class="mt-4">Build a Budget:</h1>
             </div>
 
-            <form id="income-expense-form" action="index.php" method="POST">
+            <form id="income-expense-form">
                 <div id="enter-income-form"
                     class="container fs-5 d-flex flex-column p-3 my-3 bg-light rounded dark-blue">
                     <label>
@@ -60,8 +61,7 @@
             <div class="container p-4 mt-3 mb-4 rounded navy-blue-background">
                 <div id="graph" class="progress container p-0">
                     <div id="fixed-spending-progress-bar" class="progress-bar light-blue-background" role="progressbar"
-                        style="<?php echo "width:$fixed_percentage%" ?>"
-                        aria-valuenow="<?php echo "$fixed_percentage%" ?>" aria-valuemin="0" aria-valuemax="100">
+                        aria-valuenow="" aria-valuemin="0" aria-valuemax="100">
                     </div>
                     <div id="variable-spending-progress-bar" class="progress-bar purple-background" role="progressbar"
                         style="<?php echo "width:$variable_percentage%" ?>"
@@ -82,25 +82,26 @@
                         aria-valuenow="<?php echo "$other_percentage%" ?>" aria-valuemin="0" aria-valuemax="100">
                     </div>
                 </div>
-                <div class="container fs-5 text mt-2 no-print" id="total-budget-amount">
-                    <?php echo "$$total_amount_left_to_budget_with" ?> Remaining to budget with.
-                </div>
+                <div class="container fs-5 text mt-2 no-print" id="total-budget-amount"></div>
             </div>
         </main>
+        <p>
+            <span id="fixed-spending-total">fixed total = $fixed</span><br>
+            <span id="variable-spending-total">variable total = $variable</span><br>
+            <span id="debt-spending-total">debt total = $debt</span><br>
+            <span id="savings-spending-total">savings total = $savings</span><br>
+            <span id="fun-spending-total">fun total = $fun</span><br>
+            <span id="other-spending-total">other total = $other</span>
+        </p>
 
         <?php
-
-        echo "<p>
-            fixed total = $fixed<br>
-            variable total = $variable<br>
-            debt total = $debt<br>
-            savings total = $savings<br>
-            fun total = $fun<br>
-            other total = $other
-        </p>";
+        
         mysqli_close($budget_database);
 
         ?>
 
+        <script src="ajax_post_to_form_submit_action.js"></script>
+
     </body>
+
     </html>

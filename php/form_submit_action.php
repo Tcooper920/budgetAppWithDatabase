@@ -39,6 +39,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo '<p>Oops! Fill in the fields</p>';
     }
+
+    $all_budget_data = array(
+        $current_income, 
+        $total_amount_left_to_budget_with,
+        $fixed,
+        $variable,
+        $debt,
+        $savings,
+        $fun,
+        $other,
+        $fixed_percentage,
+        $variable_percentage,
+        $debt_percentage,
+        $savings_percentage,
+        $fun_percentage,
+        $other_percentage
+    );
+
+    echo json_encode($all_budget_data);
 }
 
 ?>
