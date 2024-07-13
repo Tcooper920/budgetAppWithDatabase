@@ -100,7 +100,7 @@
 
         ?>
 
-        <script src="ajax_post_to_form_submit_action.js"></script>
+        <script src="../js/ajax_post_to_form_submit_action.js"></script>
 
     </body>
 
