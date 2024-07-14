@@ -18,9 +18,10 @@ const otherSpendingTotal = document.getElementById("other-spending-total");
 $(window).load(ajaxRequestToPhpForProcessing);
 
 // On form submit, fire AJAX to send/retrieve data...
-$(function () {
-  $("form").on("submit", ajaxRequestToPhpForProcessing);
-});
+$("form").on("submit", ajaxRequestToPhpForProcessing);
+
+// On "income amount" field value change, update the displayed budget info...
+$("#budget-amount-field").on("keyup", ajaxRequestToPhpForProcessing);
 
 // Function to make AJAX post to PHP for processing.
 // Returns "$all_budget_data" array as "result" from "form_submit_action.php" file...
