@@ -1,5 +1,7 @@
 <?php
 
+require ("includes/header.html");
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require ('../../../connect_budget_database.php');
     $errors = array();
@@ -68,25 +70,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
-<h1>Register</h1>
-<form action="register.php" method="POST">
-    <p>
-        First Name: <input type="text" name="first_name" value="<?php if (isset($_POST['first_name']))
-        echo $_POST['first_name'];?>">
+<body class="dark-blue-background white">
+    <main class="p-3">
 
-        Last Name: <input type="text" name="last_name" value="<?php if (isset($_POST['last_name']))
-        echo $_POST['last_name'];?>">
-    </p>
-    <p>
-        Email Address: <input type="text" name="email" value="<?php if (isset($_POST['email']))
-        echo $_POST['email'];?>">
-    </p>
-    <p>
-        Password: <input type="text" name="pass1" value="<?php if (isset($_POST['pass1']))
-        echo $_POST['pass1'];?>">
+        <h1>Register</h1>
+        <form action="register.php" method="POST">
+            <p>
+                First Name: <input type="text" name="first_name" value="<?php if (isset($_POST['first_name']))
+                    echo $_POST['first_name']; ?>">
 
-        Confirm Password: <input type="text" name="pass2" value="<?php if (isset($_POST['pass2']))
-        echo $_POST['pass2'];?>">
-    </p>
-    <p><input type="submit" value="Register"></p>
-</form>
+                Last Name: <input type="text" name="last_name" value="<?php if (isset($_POST['last_name']))
+                    echo $_POST['last_name']; ?>">
+            </p>
+            <p>
+                Email Address: <input type="text" name="email" value="<?php if (isset($_POST['email']))
+                    echo $_POST['email']; ?>">
+            </p>
+            <p>
+                Password: <input type="text" name="pass1" value="<?php if (isset($_POST['pass1']))
+                    echo $_POST['pass1']; ?>">
+
+                Confirm Password: <input type="text" name="pass2" value="<?php if (isset($_POST['pass2']))
+                    echo $_POST['pass2']; ?>">
+            </p>
+            <p><input type="submit" value="Register"></p>
+        </form>
+    </main>
+</body>
+
+<?php include ("includes/footer.html"); ?>
