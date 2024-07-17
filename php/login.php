@@ -3,12 +3,22 @@
 require ("includes/header.html");
 
 if (isset($errors) && !empty($errors)) {
-    echo '<p id="err_msg">Oops! There was a problem:<br>';
+    echo '<div class="container col-lg-5">
+              <div class="container toast w-100 border-0 mt-5 p-0 white-background fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                  <div class="d-flex flex-column">
+                      <button type="button" class="align-self-end btn-close p-3" data-bs-dismiss="toast" aria-label="Close"></button>
+                          <div class="toast-body fs-6 p-4 text-danger border-top border-1 border-dark-subtle">
+                              <p class="m-0">';
     foreach ($errors as $msg) {
-        echo "- $msg<br>";
+        echo "$msg<br>";
     }
     echo 'Please try again or
-         <a href="register.php">Register</a></p>';
+          <a href="register.php">Register</a>
+          </p>
+          </div>
+          </div>
+          </div>
+          </div>';
 }
 
 ?>
