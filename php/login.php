@@ -34,10 +34,10 @@ if (isset($errors) && !empty($errors)) {
                 Password: <input type="password" name="pass" class="form-control m-2 ms-0">
             </label>
             <div class="mt-3">
-                <input type="submit" value="Login" class="btn btn-primary rounded-pill ms-0 m-2 ms-0 w-100">
+                <input type="submit" value="Login" class="btn btn-primary rounded-pill ms-0 m-2 ms-0 w-100 p-3 fs-5">
             </div>
             <div>
-                <input type="button" value="Sign up" class="btn rounded-pill border-primary-color border-2 ms-0 m-2 ms-0 w-100">
+                <input type="button" value="Sign up" class="btn rounded-pill border-primary-color border-2 ms-0 m-2 ms-0 w-100 p-3 fs-5">
             </div>
         </form>
     </main>
