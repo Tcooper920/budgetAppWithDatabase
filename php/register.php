@@ -58,12 +58,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         mysqli_close($budget_database);
         exit();
     } else {
-        echo '<h1>Error!</h1>
-             <p id="err_msg">The following error(s) occurred:<br>';
+        echo '<div class="container col-lg-5">
+              <div class="container toast w-100 border-0 mt-5 p-0 white-background fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                  <div class="d-flex flex-column">
+                      <button type="button" class="align-self-end btn-close p-3" data-bs-dismiss="toast" aria-label="Close"></button>
+                          <div class="toast-body fs-6 p-4 text-danger border-top border-1 border-dark-subtle">
+                              <p>';
         foreach ($errors as $msg) {
             echo "- $msg<br>";
         }
-        echo 'Please try again.</p>';
+        echo '</p>
+          <p>Please try again.</p>
+          </div>
+          </div>
+          </div>
+          </div>';
         mysqli_close($budget_database);
     }
 }
@@ -71,29 +80,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <body class="dark-blue-background white">
-    <main class="p-3">
-
+    <main class="p-3 mt-5 container col-lg-5">
         <h1>Register</h1>
-        <form action="register.php" method="POST">
-            <p>
+        <form action="register.php" method="POST" class="fs-5 p-4 my-3 bg-light rounded dark-blue">
+            <label class="w-100">
                 First Name: <input type="text" name="first_name" value="<?php if (isset($_POST['first_name']))
-                    echo $_POST['first_name']; ?>">
-
+                    echo $_POST['first_name']; ?>" class="form-control m-2 ms-0">
+            </label>
+            <label class="w-100">
                 Last Name: <input type="text" name="last_name" value="<?php if (isset($_POST['last_name']))
-                    echo $_POST['last_name']; ?>">
-            </p>
-            <p>
+                    echo $_POST['last_name']; ?>" class="form-control m-2 ms-0">
+            </label>
+            <label class="w-100">
                 Email Address: <input type="text" name="email" value="<?php if (isset($_POST['email']))
-                    echo $_POST['email']; ?>">
-            </p>
-            <p>
+                    echo $_POST['email']; ?>" class="form-control m-2 ms-0">
+            </label>
+            <label class="w-100">
                 Password: <input type="text" name="pass1" value="<?php if (isset($_POST['pass1']))
-                    echo $_POST['pass1']; ?>">
-
+                    echo $_POST['pass1']; ?>" class="form-control m-2 ms-0">
+            </label>
+            <label class="w-100">
                 Confirm Password: <input type="text" name="pass2" value="<?php if (isset($_POST['pass2']))
-                    echo $_POST['pass2']; ?>">
-            </p>
-            <p><input type="submit" value="Register"></p>
+                    echo $_POST['pass2']; ?>" class="form-control m-2 ms-0">
+            </label>
+            <div class="mt-3">
+                <input type="submit" value="Register" class="btn btn-primary rounded-pill ms-0 m-2 ms-0 w-100 p-3 fs-5">
+            </div>
         </form>
     </main>
 </body>
