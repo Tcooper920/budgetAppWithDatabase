@@ -1,10 +1,22 @@
 // Variable declarations for bar chart bars for each spending type...
-const fixedSpendingGraphBar = document.getElementById("fixed-spending-progress-bar");
-const variableSpendingGraphBar = document.getElementById("variable-spending-progress-bar");
-const debtSpendingGraphBar = document.getElementById("debt-spending-progress-bar");
-const savingsSpendingGraphBar = document.getElementById("savings-spending-progress-bar");
-const funSpendingGraphBar = document.getElementById("fun-spending-progress-bar");
-const otherSpendingGraphBar = document.getElementById("other-spending-progress-bar");
+const fixedSpendingGraphBar = document.getElementById(
+  "fixed-spending-progress-bar"
+);
+const variableSpendingGraphBar = document.getElementById(
+  "variable-spending-progress-bar"
+);
+const debtSpendingGraphBar = document.getElementById(
+  "debt-spending-progress-bar"
+);
+const savingsSpendingGraphBar = document.getElementById(
+  "savings-spending-progress-bar"
+);
+const funSpendingGraphBar = document.getElementById(
+  "fun-spending-progress-bar"
+);
+const otherSpendingGraphBar = document.getElementById(
+  "other-spending-progress-bar"
+);
 
 // Variable declarations for total amount spent for each spending type...
 const fixedSpendingTotal = document.getElementById("fixed-spending-total");
@@ -13,6 +25,9 @@ const debtSpendingTotal = document.getElementById("debt-spending-total");
 const savingsSpendingTotal = document.getElementById("savings-spending-total");
 const funSpendingTotal = document.getElementById("fun-spending-total");
 const otherSpendingTotal = document.getElementById("other-spending-total");
+
+// Variable declaration for expense list cotainer...
+const expenseListContainer = document.getElementById("expense-list-container");
 
 // On page load, fire AJAX to retrieve data...
 $(window).load(ajaxRequestToPhpForProcessing);
@@ -61,6 +76,35 @@ function ajaxRequestToPhpForProcessing(e) {
       savingsSpendingTotal.innerHTML = `Savings spending total: ${result[5]}`;
       funSpendingTotal.innerHTML = `Fun spending total: ${result[6]}`;
       otherSpendingTotal.innerHTML = `Other spending total: ${result[7]}`;
+
+      // Print the expense items list to the page...
+      printExpensesToPage(result[14]);
     },
   });
 }
+
+// Function to print all expenses to the the page as a list of items...
+function printExpensesToPage(result) {
+  expenseListContainer.innerHTML = "";
+  result.forEach((expenseItem) => {
+    let containerForExpense = document.createElement("div");
+    containerForExpense.innerHTML = `
+      <form data-expense-id="${expenseItem[0]}" data-user-id="${expenseItem[1]}" class="container d-flex flex-column flex-md-row position-relative mb-3 bg-light rounded dark-blue expense-entry-block">
+        <p class="d-block m-2 w-100">Name: <span class="fw-bold">${expenseItem[2]}</span></p>
+        <p class="d-block ms-2 my-0 my-sm-2 w-100">Amount: <span class="fw-bold">${expenseItem[3]}</span></p>
+        <p class="d-block m-2 w-100">Type: <span class="fw-bold ${expenseItem[4]}">${expenseItem[4]}</span></p>
+        <input type="submit" value="✕" id="${expenseItem[0]}" class="remove-btn btn fw-bolder text-secondary position-absolute end-0">
+      </form>`;
+
+    expenseListContainer.append(containerForExpense);
+  });
+}
+
+// Function to remove an item from the expense list...
+expenseListContainer.addEventListener("click", (e) => {
+  e.preventDefault();
+  let currentExpenseId = e.target.getAttribute("id");
+  // Make AJAX request to remove selected expense 
+});
+
+

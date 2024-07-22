@@ -67,15 +67,19 @@
             </div>
             <div class="container fs-5 text mt-2 no-print" id="total-budget-amount"></div>
         </div>
+        <p>
+            <span id="fixed-spending-total">fixed total = $fixed</span><br>
+            <span id="variable-spending-total">variable total = $variable</span><br>
+            <span id="debt-spending-total">debt total = $debt</span><br>
+            <span id="savings-spending-total">savings total = $savings</span><br>
+            <span id="fun-spending-total">fun total = $fun</span><br>
+            <span id="other-spending-total">other total = $other</span>
+        </p>
+        <div class="container">
+            <h2 class="mt-4 pb-3">Expenses:</h2>
+        </div>
+        <div id="expense-list-container"></div>
     </main>
-    <p>
-        <span id="fixed-spending-total">fixed total = $fixed</span><br>
-        <span id="variable-spending-total">variable total = $variable</span><br>
-        <span id="debt-spending-total">debt total = $debt</span><br>
-        <span id="savings-spending-total">savings total = $savings</span><br>
-        <span id="fun-spending-total">fun total = $fun</span><br>
-        <span id="other-spending-total">other total = $other</span>
-    </p>
 
     <?php mysqli_close($budget_database); ?>
 
