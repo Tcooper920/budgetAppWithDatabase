@@ -54,7 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $debt_percentage,
         $savings_percentage,
         $fun_percentage,
-        $other_percentage
+        $other_percentage,
+        $resultset
     );
 
     echo json_encode($all_budget_data);
