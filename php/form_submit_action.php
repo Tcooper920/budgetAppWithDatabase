@@ -39,6 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo '<p>Oops! Fill in the fields</p>';
     }
+    if (
+        !empty($_POST['expense_item'])
+    ) {
+        # Delete expense...
+        $q = "DELETE FROM user_expenses WHERE expense_id = '{$_POST["expense_item"]}'";
+        $r = mysqli_query($budget_database, $q);
+    }
 
     $all_budget_data = array(
         $current_income, 
