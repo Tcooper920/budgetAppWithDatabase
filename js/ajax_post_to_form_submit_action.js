@@ -24,7 +24,7 @@ $(window).load(ajaxRequestToPhpForProcessing);
 $("#income-expense-form").on("submit", ajaxRequestToPhpForProcessing);
 
 // On "income amount" field value change, update the displayed budget info...
-$("#budget-amount-field").on("keyup", ajaxRequestToPhpForProcessing);
+$("#budget-amount-field").on("input", ajaxRequestToPhpForProcessing);
 
 // Function to make AJAX post to PHP for processing.
 // Returns "$all_budget_data" array as "result" from "form_submit_action.php" file...
