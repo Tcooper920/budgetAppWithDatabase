@@ -111,7 +111,37 @@ function printExpensesToPage(result) {
         data: $(expenseItemFormToDelete).serialize(),
         dataType: "json",
         success: function (result) {
-          console.log("success");
+          document.getElementById("total-budget-amount").innerHTML = `${result[1]}`;
+
+          // Adjust bars in bar chart for each spending type (adjust widths and attributes)...
+          fixedSpendingGraphBar.style.width = `${result[8]}%`;
+          fixedSpendingGraphBar.setAttribute("aria-valuenow", `${result[8]}%`);
+    
+          variableSpendingGraphBar.style.width = `${result[9]}%`;
+          variableSpendingGraphBar.setAttribute("aria-valuenow", `${result[9]}%`);
+    
+          debtSpendingGraphBar.style.width = `${result[10]}%`;
+          debtSpendingGraphBar.setAttribute("aria-valuenow", `${result[10]}%`);
+    
+          savingsSpendingGraphBar.style.width = `${result[11]}%`;
+          savingsSpendingGraphBar.setAttribute("aria-valuenow", `${result[11]}%`);
+    
+          funSpendingGraphBar.style.width = `${result[12]}%`;
+          funSpendingGraphBar.setAttribute("aria-valuenow", `${result[12]}%`);
+    
+          otherSpendingGraphBar.style.width = `${result[13]}%`;
+          otherSpendingGraphBar.setAttribute("aria-valuenow", `${result[13]}%`);
+    
+          // Post total amounts for each spending type...
+          fixedSpendingTotal.innerHTML = `Fixed spending total: ${result[2]}`;
+          variableSpendingTotal.innerHTML = `Variable spending total: ${result[3]}`;
+          debtSpendingTotal.innerHTML = `Debt spending total: ${result[4]}`;
+          savingsSpendingTotal.innerHTML = `Savings spending total: ${result[5]}`;
+          funSpendingTotal.innerHTML = `Fun spending total: ${result[6]}`;
+          otherSpendingTotal.innerHTML = `Other spending total: ${result[7]}`;
+    
+          // Print the expense items list to the page...
+          printExpensesToPage(result[14]);
         },
       });
     }

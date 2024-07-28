@@ -34,18 +34,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     )";
             $set_expense = mysqli_query($budget_database, $query_to_set_expense);
         }
-        require ('retrieve_income.php');
-        require ('retrieve_expenses.php');
-    } else {
-        echo '<p>Oops! Fill in the fields</p>';
     }
     if (
         !empty($_POST['expense_item'])
     ) {
         # Delete expense...
-        $q = "DELETE FROM user_expenses WHERE expense_id = '{$_POST["expense_item"]}'";
-        $r = mysqli_query($budget_database, $q);
+        $query_to_delete_expense = "DELETE FROM user_expenses WHERE expense_id = '{$_POST["expense_item"]}'";
+        $delete_expense = mysqli_query($budget_database, $query_to_delete_expense);
     }
+    require ('retrieve_income.php');
+    require ('retrieve_expenses.php');
 
     $all_budget_data = array(
         $current_income, 

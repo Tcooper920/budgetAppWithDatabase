@@ -81,9 +81,9 @@
         <div id="expense-list-container"></div>
     </main>
 
-    <?php mysqli_close($budget_database); ?>
-
     <script src="../js/ajax_post_to_form_submit_action.js"></script>
+
+    <?php mysqli_close($budget_database); ?>
 
 </body>
 
