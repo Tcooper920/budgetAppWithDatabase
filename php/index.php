@@ -6,7 +6,7 @@
 
     <main class="p-3">
         <?php echo "<div class='container'>
-                <h2 class='mb-0 mt-3' data-user-id='{$_SESSION['user_id']}'>Welcome, {$_SESSION['first_name']} {$_SESSION['last_name']}</h2>
+                <p class='mb-0 mt-3 fs-4' data-user-id='{$_SESSION['user_id']}'>Welcome, {$_SESSION['first_name']} {$_SESSION['last_name']}</p>
                 <hr class='mb-5'>
             </div>"; ?>
         <div class="container">
@@ -65,7 +65,7 @@
                     aria-valuemin="0" aria-valuemax="100">
                 </div>
             </div>
-            <div class="container fs-5 text mt-2 no-print" id="total-budget-amount"></div>
+            <div class="container fs-5 text mt-2 no-print" id="total-budget-amount-left"></div>
         </div>
         <p>
             <span id="fixed-spending-total">fixed total = $fixed</span><br>
