@@ -33,7 +33,7 @@ const expenseListContainer = document.getElementById("expense-list-container");
 $(window).load(ajaxRequestToPhpForProcessing);
 
 // On form submit, fire AJAX to send/retrieve data...
-$("form").on("submit", ajaxRequestToPhpForProcessing);
+$("#income-expense-form").on("submit", ajaxRequestToPhpForProcessing);
 
 // On "income amount" field value change, update the displayed budget info...
 $("#budget-amount-field").on("keyup", ajaxRequestToPhpForProcessing);
@@ -45,7 +45,7 @@ function ajaxRequestToPhpForProcessing(e) {
   $.ajax({
     type: "post",
     url: "../php/form_submit_action.php",
-    data: $("form").serialize(),
+    data: $("#income-expense-form").serialize(),
     dataType: "json",
     success: function (result) {
       document.getElementById("total-budget-amount").innerHTML = `${result[1]}`;
@@ -89,22 +89,35 @@ function printExpensesToPage(result) {
   result.forEach((expenseItem) => {
     let containerForExpense = document.createElement("div");
     containerForExpense.innerHTML = `
-      <form data-expense-id="${expenseItem[0]}" data-user-id="${expenseItem[1]}" class="container d-flex flex-column flex-md-row position-relative mb-3 bg-light rounded dark-blue expense-entry-block">
+      <form id="expense-id-${expenseItem[0]}" data-user-id="${expenseItem[1]}" class="container d-flex flex-column flex-md-row position-relative mb-3 bg-light rounded dark-blue expense-entry-block">
+        <input type="hidden" name="expense_item" value="${expenseItem[0]}">
         <p class="d-block m-2 w-100">Name: <span class="fw-bold">${expenseItem[2]}</span></p>
         <p class="d-block ms-2 my-0 my-sm-2 w-100">Amount: <span class="fw-bold">${expenseItem[3]}</span></p>
         <p class="d-block m-2 w-100">Type: <span class="fw-bold ${expenseItem[4]}">${expenseItem[4]}</span></p>
         <input type="submit" value="✕" id="${expenseItem[0]}" class="remove-btn btn fw-bolder text-secondary position-absolute end-0">
       </form>`;
-
     expenseListContainer.append(containerForExpense);
   });
 }
 
-// Function to remove an item from the expense list...
-expenseListContainer.addEventListener("click", (e) => {
-  e.preventDefault();
-  let currentExpenseId = e.target.getAttribute("id");
-  // Make AJAX request to remove selected expense 
-});
+// Function to remove an item from the expense list when the user clicks the 'X' button...
+  expenseListContainer.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (e.target.classList.contains("remove-btn")) {
+      let expenseItemFormToDelete = `#${e.target.parentNode.id}`;
+      $.ajax({
+        type: "post",
+        url: "../php/form_submit_action.php",
+        data: $(expenseItemFormToDelete).serialize(),
+        dataType: "json",
+        success: function (result) {
+          console.log("success");
+        },
+      });
+    }
+  });
+
+
+
 
 
