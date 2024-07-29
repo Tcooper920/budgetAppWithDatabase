@@ -109,25 +109,43 @@ em {
   content: "";
   border-right: 1rem solid #67bcff;
 }
+.border-left-fixed {
+  border-left: .3rem solid #67bcff;
+}
 .Variable::after {
   content: "";
   border-right: 1rem solid rgb(177 68 177);
+}
+.border-left-variable {
+  border-left: .3rem solid rgb(177 68 177);
 }
 .Debt::after {
   content: "";
   border-right: 1rem solid #dc3545;
 }
+.border-left-debt {
+  border-left: .3rem solid #dc3545;
+}
 .Savings::after {
   content: "";
   border-right: 1rem solid #83db87;
+}
+.border-left-savings {
+  border-left: .3rem solid #83db87;
 }
 .Fun::after {
   content: "";
   border-right: 1rem solid #f1e57d;
 }
+.border-left-fun {
+  border-left: .3rem solid #f1e57d;
+}
 .Other::after {
   content: "";
   border-right: 1rem solid lightgray;
+}
+.border-left-other {
+  border-left: .3rem solid lightgray;
 }
 
 /* Printing Media Queries */
