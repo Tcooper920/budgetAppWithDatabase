@@ -37,7 +37,7 @@
                         <option value="Other">Other</option>
                     </select>
                     <button id="submit-form" type="submit"
-                        class="add-entry btn btn-primary ms-0 ms-md-2 m-2 me-0 w-100">Add / Update</button>
+                        class="add-entry btn btn-primary ms-0 ms-md-2 m-2 me-0 w-100">+ Add expense</button>
                 </div>
             </div>
         </form>
@@ -67,14 +67,16 @@
             </div>
             <div class="container fs-5 text mt-2 no-print" id="total-budget-amount-left"></div>
         </div>
-        <p>
-            <span id="fixed-spending-total">fixed total = $fixed</span><br>
-            <span id="variable-spending-total">variable total = $variable</span><br>
-            <span id="debt-spending-total">debt total = $debt</span><br>
-            <span id="savings-spending-total">savings total = $savings</span><br>
-            <span id="fun-spending-total">fun total = $fun</span><br>
-            <span id="other-spending-total">other total = $other</span>
-        </p>
+        <div class="container px-3">
+            <div class="row p-0">
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-fixed"><span id="fixed-spending-total"></span></p>
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-variable"><span id="variable-spending-total"></span></p>
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-debt"><span id="debt-spending-total"></span></p>
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-savings"><span id="savings-spending-total"></span></p>
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-fun"><span id="fun-spending-total"></span></p>
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-other"><span id="other-spending-total"></span></p>
+            </div>
+        </div>
         <div class="container">
             <h2 class="mt-4 pb-3">Expenses:</h2>
         </div>

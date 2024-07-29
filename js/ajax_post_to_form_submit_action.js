@@ -89,12 +89,12 @@ function updateBarGraph(result) {
   otherSpendingGraphBar.setAttribute("aria-valuenow", `${result[13]}%`);
 
   // Post total amounts for each spending type...
-  fixedSpendingTotal.innerHTML = `Fixed spending total: ${result[2]}`;
-  variableSpendingTotal.innerHTML = `Variable spending total: ${result[3]}`;
-  debtSpendingTotal.innerHTML = `Debt spending total: ${result[4]}`;
-  savingsSpendingTotal.innerHTML = `Savings spending total: ${result[5]}`;
-  funSpendingTotal.innerHTML = `Fun spending total: ${result[6]}`;
-  otherSpendingTotal.innerHTML = `Other spending total: ${result[7]}`;
+  fixedSpendingTotal.innerHTML = `Fixed total: <br>$${result[2]}`;
+  variableSpendingTotal.innerHTML = `Variable total: <br>$${result[3]}`;
+  debtSpendingTotal.innerHTML = `Debt total: <br>$${result[4]}`;
+  savingsSpendingTotal.innerHTML = `Savings total: <br>$${result[5]}`;
+  funSpendingTotal.innerHTML = `Fun total: <br>$${result[6]}`;
+  otherSpendingTotal.innerHTML = `Other spending: <br>$${result[7]}`;
 }
 
 // Function to print all expenses to the the page as a list of items...
