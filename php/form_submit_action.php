@@ -46,21 +46,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require ('retrieve_expenses.php');
 
     $all_budget_data = array(
-        $current_income, 
-        $total_amount_left_to_budget_with,
-        $fixed,
-        $variable,
-        $debt,
-        $savings,
-        $fun,
-        $other,
-        $fixed_percentage,
-        $variable_percentage,
-        $debt_percentage,
-        $savings_percentage,
-        $fun_percentage,
-        $other_percentage,
-        $resultset
+        'total_amount_left_to_budget_with' => $total_amount_left_to_budget_with,
+        'total_fixed_spending' => $fixed,
+        'total_variable_spending' => $variable,
+        'total_debt_spending' => $debt,
+        'total_savings_spending' => $savings,
+        'total_fun_spending' => $fun,
+        'total_other_spending' => $other,
+        'fixed_percentage' => $fixed_percentage,
+        'variable_percentage' => $variable_percentage,
+        'debt_percentage' => $debt_percentage,
+        'savings_percentage' => $savings_percentage,
+        'fun_percentage' => $fun_percentage,
+        'other_percentage' => $other_percentage,
+        'all_expenses' => $resultset
     );
 
     echo json_encode($all_budget_data);
