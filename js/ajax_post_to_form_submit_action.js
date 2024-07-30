@@ -14,6 +14,10 @@ const savingsSpendingTotal = document.getElementById("savings-spending-total");
 const funSpendingTotal = document.getElementById("fun-spending-total");
 const otherSpendingTotal = document.getElementById("other-spending-total");
 
+// Variable declarations for expense item form fields...
+const expenseName = document.getElementById("expense");
+const expenseAmount = document.getElementById("expense-amount");
+
 // Variable declaration for expense list container...
 const expenseListContainer = document.getElementById("expense-list-container");
 
@@ -26,7 +30,7 @@ $("#income-expense-form").on("submit", ajaxRequestToPhpForProcessing);
 // On "income amount" field value change, update the displayed budget info...
 $("#budget-amount-field").on("input", ajaxRequestToPhpForProcessing);
 
-// Function to make AJAX post to PHP for processing.
+// Function to make AJAX post to PHP for processing the user's input.
 // Returns "$all_budget_data" array as "result" from "form_submit_action.php" file...
 function ajaxRequestToPhpForProcessing(e) {
   e.preventDefault();
@@ -39,7 +43,9 @@ function ajaxRequestToPhpForProcessing(e) {
       // Update bar graph...
       updateBarGraph(result);
       // Print the expense items list to the page...
-      printExpensesToPage(result[14]);
+      printExpensesToPage(result['all_expenses']);
+      // Clear expense item fields after submission...
+      clearExpenseFields();
     },
   });
 }
@@ -59,45 +65,47 @@ expenseListContainer.addEventListener("click", (e) => {
         // Update bar graph...
         updateBarGraph(result);
         // Print the expense items list to the page...
-        printExpensesToPage(result[14]);
+        printExpensesToPage(result['all_expenses']);
       },
     });
   }
 });
 
-// Function to update bar graph...
+// Function to update bar graph and totals for each spending category...
 function updateBarGraph(result) {
-  document.getElementById("total-budget-amount-left").innerHTML = `<p class="mb-0"><strong>$${result[1]}</strong> left to budget with.</p>`;
+  document.getElementById(
+    "total-budget-amount-left"
+  ).innerHTML = `<p class="mb-0"><strong>$${result["total_amount_left_to_budget_with"]}</strong> left to budget with.</p>`;
 
   // Adjust bars in bar chart for each spending type (adjust widths and attributes)...
-  fixedSpendingGraphBar.style.width = `${result[8]}%`;
-  fixedSpendingGraphBar.setAttribute("aria-valuenow", `${result[8]}%`);
+  fixedSpendingGraphBar.style.width = `${result['fixed_percentage']}%`;
+  fixedSpendingGraphBar.setAttribute("aria-valuenow", `${result['fixed_percentage']}%`);
 
-  variableSpendingGraphBar.style.width = `${result[9]}%`;
-  variableSpendingGraphBar.setAttribute("aria-valuenow", `${result[9]}%`);
+  variableSpendingGraphBar.style.width = `${result['variable_percentage']}%`;
+  variableSpendingGraphBar.setAttribute("aria-valuenow", `${result['variable_percentage']}%`);
 
-  debtSpendingGraphBar.style.width = `${result[10]}%`;
-  debtSpendingGraphBar.setAttribute("aria-valuenow", `${result[10]}%`);
+  debtSpendingGraphBar.style.width = `${result['debt_percentage']}%`;
+  debtSpendingGraphBar.setAttribute("aria-valuenow", `${result['debt_percentage']}%`);
 
-  savingsSpendingGraphBar.style.width = `${result[11]}%`;
-  savingsSpendingGraphBar.setAttribute("aria-valuenow", `${result[11]}%`);
+  savingsSpendingGraphBar.style.width = `${result['savings_percentage']}%`;
+  savingsSpendingGraphBar.setAttribute("aria-valuenow", `${result['savings_percentage']}%`);
 
-  funSpendingGraphBar.style.width = `${result[12]}%`;
-  funSpendingGraphBar.setAttribute("aria-valuenow", `${result[12]}%`);
+  funSpendingGraphBar.style.width = `${result['fun_percentage']}%`;
+  funSpendingGraphBar.setAttribute("aria-valuenow", `${result['fun_percentage']}%`);
 
-  otherSpendingGraphBar.style.width = `${result[13]}%`;
-  otherSpendingGraphBar.setAttribute("aria-valuenow", `${result[13]}%`);
+  otherSpendingGraphBar.style.width = `${result['other_percentage']}%`;
+  otherSpendingGraphBar.setAttribute("aria-valuenow", `${result['other_percentage']}%`);
 
   // Post total amounts for each spending type...
-  fixedSpendingTotal.innerHTML = `Fixed total: <br>$${result[2]}`;
-  variableSpendingTotal.innerHTML = `Variable total: <br>$${result[3]}`;
-  debtSpendingTotal.innerHTML = `Debt total: <br>$${result[4]}`;
-  savingsSpendingTotal.innerHTML = `Savings total: <br>$${result[5]}`;
-  funSpendingTotal.innerHTML = `Fun total: <br>$${result[6]}`;
-  otherSpendingTotal.innerHTML = `Other spending: <br>$${result[7]}`;
+  fixedSpendingTotal.innerHTML = `Fixed total: <br>$${result["total_fixed_spending"]}`;
+  variableSpendingTotal.innerHTML = `Variable total: <br>$${result["total_variable_spending"]}`;
+  debtSpendingTotal.innerHTML = `Debt total: <br>$${result["total_debt_spending"]}`;
+  savingsSpendingTotal.innerHTML = `Savings total: <br>$${result["total_savings_spending"]}`;
+  funSpendingTotal.innerHTML = `Fun total: <br>$${result["total_fun_spending"]}`;
+  otherSpendingTotal.innerHTML = `Other spending: <br>$${result["total_other_spending"]}`;
 }
 
-// Function to print all expenses to the the page as a list of items...
+// Function to print each expense item to the the page – creating a list of items...
 function printExpensesToPage(result) {
   expenseListContainer.innerHTML = "";
   result.forEach((expenseItem) => {
@@ -114,7 +122,8 @@ function printExpensesToPage(result) {
   });
 }
 
-
-
-
-
+// Function to clear expense fields after each submission...
+function clearExpenseFields() {
+  expenseName.value = "";
+  expenseAmount.value = "";
+} 
