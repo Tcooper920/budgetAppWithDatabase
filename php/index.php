@@ -1,8 +1,7 @@
 <?php require ("includes/header.html"); ?>
+<?php require ("form_submit_action.php") ?>
 
 <body class="dark-blue-background white">
-
-    <?php require ("form_submit_action.php") ?>
 
     <main class="p-3">
         <?php echo "<div class='container'>
@@ -85,8 +84,7 @@
 
     <script src="../js/ajax_post_to_form_submit_action.js"></script>
 
-    <?php mysqli_close($budget_database); ?>
-
 </body>
 
+<?php mysqli_close($budget_database); ?>
 <?php include ("includes/footer.html"); ?>
