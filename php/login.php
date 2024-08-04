@@ -3,7 +3,7 @@
 require ("includes/header.html");
 
 if (isset($errors) && !empty($errors)) {
-    echo '<div class="container col-lg-5">
+    echo '<div class="container col-lg-5 px-3">
               <div class="container toast w-100 border-0 mt-5 p-0 white-background fade show" role="alert" aria-live="assertive" aria-atomic="true">
                   <div class="d-flex flex-column">
                       <button type="button" class="align-self-end btn-close p-3" data-bs-dismiss="toast" aria-label="Close"></button>
