@@ -15,8 +15,6 @@ if ($retrieve_expenses) {
     while ($row = mysqli_fetch_array($retrieve_expenses, MYSQLI_NUM)) {
         $resultset[] = $row;
     }
-} else {
-    echo '<p>' . mysqli_error($budget_database) . '</p>';
 }
 
 foreach ($resultset as $result) {
