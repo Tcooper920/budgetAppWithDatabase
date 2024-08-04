@@ -1,4 +1,19 @@
-/* Fonts */
+/* Color variables */
+:root {
+  --primary-color: #4b5173;
+  --primary-color-dark: #00000045;
+  --secondary-color: #f37b35;
+  --secondary-color-dark: #e16823;
+  --fixed-spending: #67bcff;
+  --variable-spending: rgb(203 91 203);
+  --debt-spending: #dc3545;
+  --savings-spending: #83db87;
+  --fun-spending: #f1e57d;
+  --other-spending: lightgray;
+  --white: white;
+  --darkest: #24273a;
+}
+
 body {
   font-family: "Outfit", sans-serif;
 }
@@ -6,6 +21,10 @@ body {
 main {
   max-width: 60rem;
   margin: 0 auto;
+}
+
+form {
+  color: var(--darkest);
 }
 
 h1 {
@@ -17,86 +36,76 @@ h2 {
 }
 
 em {
-  color: #8f99dd;
   font-weight: bold;
 }
 
 ::marker {
-  color: #f37b35;
+  color: var(--secondary-color);
   font-weight: bold;
 }
 
 /* Buttons */
 .btn-primary {
-  background: #f37b35;
-  border-color: #e16823;
+  background: var(--secondary-color);
+  border-color: var(--secondary-color-dark);
 }
 .btn-primary:active {
-  background-color: #e16823;
-  border-color: #e16823;
+  background-color: var(--secondary-color-dark);
+  border-color: var(--secondary-color-dark);
 }
 .btn-primary:hover {
-  background-color: #e16823;
-  border-color: #e16823;
+  background-color: var(--secondary-color-dark);
+  border-color: var(--secondary-color-dark);
 }
 .btn-primary:focus {
-  background-color: #e16823;
-  border-color: #e16823;
+  background-color: var(--secondary-color-dark);
+  border-color: var(--secondary-color-dark);
 }
 .border-primary-color {
-  color: #e16823;
-  border-color: #e16823;
+  color: var(--secondary-color-dark);
+  border-color: var(--secondary-color-dark);
 }
 
-/* Colors */
+/* Color classes */
 .light-blue-background {
-  background: #67bcff;
+  background: var(--fixed-spending);
 }
 .light-green-background {
-  background: #83db87;
+  background: var(--savings-spending);
 }
 .light-yellow-background {
-  background: #f1e57d;
+  background: var(--fun-spending);
 }
 .light-gray-background {
-  background: lightgray;
-}
-.red {
-  color: #ff671b;
+  background: var(--other-spending);
 }
 .dark-blue-background {
-  background: #5d648d;
+  background: var(--primary-color);
 }
 .navy-blue-background {
-  background: #00000030;
-}
-.dark-blue {
-  color: #2b3c4a;
+  background: var(--primary-color-dark);
 }
 .white-background {
-  background: white;
+  background: var(--white);
 }
 .white {
-  color: white;
+  color: var(--white);
 }
 .purple-background {
-  background: rgb(203 91 203);
-}
-.light-navy {
-  color: #8f99dd;
+  background: var(--variable-spending);
 }
 
 /* Spending breakdown graph ("progress" bar) */
 .progress {
   height: 4rem;
-  background: #00000073;
+  background: var(--darkest);
 }
 .progress strong {
   text-shadow: 0px 0px 9px rgb(70 70 70 / 78%);
   font-weight: bold;
 }
 
-/* Spending Type Text */
+/* Spending type text */
 .Fixed::after,
 .Variable::after,
 .Debt::after,
@@ -107,10 +116,10 @@ em {
 }
 .Fixed::after {
   content: "";
-  border-right: 1rem solid #67bcff;
+  border-right: 1rem solid var(--fixed-spending);
 }
 .border-left-fixed {
-  border-left: .3rem solid #67bcff;
+  border-left: .3rem solid var(--fixed-spending);
 }
 .Variable::after {
   content: "";
@@ -121,68 +130,31 @@ em {
 }
 .Debt::after {
   content: "";
-  border-right: 1rem solid #dc3545;
+  border-right: 1rem solid var(--debt-spending);
 }
 .border-left-debt {
-  border-left: .3rem solid #dc3545;
+  border-left: .3rem solid var(--debt-spending);
 }
 .Savings::after {
   content: "";
-  border-right: 1rem solid #83db87;
+  border-right: 1rem solid var(--savings-spending);
 }
 .border-left-savings {
-  border-left: .3rem solid #83db87;
+  border-left: .3rem solid var(--savings-spending);
 }
 .Fun::after {
   content: "";
-  border-right: 1rem solid #f1e57d;
+  border-right: 1rem solid var(--fun-spending);
 }
 .border-left-fun {
-  border-left: .3rem solid #f1e57d;
+  border-left: .3rem solid var(--fun-spending);
 }
 .Other::after {
   content: "";
-  border-right: 1rem solid lightgray;
+  border-right: 1rem solid var(--other-spending);
 }
 .border-left-other {
-  border-left: .3rem solid lightgray;
-}
-
-/* Printing Media Queries */
-@media print {
-  .no-print {
-    display: none !important;
-  }
-  body {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  h1,
-  h2,
-  h3 {
-    color: black;
-  }
-  .navy-blue-background {
-    background: white;
-  }
-  .expense-entry-block {
-    flex-direction: row !important;
-  }
-  /* Expand graph when printed */
-  .progress {
-    height: auto;
-    flex-direction: column;
-    background: rgb(238, 238, 238);
-  }
-  .progress-bar {
-    overflow: visible;
-  }
-  .progress-bar .graph-spending-percentage {
-    margin-top: 0.8rem;
-  }
-  .progress-bar .graph-spending-amount {
-    margin-bottom: 0.8rem;
-  }
+  border-left: .3rem solid var(--other-spending);
 }
 
 /* Keyframe animations */
