@@ -43,7 +43,7 @@ function ajaxRequestToPhpForProcessing(e) {
       // Update bar graph...
       updateBarGraph(result);
       // Print the expense items list to the page...
-      printExpensesToPage(result['all_expenses']);
+      printExpensesToPage(result["all_expenses"]);
       // Clear expense item fields after submission...
       clearExpenseFields();
     },
@@ -65,7 +65,7 @@ expenseListContainer.addEventListener("click", (e) => {
         // Update bar graph...
         updateBarGraph(result);
         // Print the expense items list to the page...
-        printExpensesToPage(result['all_expenses']);
+        printExpensesToPage(result["all_expenses"]);
       },
     });
   }
@@ -78,23 +78,41 @@ function updateBarGraph(result) {
   ).innerHTML = `<p class="mb-0"><strong>$${result["total_amount_left_to_budget_with"]}</strong> left to budget with.</p>`;
 
   // Adjust bars in bar chart for each spending type (adjust widths and attributes)...
-  fixedSpendingGraphBar.style.width = `${result['fixed_percentage']}%`;
-  fixedSpendingGraphBar.setAttribute("aria-valuenow", `${result['fixed_percentage']}%`);
+  fixedSpendingGraphBar.style.width = `${result["fixed_percentage"]}%`;
+  fixedSpendingGraphBar.setAttribute(
+    "aria-valuenow",
+    `${result["fixed_percentage"]}%`
+  );
 
-  variableSpendingGraphBar.style.width = `${result['variable_percentage']}%`;
-  variableSpendingGraphBar.setAttribute("aria-valuenow", `${result['variable_percentage']}%`);
+  variableSpendingGraphBar.style.width = `${result["variable_percentage"]}%`;
+  variableSpendingGraphBar.setAttribute(
+    "aria-valuenow",
+    `${result["variable_percentage"]}%`
+  );
 
-  debtSpendingGraphBar.style.width = `${result['debt_percentage']}%`;
-  debtSpendingGraphBar.setAttribute("aria-valuenow", `${result['debt_percentage']}%`);
+  debtSpendingGraphBar.style.width = `${result["debt_percentage"]}%`;
+  debtSpendingGraphBar.setAttribute(
+    "aria-valuenow",
+    `${result["debt_percentage"]}%`
+  );
 
-  savingsSpendingGraphBar.style.width = `${result['savings_percentage']}%`;
-  savingsSpendingGraphBar.setAttribute("aria-valuenow", `${result['savings_percentage']}%`);
+  savingsSpendingGraphBar.style.width = `${result["savings_percentage"]}%`;
+  savingsSpendingGraphBar.setAttribute(
+    "aria-valuenow",
+    `${result["savings_percentage"]}%`
+  );
 
-  funSpendingGraphBar.style.width = `${result['fun_percentage']}%`;
-  funSpendingGraphBar.setAttribute("aria-valuenow", `${result['fun_percentage']}%`);
+  funSpendingGraphBar.style.width = `${result["fun_percentage"]}%`;
+  funSpendingGraphBar.setAttribute(
+    "aria-valuenow",
+    `${result["fun_percentage"]}%`
+  );
 
-  otherSpendingGraphBar.style.width = `${result['other_percentage']}%`;
-  otherSpendingGraphBar.setAttribute("aria-valuenow", `${result['other_percentage']}%`);
+  otherSpendingGraphBar.style.width = `${result["other_percentage"]}%`;
+  otherSpendingGraphBar.setAttribute(
+    "aria-valuenow",
+    `${result["other_percentage"]}%`
+  );
 
   // Post total amounts for each spending type...
   fixedSpendingTotal.innerHTML = `<strong>Fixed total:</strong> <br>$${result["total_fixed_spending"]}<br>${result["fixed_percentage"]}%`;
@@ -124,6 +142,8 @@ function printExpensesToPage(result) {
 
 // Function to clear expense fields after each submission...
 function clearExpenseFields() {
-  expenseName.value = "";
-  expenseAmount.value = "";
-} 
+  if (expenseName.value !== "" && expenseAmount.value !== "") {
+    expenseName.value = "";
+    expenseAmount.value = "";
+  }
+}
