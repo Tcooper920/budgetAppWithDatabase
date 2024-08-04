@@ -43,37 +43,38 @@
         <div class="container p-4 mt-3 mb-4 rounded navy-blue-background">
             <div id="graph" class="progress container p-0">
                 <div id="fixed-spending-progress-bar" class="progress-bar light-blue-background" role="progressbar"
-                    aria-valuenow="" aria-valuemin="0" aria-valuemax="100">
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 </div>
                 <div id="variable-spending-progress-bar" class="progress-bar purple-background" role="progressbar"
-                    style="<?php echo "width:$variable_percentage%" ?>"
-                    aria-valuenow="<?php echo "$variable_percentage%" ?>" aria-valuemin="0" aria-valuemax="100">
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 </div>
                 <div id="debt-spending-progress-bar" class="progress-bar progress-bar-striped bg-danger"
-                    role="progressbar" style="<?php echo "width:$debt_percentage%" ?>"
-                    aria-valuenow="<?php echo "$debt_percentage%" ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 <div id="savings-spending-progress-bar" class="progress-bar light-green-background" role="progressbar"
-                    style="<?php echo "width:$savings_percentage%" ?>"
-                    aria-valuenow="<?php echo "$savings_percentage%" ?>" aria-valuemin="0" aria-valuemax="100">
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 </div>
                 <div id="fun-spending-progress-bar" class="progress-bar light-yellow-background" role="progressbar"
-                    style="<?php echo "width:$fun_percentage%" ?>" aria-valuenow="<?php echo "$fun_percentage%" ?>"
-                    aria-valuemin="0" aria-valuemax="100"></div>
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 <div id="other-spending-progress-bar" class="progress-bar light-gray-background" role="progressbar"
-                    style="<?php echo "width:$other_percentage%" ?>" aria-valuenow="<?php echo "$other_percentage%" ?>"
-                    aria-valuemin="0" aria-valuemax="100">
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 </div>
             </div>
             <div class="container fs-5 text mt-2 no-print" id="total-budget-amount-left"></div>
         </div>
         <div class="container px-3">
             <div class="row p-0">
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-fixed"><span id="fixed-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-variable"><span id="variable-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-debt"><span id="debt-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-savings"><span id="savings-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-fun"><span id="fun-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-other"><span id="other-spending-total"></span></p>
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-fixed"><span
+                        id="fixed-spending-total"></span></p>
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-variable"><span
+                        id="variable-spending-total"></span></p>
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-debt"><span
+                        id="debt-spending-total"></span></p>
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-savings"><span
+                        id="savings-spending-total"></span></p>
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-fun"><span id="fun-spending-total"></span>
+                </p>
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-other"><span
+                        id="other-spending-total"></span></p>
             </div>
         </div>
         <div class="container">
