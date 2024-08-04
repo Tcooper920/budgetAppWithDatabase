@@ -75,7 +75,7 @@ expenseListContainer.addEventListener("click", (e) => {
 function updateBarGraph(result) {
   document.getElementById(
     "total-budget-amount-left"
-  ).innerHTML = `<p class="mb-0"><strong>$${result["total_amount_left_to_budget_with"]}</strong> left to budget with.</p>`;
+  ).innerHTML = `<p class="mb-0"><strong class="me-1">$${result["total_amount_left_to_budget_with"]}</strong> left to budget with.</p>`;
 
   // Adjust bars in bar chart for each spending type (adjust widths and attributes)...
   fixedSpendingGraphBar.style.width = `${result["fixed_percentage"]}%`;
@@ -129,7 +129,7 @@ function printExpensesToPage(result) {
   result.forEach((expenseItem) => {
     let containerForExpense = document.createElement("div");
     containerForExpense.innerHTML = `
-      <form id="expense-id-${expenseItem[0]}" data-user-id="${expenseItem[1]}" class="container d-flex flex-column flex-md-row position-relative mb-3 bg-light rounded dark-blue expense-entry-block">
+      <form id="expense-id-${expenseItem[0]}" data-user-id="${expenseItem[1]}" class="container d-flex flex-column flex-md-row position-relative mb-3 bg-light rounded expense-entry-block">
         <input type="hidden" name="expense_item" value="${expenseItem[0]}">
         <p class="d-block m-2 w-100">Name: <span class="fw-bold">${expenseItem[2]}</span></p>
         <p class="d-block ms-2 my-0 my-sm-2 w-100">Amount: <span class="fw-bold">${expenseItem[3]}</span></p>

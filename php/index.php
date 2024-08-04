@@ -20,7 +20,7 @@
                         placeholder="0.00" aria-label="Total Budget Amount" value="<?php echo "$current_income" ?>">
                 </label>
             </div>
-            <div class="container fs-5 d-flex flex-column p-3 my-3 bg-light rounded dark-blue no-print">
+            <div class="container fs-5 d-flex flex-column p-3 my-3 bg-light rounded darkest">
                 <label for="expense" class="d-flex">Add an expense:</label>
                 <div class="d-flex flex-column flex-md-row">
                     <input id="expense" class="form-control m-2 ms-0 expense-name" type="text" name="expense_name"
@@ -36,7 +36,7 @@
                         <option value="Other">Other</option>
                     </select>
                     <button id="submit-form" type="submit"
-                        class="add-entry btn btn-primary ms-0 ms-md-2 m-2 me-0 w-100">+ Add expense</button>
+                        class="add-entry btn btn-primary ms-0 ms-md-2 m-2 me-0 w-100 rounded-pill">+ Add expense</button>
                 </div>
             </div>
         </form>
@@ -59,7 +59,7 @@
                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 </div>
             </div>
-            <div class="container fs-5 text mt-2 no-print" id="total-budget-amount-left"></div>
+            <div class="container fs-5 text mt-2" id="total-budget-amount-left"></div>
         </div>
         <div class="container px-3">
             <div class="row p-0">
