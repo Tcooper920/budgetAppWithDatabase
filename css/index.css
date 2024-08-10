@@ -120,42 +120,42 @@ em {
 }
 .Fixed::after {
   content: "";
-  border-right: 1rem solid var(--fixed-spending);
+  border-right: 1.20rem solid var(--fixed-spending);
 }
 .border-left-fixed {
   border-left: .3rem solid var(--fixed-spending);
 }
 .Variable::after {
   content: "";
-  border-right: 1rem solid rgb(177 68 177);
+  border-right: 1.20rem solid rgb(177 68 177);
 }
 .border-left-variable {
   border-left: .3rem solid rgb(177 68 177);
 }
 .Debt::after {
   content: "";
-  border-right: 1rem solid var(--debt-spending);
+  border-right: 1.20rem solid var(--debt-spending);
 }
 .border-left-debt {
   border-left: .3rem solid var(--debt-spending);
 }
 .Savings::after {
   content: "";
-  border-right: 1rem solid var(--savings-spending);
+  border-right: 1.20rem solid var(--savings-spending);
 }
 .border-left-savings {
   border-left: .3rem solid var(--savings-spending);
 }
 .Fun::after {
   content: "";
-  border-right: 1rem solid var(--fun-spending);
+  border-right: 1.20rem solid var(--fun-spending);
 }
 .border-left-fun {
   border-left: .3rem solid var(--fun-spending);
 }
 .Other::after {
   content: "";
-  border-right: 1rem solid var(--other-spending);
+  border-right: 1.20rem solid var(--other-spending);
 }
 .border-left-other {
   border-left: .3rem solid var(--other-spending);

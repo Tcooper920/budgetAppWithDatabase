@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body class="dark-blue-background white">
     <main class="p-3 mt-5 container col col-md-6 col-xl-4">
         <h1>Register</h1>
-        <form action="register.php" method="POST" class="fs-5 p-5 my-3 bg-light rounded dark-blue">
+        <form action="register.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
             <label class="w-100">
                 First Name: <input type="text" name="first_name" value="<?php if (isset($_POST['first_name']))
                     echo $_POST['first_name']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
