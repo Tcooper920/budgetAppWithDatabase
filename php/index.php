@@ -3,7 +3,11 @@
 
 <body class="dark-blue-background white">
 
-<?php require ("includes/navbar.html"); ?>
+    <?php 
+        $login_logout_link = "logout.php";
+        $login_logout_link_text = "Logout";
+        require ("includes/navbar.html"); 
+    ?>
 
     <main class="p-3">
         <?php echo "<div class='container'>

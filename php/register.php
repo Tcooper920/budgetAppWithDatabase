@@ -80,6 +80,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <body class="dark-blue-background white">
+
+    <?php 
+        $login_logout_link = "login.php";
+        $login_logout_link_text = "Login";
+        require ("includes/navbar.html"); 
+    ?>
+
     <main class="p-3 mt-5 container col col-md-6 col-xl-4">
         <h1>Register</h1>
         <form action="register.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
