@@ -1,7 +1,9 @@
 <?php require ("includes/header.html"); ?>
-<?php require ("form_submit_action.php") ?>
+<?php require ("form_submit_action.php"); ?>
 
 <body class="dark-blue-background white">
+
+<?php require ("includes/navbar.html"); ?>
 
     <main class="p-3">
         <?php echo "<div class='container'>
@@ -16,18 +18,18 @@
             <div id="enter-income-form" class="container fs-5 d-flex flex-column p-3 my-3 bg-light rounded dark-blue">
                 <label>
                     Enter your income amount:
-                    <input id="budget-amount-field" class="form-control m-2 ms-0" type="text" name="total_income"
+                    <input id="budget-amount-field" class="form-control m-2 ms-0 rounded-pill" type="text" name="total_income"
                         placeholder="0.00" aria-label="Total Budget Amount" value="<?php echo "$current_income" ?>">
                 </label>
             </div>
             <div class="container fs-5 d-flex flex-column p-3 my-3 bg-light rounded darkest">
                 <label for="expense" class="d-flex">Add an expense:</label>
                 <div class="d-flex flex-column flex-md-row">
-                    <input id="expense" class="form-control m-2 ms-0 expense-name" type="text" name="expense_name"
+                    <input id="expense" class="form-control m-2 ms-0 expense-name rounded-pill" type="text" name="expense_name"
                         placeholder="Expense Name" aria-label="Expense Name">
-                    <input id="expense-amount" class="form-control m-2 ms-0 expense-amount" type="text"
+                    <input id="expense-amount" class="form-control m-2 ms-0 expense-amount rounded-pill" type="text"
                         name="expense_amount" placeholder="0.00" aria-label="Expense Amount">
-                    <select class="form-select m-2 mx-0 expense-type" aria-label="Type of Expense" name="expense_type">
+                    <select class="form-select m-2 mx-0 expense-type rounded-pill" aria-label="Type of Expense" name="expense_type">
                         <option value="Fixed" selected>Fixed</option>
                         <option value="Variable">Variable</option>
                         <option value="Debt">Debt</option>
@@ -63,17 +65,17 @@
         </div>
         <div class="container px-3">
             <div class="row p-0">
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-fixed"><span
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-fixed rounded"><span
                         id="fixed-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-variable"><span
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-variable rounded"><span
                         id="variable-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-debt"><span
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-debt rounded"><span
                         id="debt-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-savings"><span
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-savings rounded"><span
                         id="savings-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-fun"><span id="fun-spending-total"></span>
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-fun rounded"><span id="fun-spending-total"></span>
                 </p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-other"><span
+                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-other rounded"><span
                         id="other-spending-total"></span></p>
             </div>
         </div>
