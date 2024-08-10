@@ -43,6 +43,15 @@ em {
   font-weight: bold;
 }
 
+/* Toast alerts */
+.toast {
+  left: 0;
+  width: 90%;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 ::marker {
   color: var(--secondary-color);
   font-weight: bold;
@@ -175,4 +184,13 @@ em {
 #graph > .progress-bar {
   transform-origin: 0% 0%;
   animation: bar-graph-slide-in .5s;
+}
+
+/* MEDIA QUERIES *******************************************************************************************/
+
+@media screen and (min-width: 690px) {
+  .toast {
+    width: 30rem;
+    margin-right: 3rem;
+  }
 }
