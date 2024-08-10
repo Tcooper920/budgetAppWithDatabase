@@ -15,21 +15,21 @@
         </div>
 
         <form id="income-expense-form">
-            <div id="enter-income-form" class="container fs-5 d-flex flex-column p-3 my-3 bg-light rounded dark-blue">
+            <div id="enter-income-form" class="container fs-5 d-flex flex-column p-4 my-3 bg-light rounded dark-blue">
                 <label>
                     Enter your income amount:
-                    <input id="budget-amount-field" class="form-control m-2 ms-0 rounded-pill" type="text" name="total_income"
+                    <input id="budget-amount-field" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" type="text" name="total_income"
                         placeholder="0.00" aria-label="Total Budget Amount" value="<?php echo "$current_income" ?>">
                 </label>
             </div>
-            <div class="container fs-5 d-flex flex-column p-3 my-3 bg-light rounded darkest">
+            <div class="container fs-5 d-flex flex-column p-4 my-3 bg-light rounded darkest">
                 <label for="expense" class="d-flex">Add an expense:</label>
                 <div class="d-flex flex-column flex-md-row">
-                    <input id="expense" class="form-control m-2 ms-0 expense-name rounded-pill" type="text" name="expense_name"
+                    <input id="expense" class="form-control m-2 ms-0 expense-name p-2 ps-4 fs-5 rounded-pill" type="text" name="expense_name"
                         placeholder="Expense Name" aria-label="Expense Name">
-                    <input id="expense-amount" class="form-control m-2 ms-0 expense-amount rounded-pill" type="text"
+                    <input id="expense-amount" class="form-control m-2 ms-0 expense-amount p-2 ps-4 fs-5 rounded-pill" type="text"
                         name="expense_amount" placeholder="0.00" aria-label="Expense Amount">
-                    <select class="form-select m-2 mx-0 expense-type rounded-pill" aria-label="Type of Expense" name="expense_type">
+                    <select class="form-select m-2 mx-0 expense-type  p-2 ps-4 fs-5 rounded-pill" aria-label="Type of Expense" name="expense_type">
                         <option value="Fixed" selected>Fixed</option>
                         <option value="Variable">Variable</option>
                         <option value="Debt">Debt</option>
@@ -38,11 +38,11 @@
                         <option value="Other">Other</option>
                     </select>
                     <button id="submit-form" type="submit"
-                        class="add-entry btn btn-primary ms-0 ms-md-2 m-2 me-0 w-100 rounded-pill">+ Add expense</button>
+                        class="add-entry btn btn-primary ms-0 ms-md-2 m-2 me-0 w-100 p-2 fs-5 rounded-pill">+ Add expense</button>
                 </div>
             </div>
         </form>
-        <div class="container p-4 mt-3 mb-4 rounded navy-blue-background">
+        <div class="container p-4 mt-3 mb-4 navy-blue-background rounded">
             <div id="graph" class="progress container p-0">
                 <div id="fixed-spending-progress-bar" class="progress-bar light-blue-background" role="progressbar"
                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">

@@ -24,7 +24,7 @@ if (isset($errors) && !empty($errors)) {
 <body class="dark-blue-background white">
     <main class="p-3 mt-5 container col col-xl-4 d-flex flex-column align-items-center">
         <img src="../images/budget-builder-logo-stacked.svg" alt="Budget Builder logo" title="Budget Builder" width="240" height="240" class="mb-3">
-        <form action="login_action.php" method="POST" class="fs-5 p-5 my-3 bg-light rounded dark-blue">
+        <form action="login_action.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
             <h1 class="pb-3">Login</h1>
             <label class="w-100">
                 Email Address: <input type="text" name="email" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
