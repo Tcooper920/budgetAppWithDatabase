@@ -1,5 +1,7 @@
-<?php require ("includes/header.html"); ?>
-<?php require ("form_submit_action.php"); ?>
+<?php 
+    require ("form_submit_action.php"); 
+    require ("includes/header.html");
+?>
 
 <body class="dark-blue-background white">
 
@@ -93,5 +95,7 @@
 
 </body>
 
-<?php mysqli_close($budget_database); ?>
-<?php include ("includes/footer.html"); ?>
+<?php 
+    mysqli_close($budget_database);
+    include ("includes/footer.html"); 
+?>
