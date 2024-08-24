@@ -42,6 +42,7 @@ if (isset($errors) && !empty($errors)) {
             </div>
         </form>
     </main>
+    <script src="../js/preserve_scroll_position_onload.js"></script>
 </body>
 
 <?php include ("includes/footer.html"); ?>
