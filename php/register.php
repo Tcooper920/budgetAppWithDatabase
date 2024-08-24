@@ -115,6 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </form>
     </main>
+    <script src="../js/preserve_scroll_position_onload.js"></script>
 </body>
 
 <?php include ("includes/footer.html"); ?>
