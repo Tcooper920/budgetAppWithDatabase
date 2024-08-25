@@ -22,7 +22,7 @@ if (isset($errors) && !empty($errors)) {
 ?>
 
 <body class="dark-blue-background white">
-    <main class="p-3 mt-5 container col col-xl-4 d-flex flex-column align-items-center">
+    <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center">
         <img src="../images/budget-builder-logo-stacked.svg" alt="Budget Builder logo" title="Budget Builder" width="240" height="240" class="mb-3">
         <form action="login_action.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
             <h1 class="pb-3">Login</h1>

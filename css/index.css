@@ -20,6 +20,7 @@
 
 nav {
   background: var(--white);
+  z-index: 0;
 }
 
 body {
@@ -29,6 +30,10 @@ body {
 main {
   max-width: 60rem;
   margin: 0 auto;
+}
+
+.toast {
+  z-index: 1;
 }
 
 form {

@@ -2,6 +2,12 @@
 
 require ("includes/header.html");
 
+echo '<body class="dark-blue-background white">';
+
+$login_logout_link = "login.php";
+$login_logout_link_text = "Login";
+require ("includes/navbar.html"); 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require ('../../../connect_budget_database.php');
     $errors = array();
@@ -63,12 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   <div class="d-flex flex-column">
                       <button type="button" class="align-self-end btn-close p-3" data-bs-dismiss="toast" aria-label="Close"></button>
                           <div class="toast-body fs-6 p-4 text-danger border-top border-1 border-dark-subtle">
-                              <p>';
+                              <p class="mb-0">';
         foreach ($errors as $msg) {
-            echo "- $msg<br>";
+            echo "$msg<br>";
         }
         echo '</p>
-          <p>Please try again.</p>
           </div>
           </div>
           </div>
@@ -79,17 +84,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
-<body class="dark-blue-background white">
-
-    <?php 
-        $login_logout_link = "login.php";
-        $login_logout_link_text = "Login";
-        require ("includes/navbar.html"); 
-    ?>
-
-    <main class="p-3 mt-5 container col col-md-6 col-xl-4">
-        <h1>Register</h1>
+    <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center">
         <form action="register.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
+            <h1 class="pb-3">Register</h1>
             <label class="w-100">
                 First Name: <input type="text" name="first_name" value="<?php if (isset($_POST['first_name']))
                     echo $_POST['first_name']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
