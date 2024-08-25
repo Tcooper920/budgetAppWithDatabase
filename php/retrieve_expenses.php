@@ -55,4 +55,4 @@ if ($current_income != 0) {
 
 // Calculate total amount left to budget with...
 $total_amount_spent = $fixed + $variable + $debt + $savings + $fun + $other;
-$total_amount_left_to_budget_with = $current_income - $total_amount_spent;
+$total_amount_left_to_budget_with = round(($current_income - $total_amount_spent), 2);
