@@ -24,7 +24,7 @@
             <div id="enter-income-form" class="container fs-5 d-flex flex-column p-4 my-3 bg-light rounded dark-blue">
                 <label>
                     Enter your income amount:
-                    <input id="budget-amount-field" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" type="text" name="total_income"
+                    <input id="budget-amount-field" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" type="number" step="1" name="total_income"
                         placeholder="0.00" aria-label="Total Budget Amount" value="<?php echo "$current_income" ?>">
                 </label>
             </div>

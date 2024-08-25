@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS user_income (
     income_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_id INT UNSIGNED NOT NULL,
-    total_income DECIMAL(8, 2) UNSIGNED NOT NULL,
+    total_income DECIMAL(10, 2) UNSIGNED NOT NULL,
     PRIMARY KEY(income_id)
 );
