@@ -30,6 +30,12 @@ $("#income-expense-form").on("submit", ajaxRequestToPhpForProcessing);
 // On "income amount" field value change, update the displayed budget info...
 $("#budget-amount-field").on("input", ajaxRequestToPhpForProcessing);
 
+// On "income amount" field value change, format the text field input...
+$("#budget-amount-field").on("input", restrictFieldInput);
+
+// On "expense amount" change, format the text field input...
+$("#expense-amount").on("input", restrictFieldInput);
+
 // Function to make AJAX post to PHP for processing the user's input.
 // Returns "$all_budget_data" array as "result" from "form_submit_action.php" file...
 function ajaxRequestToPhpForProcessing(e) {
@@ -146,4 +152,21 @@ function clearExpenseFields() {
     expenseName.value = "";
     expenseAmount.value = "";
   }
+}
+
+
+// Function to limit what the user can enter into input fields...
+function restrictFieldInput(event) {
+  let value = event.target.value;
+
+  // Remove non-numeric characters...
+  value = value.replace(/\D/g, '');
+
+  // Limit the length of the value to 11 characters
+  if (value.length > 11) {
+    value = value.slice(0, 11);
+  }
+
+  // Set the new value to the input field
+  event.target.value = value;
 }

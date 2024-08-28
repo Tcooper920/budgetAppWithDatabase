@@ -8,4 +8,4 @@ $get_income = mysqli_query($budget_database, $query_to_get_income);
 $last_saved_income = mysqli_fetch_array($get_income);
 
 # If a previous income wasn't saved, make it "0", else display the saved income amount...
-$current_income = is_null($last_saved_income) ? 0.00 : "$last_saved_income[0]";
+$current_income = is_null($last_saved_income) ? 0 : "$last_saved_income[0]";
