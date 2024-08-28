@@ -24,8 +24,8 @@
             <div id="enter-income-form" class="container fs-5 d-flex flex-column p-4 my-3 bg-light rounded dark-blue">
                 <label>
                     Enter your income amount:
-                    <input id="budget-amount-field" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" type="number" step=".01" name="total_income"
-                        placeholder="0.00" aria-label="Total Budget Amount" value="<?php echo "$current_income" ?>">
+                    <input id="budget-amount-field" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" type="number" step="1" name="total_income"
+                        placeholder="$0" aria-label="Total Budget Amount" value="<?php echo "$current_income" ?>">
                 </label>
             </div>
             <div class="container fs-5 d-flex flex-column p-4 my-3 bg-light rounded darkest">
@@ -33,8 +33,8 @@
                 <div class="d-flex flex-column flex-md-row">
                     <input id="expense" class="form-control m-2 ms-0 expense-name p-2 ps-4 fs-5 rounded-pill" type="text" name="expense_name"
                         placeholder="Expense Name" aria-label="Expense Name">
-                    <input id="expense-amount" class="form-control m-2 ms-0 expense-amount p-2 ps-4 fs-5 rounded-pill" type="text"
-                        name="expense_amount" placeholder="0.00" aria-label="Expense Amount">
+                    <input id="expense-amount" class="form-control m-2 ms-0 expense-amount p-2 ps-4 fs-5 rounded-pill" type="number" step="1"
+                        name="expense_amount" placeholder="$0" aria-label="Expense Amount">
                     <select class="form-select m-2 mx-0 expense-type  p-2 ps-4 fs-5 rounded-pill" aria-label="Type of Expense" name="expense_type">
                         <option value="Fixed" selected>Fixed</option>
                         <option value="Variable">Variable</option>
