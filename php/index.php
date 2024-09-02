@@ -12,11 +12,11 @@
     ?>
 
     <main class="p-3">
-        <?php echo "<div class='container'>
+        <?php echo "<div class='container px-0'>
                 <p class='mb-0 mt-3 fs-4' data-user-id='{$_SESSION['user_id']}'>Welcome, {$_SESSION['first_name']} {$_SESSION['last_name']}</p>
                 <hr class='mb-5'>
             </div>"; ?>
-        <div class="container">
+        <div class="container px-0">
             <h1 class="mt-4">Build a Budget:</h1>
         </div>
 
@@ -67,7 +67,7 @@
                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 </div>
             </div>
-            <div class="container fs-5 text mt-2" id="total-budget-amount-left"></div>
+            <div class="container fs-5 text mt-2 px-0" id="total-budget-amount-left"></div>
         </div>
         <div class="container px-3">
             <div class="row p-0">
@@ -85,7 +85,7 @@
                         id="other-spending-total"></span></p>
             </div>
         </div>
-        <div class="container">
+        <div class="container px-0">
             <h2 class="mt-4 pb-3">Expenses:</h2>
         </div>
         <div id="expense-list-container"></div>
