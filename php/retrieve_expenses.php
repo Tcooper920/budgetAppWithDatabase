@@ -8,8 +8,13 @@ $fun = 0;
 $other = 0;
 
 # Retrieve all expenses for current user and add their values to the bar graph below...
-$query_to_retrieve_expenses = "SELECT * FROM user_expenses WHERE user_id='{$_SESSION['user_id']}'";
-$retrieve_expenses = mysqli_query($budget_database, $query_to_retrieve_expenses);
+$userid = $_SESSION['user_id'];
+
+$query_to_retrieve_expenses = $budget_database->prepare("SELECT * FROM user_expenses WHERE user_id=?");
+$query_to_retrieve_expenses->bind_param("i", $userid);
+$query_to_retrieve_expenses->execute();
+$retrieve_expenses = $query_to_retrieve_expenses->get_result();
+
 $resultset = array();
 if ($retrieve_expenses) {
     while ($row = mysqli_fetch_array($retrieve_expenses, MYSQLI_NUM)) {
