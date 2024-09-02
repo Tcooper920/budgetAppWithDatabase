@@ -26,15 +26,16 @@ function validate($budget_database, $email = '' , $pwd = '') {
     }
 
     if (empty($errors)) {
-        $q = "SELECT user_id, first_name, last_name
-             FROM users
-             WHERE email = '$e'
-             AND pass = SHA2('$p', 256)";
+        $email = "$e";
+        $pass = "$p";
+        
+        $query_to_get_user = $budget_database->prepare("SELECT user_id, first_name, last_name FROM users WHERE email = ? AND pass = SHA2(?, 256)");
+        $query_to_get_user->bind_param("ss", $email, $pass);
+        $query_to_get_user->execute();
+        $get_user = $query_to_get_user->get_result();
 
-        $r = mysqli_query($budget_database, $q);
-
-        if (mysqli_num_rows($r) == 1) {
-            $row = mysqli_fetch_array($r, MYSQLI_ASSOC);
+        if (mysqli_num_rows($get_user) == 1) {
+            $row = mysqli_fetch_array($get_user, MYSQLI_ASSOC);
             return array(true, $row);
         } else {
             $errors[] = 'Email address and password not found.';
