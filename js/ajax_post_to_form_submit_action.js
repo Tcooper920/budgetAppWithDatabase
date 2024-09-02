@@ -27,14 +27,16 @@ $(window).load(ajaxRequestToPhpForProcessing);
 // On form submit, fire AJAX to send/retrieve data...
 $("#income-expense-form").on("submit", ajaxRequestToPhpForProcessing);
 
-// On "income amount" field value change, update the displayed budget info...
-$("#budget-amount-field").on("input", ajaxRequestToPhpForProcessing);
+// On "income amount" field value change, update the displayed budget info and format the text field input...
+$("#budget-amount-field").on("input", handleBudgetAmountInput);
 
-// On "income amount" field value change, format the text field input...
-$("#budget-amount-field").on("input", restrictFieldInput);
-
-// On "expense amount" change, format the text field input...
+// On "expense amount" field value change, format the text field input...
 $("#expense-amount").on("input", restrictFieldInput);
+
+function handleBudgetAmountInput(event) {
+  ajaxRequestToPhpForProcessing(event);
+  restrictFieldInput(event);
+}
 
 // Function to make AJAX post to PHP for processing the user's input.
 // Returns "$all_budget_data" array as "result" from "form_submit_action.php" file...
@@ -138,7 +140,7 @@ function printExpensesToPage(result) {
       <form id="expense-id-${expenseItem[0]}" data-user-id="${expenseItem[1]}" class="container d-flex mb-3 p-3 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
         <input type="hidden" name="expense_item" value="${expenseItem[0]}">
         <p class="d-block m-0 w-100">Name: <span class="fw-bold">${expenseItem[2]}</span></p>
-        <p class="d-block m-0 w-100">Amount: <span class="fw-bold">${expenseItem[3]}</span></p>
+        <p class="d-block m-0 w-100">Amount: <span class="fw-bold">$${expenseItem[3]}</span></p>
         <p class="d-block m-0 w-100"><span class="fw-bold ${expenseItem[4]}">${expenseItem[4]}</span></p>
         <input type="submit" value="✕" id="${expenseItem[0]}" class="remove-btn btn fw-bolder text-secondary position-absolute px-3 end-0">
       </form>`;
