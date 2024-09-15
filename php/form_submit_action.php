@@ -2,23 +2,24 @@
 
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    require ('login_tools.php');
+    require('login_tools.php');
     load();
 }
-require ('../../../connect_budget_database.php');
-require ('retrieve_income.php');
-require ('retrieve_expenses.php');
+require('../../../connect_budget_database.php');
+require('retrieve_income.php');
+require('retrieve_expenses.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (
         !empty($_POST['total_income'])
     ) {
         # Post total income to budget with...
-        $query_to_set_income = "INSERT INTO user_income (user_id, total_income)
-                VALUES (
-                    '{$_SESSION["user_id"]}',
-                    '{$_POST["total_income"]}'
-                )";
-        $set_income = mysqli_query($budget_database, $query_to_set_income);
+        $userid = $_SESSION["user_id"];
+        $totalincome = $_POST["total_income"];
+
+        $query_to_post_budget_amount = $budget_database->prepare("INSERT INTO user_income (user_id, total_income) VALUES (?, ?)");
+        $query_to_post_budget_amount->bind_param("ii", $userid, $totalincome);
+        $query_to_post_budget_amount->execute();
+
         if (
             !empty($_POST['expense_name'])
             && !empty($_POST['expense_amount'])
@@ -42,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $query_to_delete_expense = "DELETE FROM user_expenses WHERE expense_id = '{$_POST["expense_item"]}'";
         $delete_expense = mysqli_query($budget_database, $query_to_delete_expense);
     }
-    require ('retrieve_income.php');
-    require ('retrieve_expenses.php');
+    require('retrieve_income.php');
+    require('retrieve_expenses.php');
 
     $all_budget_data = array(
         'total_amount_left_to_budget_with' => $total_amount_left_to_budget_with,
@@ -64,5 +65,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     echo json_encode($all_budget_data);
 }
-
-?>
