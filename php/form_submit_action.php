@@ -14,10 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ) {
         # Post total income to budget with...
         $userid = $_SESSION["user_id"];
-        $totalincome = $_POST["total_income"];
+        $total_income = $_POST["total_income"];
 
         $query_to_post_budget_amount = $budget_database->prepare("INSERT INTO user_income (user_id, total_income) VALUES (?, ?)");
-        $query_to_post_budget_amount->bind_param("ii", $userid, $totalincome);
+        $query_to_post_budget_amount->bind_param("ii", $userid, $total_income);
         $query_to_post_budget_amount->execute();
 
         if (
@@ -25,15 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             && !empty($_POST['expense_amount'])
             && !empty($_POST['expense_type'])
         ) {
-            # Post expense...
-            $query_to_set_expense = "INSERT INTO user_expenses (user_id, expense_name, expense_amount, expense_type)
-                    VALUES (
-                        '{$_SESSION["user_id"]}',
-                        '{$_POST["expense_name"]}',
-                        '{$_POST["expense_amount"]}',
-                        '{$_POST["expense_type"]}'
-                    )";
-            $set_expense = mysqli_query($budget_database, $query_to_set_expense);
+            # Post expense item (name, amount, type of expense)...
+            $expense_name = $_POST["expense_name"];
+            $expense_amount = $_POST["expense_amount"];
+            $expense_type = $_POST["expense_type"];
+
+            $query_to_post_expense = $budget_database->prepare("INSERT INTO user_expenses (user_id, expense_name, expense_amount, expense_type) VALUES (?, ?, ?, ?)");
+            $query_to_post_expense->bind_param("isis", $userid, $expense_name, $expense_amount, $expense_type);
+            $query_to_post_expense->execute();
         }
     }
     if (
