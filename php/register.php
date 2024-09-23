@@ -39,23 +39,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $errors[] = 'Enter your password.';
     }
-
+    
+    # Check if user email already exists during registration...
     if (empty($errors)) {
-        $q = "SELECT user_id FROM users WHERE email='$e'";
-        $r = mysqli_query($budget_database, $q);
-        if (mysqli_num_rows($r) != 0) {
+        $query_to_get_user_by_email = $budget_database->prepare("SELECT user_id FROM users WHERE email=?");
+        $query_to_get_user_by_email->bind_param("s", $e);
+        $query_to_get_user_by_email->execute();
+        $get_user_by_email = $query_to_get_user_by_email->get_result();
+        
+        if (mysqli_num_rows($get_user_by_email) != 0) {
             $errors[] = 'Email address already registered.
                         <a href="login.php">Login</a>';
         }
     }
 
+    # Create a new user in the database...
     if (empty($errors)) {
-        $q = "INSERT INTO users
-             (first_name, last_name, email, pass, reg_date)
-             VALUES ('$fn', '$ln', '$e', SHA2('$p', 256), NOW())";
-        $r = mysqli_query($budget_database, $q);
+        $query_to_create_new_user = $budget_database->prepare("INSERT INTO users (first_name, last_name, email, pass, reg_date) VALUES (?, ?, ?, SHA2(?, 256), NOW())");
+        $query_to_create_new_user->bind_param("ssss", $fn, $ln, $e, $p);
+        $query_to_create_new_user->execute();
 
-        if ($r) {
+        if ($query_to_create_new_user) {
             echo '<h1>Registered!</h1>
                  <p>You are now registered.</p>
                  <p><a href="login.php">Login</a></p>';
