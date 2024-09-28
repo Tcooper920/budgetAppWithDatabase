@@ -6,8 +6,7 @@
 <body class="dark-blue-background white">
 
     <?php 
-        $login_logout_link = "logout.php";
-        $login_logout_link_text = "Logout";
+        $login_or_logout = "logout";
         require ("includes/navbar.html"); 
     ?>
 

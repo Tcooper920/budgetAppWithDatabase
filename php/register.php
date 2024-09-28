@@ -4,8 +4,7 @@ require ("includes/header.html");
 
 echo '<body class="dark-blue-background">';
 
-$login_logout_link = "login.php";
-$login_logout_link_text = "Login";
+$login_or_logout = "login";
 require ("includes/navbar.html"); 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

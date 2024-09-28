@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light navbar-expand-lg mb-4 px-4 shadow-sm">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="index.php">
         <img src="../images/budget-builder-logo-horizontal.svg" width="230" alt="Budget Builder logo" title="Budget Builder">
     </a>
     <button
@@ -16,9 +16,27 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link fs-5" href="<?php echo $login_logout_link; ?>"><?php echo $login_logout_link_text; ?></a>
+        <li class="nav-item ps-3">
+          <a class="nav-link fs-5" href="index.php" title="My budget dashboard">My budget</a>
         </li>
+        <li class="nav-item ps-3">
+          <a class="nav-link fs-5" href="delete_account.php" title="Delete account">Delete account</a>
+        </li>
+        <?php 
+          if ($login_or_logout == "login") {
+            echo '
+            <li class="nav-item ps-3">
+              <a class="nav-link fs-5" href="login.php" title="Login">Login</a>
+            </li>';
+          } else if ($login_or_logout == "logout") {
+            echo '
+            <li class="nav-item ps-3">
+              <a class="nav-link fs-5" href="logout.php" title="Logout">Logout</a>
+            </li>';
+          } else {
+            echo '';
+          }
+        ?>
       </ul>
     </div>
   </div>
