@@ -2,7 +2,7 @@
 
 require ("includes/header.html");
 
-echo '<body class="dark-blue-background white">';
+echo '<body class="dark-blue-background">';
 
 $login_logout_link = "login.php";
 $login_logout_link_text = "Login";
@@ -11,6 +11,11 @@ require ("includes/navbar.html");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require ('../../../connect_budget_database.php');
     $errors = array();
+    
+    # Function to verify emails...
+    function isValidEmail($email) {
+        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+    }
 
     if (empty($_POST['first_name'])) {
         $errors[] = 'Enter your first name.';
@@ -27,7 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST['email'])) {
         $errors[] = 'Enter your email address.';
     } else {
-        $e = mysqli_real_escape_string($budget_database, trim($_POST['email']));
+        $email = $_POST['email'];
+        if (isValidEmail($email)) {
+            $e = mysqli_real_escape_string($budget_database, trim($_POST['email']));
+        } else {
+            $errors[] = "The email '$email' is not valid.";
+        }
     }
 
     if (!empty($_POST['pass1'])) {
@@ -60,9 +70,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $query_to_create_new_user->execute();
 
         if ($query_to_create_new_user) {
-            echo '<h1>Registered!</h1>
-                 <p>You are now registered.</p>
-                 <p><a href="login.php">Login</a></p>';
+            echo '<main class="p-3 mt-5 container col col-md-8 col-lg-6 col-xl-5 align-items-center">
+                    <div class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
+                        <h1 class="pb-3">Registered!</h1>
+                        <p>You are now registered.</p>
+                        <div class="mt-3">
+                            <a href="login.php" title="Login">
+                                <input type="button" value="Login" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
+                            </a>
+                        </div>
+                    </div>
+                  </main>';
         }
 
         mysqli_close($budget_database);
