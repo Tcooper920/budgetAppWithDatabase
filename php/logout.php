@@ -7,8 +7,7 @@ if (!isset($_SESSION['user_id'])) {
     load();
 }
 
-$login_logout_link = "login.php";
-$login_logout_link_text = "Login";
+$login_or_logout = "login";
 require ("includes/navbar.html");
 
 $_SESSION = array();
