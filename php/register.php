@@ -17,49 +17,80 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (empty($_POST['first_name'])) {
-        $errors[] = 'Enter your first name.';
+        $key = "firstNameError";
+        $value = "Enter your first name.";
+        $errors[$key] = $value;
     } else {
         $fn = mysqli_real_escape_string($budget_database, trim($_POST['first_name']));
     }
 
     if (empty($_POST['last_name'])) {
-        $errors[] = 'Enter your last name.';
+        $key = "lastNameError";
+        $value = "Enter your last name.";
+        $errors[$key] = $value;
     } else {
         $ln = mysqli_real_escape_string($budget_database, trim($_POST['last_name']));
     }
 
     if (empty($_POST['email'])) {
-        $errors[] = 'Enter your email address.';
+        $key = "emailAddressError";
+        $value = "Enter your email address.";
+        $errors[$key] = $value;
     } else {
         $email = $_POST['email'];
         if (isValidEmail($email)) {
             $e = mysqli_real_escape_string($budget_database, trim($_POST['email']));
         } else {
-            $errors[] = "The email '$email' is not valid.";
+            $key = "emailAddressError";
+            $value = "This email address is not valid.";
+            $errors[$key] = $value;
         }
+    }
+
+    if (empty($_POST['pass1'])) {
+        $key = "pass1Error";
+        $value = "Enter your password.";
+        $errors[$key] = $value;
     }
 
     if (!empty($_POST['pass1'])) {
         if ($_POST['pass1'] != $_POST['pass2']) {
-            $errors[] = 'Passwords do not match.';
+            $key = "pass2Error";
+            $value = "Passwords do not match.";
+            $errors[$key] = $value;
         } else {
             $p = mysqli_real_escape_string($budget_database, trim($_POST['pass1']));
         }
-    } else {
-        $errors[] = 'Enter your password.';
     }
-    
+
     # Check if user email already exists during registration...
     if (empty($errors)) {
         $query_to_get_user_by_email = $budget_database->prepare("SELECT user_id FROM users WHERE email=?");
         $query_to_get_user_by_email->bind_param("s", $e);
         $query_to_get_user_by_email->execute();
         $get_user_by_email = $query_to_get_user_by_email->get_result();
-        
+            
         if (mysqli_num_rows($get_user_by_email) != 0) {
-            $errors[] = 'Email address already registered.
-                        <a href="login.php">Login</a>';
+            $key = "userEmail";
+            $value = "Email address already registered. <a href='login.php'>Login</a>";
+            $errors[$key] = $value;
         }
+    }
+
+    # Pop error message if email already exists...
+    if (isset($errors['userEmail'])) {
+        echo '<div class="container col-lg-5 px-3">
+              <div class="toast position-fixed top-2 white-background fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                  <div class="d-flex flex-column">
+                      <button type="button" class="align-self-end btn-close p-3" data-bs-dismiss="toast" aria-label="Close"></button>
+                          <div class="toast-body fs-6 p-4 text-danger border-top border-1 border-dark-subtle">
+                              <p class="mb-0">';
+        echo $errors['userEmail'] . '<br>';
+        echo '</p>
+          </div>
+          </div>
+          </div>
+          </div>';
     }
 
     # Create a new user in the database...
@@ -81,25 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                   </main>';
         }
-
         mysqli_close($budget_database);
         exit();
-    } else {
-        echo '<div class="container col-lg-5 px-3">
-              <div class="toast position-fixed top-2 white-background fade show" role="alert" aria-live="assertive" aria-atomic="true">
-                  <div class="d-flex flex-column">
-                      <button type="button" class="align-self-end btn-close p-3" data-bs-dismiss="toast" aria-label="Close"></button>
-                          <div class="toast-body fs-6 p-4 text-danger border-top border-1 border-dark-subtle">
-                              <p class="mb-0">';
-        foreach ($errors as $msg) {
-            echo "$msg<br>";
-        }
-        echo '</p>
-          </div>
-          </div>
-          </div>
-          </div>';
-        mysqli_close($budget_database);
     }
 }
 
@@ -109,23 +123,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form action="register.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
             <h1 class="pb-3">Register</h1>
             <label class="w-100">
-                First Name: <input type="text" name="first_name" value="<?php if (isset($_POST['first_name']))
+                First Name: 
+                <?php if (isset($errors['firstNameError'])) echo '<br><p class="text-danger mb-0">' . $errors['firstNameError'] . '</p>' ?>
+                <input type="text" name="first_name" value="<?php if (isset($_POST['first_name']))
                     echo $_POST['first_name']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <label class="w-100 mt-2">
-                Last Name: <input type="text" name="last_name" value="<?php if (isset($_POST['last_name']))
+                Last Name: 
+                <?php if (isset($errors['lastNameError'])) echo '<br><p class="text-danger mb-0">' . $errors['lastNameError'] . '</p>' ?>
+                <input type="text" name="last_name" value="<?php if (isset($_POST['last_name']))
                     echo $_POST['last_name']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <label class="w-100 mt-2">
-                Email Address: <input type="text" name="email" value="<?php if (isset($_POST['email']))
+                Email Address: 
+                <?php if (isset($errors['emailAddressError'])) echo '<br><p class="text-danger mb-0">' . $errors['emailAddressError'] . '</p>' ?>
+                <input type="text" name="email" value="<?php if (isset($_POST['email']))
                     echo $_POST['email']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <label class="w-100 mt-2">
-                Password: <input type="text" name="pass1" value="<?php if (isset($_POST['pass1']))
+                Password: 
+                <?php if (isset($errors['pass1Error'])) echo '<br><p class="text-danger mb-0">' . $errors['pass1Error'] . '</p>' ?>
+                <input type="text" name="pass1" value="<?php if (isset($_POST['pass1']))
                     echo $_POST['pass1']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <label class="w-100 mt-2">
-                Confirm Password: <input type="text" name="pass2" value="<?php if (isset($_POST['pass2']))
+                Confirm Password: 
+                <?php if (isset($errors['pass2Error'])) echo '<br><p class="text-danger mb-0">' . $errors['pass2Error'] . '</p>' ?>
+                <input type="text" name="pass2" value="<?php if (isset($_POST['pass2']))
                     echo $_POST['pass2']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <div class="mt-4">
