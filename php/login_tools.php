@@ -14,13 +14,17 @@ function validate($budget_database, $email = '' , $pwd = '') {
     $errors = array();
 
     if (empty($email)) {
-        $errors[] = 'Enter your email address.';
+        $key = "emailError";
+        $value = "Enter your email address.";
+        $errors[$key] = $value;
     } else {
         $e = mysqli_real_escape_string($budget_database, trim($email));
     }
 
     if (empty($pwd)) {
-        $errors[] = 'Enter your password.';
+        $key = "passwordError";
+        $value = "Enter your password.";
+        $errors[$key] = $value;
     } else {
         $p = mysqli_real_escape_string($budget_database, trim($pwd));
     }
@@ -39,6 +43,9 @@ function validate($budget_database, $email = '' , $pwd = '') {
             return array(true, $row);
         } else {
             $errors[] = 'Email address and password not found.';
+            $key = "emailAndPasswordNotFoundError";
+            $value = 'Email address and password not found. ';
+            $errors[$key] = $value;
         }
     }
     return array(false, $errors);
