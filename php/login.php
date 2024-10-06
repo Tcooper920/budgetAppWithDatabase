@@ -27,12 +27,12 @@ if (isset($errors['emailAndPasswordNotFoundError'])) {
             <h1 class="pb-3">Login</h1>
             <label class="w-100">
                 Email Address:
-                <?php if (isset($errors['emailError'])) echo '<br><p class="text-danger mb-0">' . $errors['emailError'] . '</p>' ?>
+                <?php if (isset($errors['emailError'])) echo '<br><p class="error-msg text-danger mb-0">' . $errors['emailError'] . '</p>' ?>
                 <input type="text" name="email" value="<?php if (isset($_POST['email'])) echo htmlspecialchars($_POST["email"]); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <label class="w-100 mt-2">
                 Password:
-                <?php if (isset($errors['passwordError'])) echo '<br><p class="text-danger mb-0">' . $errors['passwordError'] . '</p>' ?>
+                <?php if (isset($errors['passwordError'])) echo '<br><p class="error-msg text-danger mb-0">' . $errors['passwordError'] . '</p>' ?>
                 <input type="password" name="pass" value="<?php if (isset($_POST['pass'])) echo htmlspecialchars($_POST["pass"]); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <div class="mt-4">
