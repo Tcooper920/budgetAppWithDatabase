@@ -54,13 +54,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (!empty($_POST['pass1'])) {
-        if ($_POST['pass1'] != $_POST['pass2']) {
+        # Check if password 1 and password 2 match...
+        if ($_POST['pass1'] !== $_POST['pass2']) {
             $key = "pass2Error";
             $value = "Passwords do not match.";
             $errors[$key] = $value;
         } else {
-            $p = mysqli_real_escape_string($budget_database, trim($_POST['pass1']));
-        }
+            # Make sure password isn't already used by another user...
+            $query_to_get_user_by_password = $budget_database->prepare("SELECT user_id FROM users WHERE pass=SHA2(?, 256)");
+            $query_to_get_user_by_password->bind_param("s", $_POST['pass1']);
+            $query_to_get_user_by_password->execute();
+            $get_user_by_password = $query_to_get_user_by_password->get_result();
+
+            if (mysqli_num_rows($get_user_by_password) != 0) {
+                $key = "pass1Error";
+                $value = "This password is already taken.";
+                $errors[$key] = $value;
+            } else {
+                $p = mysqli_real_escape_string($budget_database, trim($_POST['pass1']));
+            }
+        } 
     }
 
     # Check if user email already exists during registration...
