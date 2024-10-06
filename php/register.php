@@ -126,31 +126,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 First Name: 
                 <?php if (isset($errors['firstNameError'])) echo '<br><p class="text-danger mb-0">' . $errors['firstNameError'] . '</p>' ?>
                 <input type="text" name="first_name" value="<?php if (isset($_POST['first_name']))
-                    echo $_POST['first_name']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+                    echo htmlspecialchars($_POST['first_name']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <label class="w-100 mt-2">
                 Last Name: 
                 <?php if (isset($errors['lastNameError'])) echo '<br><p class="text-danger mb-0">' . $errors['lastNameError'] . '</p>' ?>
                 <input type="text" name="last_name" value="<?php if (isset($_POST['last_name']))
-                    echo $_POST['last_name']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+                    echo htmlspecialchars($_POST['last_name']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <label class="w-100 mt-2">
                 Email Address: 
                 <?php if (isset($errors['emailAddressError'])) echo '<br><p class="text-danger mb-0">' . $errors['emailAddressError'] . '</p>' ?>
                 <input type="text" name="email" value="<?php if (isset($_POST['email']))
-                    echo $_POST['email']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+                    echo htmlspecialchars($_POST['email']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <label class="w-100 mt-2">
                 Password: 
                 <?php if (isset($errors['pass1Error'])) echo '<br><p class="text-danger mb-0">' . $errors['pass1Error'] . '</p>' ?>
                 <input type="text" name="pass1" value="<?php if (isset($_POST['pass1']))
-                    echo $_POST['pass1']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+                    echo htmlspecialchars($_POST['pass1']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <label class="w-100 mt-2">
                 Confirm Password: 
                 <?php if (isset($errors['pass2Error'])) echo '<br><p class="text-danger mb-0">' . $errors['pass2Error'] . '</p>' ?>
                 <input type="text" name="pass2" value="<?php if (isset($_POST['pass2']))
-                    echo $_POST['pass2']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+                    echo htmlspecialchars($_POST['pass2']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <div class="mt-4">
                 <input type="submit" value="Register" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
