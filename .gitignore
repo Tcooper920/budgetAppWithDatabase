@@ -1,6 +1,9 @@
-# ignore mac system files
+# Ignore mac system files
 .DS_store
 .DS_Store?
 
-# ignore Ai files
+# Ignore Ai files
 *.ai
+
+# Ignore configuration file with passwords
+php/includes/config.php
