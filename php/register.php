@@ -1,18 +1,19 @@
 <?php
-
-require ("includes/header.html");
+session_start();
+require("includes/header.html");
 
 echo '<body class="dark-blue-background">';
 
 $login_or_logout = "login";
-require ("includes/navbar.html"); 
+require("includes/navbar.html");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require ('../../../connect_budget_database.php');
+    require('../../../connect_budget_database.php');
     $errors = array();
-    
+
     # Function to verify emails...
-    function isValidEmail($email) {
+    function isValidEmail($email)
+    {
         return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
     }
 
@@ -73,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 $p = mysqli_real_escape_string($budget_database, trim($_POST['pass1']));
             }
-        } 
+        }
     }
 
     # Check if user email already exists during registration...
@@ -82,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $query_to_get_user_by_email->bind_param("s", $e);
         $query_to_get_user_by_email->execute();
         $get_user_by_email = $query_to_get_user_by_email->get_result();
-            
+
         if (mysqli_num_rows($get_user_by_email) != 0) {
             $key = "userEmail";
             $value = "Email address already registered. <a href='login.php'>Login</a>";
@@ -108,69 +109,70 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     # Create a new user in the database...
     if (empty($errors)) {
-        $query_to_create_new_user = $budget_database->prepare("INSERT INTO users (first_name, last_name, email, pass, reg_date) VALUES (?, ?, ?, SHA2(?, 256), NOW())");
-        $query_to_create_new_user->bind_param("ssss", $fn, $ln, $e, $p);
-        $query_to_create_new_user->execute();
 
-        if ($query_to_create_new_user) {
-            echo '<main class="p-3 mt-5 container col col-md-8 col-lg-6 col-xl-5 align-items-center">
-                    <div class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
-                        <h1 class="pb-3">Registered!</h1>
-                        <p>You are now registered.</p>
-                        <div class="mt-3">
-                            <a href="login.php" title="Login">
-                                <input type="button" value="Login" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
-                            </a>
-                        </div>
-                    </div>
-                  </main>';
-        }
-        mysqli_close($budget_database);
+        # Step 1: Generate a confirmation code...
+        $confirmation_code = rand(100000, 999999); // 6-digit code
+        $_SESSION['confirmation_code'] = $confirmation_code; // Store in session
+        $_SESSION['user_data'] = array('first_name' => $fn, 'last_name' => $ln, 'email' => $e, 'password' => $p); // Store user data in session...
+
+        # Step 2: Send the confirmation code via email and show a form for the user to enter the code...
+        require("confirmation_email.php");
+
         exit();
     }
 }
 
 ?>
 
-    <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center">
-        <form action="register.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
-            <h1 class="pb-3">Register</h1>
-            <label class="w-100">
-                First Name: 
-                <?php if (isset($errors['firstNameError'])) echo '<br><p class="error-msg text-danger mb-0">' . $errors['firstNameError'] . '</p>' ?>
+<main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center">
+    <form action="register.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
+        <h1 class="pb-3">Register</h1>
+        <label class="w-100">
+            First Name:
+            <?php if (isset($errors['firstNameError']))
+                echo '<br><p class="error-msg text-danger mb-0">' . $errors['firstNameError'] . '</p>' ?>
                 <input type="text" name="first_name" value="<?php if (isset($_POST['first_name']))
-                    echo htmlspecialchars($_POST['first_name']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
-            </label>
-            <label class="w-100 mt-2">
-                Last Name: 
-                <?php if (isset($errors['lastNameError'])) echo '<br><p class="error-msg text-danger mb-0">' . $errors['lastNameError'] . '</p>' ?>
+                echo htmlspecialchars($_POST['first_name']); ?>"
+                class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+        </label>
+        <label class="w-100 mt-2">
+            Last Name:
+            <?php if (isset($errors['lastNameError']))
+                echo '<br><p class="error-msg text-danger mb-0">' . $errors['lastNameError'] . '</p>' ?>
                 <input type="text" name="last_name" value="<?php if (isset($_POST['last_name']))
-                    echo htmlspecialchars($_POST['last_name']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
-            </label>
-            <label class="w-100 mt-2">
-                Email Address: 
-                <?php if (isset($errors['emailAddressError'])) echo '<br><p class="error-msg text-danger mb-0">' . $errors['emailAddressError'] . '</p>' ?>
+                echo htmlspecialchars($_POST['last_name']); ?>"
+                class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+        </label>
+        <label class="w-100 mt-2">
+            Email Address:
+            <?php if (isset($errors['emailAddressError']))
+                echo '<br><p class="error-msg text-danger mb-0">' . $errors['emailAddressError'] . '</p>' ?>
                 <input type="text" name="email" value="<?php if (isset($_POST['email']))
-                    echo htmlspecialchars($_POST['email']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
-            </label>
-            <label class="w-100 mt-2">
-                Password: 
-                <?php if (isset($errors['pass1Error'])) echo '<br><p class="error-msg text-danger mb-0">' . $errors['pass1Error'] . '</p>' ?>
+                echo htmlspecialchars($_POST['email']); ?>"
+                class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+        </label>
+        <label class="w-100 mt-2">
+            Password:
+            <?php if (isset($errors['pass1Error']))
+                echo '<br><p class="error-msg text-danger mb-0">' . $errors['pass1Error'] . '</p>' ?>
                 <input type="text" name="pass1" value="<?php if (isset($_POST['pass1']))
-                    echo htmlspecialchars($_POST['pass1']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
-            </label>
-            <label class="w-100 mt-2">
-                Confirm Password: 
-                <?php if (isset($errors['pass2Error'])) echo '<br><p class="error-msg text-danger mb-0">' . $errors['pass2Error'] . '</p>' ?>
+                echo htmlspecialchars($_POST['pass1']); ?>"
+                class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+        </label>
+        <label class="w-100 mt-2">
+            Confirm Password:
+            <?php if (isset($errors['pass2Error']))
+                echo '<br><p class="error-msg text-danger mb-0">' . $errors['pass2Error'] . '</p>' ?>
                 <input type="text" name="pass2" value="<?php if (isset($_POST['pass2']))
-                    echo htmlspecialchars($_POST['pass2']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
-            </label>
-            <div class="mt-4">
-                <input type="submit" value="Register" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
-            </div>
-        </form>
-    </main>
-    <script src="../js/preserve_scroll_position_onload.js"></script>
+                echo htmlspecialchars($_POST['pass2']); ?>"
+                class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+        </label>
+        <div class="mt-4">
+            <input type="submit" value="Register" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
+        </div>
+    </form>
+</main>
+<script src="../js/preserve_scroll_position_onload.js"></script>
 </body>
 
-<?php include ("includes/footer.html"); ?>
+<?php include("includes/footer.html"); ?>
