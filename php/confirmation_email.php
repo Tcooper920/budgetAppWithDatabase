@@ -54,13 +54,23 @@ $mail->Password = $smtp_authentication_password;
 //Note that with gmail you can only use your account address (same as `Username`)
 //or predefined aliases that you have configured within your account.
 //Do not use user-submitted addresses in here
-$mail->setFrom('budgetbuilderapp@gmail.com', 'First Last');
+$mail->setFrom('budgetbuilderapp@gmail.com', 'BudgetBuilder');
 
-//Set who the message is to be sent to
-$mail->addAddress('coopergdesigner@gmail.com', 'John Doe');
+// Set who the message is to be sent to by entering the user's email
+if (isset($_SESSION['user_data'])) {
+    $user_data = $_SESSION['user_data'];
+
+    if (isset($user_data['email'])) {
+        $mail->addAddress($user_data['email'], 'User');
+    } else {
+        die('Email address not found.');
+    }
+} else {
+    die('User data not found.');
+}
 
 //Set the subject line
-$mail->Subject = 'PHPMailer GMail SMTP test';
+$mail->Subject = 'BudgetBuilder';
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
@@ -74,8 +84,14 @@ $htmlContent = str_replace('{{confirmation_code}}', $confirmation_code, $htmlCon
 // Now set the modified HTML content for the email...
 $mail->msgHTML($htmlContent, __DIR__);
 
-//Replace the plain text body with one created manually
-$mail->AltBody = 'This is a plain-text message body';
+// Replace the plain text body with one created manually
+// $mail->AltBody = 'This is a plain-text message body';
+
+// Embed necessary images
+$mail->addEmbeddedImage('../images/budget-builder-logo-horizontal.png', 'image_cid');
+
+// Set the email format to HTML
+$mail->isHTML(true);
 
 //send the message, check for errors
 if (!$mail->send()) {
