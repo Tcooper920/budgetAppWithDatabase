@@ -1,4 +1,7 @@
 <?php
+# Send a confirmation email to the user when they click "Register"...
+# This code uses the PHPMailer library with a Gmail account for sending the emails.
+# About 500 emails can be sent daily. Upgrade the Gmail account, if needed.
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -20,7 +23,7 @@ $mail->isSMTP();
 //SMTP::DEBUG_OFF = off (for production use)
 //SMTP::DEBUG_CLIENT = client messages
 //SMTP::DEBUG_SERVER = client and server messages
-$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+$mail->SMTPDebug = 0;
 
 //Set the hostname of the mail server
 $mail->Host = 'smtp.gmail.com';
@@ -59,9 +62,6 @@ $mail->addAddress('coopergdesigner@gmail.com', 'John Doe');
 //Set the subject line
 $mail->Subject = 'PHPMailer GMail SMTP test';
 
-// Generate confirmation code...
-$confirmation_code = '99999';
-
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 $mail->msgHTML(file_get_contents('confirmation_email_contents.html'), __DIR__);
@@ -79,7 +79,18 @@ $mail->AltBody = 'This is a plain-text message body';
 
 //send the message, check for errors
 if (!$mail->send()) {
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
+    echo "<p>Mailer Error: $mail->ErrorInfo</p>";
 } else {
-    echo 'Message sent!';
+    echo '<form action="confirm_code.php" method="POST" class="p-3 mt-5 container col col-md-8 col-lg-6 col-xl-5 align-items-center">
+            <div class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
+                <h1 class="pb-3">Validate your account</h1>
+                <label for="confirmation_code">Enter the confirmation code sent to your email:</label>
+                <div class="mt-3">
+                    <input type="text" name="confirmation_code" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" required>
+                </div>
+                <div class="mt-3">
+                    <input type="submit" value="Confirm code" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
+                </div>
+            </div>
+          </form>';
 }
