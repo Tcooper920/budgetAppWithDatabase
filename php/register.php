@@ -112,7 +112,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         # Step 1: Generate a confirmation code...
         $confirmation_code = rand(100000, 999999); // 6-digit code
+        $timestamp = time(); // Current timestamp (in seconds)
         $_SESSION['confirmation_code'] = $confirmation_code; // Store in session
+        $_SESSION['timestamp'] = $timestamp;
         $_SESSION['user_data'] = array('first_name' => $fn, 'last_name' => $ln, 'email' => $e, 'password' => $p); // Store user data in session...
 
         # Step 2: Send the confirmation code via email and show a form for the user to enter the code...

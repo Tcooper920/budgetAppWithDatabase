@@ -11,13 +11,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require('../../../connect_budget_database.php');
 
     if (!isset($_SESSION['confirmation_code'])) {
-        echo "Confirmation code is not set.";
+        echo "<p>Confirmation code is not set.</p>";
     }
 
     if (isset($_SESSION['confirmation_code'])) {
         $entered_code = $_POST['confirmation_code'];
+        $storedCode = $_SESSION['confirmation_code'];
+        $storedTimestamp = $_SESSION['timestamp'];
+        $expirationTime = 420; // 7 minutes in seconds
+        $currentTime = time();
+        $timeDifference = $currentTime - $storedTimestamp;
         
-        if ($entered_code == $_SESSION['confirmation_code']) {
+        # Ensure code is correct and hasn't expired before adding user data to the database...
+        if ($entered_code == $storedCode && $timeDifference <= $expirationTime) {
 
             # Add the user to the database...
             $user_data = $_SESSION['user_data'];
@@ -47,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <h1 class="pb-3">Validate your account</h1>
                         <label for="confirmation_code">Enter the confirmation code sent to your email:</label>
                         <div class="mt-3">
-                            <p class="error-msg text-danger mb-0">Incorrect verification code.</p>
+                            <p class="error-msg text-danger mb-0">Incorrect or expired verification code.</p>
                             <input type="text" name="confirmation_code" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" required>
                         </div>
                         <div class="mt-3">
