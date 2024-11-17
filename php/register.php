@@ -109,17 +109,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     # Create a new user in the database...
     if (empty($errors)) {
-
-        # Step 1: Generate a confirmation code...
-        $confirmation_code = rand(100000, 999999); // 6-digit code
-        $timestamp = time(); // Current timestamp (in seconds)
-        $_SESSION['confirmation_code'] = $confirmation_code; // Store in session
-        $_SESSION['timestamp'] = $timestamp;
-        $_SESSION['user_data'] = array('first_name' => $fn, 'last_name' => $ln, 'email' => $e, 'password' => $p); // Store user data in session...
-
-        # Step 2: Send the confirmation code via email and show a form for the user to enter the code...
+        # Store user data in session...
+        $_SESSION['user_data'] = array('first_name' => $fn, 'last_name' => $ln, 'email' => $e, 'password' => $p);
+        # Generate confirmation code, send the code via email, and show a form for the user to enter the code...
         require("confirmation_email.php");
-
         exit();
     }
 }
@@ -150,24 +143,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php if (isset($errors['emailAddressError']))
                 echo '<br><p class="error-msg text-danger mb-0">' . $errors['emailAddressError'] . '</p>' ?>
                 <input type="text" name="email" value="<?php if (isset($_POST['email']))
-                echo htmlspecialchars($_POST['email']); ?>"
-                class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+                echo htmlspecialchars($_POST['email']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
         </label>
         <label class="w-100 mt-2">
             Password:
             <?php if (isset($errors['pass1Error']))
                 echo '<br><p class="error-msg text-danger mb-0">' . $errors['pass1Error'] . '</p>' ?>
                 <input type="text" name="pass1" value="<?php if (isset($_POST['pass1']))
-                echo htmlspecialchars($_POST['pass1']); ?>"
-                class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+                echo htmlspecialchars($_POST['pass1']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
         </label>
         <label class="w-100 mt-2">
             Confirm Password:
             <?php if (isset($errors['pass2Error']))
                 echo '<br><p class="error-msg text-danger mb-0">' . $errors['pass2Error'] . '</p>' ?>
                 <input type="text" name="pass2" value="<?php if (isset($_POST['pass2']))
-                echo htmlspecialchars($_POST['pass2']); ?>"
-                class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+                echo htmlspecialchars($_POST['pass2']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
         </label>
         <div class="mt-4">
             <input type="submit" value="Register" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
@@ -175,6 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
 </main>
 <script src="../js/preserve_scroll_position_onload.js"></script>
+<script src="../js/resend_registration_confirmation_code.js"></script>
 </body>
 
 <?php include("includes/footer.html"); ?>
