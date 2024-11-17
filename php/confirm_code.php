@@ -10,18 +10,30 @@ require("includes/navbar.html");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require('../../../connect_budget_database.php');
 
-    if (!isset($_SESSION['confirmation_code'])) {
-        echo "<p>Confirmation code is not set.</p>";
-    }
-
-    if (isset($_SESSION['confirmation_code'])) {
+    // Check if user is resending a confirmation code...
+    if (isset($_POST['resend_code']) && $_POST['resend_code'] == '1') {
+        // Resend confirmation code email...
+        echo '<div class="container col-lg-5 px-3">
+                <div class="toast position-fixed top-2 white-background fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex flex-column">
+                        <button type="button" class="align-self-end btn-close p-3" data-bs-dismiss="toast" aria-label="Close"></button>
+                        <div class="toast-body fs-6 p-4 border-top border-1 border-dark-subtle">
+                            <p class="mb-0">
+                                Another confirmation code has been sent to your email.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+              </div>';
+        require("confirmation_email.php");
+    } else if (isset($_SESSION['confirmation_code'])) {
         $entered_code = $_POST['confirmation_code'];
         $storedCode = $_SESSION['confirmation_code'];
         $storedTimestamp = $_SESSION['timestamp'];
-        $expirationTime = 420; // 7 minutes in seconds
+        $expirationTime = 420; // 7 minutes to expire (in seconds)
         $currentTime = time();
         $timeDifference = $currentTime - $storedTimestamp;
-        
+
         # Ensure code is correct and hasn't expired before adding user data to the database...
         if ($entered_code == $storedCode && $timeDifference <= $expirationTime) {
 
@@ -48,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             session_destroy();
             exit();
         } else {
-            echo '<form action="confirm_code.php" method="POST" class="p-3 mt-5 container col col-md-8 col-lg-6 col-xl-5 align-items-center">
+            echo '<form action="confirm_code.php" method="POST" id="confirmation-form" class="p-3 mt-5 container col col-md-8 col-lg-6 col-xl-5 align-items-center">
                     <div class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
                         <h1 class="pb-3">Validate your account</h1>
                         <label for="confirmation_code">Enter the confirmation code sent to your email:</label>
@@ -58,14 +70,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                         <div class="mt-3">
                             <input type="submit" value="Confirm code" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
+                            <button type="button" id="resend-code" class="btn text-primary mt-2 fs-5">Email me another code</button>
                         </div>
                     </div>
-                </form>';            
+                </form>';
         }
-    } 
+    } else {
+        echo "<p>Confirmation code not set.</p>";
+    }
 }
 
 echo '<script src="../js/preserve_scroll_position_onload.js"></script>
+      <script src="../js/resend_registration_confirmation_code.js"></script>
       </body>';
 
 include("includes/footer.html");

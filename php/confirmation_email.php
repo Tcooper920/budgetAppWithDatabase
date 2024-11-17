@@ -78,6 +78,12 @@ $mail->msgHTML(file_get_contents('confirmation_email_contents.html'), __DIR__);
 
 $htmlContent = file_get_contents('confirmation_email_contents.html');
 
+# Generate a confirmation code...
+$confirmation_code = rand(100000, 999999); // 6-digit code
+$timestamp = time(); // Current timestamp (in seconds)
+$_SESSION['confirmation_code'] = $confirmation_code; // Store in session
+$_SESSION['timestamp'] = $timestamp;
+
 // Replace the placeholder with the PHP variable...
 $htmlContent = str_replace('{{confirmation_code}}', $confirmation_code, $htmlContent);
 
@@ -97,7 +103,7 @@ $mail->isHTML(true);
 if (!$mail->send()) {
     echo "<p>Mailer Error: $mail->ErrorInfo</p>";
 } else {
-    echo '<form action="confirm_code.php" method="POST" class="p-3 mt-5 container col col-md-8 col-lg-6 col-xl-5 align-items-center">
+    echo '<form action="confirm_code.php" method="POST" id="confirmation-form" class="p-3 mt-5 container col col-md-8 col-lg-6 col-xl-5 align-items-center">
             <div class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
                 <h1 class="pb-3">Validate your account</h1>
                 <label for="confirmation_code">Enter the confirmation code sent to your email:</label>
@@ -106,7 +112,13 @@ if (!$mail->send()) {
                 </div>
                 <div class="mt-3">
                     <input type="submit" value="Confirm code" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
+                    <button type="button" id="resend-code" class="btn text-primary mt-2 fs-5">Email me another code</button>
                 </div>
             </div>
-          </form>';
+          </form>
+          <script src="../js/preserve_scroll_position_onload.js"></script>
+          <script src="../js/resend_registration_confirmation_code.js"></script>
+          </body>';
 }
+
+include("includes/footer.html");
