@@ -1,13 +1,13 @@
 <?php 
-    require ("form_submit_action.php"); 
-    require ("includes/header.html");
+    require ("../budget_queries/form_submit_action.php"); 
+    require ("../../includes/header.html");
 ?>
 
 <body class="dark-blue-background white">
 
     <?php 
         $login_or_logout = "logout";
-        require ("includes/navbar.html"); 
+        require ("../../includes/navbar.html"); 
     ?>
 
     <main class="p-3">
@@ -90,11 +90,11 @@
         <div id="expense-list-container"></div>
     </main>
 
-    <script src="../js/ajax_post_to_form_submit_action.js"></script>
+    <script src="../../js/ajax_post_to_form_submit_action.js"></script>
 
 </body>
 
 <?php 
     mysqli_close($budget_database);
-    include ("includes/footer.html"); 
+    include ("../../includes/footer.html"); 
 ?>

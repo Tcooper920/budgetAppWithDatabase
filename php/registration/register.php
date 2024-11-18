@@ -1,14 +1,14 @@
 <?php
 session_start();
-require("includes/header.html");
+require("../../includes/header.html");
 
 echo '<body class="dark-blue-background">';
 
 $login_or_logout = "login";
-require("includes/navbar.html");
+require("../../includes/navbar.html");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require('../../../connect_budget_database.php');
+    require('../../../../connect_budget_database.php');
     $errors = array();
 
     # Function to verify emails...
@@ -164,8 +164,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </form>
 </main>
-<script src="../js/preserve_scroll_position_onload.js"></script>
-<script src="../js/resend_registration_confirmation_code.js"></script>
+<script src="../../js/preserve_scroll_position_onload.js"></script>
+<script src="../../js/resend_registration_confirmation_code.js"></script>
 </body>
 
-<?php include("includes/footer.html"); ?>
+<?php include("../../includes/footer.html"); ?>
