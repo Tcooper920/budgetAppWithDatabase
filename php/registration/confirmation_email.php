@@ -7,11 +7,10 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require('includes/PHPMailer/src/Exception.php');
-require('includes/PHPMailer/src/PHPMailer.php');
-require('includes/PHPMailer/src/SMTP.php');
-
-include('includes/config.php');
+require('../PHPMailer/src/Exception.php');
+require('../PHPMailer/src/PHPMailer.php');
+require('../PHPMailer/src/SMTP.php');
+include('../../config/config.php');
 
 //Create a new PHPMailer instance
 $mail = new PHPMailer();
@@ -94,7 +93,7 @@ $mail->msgHTML($htmlContent, __DIR__);
 // $mail->AltBody = 'This is a plain-text message body';
 
 // Embed necessary images
-$mail->addEmbeddedImage('../images/budget-builder-logo-horizontal.png', 'image_cid');
+$mail->addEmbeddedImage('../../images/budget-builder-logo-horizontal.png', 'image_cid');
 
 // Set the email format to HTML
 $mail->isHTML(true);
@@ -116,9 +115,9 @@ if (!$mail->send()) {
                 </div>
             </div>
           </form>
-          <script src="../js/preserve_scroll_position_onload.js"></script>
-          <script src="../js/resend_registration_confirmation_code.js"></script>
+          <script src="../../js/preserve_scroll_position_onload.js"></script>
+          <script src="../../js/resend_registration_confirmation_code.js"></script>
           </body>';
 }
 
-include("includes/footer.html");
+include("../../includes/footer.html");

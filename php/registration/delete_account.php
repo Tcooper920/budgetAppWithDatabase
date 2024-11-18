@@ -2,19 +2,19 @@
 
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    require('login_tools.php');
+    require('../login/login_tools.php');
     load();
 }
 
-require ("includes/header.html");
+require ("../../includes/header.html");
 
 echo '<body class="dark-blue-background">';
 
 $login_or_logout = "logout";
-require ("includes/navbar.html");
+require ("../../includes/navbar.html");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require('../../../connect_budget_database.php');
+    require('../../../../connect_budget_database.php');
 
     $userid = $_SESSION['user_id'];
 
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <p>Your account was not deleted. Please try again.</p>
                     <div class="mt-3">
                         <input type="submit" value="Delete my account" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
-                        <a href="index.php" title="Back to homepage">
+                        <a href="../dashboard/dashboard.php" title="Back to homepage">
                             <input type="button" value="Back" class="btn border-primary-color border-2 ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
                         </a>
                     </div>
@@ -90,13 +90,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <h1 class="pb-3">Your account has been successfully deleted.</h1>
                     <p>We hope you come back!</p>
                     <div class="mt-3">
-                        <a href="index.php" title="Return to login">
+                        <a href="../dashboard/dashboard.php" title="Return to login">
                             <input type="button" value="Return to login" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
                         </a>
                     </div>
                 </form>
             </main>
-        <script src="../js/preserve_scroll_position_onload.js"></script>
+        <script src="../../js/preserve_scroll_position_onload.js"></script>
         </body>';
     
         # Free up memory after the result set is no longer needed...
@@ -117,13 +117,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p>All your budgeting data will be permanently deleted. You can always create a new account.</p>
         <div class="mt-3">
             <input type="submit" value="Delete my account" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
-            <a href="index.php" title="Back to homepage">
+            <a href="../dashboard/dashboard.php" title="Back to homepage">
                 <input type="button" value="Back" class="btn border-primary-color border-2 ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
             </a>
         </div>
     </form>
 </main>
-<script src="../js/preserve_scroll_position_onload.js"></script>
+<script src="../../js/preserve_scroll_position_onload.js"></script>
 </body>
 
-<?php include ("includes/footer.html"); ?>
+<?php include ("../../includes/footer.html"); ?>

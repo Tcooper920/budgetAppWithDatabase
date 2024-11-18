@@ -1,14 +1,14 @@
 <?php
 session_start();
-require("includes/header.html");
+require("../../includes/header.html");
 
 echo '<body class="dark-blue-background">';
 
 $login_or_logout = "login";
-require("includes/navbar.html");
+require("../../includes/navbar.html");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require('../../../connect_budget_database.php');
+    require('../../../../connect_budget_database.php');
 
     // Check if user is resending a confirmation code...
     if (isset($_POST['resend_code']) && $_POST['resend_code'] == '1') {
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <h1 class="pb-3">Registered!</h1>
                             <p>You are now registered.</p>
                             <div class="mt-3">
-                                <a href="login.php" title="Login">
+                                <a href="../login/login.php" title="Login">
                                     <input type="button" value="Login" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
                                 </a>
                             </div>
@@ -80,8 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-echo '<script src="../js/preserve_scroll_position_onload.js"></script>
-      <script src="../js/resend_registration_confirmation_code.js"></script>
+echo '<script src="../../js/preserve_scroll_position_onload.js"></script>
+      <script src="../../js/resend_registration_confirmation_code.js"></script>
       </body>';
 
-include("includes/footer.html");
+include("../../includes/footer.html");

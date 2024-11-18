@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require ('../../../connect_budget_database.php');
+    require ('../../../../connect_budget_database.php');
 
     require ('login_tools.php');
 
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['first_name'] = $data['first_name'];
         $_SESSION['last_name'] = $data['last_name'];
 
-        load('index.php');
+        load('../dashboard/dashboard.php');
     } else {
         $errors = $data;
     }

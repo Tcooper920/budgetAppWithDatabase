@@ -44,7 +44,7 @@ function ajaxRequestToPhpForProcessing(e) {
   e.preventDefault();
   $.ajax({
     type: "post",
-    url: "../php/form_submit_action.php",
+    url: "../budget_queries/form_submit_action.php",
     data: $("#income-expense-form").serialize(),
     dataType: "json",
     success: function (result) {
@@ -66,7 +66,7 @@ expenseListContainer.addEventListener("click", (e) => {
     let expenseItemFormToDelete = `#${e.target.parentNode.id}`;
     $.ajax({
       type: "post",
-      url: "../php/form_submit_action.php",
+      url: "../budget_queries/form_submit_action.php",
       data: $(expenseItemFormToDelete).serialize(),
       dataType: "json",
       success: function (result) {

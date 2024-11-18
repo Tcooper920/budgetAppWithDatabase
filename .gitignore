@@ -6,4 +6,4 @@
 *.ai
 
 # Ignore configuration file with passwords
-php/includes/config.php
+config/*

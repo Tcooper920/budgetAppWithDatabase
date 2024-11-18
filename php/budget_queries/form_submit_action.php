@@ -2,12 +2,12 @@
 
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    require('login_tools.php');
+    require('../login/login_tools.php');
     load();
 }
-require('../../../connect_budget_database.php');
-require('retrieve_income.php');
-require('retrieve_expenses.php');
+require('../../../../connect_budget_database.php');
+require('../budget_queries/retrieve_income.php');
+require('../budget_queries/retrieve_expenses.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (
         !empty($_POST['total_income'])
