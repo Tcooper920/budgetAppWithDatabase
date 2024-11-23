@@ -120,4 +120,4 @@ if (!$mail->send()) {
           </body>';
 }
 
-include("../../includes/footer.html");
+include("../../includes/footer.php");

@@ -1,3 +1,8 @@
+<?php
+// Define the base URL relative to the site's root to create dynamic links...
+$base_url = "/budget_app_with_database/"; // Replace 'your_project_folder' with your actual project name if needed
+?>
+
 <!DOCTYPE html>
   <html>
     <head>
@@ -25,7 +30,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"
       ></script>
-      <link rel="stylesheet" type="text/css" href="../../css/index.css" />
+      <link rel="stylesheet" type="text/css" href="<?php echo $base_url ?>css/index.css" />
       <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     </head>
 

@@ -6,12 +6,14 @@ if (!isset($_SESSION['user_id'])) {
     load();
 }
 
-require ("../../includes/header.html");
+require ("../../includes/header.php");
 
 echo '<body class="dark-blue-background">';
 
+# Navbar settings...
 $login_or_logout = "logout";
-require ("../../includes/navbar.html");
+$show_my_budget = true;
+require ("../../includes/navbar.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require('../../../../connect_budget_database.php');
@@ -126,4 +128,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script src="../../js/preserve_scroll_position_onload.js"></script>
 </body>
 
-<?php include ("../../includes/footer.html"); ?>
+<?php include ("../../includes/footer.php"); ?>

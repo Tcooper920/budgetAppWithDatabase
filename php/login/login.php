@@ -1,6 +1,6 @@
 <?php
 
-require ("../../includes/header.html");
+require ("../../includes/header.php");
 
 # Pop error message if email and password not found...
 if (isset($errors['emailAndPasswordNotFoundError'])) {
@@ -48,4 +48,4 @@ if (isset($errors['emailAndPasswordNotFoundError'])) {
     <script src="../../js/preserve_scroll_position_onload.js"></script>
 </body>
 
-<?php include ("../../includes/footer.html"); ?>
+<?php include ("../../includes/footer.php"); ?>
