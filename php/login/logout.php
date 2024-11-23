@@ -7,14 +7,15 @@ if (!isset($_SESSION['user_id'])) {
     load();
 }
 
+# Navbar settings...
 $login_or_logout = "login";
-require ("../../includes/navbar.html");
+require ("../../includes/navbar.php");
 
 $_SESSION = array();
 
 session_destroy();
 
-require ("../../includes/header.html");
+require ("../../includes/header.php");
 
 ?>
 
@@ -32,4 +33,4 @@ require ("../../includes/header.html");
     </main>
 </body>
 
-<?php include ("../../includes/footer.html"); ?>
+<?php include ("../../includes/footer.php"); ?>

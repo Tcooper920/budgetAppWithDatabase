@@ -1,13 +1,15 @@
 <?php 
     require ("../budget_queries/form_submit_action.php"); 
-    require ("../../includes/header.html");
+    require ("../../includes/header.php");
 ?>
 
 <body class="dark-blue-background white">
 
     <?php 
+        # Navbar settings...
         $login_or_logout = "logout";
-        require ("../../includes/navbar.html"); 
+        $show_delete_account = true;
+        require ("../../includes/navbar.php"); 
     ?>
 
     <main class="p-3">
@@ -96,5 +98,5 @@
 
 <?php 
     mysqli_close($budget_database);
-    include ("../../includes/footer.html"); 
+    include ("../../includes/footer.php"); 
 ?>

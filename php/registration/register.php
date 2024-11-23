@@ -1,11 +1,11 @@
 <?php
 session_start();
-require("../../includes/header.html");
+require("../../includes/header.php");
 
 echo '<body class="dark-blue-background">';
 
 $login_or_logout = "login";
-require("../../includes/navbar.html");
+require("../../includes/navbar.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require('../../../../connect_budget_database.php');
@@ -168,4 +168,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script src="../../js/resend_registration_confirmation_code.js"></script>
 </body>
 
-<?php include("../../includes/footer.html"); ?>
+<?php include("../../includes/footer.php"); ?>

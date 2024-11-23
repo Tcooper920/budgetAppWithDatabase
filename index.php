@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Start Building a Budget</title>
-    <meta name="description" content="A free application for building a budget and tracking your expenses." />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-</head>
+<?php
+
+require("includes/header.php");
+
+# Navbar settings...
+$login_or_logout = "login";
+$show_register_link = true;
+$show_my_budget = true;
+require("includes/navbar.php");
+
+?>
 
 <body class="dark-blue-background white">
     <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center">
@@ -25,4 +20,4 @@
     <script src="js/preserve_scroll_position_onload.js"></script>
 </body>
 
-<?php include("includes/footer.html"); ?>
+<?php include("includes/footer.php"); ?>
