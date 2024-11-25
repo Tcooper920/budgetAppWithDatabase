@@ -4,7 +4,7 @@ $base_url = "/budget_app_with_database/"; // Replace 'your_project_folder' with 
 ?>
 
 <!DOCTYPE html>
-<html>
+<html class="h-100">
 
 <head>
   <!-- Standard 16x16 -->

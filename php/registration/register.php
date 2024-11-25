@@ -2,7 +2,7 @@
 session_start();
 require("../../includes/header.php");
 
-echo '<body class="dark-blue-background">';
+echo '<body class="dark-blue-background h-100 d-flex flex-column">';
 
 $login_or_logout = "login";
 require("../../includes/navbar.php");
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (mysqli_num_rows($get_user_by_email) != 0) {
             $key = "userEmail";
-            $value = "Email address already registered. <a href='login.php'>Login</a>";
+            $value = "Email address already registered. <a href='../login/login.php'>Login</a>";
             $errors[$key] = $value;
         }
     }
@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
-<main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center">
+<main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
     <form action="register.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
         <h1 class="pb-3">Register</h1>
         <label class="w-100">

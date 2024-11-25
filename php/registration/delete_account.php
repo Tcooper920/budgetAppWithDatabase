@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 
 require ("../../includes/header.php");
 
-echo '<body class="dark-blue-background">';
+echo '<body class="dark-blue-background h-100 d-flex flex-column">';
 
 # Navbar settings...
 $login_or_logout = "logout";
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($get_user_by_user_id->num_rows > 0 || $get_expenses_by_user_id->num_rows > 0 || $get_income_by_user_id->num_rows > 0) {
         # Display error message if failed to delete user info...
         echo '
-            <main class="p-3 mt-5 container col col-md-8 col-lg-6 col-xl-5 align-items-center">
+            <main class="p-3 mt-5 container col col-md-8 col-lg-6 col-xl-5 align-items-center flex-fill">
                 <form action="delete_account.php" method="POST" class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
                     <h1 class="pb-3">An error occurred.</h1>
                     <p>Your account was not deleted. Please try again.</p>
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         session_destroy();
 
         echo '
-            <main class="p-3 mt-5 container col col-md-8 col-lg-6 col-xl-5 align-items-center">
+            <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
                 <form action="delete_account.php" method="POST" class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
                     <h1 class="pb-3">Your account has been successfully deleted.</h1>
                     <p>We hope you come back!</p>
@@ -100,6 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </main>
         <script src="../../js/preserve_scroll_position_onload.js"></script>
         </body>';
+
+        include ("../../includes/footer.php");
     
         # Free up memory after the result set is no longer needed...
         $get_user_by_user_id->free();
@@ -113,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
-<main class="p-3 mt-5 container col col-md-8 col-lg-6 col-xl-5 align-items-center">
+<main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
     <form action="delete_account.php" method="POST" class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
         <h1 class="pb-3">Are you sure you want to delete your account?</h1>
         <p>All your budgeting data will be permanently deleted. You can always create a new account.</p>
