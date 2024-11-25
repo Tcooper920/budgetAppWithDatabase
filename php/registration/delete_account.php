@@ -10,9 +10,6 @@ require ("../../includes/header.php");
 
 echo '<body class="dark-blue-background h-100 d-flex flex-column">';
 
-# Navbar settings...
-$login_or_logout = "logout";
-$show_my_budget = true;
 require ("../../includes/navbar.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
