@@ -4,7 +4,6 @@ require("../../includes/header.php");
 
 echo '<body class="dark-blue-background h-100 d-flex flex-column">';
 
-$login_or_logout = "login";
 require("../../includes/navbar.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -6,9 +6,6 @@
 <body class="dark-blue-background white">
 
     <?php 
-        # Navbar settings...
-        $login_or_logout = "logout";
-        $show_delete_account = true;
         require ("../../includes/navbar.php"); 
     ?>
 
