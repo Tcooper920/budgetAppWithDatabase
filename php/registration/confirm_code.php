@@ -84,5 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             include("../../includes/footer.php");
         }
+    } else {
+        header("Location: ../login/login.php");
     }
 }
