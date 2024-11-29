@@ -33,5 +33,6 @@ $base_url = "/budget_app_with_database/"; // Replace 'your_project_folder' with 
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="<?php echo $base_url ?>css/index.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 </head>

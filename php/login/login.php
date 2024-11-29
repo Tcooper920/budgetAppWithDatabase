@@ -25,21 +25,21 @@
             <h1 class="pb-3">Login</h1>
             <label class="w-100">
                 Email Address:
-                <?php if (isset($errors['emailError']))
-                    echo '<br><p class="error-msg text-danger mb-0">' . $errors['emailError'] . '</p>' ?>
-                    <input type="text" name="email"
-                        value="<?php if (isset($_POST['email']))
+                <?php if (isset($errors['emailError'])) echo '<br><p class="error-msg text-danger mb-0">' . $errors['emailError'] . '</p>' ?>
+                    <input type="text" name="email" value="<?php if (isset($_POST['email']))
                     echo htmlspecialchars($_POST["email"]); ?>"
                     class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <label class="w-100 mt-2">
                 Password:
-                <?php if (isset($errors['passwordError']))
-                    echo '<br><p class="error-msg text-danger mb-0">' . $errors['passwordError'] . '</p>' ?>
-                    <input type="password" name="pass"
-                        value="<?php if (isset($_POST['pass']))
+                <?php if (isset($errors['passwordError'])) echo '<br><p class="error-msg text-danger mb-0">' . $errors['passwordError'] . '</p>' ?>
+                    <div class="d-flex"><input id="password" type="password" name="pass" value="<?php if (isset($_POST['pass']))
                     echo htmlspecialchars($_POST["pass"]); ?>"
-                    class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+                        class="form-control m-2 mx-0 p-2 ps-4 fs-5 rounded-pill border-end-0 no-rounded-right input">
+                    <button class="btn bg-white my-2 rounded-pill no-rounded-left input form-field-border-style" type="button" id="togglePassword">
+                        <i class="bi bi-eye"></i> <!-- Bootstrap Icons for eye icon -->
+                    </button>
+                </div>
             </label>
             <div class="mt-4">
                 <input type="submit" value="Log in" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill"
@@ -54,6 +54,7 @@
         </form>
     </main>
     <script src="../../js/preserve_scroll_position_onload.js"></script>
+    <script src="../../js/show_hide_password.js"></script>
 </body>
 
 <?php include("../../includes/footer.php"); ?>

@@ -17,6 +17,7 @@
   --white: white;
   --darkest: #24273a;
   --error-field-outlines: rgb(220, 53, 69);
+  --form-field-border-style: #ced4da;
 }
 
 nav {
@@ -63,13 +64,26 @@ em {
 }
 
 /* Form field errors */
-.error-msg + input {
+.error-msg + input, .error-msg + div > .input {
   border: .1rem solid var(--error-field-outlines);
 }
 
 ::marker {
   color: var(--secondary-color);
   font-weight: bold;
+}
+
+/* Border radius customizations (Bootstrap overrides) */
+.no-rounded-right {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+button.no-rounded-left {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.form-field-border-style {
+  border: 1px solid var(--form-field-border-style);
 }
 
 /* Buttons */
