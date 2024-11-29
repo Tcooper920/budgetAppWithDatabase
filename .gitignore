@@ -4,6 +4,3 @@
 
 # Ignore Ai files
 *.ai
-
-# Ignore configuration file with passwords
-config/*
