@@ -9,15 +9,40 @@ $base_url = "/budget_app_with_database/";
 
         <a href="/"
             class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <img src="<?php echo $base_url; ?>/images/budget-builder-logo.svg" width="40" height="40" alt="Budget Builder logo" title="Budget Builder">
+            <img src="<?php echo $base_url; ?>/images/budget-builder-logo.svg" width="40" height="40"
+                alt="Budget Builder logo" title="Budget Builder">
         </a>
 
         <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">My budget</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Register</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Login</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Delete account</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Logout</a></li>
+            <?php
+            if (isset($_SESSION['user_id'])) {
+                echo '
+            <li class="nav-item">
+              <a class="nav-link px-2 text-light" href="' . $base_url . 'php/dashboard/dashboard.php" title="My budget dashboard">My budget</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-2 text-light" href="' . $base_url . 'php/registration/delete_account.php" title="Delete account">Delete account</a>
+            </li>';
+            }
+            echo '
+            <li class="nav-item">
+              <a class="nav-link px-2 text-light" href="' . $base_url . 'php/registration/register.php" title="Register">Register</a>
+            </li>';
+            if (!isset($_SESSION['user_id'])) {
+                echo '
+            <li class="nav-item">
+              <a class="nav-link px-2 text-light" href="' . $base_url . 'php/login/login.php" title="Login">Login</a>
+            </li>';
+            }
+            if (isset($_SESSION['user_id'])) {
+                echo '
+            <li class="nav-item">
+              <a class="nav-link px-2 text-light" href="' . $base_url . 'php/login/logout.php" title="Logout">Logout</a>
+            </li>';
+            } else {
+                echo '';
+            }
+            ?>
         </ul>
     </footer>
 </div>
