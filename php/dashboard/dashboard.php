@@ -89,11 +89,11 @@
         <div id="expense-list-container"></div>
     </main>
 
+    <?php 
+        mysqli_close($budget_database);
+        include ("../../includes/footer.php"); 
+    ?>
+
     <script src="../../js/ajax_post_to_form_submit_action.js"></script>
-
 </body>
-
-<?php 
-    mysqli_close($budget_database);
-    include ("../../includes/footer.php"); 
-?>
+</html>

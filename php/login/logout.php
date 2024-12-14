@@ -35,6 +35,7 @@ require("../../includes/header.php");
             </div>
         </div>
     </main>
-</body>
 
-<?php include("../../includes/footer.php"); ?>
+    <?php include("../../includes/footer.php"); ?>
+</body>
+</html>

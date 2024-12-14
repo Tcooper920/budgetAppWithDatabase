@@ -215,6 +215,10 @@ button.no-rounded-left {
   animation: bar-graph-slide-in .5s;
 }
 
+.footer-author-container {
+  background-color: rgb(35 35 35);
+}
+
 /* MEDIA QUERIES *******************************************************************************************/
 
 @media screen and (min-width: 690px) {
