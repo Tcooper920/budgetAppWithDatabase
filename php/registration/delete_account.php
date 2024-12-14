@@ -73,9 +73,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </a>
                     </div>
                 </form>
-            </main>
+            </main>';
+
+            include ("../../includes/footer.php");
+
+        echo '
             <script src="../js/preserve_scroll_position_onload.js"></script>
-            </body>';
+            </body>
+            </html>';
 
         exit();
     } else {
@@ -94,11 +99,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </a>
                     </div>
                 </form>
-            </main>
-        <script src="../../js/preserve_scroll_position_onload.js"></script>
-        </body>';
+            </main>';
 
-        include ("../../includes/footer.php");
+            include ("../../includes/footer.php");
+
+        echo '
+            <script src="../../js/preserve_scroll_position_onload.js"></script>
+            </body>
+            </html>';
     
         # Free up memory after the result set is no longer needed...
         $get_user_by_user_id->free();
@@ -124,7 +132,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </form>
 </main>
-<script src="../../js/preserve_scroll_position_onload.js"></script>
-</body>
 
 <?php include ("../../includes/footer.php"); ?>
+<script src="../../js/preserve_scroll_position_onload.js"></script>
+</body>
+</html>

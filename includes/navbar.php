@@ -2,7 +2,7 @@
 // Define the base URL relative to the site's root to create dynamic links...
 $base_url = "/budget_app_with_database/";
 ?>
-<nav class="navbar navbar-light navbar-expand-lg mb-4 px-4 shadow-sm">
+<nav class="navbar navbar-light navbar-expand-lg mb-4 px-0 px-sm-4 shadow-sm">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?php echo $base_url ?>index.php">
       <img src="<?php echo $base_url ?>/images/budget-builder-logo-horizontal.svg" width="230" alt="Budget Builder logo"

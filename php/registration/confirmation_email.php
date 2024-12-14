@@ -114,10 +114,12 @@ if (!$mail->send()) {
                     <button type="button" id="resend-code" class="btn text-primary mt-2 fs-5">Email me another code</button>
                 </div>
             </form>
-          </main>
-          <script src="../../js/preserve_scroll_position_onload.js"></script>
+          </main>';
+          
+          include("../../includes/footer.php");
+
+    echo '<script src="../../js/preserve_scroll_position_onload.js"></script>
           <script src="../../js/resend_registration_confirmation_code.js"></script>
-          </body>';
-    
-    include("../../includes/footer.php");
+          </body>
+          </html>';
 }
