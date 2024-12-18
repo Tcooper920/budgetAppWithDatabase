@@ -42,9 +42,21 @@ function validate($budget_database, $email = '' , $pwd = '') {
             $row = mysqli_fetch_array($get_user, MYSQLI_ASSOC);
             return array(true, $row);
         } else {
-            $errors[] = 'Email address and password not found.';
+            // Else if email and password not found in database:
+
+            // Popup message...
             $key = "emailAndPasswordNotFoundError";
-            $value = 'Email address and password not found. ';
+            $value = 'An account could not be found.';
+            $errors[$key] = $value;
+
+            // Email error message...
+            $key = "emailError";
+            $value = "Email may be incorrect.";
+            $errors[$key] = $value;
+
+            // Password error message...
+            $key = "passwordError";
+            $value = "Password may be incorrect.";
             $errors[$key] = $value;
         }
     }
