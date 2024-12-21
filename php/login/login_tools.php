@@ -30,9 +30,7 @@ function validate($budget_database, $email = '' , $pwd = '') {
     // Check if user is locked out...
     if (isset($_SESSION['lockout_time']) && time() < $_SESSION['lockout_time']) {
         $remaining_lockout_time = $_SESSION['lockout_time'] - time();
-        $key = "youAreLockedOutError";
-        $value = "You are locked out after " . MAX_LOGIN_ATTEMPTS . " login attempts. Please try again in " . convertSeconds($remaining_lockout_time) . ".";
-        $errors[$key] = $value;
+        $errors["youAreLockedOutError"] = "You are locked out after " . MAX_LOGIN_ATTEMPTS . " login attempts. Please try again in " . convertSeconds($remaining_lockout_time) . ".";
         
         // Reset login attempt counter after lockout...
         $_SESSION['login_attempts'] = 0;
@@ -40,27 +38,20 @@ function validate($budget_database, $email = '' , $pwd = '') {
 
     // Check that email has been filled...
     if (empty($email)) {
-        $key = "emailError";
-        $value = "Enter your email address.";
-        $errors[$key] = $value;
+        $errors["emailError"] = "Enter your email address.";
     } else {
-        $e = mysqli_real_escape_string($budget_database, trim($email));
+        $email = mysqli_real_escape_string($budget_database, trim($email));
     }
 
     // Check that password has been filled...
     if (empty($pwd)) {
-        $key = "passwordError";
-        $value = "Enter your password.";
-        $errors[$key] = $value;
+        $errors["passwordError"] = "Enter your password.";
     } else {
-        $p = mysqli_real_escape_string($budget_database, trim($pwd));
+        $pass = mysqli_real_escape_string($budget_database, trim($pwd));
     }
 
     // If form field entries contain no errors...
     if (empty($errors)) {
-        $email = "$e";
-        $pass = "$p";
-        
         $query_to_get_user = $budget_database->prepare("SELECT user_id, first_name, last_name FROM users WHERE email = ? AND pass = SHA2(?, 256)");
         $query_to_get_user->bind_param("ss", $email, $pass);
         $query_to_get_user->execute();
@@ -79,19 +70,13 @@ function validate($budget_database, $email = '' , $pwd = '') {
             // Else if email or password not found in database:
 
             // Popup message...
-            $key = "emailAndPasswordNotFoundError";
-            $value = 'An account could not be found.';
-            $errors[$key] = $value;
+            $errors["emailAndPasswordNotFoundError"] = 'An account could not be found.';
 
             // Email error message...
-            $key = "emailError";
-            $value = "Email may be incorrect.";
-            $errors[$key] = $value;
+            $errors["emailError"] = "Email may be incorrect.";
 
             // Password error message...
-            $key = "passwordError";
-            $value = "Password may be incorrect.";
-            $errors[$key] = $value;
+            $errors["passwordError"] = "Password may be incorrect.";
 
             // Track number of login attempts...
             if (!isset($_SESSION['login_attempts'])) {
