@@ -16,49 +16,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
     }
 
+    # Make sure first name is filled in...
     if (empty($_POST['first_name'])) {
-        $key = "firstNameError";
-        $value = "Enter your first name.";
-        $errors[$key] = $value;
+        $errors["firstNameError"] = "Enter your first name.";
     } else {
         $fn = mysqli_real_escape_string($budget_database, trim($_POST['first_name']));
     }
 
+    # Make sure last name is filled in...
     if (empty($_POST['last_name'])) {
-        $key = "lastNameError";
-        $value = "Enter your last name.";
-        $errors[$key] = $value;
+        $errors["lastNameError"] = "Enter your last name.";
     } else {
         $ln = mysqli_real_escape_string($budget_database, trim($_POST['last_name']));
     }
 
+    # Make sure email is filled in...
     if (empty($_POST['email'])) {
-        $key = "emailAddressError";
-        $value = "Enter your email address.";
-        $errors[$key] = $value;
+        $errors["emailAddressError"] = "Enter your email address.";
     } else {
         $email = $_POST['email'];
         if (isValidEmail($email)) {
             $e = mysqli_real_escape_string($budget_database, trim($_POST['email']));
         } else {
-            $key = "emailAddressError";
-            $value = "This email address is not valid.";
-            $errors[$key] = $value;
+            $errors["emailAddressError"] = "This email address is not valid.";
         }
     }
 
+    # Make sure password 1 is filled in...
     if (empty($_POST['pass1'])) {
-        $key = "pass1Error";
-        $value = "Enter your password.";
-        $errors[$key] = $value;
+        $errors["pass1Error"] = "Enter your password.";
     }
 
     if (!empty($_POST['pass1'])) {
         # Check if password 1 and password 2 match...
         if ($_POST['pass1'] !== $_POST['pass2']) {
-            $key = "pass2Error";
-            $value = "Passwords do not match.";
-            $errors[$key] = $value;
+            $errors["pass2Error"] = "Passwords do not match.";
         } else {
             # Make sure password isn't already used by another user...
             $query_to_get_user_by_password = $budget_database->prepare("SELECT user_id FROM users WHERE pass=SHA2(?, 256)");
@@ -67,9 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $get_user_by_password = $query_to_get_user_by_password->get_result();
 
             if (mysqli_num_rows($get_user_by_password) != 0) {
-                $key = "pass1Error";
-                $value = "This password is already taken.";
-                $errors[$key] = $value;
+                $errors["pass1Error"] = "This password is already taken.";
             } else {
                 $p = mysqli_real_escape_string($budget_database, trim($_POST['pass1']));
             }
@@ -84,9 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $get_user_by_email = $query_to_get_user_by_email->get_result();
 
         if (mysqli_num_rows($get_user_by_email) != 0) {
-            $key = "userEmail";
-            $value = "Email address already registered. <a href='../login/login.php'>Login</a>";
-            $errors[$key] = $value;
+            $errors["userEmail"] = "Email address already registered. <a href='../login/login.php'>Login</a>";
         }
     }
 
