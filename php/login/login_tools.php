@@ -50,6 +50,11 @@ function validate($budget_database, $email = '' , $pwd = '') {
         $pass = mysqli_real_escape_string($budget_database, trim($pwd));
     }
 
+    // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
+    if (!empty($_POST['honeypot'])) {
+        exit("Bot detected. Form submission aborted.");
+    }
+
     // If form field entries contain no errors...
     if (empty($errors)) {
         $query_to_get_user = $budget_database->prepare("SELECT user_id, first_name, last_name FROM users WHERE email = ? AND pass = SHA2(?, 256)");
