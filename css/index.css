@@ -147,53 +147,53 @@ button.no-rounded-left {
   font-weight: bold;
 }
 
-/* Spending type text */
-.Fixed::after,
-.Variable::after,
-.Debt::after,
-.Savings::after,
-.Fun::after,
-.Other::after {
-  padding-right: 0.5rem;
+/* Color block before spending type text in itemized list */
+.Fixed::before,
+.Variable::before,
+.Debt::before,
+.Savings::before,
+.Fun::before,
+.Other::before {
+  padding-right: .5rem;
 }
-.Fixed::after {
+.Fixed::before{
   content: "";
-  border-right: 1.20rem solid var(--fixed-spending);
+  border-left: 1.20rem solid var(--fixed-spending);
 }
 .border-left-fixed {
   border-left: .3rem solid var(--fixed-spending);
 }
-.Variable::after {
+.Variable::before {
   content: "";
-  border-right: 1.20rem solid rgb(177 68 177);
+  border-left: 1.20rem solid rgb(177 68 177);
 }
 .border-left-variable {
   border-left: .3rem solid rgb(177 68 177);
 }
-.Debt::after {
+.Debt::before {
   content: "";
-  border-right: 1.20rem solid var(--debt-spending);
+  border-left: 1.20rem solid var(--debt-spending);
 }
 .border-left-debt {
   border-left: .3rem solid var(--debt-spending);
 }
-.Savings::after {
+.Savings::before {
   content: "";
-  border-right: 1.20rem solid var(--savings-spending);
+  border-left: 1.20rem solid var(--savings-spending);
 }
 .border-left-savings {
   border-left: .3rem solid var(--savings-spending);
 }
-.Fun::after {
+.Fun::before {
   content: "";
-  border-right: 1.20rem solid var(--fun-spending);
+  border-left: 1.20rem solid var(--fun-spending);
 }
 .border-left-fun {
   border-left: .3rem solid var(--fun-spending);
 }
-.Other::after {
+.Other::before {
   content: "";
-  border-right: 1.20rem solid var(--other-spending);
+  border-left: 1.20rem solid var(--other-spending);
 }
 .border-left-other {
   border-left: .3rem solid var(--other-spending);
