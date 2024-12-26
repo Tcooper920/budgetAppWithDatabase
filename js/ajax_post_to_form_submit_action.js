@@ -81,9 +81,15 @@ expenseListContainer.addEventListener("click", (e) => {
 
 // Function to update bar graph and totals for each spending category...
 function updateBarGraph(result) {
-  document.getElementById(
-    "total-budget-amount-left"
-  ).innerHTML = `<p class="mb-0"><strong class="me-1 fs-3">$${result["total_amount_left_to_budget_with"]}</strong> left to budget with.</p>`;
+  const totalBudgetAmountLeft = document.getElementById("total-budget-amount-left");
+  totalBudgetAmountLeft.innerHTML = `<p class="mb-0"><strong class="me-1 fs-3">$${result["total_amount_left_to_budget_with"]}</strong> left to budget with.</p>`;
+
+  // If amount left for budget is negative, make number red:
+  if (result["total_amount_left_to_budget_with"] < 0) {
+    totalBudgetAmountLeft.classList.add("negative-balance-to-budget-with");
+  } else {
+    totalBudgetAmountLeft.classList.remove("negative-balance-to-budget-with");
+  }
 
   // Adjust bars in bar chart for each spending type (adjust widths and attributes)...
   fixedSpendingGraphBar.style.width = `${result["fixed_percentage"]}%`;

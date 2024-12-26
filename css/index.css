@@ -18,6 +18,7 @@
   --darkest: #24273a;
   --error-field-outlines: rgb(220, 53, 69);
   --form-field-border-style: #ced4da;
+  --negative-amount-to-budget-with: #ff8282;
 }
 
 nav {
@@ -145,6 +146,11 @@ button.no-rounded-left {
 .progress strong {
   text-shadow: 0px 0px 9px rgb(70 70 70 / 78%);
   font-weight: bold;
+}
+
+/* Dynamically add this class to the "{amount left} to budget with" when the amount left is a negative number */
+.negative-balance-to-budget-with {
+  color: var(--negative-amount-to-budget-with);
 }
 
 /* Color block before spending type text in itemized list */
