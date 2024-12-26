@@ -107,7 +107,7 @@ if (!$mail->send()) {
                 <h1 class="pb-3">Validate your account</h1>
                 <label for="confirmation_code">Enter the confirmation code sent to your email:</label>
                 <div class="mt-3">
-                    <input type="text" name="confirmation_code" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" required>
+                    <input type="text" name="confirmation_code" id="confirmation_code" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" required>
                 </div>
                 <div class="mt-3">
                     <input type="submit" value="Confirm code" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
