@@ -94,6 +94,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           </div>';
     }
 
+    // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
+    if (!empty($_POST['honeypot'])) {
+        exit("Bot detected. Form submission aborted.");
+    }
+
     # Create a new user in the database...
     if (empty($errors)) {
         # Store user data in session...
@@ -146,6 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="text" name="pass2" value="<?php if (isset($_POST['pass2']))
                 echo htmlspecialchars($_POST['pass2']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
         </label>
+        <input type="text" name="honeypot" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
         <div class="mt-4">
             <input type="submit" value="Register" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
         </div>
