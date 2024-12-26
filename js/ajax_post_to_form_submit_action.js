@@ -137,12 +137,12 @@ function printExpensesToPage(result) {
   result.forEach((expenseItem) => {
     let containerForExpense = document.createElement("div");
     containerForExpense.innerHTML = `
-      <form id="expense-id-${expenseItem[0]}" data-user-id="${expenseItem[1]}" class="container d-flex mb-3 p-3 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
+      <form id="expense-id-${expenseItem[0]}" data-user-id="${expenseItem[1]}" class="container d-flex mb-3 p-3 pe-5 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
         <input type="hidden" name="expense_item" value="${expenseItem[0]}">
-        <p class="d-block m-0 w-100">Name: <span class="fw-bold">${expenseItem[2]}</span></p>
-        <p class="d-block m-0 w-100">Amount: <span class="fw-bold">$${expenseItem[3]}</span></p>
-        <p class="d-block m-0 w-100"><span class="fw-bold ${expenseItem[4]}">${expenseItem[4]}</span></p>
-        <input type="submit" value="✕" id="${expenseItem[0]}" class="remove-btn btn fw-bolder text-secondary position-absolute px-3 end-0">
+        <p class="d-block m-0 w-100 align-self-start">Name: <span class="fw-bold">${expenseItem[2]}</span></p>
+        <p class="d-block m-0 w-100 align-self-start">Amount: <span class="fw-bold">$${expenseItem[3]}</span></p>
+        <p class="d-block m-0 w-100 align-self-start"><span class="fw-bold ${expenseItem[4]}">${expenseItem[4]}</span></p>
+        <input type="submit" value="✕" id="${expenseItem[0]}" class="remove-btn btn fw-bolder text-secondary position-absolute px-3 py-0 mt-3 top-0 end-0">
       </form>`;
     expenseListContainer.append(containerForExpense);
   });
