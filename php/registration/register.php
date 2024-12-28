@@ -6,9 +6,22 @@ echo '<body class="dark-blue-background h-100 d-flex flex-column">';
 
 require("../../includes/navbar.php");
 
+// Generate a CSRF (Cross-Site Request Forgery) token if one does not exist...
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Generate a secure random token
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require('../../../../connect_budget_database.php');
     $errors = array();
+
+    // Check if the CSRF token is set and matches the one stored in the session...
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        exit('CSRF token validation failed.');
+    }
+
+    // Regenerate the CSRF token to prevent reuse...
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Securely regenerate the token
 
     # Function to verify emails...
     function isValidEmail($email)
@@ -156,7 +169,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="password" name="pass2" value="<?php if (isset($_POST['pass2']))
                 echo htmlspecialchars($_POST['pass2']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
         </label>
+        <!-- Honeypot field -->
         <input type="text" name="honeypot" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
+        <!-- CSRF token field -->
+        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
         <div class="mt-4">
             <input type="submit" value="Register" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
         </div>
