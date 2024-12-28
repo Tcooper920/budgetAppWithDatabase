@@ -129,12 +129,12 @@ function updateBarGraph(result) {
   );
 
   // Post total amounts for each spending type...
-  fixedSpendingTotal.innerHTML = `<h3 class="fs-5">Fixed:</h3> $${result["total_fixed_spending"]}<br>${result["fixed_percentage"]}%`;
-  variableSpendingTotal.innerHTML = `<h3 class="fs-5">Variable:</h3> $${result["total_variable_spending"]}<br>${result["variable_percentage"]}%`;
-  debtSpendingTotal.innerHTML = `<h3 class="fs-5">Debt:</h3> $${result["total_debt_spending"]}<br>${result["debt_percentage"]}%`;
-  savingsSpendingTotal.innerHTML = `<h3 class="fs-5">Savings:</h3> $${result["total_savings_spending"]}<br>${result["savings_percentage"]}%`;
-  funSpendingTotal.innerHTML = `<h3 class="fs-5">Fun:</h3> $${result["total_fun_spending"]}<br>${result["fun_percentage"]}%`;
-  otherSpendingTotal.innerHTML = `<h3 class="fs-5">Other:</h3> $${result["total_other_spending"]}<br>${result["other_percentage"]}%`;
+  fixedSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Fixed:</h3> $${result["total_fixed_spending"]}<br>${result["fixed_percentage"]}%`;
+  variableSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Variable:</h3> $${result["total_variable_spending"]}<br>${result["variable_percentage"]}%`;
+  debtSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Debt:</h3> $${result["total_debt_spending"]}<br>${result["debt_percentage"]}%`;
+  savingsSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Savings:</h3> $${result["total_savings_spending"]}<br>${result["savings_percentage"]}%`;
+  funSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Fun:</h3> $${result["total_fun_spending"]}<br>${result["fun_percentage"]}%`;
+  otherSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Other:</h3> $${result["total_other_spending"]}<br>${result["other_percentage"]}%`;
 }
 
 // Function to print each expense item to the the page – creating a list of items...
