@@ -1,4 +1,17 @@
-<?php require("../../includes/header.php"); ?>
+<?php 
+
+require("../../includes/header.php"); 
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Generate a CSRF (Cross-Site Request Forgery) token if one does not exist...
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Generate a secure random token
+}
+
+?>
 
 <body class="dark-blue-background white h-100 d-flex flex-column">
     <?php require("../../includes/navbar.php");
@@ -45,8 +58,11 @@
                     </button>
                 </div>
             </label>
+            <!-- Honeypot field -->
             <input type="text" name="honeypot" value=""
                     class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
+            <!-- CSRF token field -->
+            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
             <div class="mt-4">
                 <input type="submit" value="Log in" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill"
                     title="Log in">
