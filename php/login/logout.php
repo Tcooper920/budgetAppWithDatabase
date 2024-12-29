@@ -11,7 +11,7 @@ require("../../includes/header.php");
 
 ?>
 
-<body class="dark-blue-background h-100 d-flex flex-column">
+<body class="dark-blue-background min-vh-100 d-flex flex-column">
 
     <?php
     # Navbar settings...

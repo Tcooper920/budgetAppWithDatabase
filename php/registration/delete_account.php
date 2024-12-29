@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 
 require ("../../includes/header.php");
 
-echo '<body class="dark-blue-background h-100 d-flex flex-column">';
+echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
 
 require ("../../includes/navbar.php");
 
