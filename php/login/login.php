@@ -13,7 +13,7 @@ if (empty($_SESSION['csrf_token'])) {
 
 ?>
 
-<body class="dark-blue-background white h-100 d-flex flex-column">
+<body class="dark-blue-background white min-vh-100 d-flex flex-column">
     <?php require("../../includes/navbar.php");
     # Pop error message if email and password not found...
     if (isset($errors['emailAndPasswordNotFoundError'])) {

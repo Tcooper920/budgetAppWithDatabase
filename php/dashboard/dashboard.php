@@ -3,7 +3,7 @@
     require ("../../includes/header.php");
 ?>
 
-<body class="dark-blue-background white">
+<body class="dark-blue-background white min-vh-100">
 
     <?php 
         require ("../../includes/navbar.php"); 
