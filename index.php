@@ -7,9 +7,9 @@ require("includes/header.php");
 
 <body class="white min-vh-100 d-flex flex-column gradient-background">
     <?php require("includes/navbar.php"); ?>
-    <main class="p-3 pt-sm-5 mt-5 container align-items-center flex-fill">
+    <main class="p-3 pt-sm-5 mt-lg-5 container align-items-center flex-fill">
         <div class="row mb-2">
-            <div class="col-md-6">
+            <div class="col-lg-6 fade-in">
                 <h1 class="pb-3 fw-bold">Welcome to BudgetBuilder!</h1>
                 <p class="fs-5 mb-4">BudgetBuilder is a free, easy-to-use budgeting app that helps you manage your everyday
                     expenses. Just create an account, set your budget limit, and add your expenses. Your spending
@@ -27,8 +27,8 @@ require("includes/header.php");
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <p class="fs-5"></p>
+            <div class="col-lg-6">
+                <img src="images/budget-builder-app-screenshot.png" width="1200" height="1015" class="w-100 h-auto mt-5 mt-lg-0 ps-lg-4 fade-in-and-rise" alt="BudgetBuilder app screenshot that shows a graph and itemized list of expenses." />
             </div>
         </div>
     </main>
