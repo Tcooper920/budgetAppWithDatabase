@@ -3,4 +3,9 @@
 .DS_Store?
 
 # Ignore Ai files
+images/ai/*.ai
 *.ai
+
+# Ignore Ps files
+images/ai/*.psd
+*.psd

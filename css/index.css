@@ -219,6 +219,32 @@ button.no-rounded-left {
     transform: scaleX(1)
   }
 }
+@keyframes fade-in-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); /* Start slightly below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at normal position */
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in-and-rise {
+  animation: fade-in-rise 1s ease forwards;
+}
+
+.fade-in {
+  animation: fade-in .8s ease forwards;
+}
 
 #graph > .progress-bar {
   transform-origin: 0% 0%;
