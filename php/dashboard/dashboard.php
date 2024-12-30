@@ -46,7 +46,10 @@
                 </div>
             </div>
         </form>
-        <div class="container p-4 mt-3 mb-4 navy-blue-background rounded">
+        <div class="container px-0">
+            <h2 class="mt-5 pb-3">Total Spending Breakdown:</h2>
+        </div>
+        <div class="container p-4 mt-2 mb-4 navy-blue-background rounded">
             <div id="graph" class="progress container p-0">
                 <div id="fixed-spending-progress-bar" class="progress-bar light-blue-background" role="progressbar"
                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
