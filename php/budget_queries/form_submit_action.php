@@ -62,7 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'savings_percentage' => $savings_percentage,
         'fun_percentage' => $fun_percentage,
         'other_percentage' => $other_percentage,
-        'all_expenses' => $resultset
+        'all_expenses' => $resultset,
+        'income_amount' => $current_income
     );
 
     echo json_encode($all_budget_data);

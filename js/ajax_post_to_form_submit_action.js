@@ -51,7 +51,7 @@ function ajaxRequestToPhpForProcessing(e) {
       // Update bar graph...
       updateBarGraph(result);
       // Print the expense items list to the page...
-      printExpensesToPage(result["all_expenses"]);
+      printExpensesToPage(result["all_expenses"], result["income_amount"]);
       // Clear expense item fields after submission...
       clearExpenseFields();
     },
@@ -73,7 +73,7 @@ expenseListContainer.addEventListener("click", (e) => {
         // Update bar graph...
         updateBarGraph(result);
         // Print the expense items list to the page...
-        printExpensesToPage(result["all_expenses"]);
+        printExpensesToPage(result["all_expenses"], result["income_amount"]);
       },
     });
   }
@@ -138,7 +138,7 @@ function updateBarGraph(result) {
 }
 
 // Function to print each expense item to the the page – creating a list of items...
-function printExpensesToPage(result) {
+function printExpensesToPage(result, incomeAmount) {
   expenseListContainer.innerHTML = "";
   result.forEach((expenseItem) => {
     let containerForExpense = document.createElement("div");
@@ -146,7 +146,7 @@ function printExpensesToPage(result) {
       <form id="expense-id-${expenseItem[0]}" data-user-id="${expenseItem[1]}" class="container d-flex mb-3 p-3 pe-5 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
         <input type="hidden" name="expense_item" value="${expenseItem[0]}">
         <p class="d-block m-0 w-100 align-self-start">Name: <span class="fw-bold">${expenseItem[2]}</span></p>
-        <p class="d-block m-0 w-100 align-self-start">Amount: <span class="fw-bold">$${expenseItem[3]}</span></p>
+        <p class="d-block m-0 w-100 align-self-start">Amount: <span class="fw-bold">$${expenseItem[3]}</span> <span class="fw-bold">(%${findExpensePercentageRelativeToTotalBudgetIncomeAmount(incomeAmount, expenseItem[3])})</span></p>
         <p class="d-block m-0 w-100 align-self-start"><span class="fw-bold ${expenseItem[4]}">${expenseItem[4]}</span></p>
         <input type="submit" value="✕" id="${expenseItem[0]}" class="remove-btn btn fw-bolder text-secondary position-absolute px-3 py-0 mt-3 top-0 end-0">
       </form>`;
@@ -162,6 +162,12 @@ function clearExpenseFields() {
   }
 }
 
+// Function to calculate percentages for each expense item in the list...
+function findExpensePercentageRelativeToTotalBudgetIncomeAmount(totalIncomeAmount, expenseAmount) {
+  let expensePercentage = ((expenseAmount/totalIncomeAmount) * 100);
+  let roundedExpensePercentage = (Math.round(expensePercentage * 100) / 100);
+  return roundedExpensePercentage;
+}
 
 // Function to limit what the user can enter into input fields...
 function restrictFieldInput(event) {
