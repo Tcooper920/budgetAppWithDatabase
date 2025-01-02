@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require("includes/header.php");
 
 ?>
@@ -28,7 +30,7 @@ require("includes/header.php");
                 </div>
             </div>
             <div class="col-lg-6">
-                <img src="images/budget-builder-app-screenshot.png" width="1200" height="1015" class="w-100 h-auto mt-5 mt-lg-0 ps-lg-4 fade-in-and-rise" alt="BudgetBuilder app screenshot that shows a graph and itemized list of expenses." />
+                <img src="/budget_app_with_database/images/budget-builder-app-screenshot.png" width="1200" height="1015" class="w-100 h-auto mt-5 mt-lg-0 ps-lg-4 fade-in-and-rise" alt="BudgetBuilder app screenshot that shows a graph and itemized list of expenses." />
             </div>
         </div>
     </main>
