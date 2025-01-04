@@ -78,6 +78,18 @@ em {
   font-weight: bold;
 }
 
+/* Warning */
+.warning {
+  background-color: var(--error-field-outlines);
+  color: white;
+}
+
+.warning:hover {
+  color: white;
+  opacity: .85;
+  transition: opacity .5s;
+}
+
 /* Border radius customizations (Bootstrap overrides) */
 .no-rounded-right {
   border-top-right-radius: 0 !important;
