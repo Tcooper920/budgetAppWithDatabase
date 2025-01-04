@@ -5,3 +5,13 @@
 $base_path = realpath(dirname(__FILE__));  // Get the current script's directory
 
 require ("$base_path/../../../budget_smtp_authentication_password.php");
+
+/* 
+
+Outside the htdocs folder, budget_smtp_authentication_password.php file is structured like this:
+
+<?php
+
+$smtp_authentication_password = '{ password stored here }'; 
+
+*/
