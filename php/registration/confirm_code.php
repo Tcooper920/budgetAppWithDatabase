@@ -9,6 +9,11 @@ require("../../includes/navbar.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require('../../../../connect_budget_database.php');
 
+    // Check if the CSRF token is set and matches the one stored in the session...
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        exit('CSRF token validation failed.');
+    }
+
     // Check if user is resending a confirmation code...
     if (isset($_POST['resend_code']) && $_POST['resend_code'] == '1') {
         // Resend confirmation code email...
@@ -70,6 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <p class="error-msg text-danger mb-0">Incorrect or expired verification code.</p>
                             <input type="text" name="confirmation_code" id="confirmation_code" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" required>
                         </div>
+                        <!-- CSRF token field -->
+                        <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
                         <div class="mt-3">
                             <input type="submit" value="Confirm code" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
                             <button type="button" id="resend-code" class="btn text-primary mt-2 fs-5">Email me another code</button>

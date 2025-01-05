@@ -98,6 +98,11 @@ $mail->addEmbeddedImage('../../images/budget-builder-logo-horizontal.png', 'imag
 // Set the email format to HTML
 $mail->isHTML(true);
 
+// Generate a CSRF (Cross-Site Request Forgery) token if one does not exist...
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Generate a secure random token
+}
+
 //send the message, check for errors
 if (!$mail->send()) {
     echo "<p>Mailer Error: $mail->ErrorInfo</p>";
@@ -109,6 +114,8 @@ if (!$mail->send()) {
                 <div class="mt-3">
                     <input type="text" name="confirmation_code" id="confirmation_code" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" required>
                 </div>
+                <!-- CSRF token field -->
+                <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
                 <div class="mt-3">
                     <input type="submit" value="Confirm code" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
                     <button type="button" id="resend-code" class="btn text-primary mt-2 fs-5">Email me another code</button>
