@@ -6,7 +6,29 @@ echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
 
 require("../../includes/navbar.php");
 
+// Function to convert seconds into minutes and seconds...
+function convertSeconds($seconds) {
+    $minutes = floor($seconds / 60);
+    $remainingSeconds = $seconds % 60;
+    return sprintf("%d minute(s) and %d second(s)", $minutes, $remainingSeconds);
+}
+
+// Define the maximum allowed code verification attempts and lockout duration (in seconds)...
+const MAX_CODE_VERIFICATION_ATTEMPTS = 6; // 6 Login attempts
+const CODE_VERIFICATION_LOCKOUT_TIME = 900; // 15 minutes = 900 seconds
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $errors = array();
+
+    // Check if user is locked out...
+    if (isset($_SESSION['code_verification_lockout_time']) && time() < $_SESSION['code_verification_lockout_time']) {
+        $remaining_code_verification_lockout_time = $_SESSION['code_verification_lockout_time'] - time();
+        $errors['codeVerificationAttemptsExceeded'] = "You are locked out after " . MAX_CODE_VERIFICATION_ATTEMPTS . " verification attempts. Please try again in " . convertSeconds($remaining_code_verification_lockout_time) . ".";
+
+        // Reset code verification attempt counter after lockout...
+        $_SESSION['code_verification_attempts'] = 0;
+    }
+
     require('../../../../connect_budget_database.php');
 
     // Check if the CSRF token is set and matches the one stored in the session...
@@ -51,7 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $timeDifference = $currentTime - $storedTimestamp;
 
         # Ensure code is correct and hasn't expired before adding user data to the database...
-        if ($entered_code == $storedCode && $timeDifference <= $expirationTime) {
+        if ($entered_code == $storedCode && $timeDifference <= $expirationTime && empty($errors)) {
+            unset($_SESSION['code_verification_attempts']);
+            unset($_SESSION['code_verification_lockout_time']);
 
             # Add the user to the database...
             $user_data = $_SESSION['user_data'];
@@ -80,7 +104,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         } else {
             # If confirmation code is not entered correctly, display form with error message appended...
-            $errors['incorrectOrExpiredVerificationCode'] = "Incorrect or expired verification code...";
+            $errors['incorrectOrExpiredVerificationCode'] = "Incorrect or expired verification code... ";
+
+            // Track number of login attempts...
+            if (!isset($_SESSION['code_verification_attempts'])) {
+                $_SESSION['code_verification_attempts'] = 0;
+            }
+
+            // Add 1 login attempt...
+            $_SESSION['code_verification_attempts']++;
+
+            // If user reached login attempt limit, lock them out for the specified amount of time...
+            if ($_SESSION['code_verification_attempts'] >= MAX_CODE_VERIFICATION_ATTEMPTS) {
+                $_SESSION['code_verification_lockout_time'] = time() + CODE_VERIFICATION_LOCKOUT_TIME;
+            }
+
             require("confirm_code_form.php");
             include("../../includes/footer.php");
 
