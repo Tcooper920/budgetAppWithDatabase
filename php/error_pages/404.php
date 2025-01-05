@@ -3,12 +3,12 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-require("includes/header.php");
+require("../../includes/header.php");
 
 ?>
 
 <body class="white min-vh-100 d-flex flex-column gradient-background">
-    <?php require("includes/navbar.php"); ?>
+    <?php require("../../includes/navbar.php"); ?>
     <main class="p-3 pt-sm-5 mt-lg-5 container align-items-center flex-fill">
         <div class="row mb-2">
             <div class="col-lg-6 fade-in">
@@ -34,4 +34,4 @@ require("includes/header.php");
     <script src="js/preserve_scroll_position_onload.js"></script>
 </body>
 
-<?php include("includes/footer.php"); ?>
+<?php include("../../includes/footer.php"); ?>
