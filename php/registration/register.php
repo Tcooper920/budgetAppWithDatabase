@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         # Store user data in session...
         $_SESSION['user_data'] = array('first_name' => $fn, 'last_name' => $ln, 'email' => $e, 'password' => $p);
         # Generate confirmation code, send the code via email, and show a form for the user to enter the code...
-        require("confirmation_email.php");
+        require("send_confirmation_email.php");
         exit();
     }
 }
