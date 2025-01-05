@@ -8,7 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-        exit('CSRF token validation failed.');
+        // CSRF token validation failed...
+        header('Location: ../error_pages/form_verification_error.php');
+        exit;
     }
 
     // Regenerate the CSRF token to prevent reuse...
