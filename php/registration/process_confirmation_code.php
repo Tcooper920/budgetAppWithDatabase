@@ -75,26 +75,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             include("../../includes/footer.php");
             exit();
         } else {
-            echo '<main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
-                    <form action="confirm_code.php" method="POST" id="confirmation-form" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
-                        <h1 class="pb-3">Validate your account</h1>
-                        <label for="confirmation_code">Enter the confirmation code sent to your email:</label>
-                        <div class="mt-3">
-                            <p class="error-msg text-danger mb-0">Incorrect or expired verification code.</p>
-                            <input type="text" name="confirmation_code" id="confirmation_code" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" required>
-                        </div>
-                        <!-- Honeypot field -->
-                        <input type="text" name="honeypot" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
-                        <!-- CSRF token field -->
-                        <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
-                        <div class="mt-3">
-                            <input type="submit" value="Confirm code" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
-                            <button type="button" id="resend-code" class="btn text-primary mt-2 fs-5">Email me another code</button>
-                        </div>
-                    </form>
-                  </main>';
-
-                  include("../../includes/footer.php");
+            # If confirmation code is not entered correctly, display form with error message appended...
+            $errors['incorrectOrExpiredVerificationCode'] = "Incorrect or expired verification code...";
+            require("confirm_code_form.php");
+            include("../../includes/footer.php");
 
             echo '<script src="../../js/preserve_scroll_position_onload.js"></script>
                   <script src="../../js/resend_registration_confirmation_code.js"></script>
