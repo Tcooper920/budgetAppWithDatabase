@@ -14,6 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit('CSRF token validation failed.');
     }
 
+    // Regenerate the CSRF token to prevent reuse...
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Securely regenerate the token
+
+    // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
+    if (!empty($_POST['honeypot'])) {
+        exit("Bot detected. Form submission aborted.");
+    }
+
     // Check if user is resending a confirmation code...
     if (isset($_POST['resend_code']) && $_POST['resend_code'] == '1') {
         // Resend confirmation code email...
@@ -75,6 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <p class="error-msg text-danger mb-0">Incorrect or expired verification code.</p>
                             <input type="text" name="confirmation_code" id="confirmation_code" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" required>
                         </div>
+                        <!-- Honeypot field -->
+                        <input type="text" name="honeypot" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
                         <!-- CSRF token field -->
                         <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
                         <div class="mt-3">

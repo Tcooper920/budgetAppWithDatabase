@@ -114,6 +114,8 @@ if (!$mail->send()) {
                 <div class="mt-3">
                     <input type="text" name="confirmation_code" id="confirmation_code" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" required>
                 </div>
+                <!-- Honeypot field -->
+                <input type="text" name="honeypot" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
                 <!-- CSRF token field -->
                 <input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] . '" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
                 <div class="mt-3">
