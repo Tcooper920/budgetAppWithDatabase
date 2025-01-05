@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
               </div>';
-        require("confirmation_email.php");
+        require("send_confirmation_email.php");
     } else if (isset($_SESSION['confirmation_code'])) {
         $entered_code = $_POST['confirmation_code'];
         $storedCode = $_SESSION['confirmation_code'];
