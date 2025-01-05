@@ -11,7 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-        exit('CSRF token validation failed.');
+        // CSRF token validation failed...
+        header('Location: ../error_pages/form_verification_error.php');
+        exit;
     }
 
     // Regenerate the CSRF token to prevent reuse...
@@ -19,7 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
     if (!empty($_POST['honeypot'])) {
-        exit("Bot detected. Form submission aborted.");
+        // "Bot detected. Form submission aborted...
+        header('Location: ../error_pages/form_verification_error.php');
+        exit;
     }
 
     // Check if user is resending a confirmation code...
