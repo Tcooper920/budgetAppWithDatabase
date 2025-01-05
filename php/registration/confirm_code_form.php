@@ -4,16 +4,29 @@
         <h1 class="pb-3">Validate your account</h1>
         <label for="confirmation_code">Enter the confirmation code sent to your email:</label>
         <div class="mt-3">
-            <!-- Error message will display below -->
-            <?php if (isset($errors['incorrectOrExpiredVerificationCode']))
-                echo '<p class="error-msg text-danger mb-0">' . $errors['incorrectOrExpiredVerificationCode'] . '</p>' ?>
-                <input type="text" name="confirmation_code" id="confirmation_code"
-                    class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" required>
-            </div>
-            <!-- Honeypot field -->
-            <input type="text" name="honeypot" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
-            <!-- CSRF token field -->
-            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"
+            <!-- Error messages will display below -->
+            <?php
+
+            if (isset($errors['incorrectOrExpiredVerificationCode']) || isset($errors['codeVerificationAttemptsExceeded'])) {
+                echo '<p class="error-msg text-danger mb-0">';
+            }
+
+            if (isset($errors['incorrectOrExpiredVerificationCode']))
+                echo $errors['incorrectOrExpiredVerificationCode'];
+
+            if (isset($errors['codeVerificationAttemptsExceeded']))
+                echo $errors['codeVerificationAttemptsExceeded'];
+
+            echo '</p>';
+
+            ?>
+            <input type="text" name="confirmation_code" id="confirmation_code"
+                class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill" required>
+        </div>
+        <!-- Honeypot field -->
+        <input type="text" name="honeypot" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
+        <!-- CSRF token field -->
+        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"
             class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
         <div class="mt-3">
             <input type="submit" value="Confirm code" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
