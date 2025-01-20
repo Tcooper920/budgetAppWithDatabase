@@ -19,17 +19,23 @@ $base_url = "/budget_app_with_database/";
           echo '
             <li class="nav-item ps-3">
               <a class="nav-link fs-5" href="' . $base_url . 'php/dashboard/dashboard.php" title="My budget dashboard">My budget</a>
-            </li>
+            </li>';
+        }
+        echo '
+          <li class="nav-item ps-3">
+            <a class="nav-link fs-5" href="' . $base_url . 'php/privacy_policy/privacy_policy.php" title="Privacy policy">Privacy policy</a>
+          </li>';
+        if (isset($_SESSION['user_id'])) {
+          echo '
             <li class="nav-item ps-3">
               <a class="nav-link fs-5" href="' . $base_url . 'php/registration/delete_account.php" title="Delete account">Delete account</a>
             </li>';
         }
-        echo '
-            <li class="nav-item ps-3">
-              <a class="nav-link fs-5" href="' . $base_url . 'php/registration/register.php" title="Register">Register</a>
-            </li>';
         if (!isset($_SESSION['user_id'])) {
           echo '
+            <li class="nav-item ps-3">
+              <a class="nav-link fs-5" href="' . $base_url . 'php/registration/register.php" title="Register">Register</a>
+            </li>
             <li class="nav-item ps-3">
               <a class="nav-link fs-5" href="' . $base_url . 'php/login/login.php" title="Login">Login</a>
             </li>';
