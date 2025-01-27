@@ -3,13 +3,13 @@
     require ("../../includes/header.php");
 ?>
 
-<body class="dark-blue-background white min-vh-100">
+<body class="white min-vh-100 gradient-background">
 
     <?php 
         require ("../../includes/navbar.php"); 
     ?>
 
-    <main class="p-3">
+    <main class="p-3 pb-5">
         <?php echo "<div class='container px-0'>
                 <p class='mb-0 mt-3 fs-4' data-user-id='{$_SESSION['user_id']}'>Welcome, {$_SESSION['first_name']} {$_SESSION['last_name']}</p>
                 <hr class='mb-5'>
@@ -33,7 +33,7 @@
                         placeholder="Expense Name" aria-label="Expense Name">
                     <input id="expense-amount" class="form-control m-2 ms-0 expense-amount p-2 ps-4 fs-5 rounded-pill" type="number" step="1"
                         name="expense_amount" placeholder="$0" aria-label="Expense Amount">
-                    <select class="form-select m-2 mx-0 expense-type  p-2 ps-4 fs-5 rounded-pill" aria-label="Type of Expense" name="expense_type">
+                    <select class="form-select m-2 mx-0 expense-type  p-2 ps-4 fs-5 rounded-pill cursor-pointer" aria-label="Type of Expense" name="expense_type">
                         <option value="Fixed" selected>Fixed</option>
                         <option value="Variable">Variable</option>
                         <option value="Debt">Debt</option>
@@ -70,24 +70,24 @@
             </div>
             <div class="container fs-5 text mt-2 px-0" id="total-budget-amount-left"></div>
         </div>
-        <div class="container px-3">
-            <div class="row p-0">
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-fixed rounded"><span
+        <div class="container px-0">
+            <div class="d-flex flex-wrap flex-lg-nowrap p-0 gap-3">
+                <p class="flex-grow-1 flex-fill col-4 col-sm-4 ps-3 pe-2 py-3 mb-0 border-left-fixed navy-blue-background rounded"><span
                         id="fixed-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-variable rounded"><span
+                <p class="flex-grow-1 flex-fill col-4 col-sm-4 ps-3 pe-2 py-3 mb-0 border-left-variable navy-blue-background rounded"><span
                         id="variable-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-debt rounded"><span
+                <p class="flex-grow-1 flex-fill col-4 col-sm-4 ps-3 pe-2 py-3 mb-0 border-left-debt navy-blue-background rounded"><span
                         id="debt-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-savings rounded"><span
+                <p class="flex-grow-1 flex-fill col-4 col-sm-4 ps-3 pe-2 py-3 mb-0 border-left-savings navy-blue-background rounded"><span
                         id="savings-spending-total"></span></p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-fun rounded"><span id="fun-spending-total"></span>
+                <p class="flex-grow-1 flex-fill col-4 col-sm-4 ps-3 pe-2 py-3 mb-0 border-left-fun navy-blue-background rounded"><span id="fun-spending-total"></span>
                 </p>
-                <p class="container col-6 col-sm-4 col-lg-2 px-2 border-left-other rounded"><span
+                <p class="flex-grow-1 flex-fill col-4 col-sm-4 ps-3 pe-2 py-3 mb-0 border-left-other navy-blue-background rounded"><span
                         id="other-spending-total"></span></p>
             </div>
         </div>
         <div class="container px-0">
-            <h2 class="mt-4 pb-3">Expenses:</h2>
+            <h2 class="mt-5 pb-3">Expenses:</h2>
         </div>
         <div id="expense-list-container"></div>
     </main>

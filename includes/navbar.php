@@ -13,7 +13,7 @@ $base_url = "/budget_app_with_database/";
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mt-3 mt-lg-0 mb-xl-0">
         <?php
         if (isset($_SESSION['user_id'])) {
           echo '
