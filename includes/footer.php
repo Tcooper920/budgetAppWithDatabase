@@ -12,7 +12,7 @@ $base_url = "/budget_app_with_database/"; ?>
           alt="Budget Builder logo" title="Budget Builder">
       </a>
 
-      <ul class="nav col-md-4 justify-content-start justify-content-sm-end mt-sm-0 gap-3">
+      <ul class="nav col-md-4 justify-content-start justify-content-sm-end mt-2 mt-sm-0 gap-3">
         <?php
         if (isset($_SESSION['user_id'])) {
           echo '

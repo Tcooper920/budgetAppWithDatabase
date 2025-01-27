@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <p class="error-msg text-danger">Your account was not deleted. Please try again.</p>
                     <label class="w-100 text-danger">
                         Type "delete my account" to confirm account deletion. Then click the "Delete my account" button.
-                        <input type="text" placeholder="delete my account" name="delete_account_field" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+                        <input type="text" autocomplete="off" placeholder="delete my account" name="delete_account_field" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
                     </label>
                     <!-- Honeypot field -->
                     <input type="text" name="honeypot" value=""
@@ -165,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1 class="pb-3">Are you sure you want to delete your account?</h1>
         <label class="w-100 text-danger">
             Type 'delete my account' to confirm account deletion. Then click the 'Delete my account' button.
-            <input type="text" placeholder="delete my account" name="delete_account_field" value=""
+            <input type="text" autocomplete="off" placeholder="delete my account" name="delete_account_field" value=""
                 class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
         </label>
         <!-- Honeypot field -->
