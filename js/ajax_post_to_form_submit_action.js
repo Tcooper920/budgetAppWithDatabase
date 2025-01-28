@@ -18,11 +18,18 @@ const otherSpendingTotal = document.getElementById("other-spending-total");
 const expenseName = document.getElementById("expense");
 const expenseAmount = document.getElementById("expense-amount");
 
+// Variable declarations for income amount text field and budget analytics container...
+const incomeAmountField = document.getElementById("budget-amount-field");
+const budgetAnalyticsContainer = document.getElementById("budget-analytics");
+
 // Variable declaration for expense list container...
 const expenseListContainer = document.getElementById("expense-list-container");
 
 // On page load, fire AJAX to retrieve data...
 $(window).load(ajaxRequestToPhpForProcessing);
+
+// Display analytics if user enters an income that isn't "0" or empty...
+displayBudgetAnalytics();
 
 // On form submit, fire AJAX to send/retrieve data...
 $("#income-expense-form").on("submit", ajaxRequestToPhpForProcessing);
@@ -54,6 +61,8 @@ function ajaxRequestToPhpForProcessing(e) {
       printExpensesToPage(result["all_expenses"], result["income_amount"]);
       // Clear expense item fields after submission...
       clearExpenseFields();
+      // Display the budget analytics if the user has entered an income amount...
+      displayBudgetAnalytics();
     },
   });
 }
@@ -181,6 +190,20 @@ function restrictFieldInput(event) {
     value = value.slice(0, 11);
   }
 
+  // Prevent empty values ("") from being entered...
+  if (value === "") {
+    value = "0";
+  }
+
   // Set the new value to the input field
-  event.target.value = value;
+  event.target.value = parseInt(value);
+}
+
+// Function to display budget analytics if the user's income field is not set to "0" or empty...
+function displayBudgetAnalytics() {
+  const incomeAmountValue = parseInt(incomeAmountField.value); // Convert string to integer
+  const isVisible = incomeAmountValue !== 0 && incomeAmountValue !== "";
+
+  budgetAnalyticsContainer.classList.toggle("visible", isVisible);
+  budgetAnalyticsContainer.classList.toggle("invisible", !isVisible);
 }
