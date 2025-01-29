@@ -27,7 +27,7 @@ require("../../includes/header.php");
                         value="<?php echo "$current_income" ?>">
                 </label>
             </div>
-            <div class="container fs-5 d-flex flex-column p-4 my-3 bg-light rounded darkest">
+            <div id="add-expense-container" class="container fs-5 d-flex flex-column p-4 my-3 bg-light rounded darkest">
                 <label for="expense" class="d-flex">Add an expense:</label>
                 <div class="d-flex flex-column flex-md-row">
                     <input id="expense" class="form-control m-2 ms-0 expense-name p-2 ps-4 fs-5 rounded-pill"

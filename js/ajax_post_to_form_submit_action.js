@@ -1,3 +1,6 @@
+// Variable declaration for "Add an expense" form field...
+const addAnExpenseFormField = document.getElementById("add-expense-container");
+
 // Variable declarations for bar chart bars for each spending type...
 const fixedSpendingGraphBar = document.getElementById("fixed-spending-progress-bar");
 const variableSpendingGraphBar = document.getElementById("variable-spending-progress-bar");
@@ -190,20 +193,20 @@ function restrictFieldInput(event) {
     value = value.slice(0, 11);
   }
 
-  // Prevent empty values ("") from being entered...
-  if (value === "") {
-    value = "0";
-  }
-
   // Set the new value to the input field
   event.target.value = parseInt(value);
 }
 
-// Function to display budget analytics if the user's income field is not set to "0" or empty...
+// Function to display "Add an expense" form and budget analytics if the user's income field is not set to "0" or empty...
 function displayBudgetAnalytics() {
   const incomeAmountValue = parseInt(incomeAmountField.value); // Convert string to integer
   const isVisible = incomeAmountValue !== 0 && incomeAmountValue !== "";
 
+  // Toggle "Add an expense" form...
+  addAnExpenseFormField.classList.toggle("visible", isVisible);
+  addAnExpenseFormField.classList.toggle("invisible", !isVisible);
+  
+  // Toggle analytics visibility...
   budgetAnalyticsContainer.classList.toggle("visible", isVisible);
   budgetAnalyticsContainer.classList.toggle("invisible", !isVisible);
 }
