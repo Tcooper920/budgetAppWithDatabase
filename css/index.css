@@ -73,6 +73,11 @@ em {
   cursor: pointer;
 }
 
+/* Custom max width class */
+.mw-27rem {
+  max-width: 27rem;
+}
+
 /* Form field errors */
 .error-msg + input, .error-msg + div > .input {
   border: .1rem solid var(--error-field-outlines);
