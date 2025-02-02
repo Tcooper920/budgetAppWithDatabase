@@ -160,7 +160,7 @@ function printExpensesToPage(result, incomeAmount) {
         <p class="d-block m-0 w-100 align-self-start">Name: <span class="fw-bold">${expenseItem[2]}</span></p>
         <p class="d-block m-0 w-100 align-self-start">Amount: <span class="fw-bold">$${expenseItem[3]}</span> <span class="text-secondary ps-1">(${findExpensePercentageRelativeToTotalBudgetIncomeAmount(incomeAmount, expenseItem[3])}%)</span></p>
         <p class="d-block m-0 w-100 align-self-start"><span class="fw-bold ${expenseItem[4]}">${expenseItem[4]}</span></p>
-        <input type="submit" value="✕" id="${expenseItem[0]}" class="remove-btn btn fw-bolder position-absolute px-3 py-0 mt-3 top-0 end-0">
+        <button type="submit" aria-label="Delete item" title="Delete this item" id="${expenseItem[0]}" class="remove-btn btn fw-bolder position-absolute px-3 py-0 mt-3 top-0 end-0">✕</button>
       </form>`;
     expenseListContainer.append(containerForExpense);
   });
