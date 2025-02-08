@@ -20,6 +20,12 @@
   --error-dark: rgb(191 28 44);
   --form-field-border-style: #ced4da;
   --negative-amount-to-budget-with: #ff8282;
+  --focus: rgb(164, 164, 164);
+}
+
+*:focus {
+  box-shadow: none !important;
+  outline: .15rem dashed var(--focus) !important;
 }
 
 .gradient-background {
@@ -114,10 +120,6 @@ button.no-rounded-left {
   background-color: var(--secondary-color-dark);
   border-color: var(--secondary-color-dark);
 }
-.btn-primary:focus {
-  background-color: var(--secondary-color-dark);
-  border-color: var(--secondary-color-dark);
-}
 .border-primary-color {
   color: var(--secondary-color-dark);
   border-color: var(--secondary-color-dark);
@@ -127,8 +129,12 @@ button.no-rounded-left {
   background-color: var(--secondary-color-dark);
   border-color: var(--secondary-color-dark);
 }
-.btn:focus-visible {
-  border-color: var(--bs-link-color-rgb);
+.btn-check:checked+.btn, 
+.btn.active, 
+.btn.show, 
+.btn:first-child:active, 
+:not(.btn-check)+.btn:active {
+  background-color: var(--secondary-color-dark);
 }
 /* Remove button ("X") for expense item list */
 .remove-btn:hover {
