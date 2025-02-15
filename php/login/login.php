@@ -72,6 +72,7 @@ if (empty($_SESSION['csrf_token'])) {
                     <input type="button" value="Sign up"
                         class="btn border-primary-color border-2 ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
                 </a>
+                <a href="../forgot_password/forgot_password.php" title="Forgot password?" class="link-underline link-underline-opacity-0 d-block mt-3">Forgot password?</a>
             </div>
         </form>
     </main>
