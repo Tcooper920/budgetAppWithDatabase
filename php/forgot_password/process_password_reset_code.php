@@ -1,5 +1,11 @@
 <?php
 session_start();
+/* Check if the user manually visited this page. If so, redirect them to the beginning of the 
+process to reset their password. (This prevents them from skipping any steps.) */
+if (!isset($_SESSION['user_resetting_password']) || !$_SESSION['user_resetting_password'] == true) {
+    header('Location: forgot_password.php');
+    exit();
+}
 require("../../includes/header.php");
 
 echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
@@ -7,7 +13,8 @@ echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
 require("../../includes/navbar.php");
 
 // Function to convert seconds into minutes and seconds...
-function convertSeconds($seconds) {
+function convertSeconds($seconds)
+{
     $minutes = floor($seconds / 60);
     $remainingSeconds = $seconds % 60;
     return sprintf("%d minute(s) and %d second(s)", $minutes, $remainingSeconds);

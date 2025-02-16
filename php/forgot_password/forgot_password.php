@@ -56,8 +56,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (mysqli_num_rows($get_user_by_email) != 0) {
                 # Store user email in session...
                 $_SESSION['email'] = $e;
+
+                # Save session variable showing user is resetting password...
+                $_SESSION['user_resetting_password'] = true;
             } else {
-                $errors["emailAddressError"] = "This email has not been registered and does not have an assciated account.";
+                $errors["emailAddressError"] = "This email has not been registered and does not have an associated account.";
             }
         } else {
             $errors["emailAddressError"] = "This email address is not valid.";

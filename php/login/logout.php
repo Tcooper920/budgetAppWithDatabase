@@ -14,13 +14,11 @@ require("../../includes/header.php");
 <body class="dark-blue-background min-vh-100 d-flex flex-column">
 
     <?php
-    # Navbar settings...
-    $login_or_logout = "login";
+
     require("../../includes/navbar.php");
-
     $_SESSION = array();
-
     session_destroy();
+
     ?>
 
     <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
@@ -38,4 +36,5 @@ require("../../includes/header.php");
 
     <?php include("../../includes/footer.php"); ?>
 </body>
+
 </html>
