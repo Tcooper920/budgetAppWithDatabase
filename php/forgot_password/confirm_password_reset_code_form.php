@@ -1,3 +1,14 @@
+<?php
+
+/* Check if the user manually visited this page. If so, redirect them to the beginning of the 
+process to reset their password. (This prevents them from skipping any steps.) */
+if (!isset($_SESSION['user_resetting_password']) || !$_SESSION['user_resetting_password'] == true) {
+    header('Location: forgot_password.php');
+    exit();
+}
+
+?>
+
 <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
     <form action="process_password_reset_code.php" method="POST" id="confirmation-form"
         class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
@@ -30,7 +41,8 @@
             class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
         <div class="mt-3">
             <input type="submit" value="Confirm code" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
-            <button type="button" id="resend-code" class="btn text-button text-primary mt-2 fs-5">Email me another code</button>
+            <button type="button" id="resend-code" class="btn text-button text-primary mt-2 fs-5">Email me another
+                code</button>
         </div>
     </form>
 </main>
