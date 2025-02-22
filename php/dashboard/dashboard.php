@@ -15,7 +15,7 @@ require("../../includes/header.php");
                 <hr class='mb-5'>
             </div>"; ?>
         <div class="container px-0">
-            <h1 class="mt-4">Build a Budget:</h1>
+            <h1 class="mt-4 fw-bold">Build a Budget:</h1>
         </div>
 
         <form id="income-expense-form">
@@ -78,23 +78,28 @@ require("../../includes/header.php");
                 <div class="d-flex flex-wrap flex-lg-nowrap p-0 gap-3">
                     <p
                         class="flex-grow-1 flex-fill col-4 col-sm-4 ps-3 pe-2 py-3 mb-0 border-left-fixed navy-blue-background rounded">
-                        <span id="fixed-spending-total"></span></p>
+                        <span id="fixed-spending-total"></span>
+                    </p>
                     <p
                         class="flex-grow-1 flex-fill col-4 col-sm-4 ps-3 pe-2 py-3 mb-0 border-left-variable navy-blue-background rounded">
-                        <span id="variable-spending-total"></span></p>
+                        <span id="variable-spending-total"></span>
+                    </p>
                     <p
                         class="flex-grow-1 flex-fill col-4 col-sm-4 ps-3 pe-2 py-3 mb-0 border-left-debt navy-blue-background rounded">
-                        <span id="debt-spending-total"></span></p>
+                        <span id="debt-spending-total"></span>
+                    </p>
                     <p
                         class="flex-grow-1 flex-fill col-4 col-sm-4 ps-3 pe-2 py-3 mb-0 border-left-savings navy-blue-background rounded">
-                        <span id="savings-spending-total"></span></p>
+                        <span id="savings-spending-total"></span>
+                    </p>
                     <p
                         class="flex-grow-1 flex-fill col-4 col-sm-4 ps-3 pe-2 py-3 mb-0 border-left-fun navy-blue-background rounded">
                         <span id="fun-spending-total"></span>
                     </p>
                     <p
                         class="flex-grow-1 flex-fill col-4 col-sm-4 ps-3 pe-2 py-3 mb-0 border-left-other navy-blue-background rounded">
-                        <span id="other-spending-total"></span></p>
+                        <span id="other-spending-total"></span>
+                    </p>
                 </div>
             </div>
             <div class="container px-0">

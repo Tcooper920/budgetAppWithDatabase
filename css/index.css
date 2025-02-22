@@ -25,7 +25,7 @@
 
 *:focus {
   box-shadow: none !important;
-  outline: .15rem dashed var(--focus) !important;
+  outline: 0.15rem dashed var(--focus) !important;
 }
 
 .gradient-background {
@@ -79,14 +79,20 @@ em {
   cursor: pointer;
 }
 
+/* Underline text links on hover */
+.link-underline-opacity-0:hover {
+  --bs-link-underline-opacity: 1;
+}
+
 /* Custom max width class */
 .mw-27rem {
   max-width: 27rem;
 }
 
 /* Form field errors */
-.error-msg + input, .error-msg + div > .input {
-  border: .1rem solid var(--error-field-outlines);
+.error-msg + input,
+.error-msg + div > .input {
+  border: 0.1rem solid var(--error-field-outlines);
 }
 
 ::marker {
@@ -129,11 +135,11 @@ button.no-rounded-left {
   background-color: var(--secondary-color-dark);
   border-color: var(--secondary-color-dark);
 }
-.btn-check:checked+.btn, 
-.btn.active, 
-.btn.show, 
-.btn:first-child:active, 
-:not(.btn-check)+.btn:active {
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
   background-color: var(--secondary-color-dark);
 }
 /* Remove button ("X") for expense item list */
@@ -150,17 +156,18 @@ button.no-rounded-left {
 .btn.warning:hover {
   color: white;
   background-color: var(--error-dark);
-  transition: background-color .5s;
+  transition: background-color 0.5s;
 }
 /* Buttons with text only on white backgrounds (appear like standard links) */
-.text-button:hover, .text-button:focus {
+.text-button:hover,
+.text-button:focus {
   background-color: transparent;
   border: 1px solid;
 }
 /* Toggle password eye */
 #togglePassword:hover {
   border: 1px solid;
-  color:initial;
+  color: initial;
 }
 #togglePassword:focus-visible {
   border-color: var(--bs-link-color-rgb);
@@ -217,59 +224,59 @@ button.no-rounded-left {
 .Savings::before,
 .Fun::before,
 .Other::before {
-  padding-right: .5rem;
+  padding-right: 0.5rem;
 }
-.Fixed::before{
+.Fixed::before {
   content: "";
-  border-left: 1.20rem solid var(--fixed-spending);
+  border-left: 1.2rem solid var(--fixed-spending);
 }
 .border-left-fixed {
-  border-left: .3rem solid var(--fixed-spending);
+  border-left: 0.3rem solid var(--fixed-spending);
 }
 .Variable::before {
   content: "";
-  border-left: 1.20rem solid rgb(177 68 177);
+  border-left: 1.2rem solid rgb(177 68 177);
 }
 .border-left-variable {
-  border-left: .3rem solid rgb(177 68 177);
+  border-left: 0.3rem solid rgb(177 68 177);
 }
 .Debt::before {
   content: "";
-  border-left: 1.20rem solid var(--debt-spending);
+  border-left: 1.2rem solid var(--debt-spending);
 }
 .border-left-debt {
-  border-left: .3rem solid var(--debt-spending);
+  border-left: 0.3rem solid var(--debt-spending);
 }
 .Savings::before {
   content: "";
-  border-left: 1.20rem solid var(--savings-spending);
+  border-left: 1.2rem solid var(--savings-spending);
 }
 .border-left-savings {
-  border-left: .3rem solid var(--savings-spending);
+  border-left: 0.3rem solid var(--savings-spending);
 }
 .Fun::before {
   content: "";
-  border-left: 1.20rem solid var(--fun-spending);
+  border-left: 1.2rem solid var(--fun-spending);
 }
 .border-left-fun {
-  border-left: .3rem solid var(--fun-spending);
+  border-left: 0.3rem solid var(--fun-spending);
 }
 .Other::before {
   content: "";
-  border-left: 1.20rem solid var(--other-spending);
+  border-left: 1.2rem solid var(--other-spending);
 }
 .border-left-other {
-  border-left: .3rem solid var(--other-spending);
+  border-left: 0.3rem solid var(--other-spending);
 }
 
 /* Keyframe animations */
 @keyframes bar-graph-slide-in {
   from {
-    transform: scaleX(0)
+    transform: scaleX(0);
   }
 
   to {
-    transform: scaleX(1)
+    transform: scaleX(1);
   }
 }
 @keyframes fade-in-rise {
@@ -296,12 +303,12 @@ button.no-rounded-left {
 }
 
 .fade-in {
-  animation: fade-in .8s ease forwards;
+  animation: fade-in 0.8s ease forwards;
 }
 
 #graph > .progress-bar {
   transform-origin: 0% 0%;
-  animation: bar-graph-slide-in .5s;
+  animation: bar-graph-slide-in 0.5s;
 }
 
 .footer-author-container {

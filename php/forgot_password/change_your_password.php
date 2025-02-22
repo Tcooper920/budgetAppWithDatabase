@@ -36,41 +36,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors["pass1Error"] = "Enter your password.";
     }
 
-    if (!empty($_POST['pass1'])) {
-        # Check if password 1 and password 2 match...
-        if ($_POST['pass1'] !== $_POST['pass2']) {
-            $errors["pass2Error"] = "Passwords do not match.";
-        } else {
-            # Make sure password isn't already used by another user...
-            $query_to_get_user_by_password = $budget_database->prepare("SELECT user_id FROM users WHERE pass=SHA2(?, 256)");
-            $query_to_get_user_by_password->bind_param("s", $_POST['pass1']);
-            $query_to_get_user_by_password->execute();
-            $get_user_by_password = $query_to_get_user_by_password->get_result();
-
-            if (mysqli_num_rows($get_user_by_password) != 0) {
-                $errors["pass1Error"] = "This password is already taken.";
-            } else {
-                $p = mysqli_real_escape_string($budget_database, trim($_POST['pass1']));
-            }
-        }
+    # Make sure password is long enough (for security)...
+    if (strlen(trim($_POST['pass1'])) < 9) {
+        $errors['pass1Error'] = 'Password must be at least 9 characters long.';
     }
 
-    // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
-    if (!empty($_POST['honeypot'])) {
-        // Bot detected. Form submission aborted...
-        header('Location: ../error_pages/form_verification_error.php');
-        exit();
+    # If pass1 and pass2 are filled in...
+    if (!empty($_POST['pass1']) && !empty($_POST['pass2'])) {
+        # Check if password 1 and password 2 match...
+        if (trim($_POST['pass1']) !== trim($_POST['pass2'])) {
+            $errors["pass2Error"] = "Passwords do not match.";
+        } else {
+            # Hash password...
+            $p = password_hash(trim($_POST['pass1']), PASSWORD_DEFAULT);
+        }
     }
 
     # Update user's password...
     if (empty($errors)) {
-        $query_to_update_password = $budget_database->prepare("UPDATE users SET pass=SHA2(?, 256) WHERE email = ?");
-        $query_to_update_password->bind_param("ss", $_POST['pass1'], $_SESSION['email']);
+        $query_to_update_password = $budget_database->prepare("UPDATE users SET pass = ? WHERE email = ?");
+        $query_to_update_password->bind_param("ss", $p, $_SESSION['email']);
         $query_to_update_password->execute();
 
-        if ($query_to_update_password) {
+        if ($query_to_update_password->affected_rows > 0) {
             echo '<main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
-            <div class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
+            <div class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest mw-27rem">
                 <h1 class="pb-3">Password updated!</h1>
                 <p>Your password has been updated successfully.</p>
                 <div class="mt-3">
@@ -83,7 +73,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <script src="../../js/preserve_scroll_position_onload.js"></script>
           </body>';
         } else {
+            error_log("Error updating password: " . $query_to_update_password->error);
             echo 'An error occurred.';
+        }
+
+        // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
+        if (!empty($_POST['honeypot'])) {
+            // Bot detected. Form submission aborted...
+            header('Location: ../error_pages/form_verification_error.php');
+            exit();
         }
 
         mysqli_close($budget_database);
@@ -96,7 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
-    <form action="change_your_password.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
+    <form action="change_your_password.php" method="POST"
+        class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue mw-27rem">
         <h1 class="pb-3">Change your password</h1>
         <label class="w-100 mt-2">
             Enter your new Password:

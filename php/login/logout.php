@@ -22,8 +22,8 @@ require("../../includes/header.php");
     ?>
 
     <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
-        <div class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
-            <h1 class="pb-3">Goodbye!</h1>
+        <div class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest mw-27rem">
+            <h1 class="pb-3 fw-bold">Goodbye!</h1>
             <p>You have logged out of your account.</p>
             <div class="mt-3">
                 <a href="login.php" title="Back to login">

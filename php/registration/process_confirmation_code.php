@@ -7,7 +7,8 @@ echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
 require("../../includes/navbar.php");
 
 // Function to convert seconds into minutes and seconds...
-function convertSeconds($seconds) {
+function convertSeconds($seconds)
+{
     $minutes = floor($seconds / 60);
     $remainingSeconds = $seconds % 60;
     return sprintf("%d minute(s) and %d second(s)", $minutes, $remainingSeconds);
@@ -79,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             # Add the user to the database...
             $user_data = $_SESSION['user_data'];
-            $query_to_create_new_user = $budget_database->prepare("INSERT INTO users (first_name, last_name, email, pass, reg_date) VALUES (?, ?, ?, SHA2(?, 256), NOW())");
+            $query_to_create_new_user = $budget_database->prepare("INSERT INTO users (first_name, last_name, email, pass, reg_date) VALUES (?, ?, ?, ?, NOW())");
             $query_to_create_new_user->bind_param("ssss", $user_data['first_name'], $user_data['last_name'], $user_data['email'], $user_data['password']);
             $query_to_create_new_user->execute();
 
