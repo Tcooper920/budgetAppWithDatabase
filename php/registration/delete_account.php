@@ -91,8 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             # Display error message if failed to delete user info...
             echo '
             <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
-                <form action="delete_account.php" method="POST" class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
-                    <h1 class="pb-3 text-danger">An error occurred.</h1>
+                <form action="delete_account.php" method="POST" class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest mw-27rem">
+                    <h1 class="pb-3 fw-bold">An error occurred.</h1>
                     <p class="error-msg text-danger">Your account was not deleted. Please try again.</p>
                     <label class="w-100 text-danger">
                         Type "delete my account" to confirm account deletion. Then click the "Delete my account" button.
@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo '
             <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
                 <form action="delete_account.php" method="POST" class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
-                    <h1 class="pb-3">Your account has been successfully deleted.</h1>
+                    <h1 class="pb-3 fw-bold">Your account has been successfully deleted.</h1>
                     <p>We hope you come back!</p>
                     <div class="mt-3">
                         <a href="../dashboard/dashboard.php" title="Return to login">
@@ -161,16 +161,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
     <form action="delete_account.php" method="POST"
-        class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
-        <h1 class="pb-3">Are you sure you want to delete your account?</h1>
-        <label class="w-100 text-danger">
+        class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest mw-27rem">
+        <h1 class="pb-3 fw-bold">Are you sure you want to delete your account?</h1>
+        <label class="w-100">
             Type 'delete my account' to confirm account deletion. Then click the 'Delete my account' button.
             <input type="text" autocomplete="off" placeholder="delete my account" name="delete_account_field" value=""
                 class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
         </label>
         <!-- Honeypot field -->
-        <input type="text" name="honeypot" value=""
-            class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
+        <input type="text" name="honeypot" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
         <!-- CSRF token field -->
         <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"
             class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
