@@ -19,19 +19,26 @@ if (empty($_SESSION['csrf_token'])) {
     <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
         <img src="../../images/budget-builder-logo-stacked.svg" alt="Budget Builder logo" title="Budget Builder"
             width="240" height="240" class="d-none d-sm-block mb-3">
-        <form action="login_action.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue mw-27rem">
-            <?php
+        <form id="login-form" action="login_action.php" method="POST"
+            class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue mw-27rem">
 
-            if (isset($errors['youAreLockedOutError'])) {
-                echo '<p class="error-msg text-danger mb-0">' . $errors['youAreLockedOutError'] . '</p><br>';
-            }
-            if (isset($errors['emailAndPasswordNotFoundError'])) {
-                echo '<p class="error-msg text-danger mb-0">' . $errors['emailAndPasswordNotFoundError'] . '</p><br>';
-                $errors['emailError'] = " "; // Triggers CSS to make field outline red
-                $errors['passwordError'] = " "; // Triggers CSS to make field outline red
-            }
+            <!-- Error message container in form header -->
+            <div id="error-container">
+                <?php
 
-            ?>
+                // Show error if user is locked out...
+                if (isset($errors['youAreLockedOutError'])) {
+                    echo '<p class="error-msg text-danger mb-3">' . $errors['youAreLockedOutError'] . '</p>';
+                }
+                // Show error if email or password not found...
+                if (isset($errors['emailAndPasswordNotFoundError'])) {
+                    echo '<p class="error-msg text-danger mb-3">' . $errors['emailAndPasswordNotFoundError'] . '</p>';
+                    $errors['emailError'] = " "; // Triggers CSS to make field outline red
+                    $errors['passwordError'] = " "; // Triggers CSS to make field outline red
+                }
+
+                ?>
+            </div>
             <h1 class="pb-3 fw-bold">Login</h1>
             <label class="w-100">
                 Email Address:
@@ -60,6 +67,9 @@ if (empty($_SESSION['csrf_token'])) {
             <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"
                 class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
             <div class="mt-4">
+                <div class="g-recaptcha" data-sitekey="6LftRuAqAAAAAIFxD5R1sB5ZnFchGxZMv4OKj_qz"></div>
+            </div>
+            <div class="mt-4">
                 <input type="submit" value="Log in" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill"
                     title="Log in">
             </div>
@@ -75,9 +85,9 @@ if (empty($_SESSION['csrf_token'])) {
     </main>
 
     <?php include("../../includes/footer.php"); ?>
-
     <script src="../../js/preserve_scroll_position_onload.js"></script>
     <script src="../../js/show_hide_password.js"></script>
+    <script src="../../js/verify_recaptcha_response.js"></script>
 </body>
 
 </html>
