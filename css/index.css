@@ -315,6 +315,13 @@ button.no-rounded-left {
   background-color: rgb(35 35 35);
 }
 
+/* Google reCAPTCHA styling */
+.g-recaptcha {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
 /* MEDIA QUERIES *******************************************************************************************/
 
 @media screen and (min-width: 690px) {
