@@ -66,8 +66,11 @@ if (empty($_SESSION['csrf_token'])) {
             <!-- CSRF token field -->
             <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"
                 class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
+            <!-- reCAPTCHA -->
             <div class="mt-4">
-                <div class="g-recaptcha" data-sitekey="6LftRuAqAAAAAIFxD5R1sB5ZnFchGxZMv4OKj_qz"></div>
+                <div class="g-recaptcha" data-sitekey="6LftRuAqAAAAAIFxD5R1sB5ZnFchGxZMv4OKj_qz" data-theme="light"
+                    data-size="normal">
+                </div>
             </div>
             <div class="mt-4">
                 <input type="submit" value="Log in" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill"
