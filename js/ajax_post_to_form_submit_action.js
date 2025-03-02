@@ -2,16 +2,30 @@
 const addAnExpenseFormField = document.getElementById("add-expense-container");
 
 // Variable declarations for bar chart bars for each spending type...
-const fixedSpendingGraphBar = document.getElementById("fixed-spending-progress-bar");
-const variableSpendingGraphBar = document.getElementById("variable-spending-progress-bar");
-const debtSpendingGraphBar = document.getElementById("debt-spending-progress-bar");
-const savingsSpendingGraphBar = document.getElementById("savings-spending-progress-bar");
-const funSpendingGraphBar = document.getElementById("fun-spending-progress-bar");
-const otherSpendingGraphBar = document.getElementById("other-spending-progress-bar");
+const fixedSpendingGraphBar = document.getElementById(
+  "fixed-spending-progress-bar"
+);
+const variableSpendingGraphBar = document.getElementById(
+  "variable-spending-progress-bar"
+);
+const debtSpendingGraphBar = document.getElementById(
+  "debt-spending-progress-bar"
+);
+const savingsSpendingGraphBar = document.getElementById(
+  "savings-spending-progress-bar"
+);
+const funSpendingGraphBar = document.getElementById(
+  "fun-spending-progress-bar"
+);
+const otherSpendingGraphBar = document.getElementById(
+  "other-spending-progress-bar"
+);
 
 // Variable declarations for total amount spent for each spending type...
 const fixedSpendingTotal = document.getElementById("fixed-spending-total");
-const variableSpendingTotal = document.getElementById("variable-spending-total");
+const variableSpendingTotal = document.getElementById(
+  "variable-spending-total"
+);
 const debtSpendingTotal = document.getElementById("debt-spending-total");
 const savingsSpendingTotal = document.getElementById("savings-spending-total");
 const funSpendingTotal = document.getElementById("fun-spending-total");
@@ -93,7 +107,9 @@ expenseListContainer.addEventListener("click", (e) => {
 
 // Function to update bar graph and totals for each spending category...
 function updateBarGraph(result) {
-  const totalBudgetAmountLeft = document.getElementById("total-budget-amount-left");
+  const totalBudgetAmountLeft = document.getElementById(
+    "total-budget-amount-left"
+  );
   totalBudgetAmountLeft.innerHTML = `<p class="mb-0"><strong class="me-1 fs-3">$${result["total_amount_left_to_budget_with"]}</strong> left to budget with.</p>`;
 
   // If amount left for budget is negative, make number red:
@@ -149,18 +165,74 @@ function updateBarGraph(result) {
   otherSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Other:</h3> $${result["total_other_spending"]}<br>${result["other_percentage"]}%`;
 }
 
+// Function to sort expense items by their expense types (i.e. Fixed, Variable, Debt, etc.)
+function sortExpenseItems(result) {
+  const expenseGroups = {
+    Fixed: [],
+    Variable: [],
+    Debt: [],
+    Savings: [],
+    Fun: [],
+    Other: [],
+  };
+
+  // Sort into separate arrays by expense type
+  result.forEach((expenseItem) => {
+    const category = expenseItem[4];
+    if (expenseGroups[category]) {
+      expenseGroups[category].push(expenseItem);
+    }
+  });
+
+  // Sort each expense array alphabetically based on expense name
+  for (let expenseArray in expenseGroups) {
+    expenseGroups[expenseArray].sort((a, b) => {
+      let expenseA = a[2].toLowerCase();
+      let expenseB = b[2].toLowerCase();
+
+      return expenseA < expenseB ? -1 : expenseA > expenseB ? 1 : 0;
+    });
+  }
+
+  // Concatenate expense arrays into single array
+  return [
+    ...expenseGroups.Fixed,
+    ...expenseGroups.Variable,
+    ...expenseGroups.Debt,
+    ...expenseGroups.Savings,
+    ...expenseGroups.Fun,
+    ...expenseGroups.Other,
+  ];
+}
+
 // Function to print each expense item to the page – creating a list of items...
 function printExpensesToPage(result, incomeAmount) {
+  // Sort results by expense type
+  let sortedResults = sortExpenseItems(result);
+
   expenseListContainer.innerHTML = "";
-  result.forEach((expenseItem) => {
+  sortedResults.forEach((expenseItem) => {
     let containerForExpense = document.createElement("div");
     containerForExpense.innerHTML = `
-      <form id="expense-id-${expenseItem[0]}" data-user-id="${expenseItem[1]}" class="container d-flex mb-3 p-3 pe-5 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
+      <form id="expense-id-${expenseItem[0]}" data-user-id="${
+      expenseItem[1]
+    }" class="container d-flex mb-3 p-3 pe-5 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
         <input type="hidden" name="expense_item" value="${expenseItem[0]}">
-        <p class="d-block m-0 w-100 align-self-start">Name: <span class="fw-bold">${expenseItem[2]}</span></p>
-        <p class="d-block m-0 w-100 align-self-start">Amount: <span class="fw-bold">$${expenseItem[3]}</span> <span class="text-secondary ps-1">(${findExpensePercentageRelativeToTotalBudgetIncomeAmount(incomeAmount, expenseItem[3])}%)</span></p>
-        <p class="d-block m-0 w-100 align-self-start"><span class="fw-bold ${expenseItem[4]}">${expenseItem[4]}</span></p>
-        <button type="submit" aria-label="Delete item" title="Delete this item" id="${expenseItem[0]}" class="remove-btn btn fw-bolder position-absolute px-3 py-0 mt-3 top-0 end-0">✕</button>
+        <p class="d-block m-0 w-100 align-self-start">Name: <span class="fw-bold">${
+          expenseItem[2]
+        }</span></p>
+        <p class="d-block m-0 w-100 align-self-start">Amount: <span class="fw-bold">$${
+          expenseItem[3]
+        }</span> <span class="text-secondary ps-1">(${findExpensePercentageRelativeToTotalBudgetIncomeAmount(
+      incomeAmount,
+      expenseItem[3]
+    )}%)</span></p>
+        <p class="d-block m-0 w-100 align-self-start"><span class="fw-bold ${
+          expenseItem[4]
+        }">${expenseItem[4]}</span></p>
+        <button type="submit" aria-label="Delete item" title="Delete this item" id="${
+          expenseItem[0]
+        }" class="remove-btn btn fw-bolder position-absolute px-3 py-0 mt-3 top-0 end-0">✕</button>
       </form>`;
     expenseListContainer.append(containerForExpense);
   });
@@ -175,9 +247,12 @@ function clearExpenseFields() {
 }
 
 // Function to calculate percentages for each expense item in the list...
-function findExpensePercentageRelativeToTotalBudgetIncomeAmount(totalIncomeAmount, expenseAmount) {
-  let expensePercentage = ((expenseAmount/totalIncomeAmount) * 100);
-  let roundedExpensePercentage = (Math.round(expensePercentage * 100) / 100);
+function findExpensePercentageRelativeToTotalBudgetIncomeAmount(
+  totalIncomeAmount,
+  expenseAmount
+) {
+  let expensePercentage = (expenseAmount / totalIncomeAmount) * 100;
+  let roundedExpensePercentage = Math.round(expensePercentage * 100) / 100;
   return roundedExpensePercentage;
 }
 
@@ -186,7 +261,7 @@ function restrictFieldInput(event) {
   let value = event.target.value;
 
   // Remove non-numeric characters...
-  value = value.replace(/\D/g, '');
+  value = value.replace(/\D/g, "");
 
   // Limit the length of the value to 11 characters
   if (value.length > 11) {
@@ -205,7 +280,7 @@ function displayBudgetAnalytics() {
   // Toggle "Add an expense" form...
   addAnExpenseFormField.classList.toggle("visible", isVisible);
   addAnExpenseFormField.classList.toggle("invisible", !isVisible);
-  
+
   // Toggle analytics visibility...
   budgetAnalyticsContainer.classList.toggle("visible", isVisible);
   budgetAnalyticsContainer.classList.toggle("invisible", !isVisible);
