@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['code_verification_attempts'] = 0;
     }
 
-    require('../../../../connect_budget_database.php');
+    require('../../../config/connect_budget_database.php');
 
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {

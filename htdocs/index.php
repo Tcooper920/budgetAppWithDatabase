@@ -13,10 +13,12 @@ require("includes/header.php");
         <div class="row mb-2">
             <div class="col-lg-6 fade-in">
                 <h1 class="pb-3 fw-bold">Welcome to BudgetBuilder!</h1>
-                <p class="fs-5 mb-4">BudgetBuilder is a free, easy-to-use budgeting app that helps you manage your everyday
+                <p class="fs-5 mb-4">BudgetBuilder is a free, easy-to-use budgeting app that helps you manage your
+                    everyday
                     expenses. Just create an account, set your budget limit, and add your expenses. Your spending
                     breakdown will be displayed in a graph above your detailed expense list.</p>
-                    <p class="fs-5 mb-4">BudgetBuilder is designed to be simple, but stay tuned—more features may be added in the future.</p>
+                <p class="fs-5 mb-4">BudgetBuilder is designed to be simple, but stay tuned—more features may be added
+                    in the future.</p>
                 <p class="fs-5 mb-4">Log in to get started!</p>
                 <div class="row pt-2">
                     <div class="col-sm-5">
@@ -30,7 +32,9 @@ require("includes/header.php");
                 </div>
             </div>
             <div class="col-lg-6">
-                <img src="/budget_app_with_database/images/budget-builder-app-screenshot.png" width="1200" height="1015" class="w-100 h-auto mt-5 mt-lg-0 ps-lg-4 fade-in-and-rise" alt="BudgetBuilder app screenshot that shows a graph and itemized list of expenses." />
+                <img src="/budget_app_with_database/htdocs/images/budget-builder-app-screenshot.png" width="1200"
+                    height="1015" class="w-100 h-auto mt-5 mt-lg-0 ps-lg-4 fade-in-and-rise"
+                    alt="BudgetBuilder app screenshot that shows a graph and itemized list of expenses." />
             </div>
         </div>
     </main>
