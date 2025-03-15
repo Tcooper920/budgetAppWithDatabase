@@ -1,6 +1,6 @@
 <?php
 
-require('../../../../connect_budget_database.php');
+require('../../../config/connect_budget_database.php');
 
 $userid = $_SESSION['user_id'];
 

@@ -1,5 +1,5 @@
 <?php
-require_once("../../../../connect_recaptcha_secret_key.php");
+require_once("../../../config/connect_recaptcha_secret_key.php");
 
 // Get the response from reCAPTCHA
 $recaptchaResponse = $_POST['gRecaptchaResponse'];

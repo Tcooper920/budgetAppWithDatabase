@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 require('PHPMailer/src/Exception.php');
 require('PHPMailer/src/PHPMailer.php');
 require('PHPMailer/src/SMTP.php');
-include('../../config/config.php');
+include('../../../config/budget_smtp_authentication_password.php');
 
 //Create a new PHPMailer instance
 $mail = new PHPMailer();

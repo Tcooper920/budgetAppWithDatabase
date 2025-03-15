@@ -1,6 +1,6 @@
 <?php
 // Define the base URL relative to the site's root to create dynamic links...
-$base_url = "/budget_app_with_database/";
+$base_url = "/budget_app_with_database/htdocs/";
 ?>
 <nav class="navbar navbar-light navbar-expand-lg mb-4 px-0 px-sm-4 shadow-sm">
   <div class="container-fluid">
@@ -8,8 +8,9 @@ $base_url = "/budget_app_with_database/";
       <img src="<?php echo $base_url ?>/images/budget-builder-logo-horizontal.svg" width="230" alt="Budget Builder logo"
         title="Budget Builder">
     </a>
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">

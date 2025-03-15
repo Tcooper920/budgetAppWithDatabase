@@ -1,6 +1,6 @@
 <?php
 // Define the base URL relative to the site's root to create dynamic links...
-$base_url = "/budget_app_with_database/"; // Replace 'your_project_folder' with your actual project name if needed
+$base_url = "/budget_app_with_database/htdocs/"; // Replace 'your_project_folder' with your actual project name if needed
 ?>
 
 <!DOCTYPE html>

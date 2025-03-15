@@ -20,14 +20,14 @@ require("../../includes/header.php");
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <div class="row pt-2">
                     <div class="col-sm-7">
-                        <a href="/budget_app_with_database/index.php"
+                        <a href="/budget_app_with_database/htdocs/index.php"
                             class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill"
                             title="Return to homepage">Return to homepage</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 d-flex">
-                <img src="/budget_app_with_database/images/budget-builder-logo-3d.png"
+                <img src="/budget_app_with_database/htdocs/images/budget-builder-logo-3d.png"
                     alt="Calculator graphic with a screen that reads, 'OOPS!'." width="608" height="628"
                     class="col w-100 h-auto mt-5 mt-lg-0 ps-lg-4 ">
             </div>

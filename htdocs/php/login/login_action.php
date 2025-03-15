@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require('../../../../connect_budget_database.php');
+    require('../../../config/connect_budget_database.php');
     require('login_tools.php');
     require('recaptcha_verification.php');
 
