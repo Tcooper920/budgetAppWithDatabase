@@ -11,4 +11,4 @@ htdocs/images/ai/*.psd
 *.psd
 
 # Ignore configuration files
-config/*
+config/.env
