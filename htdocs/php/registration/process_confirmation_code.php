@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['code_verification_attempts'] = 0;
     }
 
-    require('../../../config/connect_budget_database.php');
+    require_once('../../../config/connect_budget_database.php');
 
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($query_to_create_new_user) {
                 echo '<main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
                         <div class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
-                            <h1 class="pb-3">Registered!</h1>
+                            <h1 class="pb-3 fw-bold">Registered!</h1>
                             <p>You are now registered.</p>
                             <div class="mt-3">
                                 <a href="../login/login.php" title="Login">

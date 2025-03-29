@@ -12,7 +12,7 @@ if (empty($_SESSION['csrf_token'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require('../../../config/connect_budget_database.php');
+    require_once('../../../config/connect_budget_database.php');
     $errors = array();
 
     // Check if the CSRF token is set and matches the one stored in the session...
