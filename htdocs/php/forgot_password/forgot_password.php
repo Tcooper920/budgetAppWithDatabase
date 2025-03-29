@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
     <form action="forgot_password.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue mw-27rem">
-        <h1 class="pb-3">We will send a password reset code to your inbox.</h1>
+        <h1 class="pb-3 fw-bold">We will send a password reset code to your inbox.</h1>
         <label class="w-100 mt-2">
             Enter the email address associated with your account:
             <?php if (isset($errors['emailAddressError']))
