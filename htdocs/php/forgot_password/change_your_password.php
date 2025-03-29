@@ -18,7 +18,7 @@ if (empty($_SESSION['csrf_token'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require('../../../config/connect_budget_database.php');
+    require_once('../../../config/connect_budget_database.php');
     $errors = array();
 
     // Check if the CSRF token is set and matches the one stored in the session...
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($query_to_update_password->affected_rows > 0) {
             echo '<main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
             <div class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest mw-27rem">
-                <h1 class="pb-3">Password updated!</h1>
+                <h1 class="pb-3 fw-bold">Password updated!</h1>
                 <p>Your password has been updated successfully.</p>
                 <div class="mt-3">
                     <a href="../login/login.php" title="Login">

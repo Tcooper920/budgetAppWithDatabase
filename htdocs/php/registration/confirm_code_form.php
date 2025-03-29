@@ -1,7 +1,7 @@
 <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
     <form action="process_confirmation_code.php" method="POST" id="confirmation-form"
         class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue">
-        <h1 class="pb-3">Validate your account</h1>
+        <h1 class="pb-3 fw-bold">Validate your account</h1>
         <label for="confirmation_code">Enter the confirmation code sent to your email:</label>
         <div class="mt-3">
             <!-- Error messages will display below -->
@@ -30,7 +30,8 @@
             class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
         <div class="mt-3">
             <input type="submit" value="Confirm code" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
-            <button type="button" id="resend-code" class="btn text-button text-primary mt-2 fs-5">Email me another code</button>
+            <button type="button" id="resend-code" class="btn text-button text-primary mt-2 fs-5">Email me another
+                code</button>
         </div>
     </form>
 </main>

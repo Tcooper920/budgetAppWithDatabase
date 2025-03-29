@@ -1,4 +1,5 @@
 <?php
+# Load environmental variables from .env file
 require_once __DIR__ . '/loadEnv.php';
 loadEnv(__DIR__ . '/.env');
 

@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if user typed "delete my account" in the input field...
     if ($delete_account_input_field_confirmation === "delete my account") {
 
-        require('../../../config/connect_budget_database.php');
+        require_once('../../../config/connect_budget_database.php');
 
         $userid = $_SESSION['user_id'];
 
