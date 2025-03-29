@@ -5,7 +5,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require('../../../config/connect_budget_database.php');
     require('login_tools.php');
-    require('recaptcha_verification.php');
+    require('../../includes/recaptcha_verification.php');
 
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {

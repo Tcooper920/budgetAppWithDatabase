@@ -19,7 +19,7 @@ if (empty($_SESSION['csrf_token'])) {
     <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
         <img src="../../images/budget-builder-logo-stacked.svg" alt="Budget Builder logo" title="Budget Builder"
             width="240" height="240" class="d-none d-sm-block mb-3">
-        <form id="login-form" action="login_action.php" method="POST"
+        <form id="form" action="login_action.php" method="POST"
             class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue mw-27rem">
 
             <!-- Error message container in form header -->

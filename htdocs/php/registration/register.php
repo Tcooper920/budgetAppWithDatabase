@@ -13,6 +13,7 @@ if (empty($_SESSION['csrf_token'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require('../../../config/connect_budget_database.php');
+    require('../../includes/recaptcha_verification.php');
     $errors = array();
 
     // Check if the CSRF token is set and matches the one stored in the session...
@@ -126,7 +127,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
-    <form action="register.php" method="POST" class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue mw-27rem">
+    <form id="form" action="register.php" method="POST"
+        class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue mw-27rem">
+        <!-- Error message container in form header -->
+        <div id="error-container"></div>
         <h1 class="pb-3 fw-bold">Register</h1>
         <label class="w-100">
             First Name:
@@ -177,6 +181,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <!-- CSRF token field -->
         <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"
             class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
+        <!-- reCAPTCHA -->
+        <div class="mt-4">
+            <div class="g-recaptcha" data-sitekey="6LftRuAqAAAAAIFxD5R1sB5ZnFchGxZMv4OKj_qz" data-theme="light"
+                data-size="normal">
+            </div>
+        </div>
         <div class="mt-4">
             <input type="submit" value="Register" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
         </div>
@@ -185,8 +195,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <?php include("../../includes/footer.php"); ?>
 
-<script src="../../js/preserve_scroll_position_onload.js"></script>
 <script src="../../js/show_hide_password.js"></script>
+<script src="../../js/verify_recaptcha_response.js"></script>
 </body>
 
 </html>
