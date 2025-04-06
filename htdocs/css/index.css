@@ -310,6 +310,10 @@ footer a:hover {
   animation: fade-in 0.8s ease forwards;
 }
 
+.progress-bar {
+  outline: 1px solid var(--darkest);
+}
+
 #graph > .progress-bar {
   transform-origin: 0% 0%;
   animation: bar-graph-slide-in 0.5s;
