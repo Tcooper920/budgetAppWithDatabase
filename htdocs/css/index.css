@@ -224,7 +224,8 @@ button.no-rounded-left {
 .Savings::before,
 .Fun::before,
 .Other::before {
-  padding-right: 0.5rem;
+  border-radius: 0.2rem;
+  margin-right: 0.5rem;
 }
 .Fixed::before {
   content: "";

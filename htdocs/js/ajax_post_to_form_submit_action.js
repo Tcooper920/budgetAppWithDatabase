@@ -218,15 +218,15 @@ function printExpensesToPage(result, incomeAmount) {
       expenseItem[1]
     }" class="container d-flex mb-3 p-3 pe-5 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
         <input type="hidden" name="expense_item" value="${expenseItem[0]}">
-        <p class="d-block m-0 w-100 align-self-start">Name: <span class="fw-bold">${
+        <p class="d-block m-0 w-100 align-self-start pe-2">Name: <span class="fw-bold">${
           expenseItem[2]
         }</span></p>
-        <p class="d-block m-0 w-100 align-self-start">Amount: <span class="fw-bold">$${
+        <p class="d-block m-0 w-100 align-self-start">Amount: <span class="fw-bold pe-2">$${
           expenseItem[3]
-        }</span> <span class="text-secondary ps-1">(${findExpensePercentageRelativeToTotalBudgetIncomeAmount(
+        }</span><span class="text-secondary d-md-block d-lg-inline">(${findExpensePercentageRelativeToTotalBudgetIncomeAmount(
       incomeAmount,
       expenseItem[3]
-    )}%)</span></p>
+    )}% of spending)</span></p>
         <p class="d-block m-0 w-100 align-self-start"><span class="fw-bold ${
           expenseItem[4]
         }">${expenseItem[4]}</span></p>
