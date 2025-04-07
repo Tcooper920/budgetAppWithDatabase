@@ -4,5 +4,6 @@ CREATE TABLE IF NOT EXISTS user_expenses (
     expense_name TEXT NOT NULL,
     expense_amount INT UNSIGNED NOT NULL,
     expense_type TEXT NOT NULL,
+    amount_paid INT DEFAULT 0,
     PRIMARY KEY (expense_id)
 );
