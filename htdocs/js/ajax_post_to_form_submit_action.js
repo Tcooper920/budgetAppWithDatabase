@@ -105,6 +105,28 @@ expenseListContainer.addEventListener("click", (e) => {
   }
 });
 
+// Function to save the "Paid" amount within each expense item field...
+expenseListContainer.addEventListener("input", (e) => {
+  e.preventDefault();
+  if (e.target.classList.contains("amount-paid-field")) {
+    let expenseItemFormToAddPaymentTo = `#expense-id-${e.target.getAttribute(
+      "data-expense-id"
+    )}`;
+    $.ajax({
+      type: "post",
+      url: "../budget_queries/form_submit_action.php",
+      data: $(expenseItemFormToAddPaymentTo).serialize(),
+      dataType: "json",
+      success: function (result) {
+        // Print the expense items list to the page with the "Paid" amounts in the fields...
+        // console.log(result["all_expenses"]);
+        console.log(result["all_expenses"]);
+        console.log(expenseItemFormToAddPaymentTo);
+      },
+    });
+  }
+});
+
 // Function to update bar graph and totals for each spending category...
 function updateBarGraph(result) {
   const totalBudgetAmountLeft = document.getElementById(
@@ -218,7 +240,7 @@ function printExpensesToPage(result, incomeAmount) {
       expenseItem[1]
     }" class="container d-flex mb-3 p-3 pe-5 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
         <input type="hidden" name="expense_item" value="${expenseItem[0]}">
-        <p class="d-block m-0 w-100 align-self-start pe-2">Name: <span class="fw-bold">${
+        <p class="d-block m-0 w-100 align-self-start">Name: <span class="fw-bold">${
           expenseItem[2]
         }</span></p>
         <p class="d-block m-0 w-100 align-self-start">Amount: <span class="fw-bold pe-2">$${
@@ -226,16 +248,29 @@ function printExpensesToPage(result, incomeAmount) {
         }</span><span class="text-secondary d-md-block d-lg-inline">(${findExpensePercentageRelativeToTotalBudgetIncomeAmount(
       incomeAmount,
       expenseItem[3]
-    )}% of spending)</span></p>
-        <p class="d-block m-0 w-100 align-self-start"><span class="fw-bold ${
+    )}%)</span></p>
+        <p class="d-block m-0 ps-0 ps-md-5 w-100 align-self-start"><span class="fw-bold ${
           expenseItem[4]
         }">${expenseItem[4]}</span></p>
+        <div class="amount-paid-field-container d-flex align-self-start me-2">
+          <label class="me-2" for="data-expense-id="${
+            expenseItem[0]
+          }">Paid: </label>
+          <input data-expense-id="${
+            expenseItem[0]
+          }" class="amount-paid-field form-control w-100 pe-0 rounded-pill" type="number" name="amount_paid" min="0" placeholder="$0" aria-label="Amount paid" value="${
+      expenseItem[5]
+    }">
+        </div>
         <button type="submit" aria-label="Delete item" title="Delete this item" id="${
           expenseItem[0]
         }" class="remove-btn btn fw-bolder position-absolute px-3 py-0 mt-3 top-0 end-0">✕</button>
       </form>`;
     expenseListContainer.append(containerForExpense);
   });
+
+  // On "amount paid" field value change, format the text field input...
+  $(".amount-paid-field").on("input", restrictFieldInput);
 }
 
 // Function to clear expense fields after each submission...

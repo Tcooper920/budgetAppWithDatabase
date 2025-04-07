@@ -273,6 +273,16 @@ footer a:hover {
   text-decoration: underline;
 }
 
+.amount-paid-field-container {
+  width: 30rem;
+  max-width: 10rem;
+}
+
+.amount-paid-field-container .form-control {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 /* Keyframe animations */
 @keyframes bar-graph-slide-in {
   from {
