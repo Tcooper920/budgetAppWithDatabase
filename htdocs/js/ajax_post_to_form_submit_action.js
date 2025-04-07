@@ -90,6 +90,13 @@ expenseListContainer.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.classList.contains("remove-btn")) {
     let expenseItemFormToDelete = `#${e.target.parentNode.id}`;
+    // This invisible field is populated on the form item (expense item) that needs to be deleted.
+    // PHP checks if this field has been filled, and if it has, deletes the item.
+    let invisibleFieldForTogglingValue = document.getElementById(
+      `delete-${e.target.parentNode.id}`
+    );
+    // Add "delete" value to signal to PHP that this expense needs to be deleted from database...
+    invisibleFieldForTogglingValue.value = "delete";
     $.ajax({
       type: "post",
       url: "../budget_queries/form_submit_action.php",
@@ -117,12 +124,7 @@ expenseListContainer.addEventListener("input", (e) => {
       url: "../budget_queries/form_submit_action.php",
       data: $(expenseItemFormToAddPaymentTo).serialize(),
       dataType: "json",
-      success: function (result) {
-        // Print the expense items list to the page with the "Paid" amounts in the fields...
-        // console.log(result["all_expenses"]);
-        console.log(result["all_expenses"]);
-        console.log(expenseItemFormToAddPaymentTo);
-      },
+      success: function (result) {},
     });
   }
 });
@@ -240,6 +242,9 @@ function printExpensesToPage(result, incomeAmount) {
       expenseItem[1]
     }" class="container d-flex mb-3 p-3 pe-5 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
         <input type="hidden" name="expense_item" value="${expenseItem[0]}">
+        <input id="delete-expense-id-${
+          expenseItem[0]
+        }" type="hidden" name="expense_item_delete" value="">
         <p class="d-block m-0 w-100 align-self-start">Name: <span class="fw-bold">${
           expenseItem[2]
         }</span></p>

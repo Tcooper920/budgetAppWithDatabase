@@ -35,16 +35,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $query_to_post_expense->execute();
         }
     }
-    // if (
-    //     !empty($_POST['expense_item'])
-    // ) {
-    //     # Delete expense...
-    //     $expense_item = $_POST["expense_item"];
+    if (
+        !empty($_POST['expense_item_delete'])
+    ) {
+        # Delete expense...
+        $expense_item = $_POST["expense_item"];
 
-    //     $query_to_delete_expense = $budget_database->prepare("DELETE FROM user_expenses WHERE expense_id = ?");
-    //     $query_to_delete_expense->bind_param("i", $expense_item);
-    //     $query_to_delete_expense->execute();
-    // }
+        $query_to_delete_expense = $budget_database->prepare("DELETE FROM user_expenses WHERE expense_id = ?");
+        $query_to_delete_expense->bind_param("i", $expense_item);
+        $query_to_delete_expense->execute();
+    }
     # Save "Paid" amount fields...
     if (isset($_POST['amount_paid'])) {
         $amount_paid = $_POST['amount_paid'];
