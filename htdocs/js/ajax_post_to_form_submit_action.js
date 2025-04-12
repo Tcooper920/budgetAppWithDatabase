@@ -42,6 +42,9 @@ const budgetAnalyticsContainer = document.getElementById("budget-analytics");
 // Variable declaration for expense list container...
 const expenseListContainer = document.getElementById("expense-list-container");
 
+// Variable declaration for container containing the total amount paid off...
+const totalAmountPaid = document.getElementById("total-amount-paid");
+
 // On page load, fire AJAX to retrieve data...
 $(window).load(ajaxRequestToPhpForProcessing);
 
@@ -80,6 +83,8 @@ function ajaxRequestToPhpForProcessing(e) {
       clearExpenseFields();
       // Display the budget analytics if the user has entered an income amount...
       displayBudgetAnalytics();
+      // Print total amouht paid off to the page...
+      printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
     },
   });
 }
@@ -107,6 +112,8 @@ expenseListContainer.addEventListener("click", (e) => {
         updateBarGraph(result);
         // Print the expense items list to the page...
         printExpensesToPage(result["all_expenses"], result["income_amount"]);
+        // Print total amouht paid off to the page...
+        printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
       },
     });
   }
@@ -124,7 +131,10 @@ expenseListContainer.addEventListener("input", (e) => {
       url: "../budget_queries/form_submit_action.php",
       data: $(expenseItemFormToAddPaymentTo).serialize(),
       dataType: "json",
-      success: function (result) {},
+      success: function (result) {
+        // Print total amouht paid off to the page...
+        printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
+      },
     });
   }
 });
@@ -276,6 +286,11 @@ function printExpensesToPage(result, incomeAmount) {
 
   // On "amount paid" field value change, format the text field input...
   $(".amount-paid-field").on("input", restrictFieldInput);
+}
+
+// Print the total amount paid off to the page (This adds up all the "Paid" fields within each expense item)...
+function printTotalAmountPaidfOffToPage(totalAmountPaidOff) {
+  totalAmountPaid.innerText = totalAmountPaidOff;
 }
 
 // Function to clear expense fields after each submission...

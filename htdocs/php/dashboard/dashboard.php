@@ -106,6 +106,11 @@ require("../../includes/header.php");
                 <h2 class="mt-5 pb-3">Expenses:</h2>
             </div>
             <div id="expense-list-container"></div>
+            <hr class="container my-4">
+            <div class="total-amount-paid-container container text-md-end">
+                <p class="fs-5"><span class="me-1">Total amount paid:</span> <span class="fs-3 fw-bold">$</span><span
+                        id="total-amount-paid" class="fs-3 fw-bold"></span></p>
+            </div>
         </div>
     </main>
 
