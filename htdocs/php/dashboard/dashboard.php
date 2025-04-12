@@ -21,7 +21,7 @@ require("../../includes/header.php");
         <form id="income-expense-form">
             <div id="enter-income-form" class="container fs-5 d-flex flex-column p-4 my-3 bg-light rounded dark-blue">
                 <label>
-                    Enter your income amount:
+                    Enter your budget amount:
                     <input id="budget-amount-field" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill"
                         type="number" step="1" name="total_income" placeholder="$0" aria-label="Total Budget Amount"
                         value="<?php echo "$current_income" ?>">
@@ -51,7 +51,7 @@ require("../../includes/header.php");
         </form>
         <div id="budget-analytics" class="">
             <div class="container px-0">
-                <h2 class="mt-5 pb-3">Total Spending Breakdown:</h2>
+                <h2 class="mt-5 pb-3">Total Budget Breakdown:</h2>
             </div>
             <div class="container p-4 mt-2 mb-4 navy-blue-background rounded">
                 <div id="graph" class="progress container p-0">
