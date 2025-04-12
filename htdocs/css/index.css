@@ -37,6 +37,11 @@ nav {
   z-index: 0;
 }
 
+.active-nav-link {
+  border-bottom: 0.1rem solid black;
+  color: black;
+}
+
 body {
   font-family: "Outfit", sans-serif;
 }
