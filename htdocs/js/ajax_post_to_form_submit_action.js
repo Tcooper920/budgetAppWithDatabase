@@ -45,6 +45,9 @@ const expenseListContainer = document.getElementById("expense-list-container");
 // Variable declaration for container containing the total amount paid off...
 const totalAmountPaid = document.getElementById("total-amount-paid");
 
+// Variable declaration for container containing the total budget amount...
+const totalBudgetAmount = document.getElementById("total-budget-amount");
+
 // On page load, fire AJAX to retrieve data...
 $(window).load(ajaxRequestToPhpForProcessing);
 
@@ -54,7 +57,7 @@ displayBudgetAnalytics();
 // On form submit, fire AJAX to send/retrieve data...
 $("#income-expense-form").on("submit", ajaxRequestToPhpForProcessing);
 
-// On "income amount" field value change, update the displayed budget info and format the text field input...
+// On "Enter your budget amount" field value change, update the displayed budget info and format the text field input...
 $("#budget-amount-field").on("input", handleBudgetAmountInput);
 
 // On "expense amount" field value change, format the text field input...
@@ -268,12 +271,12 @@ function printExpensesToPage(result, incomeAmount) {
           expenseItem[4]
         }">${expenseItem[4]}</span></p>
         <div class="amount-paid-field-container d-flex align-self-start me-2">
-          <label class="me-2" for="data-expense-id="${
+          <label class="me-2" for="data-expense-id-${
             expenseItem[0]
-          }">Paid: </label>
-          <input data-expense-id="${
-            expenseItem[0]
-          }" class="amount-paid-field form-control w-100 pe-0 rounded-pill" type="number" name="amount_paid" min="0" placeholder="$0" aria-label="Amount paid" value="${
+          }">Spent: </label>
+          <input id="data-expense-id-${expenseItem[0]}" data-expense-id="${
+      expenseItem[0]
+    }" class="amount-paid-field form-control w-100 pe-0 rounded-pill" type="number" name="amount_paid" min="0" placeholder="$0" aria-label="Amount paid" value="${
       expenseItem[5]
     }">
         </div>
@@ -288,9 +291,16 @@ function printExpensesToPage(result, incomeAmount) {
   $(".amount-paid-field").on("input", restrictFieldInput);
 }
 
-// Print the total amount paid off to the page (This adds up all the "Paid" fields within each expense item)...
+// At the end of the page, print the total amount spent (This adds up all the "Paid" fields within each expense item)
+// and the total budget amount...
 function printTotalAmountPaidfOffToPage(totalAmountPaidOff) {
+  // Print amount spent...
   totalAmountPaid.innerText = totalAmountPaidOff;
+  // Print budget amount, or print "0" if empty...
+  totalBudgetAmount.innerText = incomeAmountField.value;
+  if (totalBudgetAmount.innerText == "") {
+    totalBudgetAmount.innerText = "0";
+  }
 }
 
 // Function to clear expense fields after each submission...
@@ -324,7 +334,9 @@ function restrictFieldInput(event) {
   }
 
   // Set the new value to the input field
-  event.target.value = parseInt(value);
+  if (!isNaN(parseFloat(event.target.value))) {
+    event.target.value = parseInt(value);
+  }
 }
 
 // Function to display "Add an expense" form and budget analytics if the user's income field is not set to "0" or empty...
