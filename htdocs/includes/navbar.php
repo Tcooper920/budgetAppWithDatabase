@@ -34,6 +34,7 @@ function print_nav_item($is_logged_in, $base_url, $page_file_path, $title_attrib
       <ul class="navbar-nav ms-auto mt-3 mt-lg-0 mb-xl-0">
         <?php
         print_nav_item($is_logged_in, $base_url, "php/dashboard/dashboard.php", "My budget dashboard", $current_page, "dashboard.php", "My budget");
+        print_nav_item($is_logged_in, $base_url, "php/how_to_use/how_to_use.php", "How to use", $current_page, "how_to_use.php", "How to use");
         print_nav_item($is_logged_in, $base_url, "php/privacy_policy/privacy_policy.php", "Privacy policy", $current_page, "privacy_policy.php", "Privacy policy");
         print_nav_item($is_logged_in, $base_url, "php/registration/delete_account.php", "Delete account", $current_page, "delete_account.php", "Delete account");
         print_nav_item(!$is_logged_in, $base_url, "php/registration/register.php", "Register", $current_page, "register.php", "Register");
