@@ -258,16 +258,16 @@ function printExpensesToPage(result, incomeAmount) {
         <input id="delete-expense-id-${
           expenseItem[0]
         }" type="hidden" name="expense_item_delete" value="">
-        <p class="d-block m-0 w-100 align-self-start">Name: <span class="fw-bold">${
+        <p class="d-block mb-2 mb-sm-0 w-100 align-self-start">Name: <span class="fw-bold">${
           expenseItem[2]
         }</span></p>
-        <p class="d-block m-0 w-100 align-self-start">Amount: <span class="fw-bold pe-2">$${
+        <p class="d-block mb-2 mb-sm-0 w-100 align-self-start">Amount: <span class="fw-bold pe-2">$${
           expenseItem[3]
         }</span><span class="text-secondary d-md-block d-lg-inline">(${findExpensePercentageRelativeToTotalBudgetIncomeAmount(
       incomeAmount,
       expenseItem[3]
     )}%)</span></p>
-        <p class="d-block m-0 ps-0 ps-md-5 w-100 align-self-start"><span class="fw-bold ${
+        <p class="d-block mb-2 mb-sm-0 ps-0 ps-md-5 w-100 align-self-start"><span class="fw-bold ${
           expenseItem[4]
         }">${expenseItem[4]}</span></p>
         <div class="amount-paid-field-container d-flex align-self-start me-2">
