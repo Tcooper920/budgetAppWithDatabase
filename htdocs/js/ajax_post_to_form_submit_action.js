@@ -1,6 +1,11 @@
 // Variable declaration for "Add an expense" form field...
 const addAnExpenseFormField = document.getElementById("add-expense-container");
 
+// Variable to get "Clear amount spent" button...
+const clearAmountSpentBtn = document.getElementById(
+  "clear-amount-spent-fields"
+);
+
 // Variable declarations for bar chart bars for each spending type...
 const fixedSpendingGraphBar = document.getElementById(
   "fixed-spending-progress-bar"
@@ -86,7 +91,7 @@ function ajaxRequestToPhpForProcessing(e) {
       clearExpenseFields();
       // Display the budget analytics if the user has entered an income amount...
       displayBudgetAnalytics();
-      // Print total amouht paid off to the page...
+      // Print total amount paid off to the page...
       printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
     },
   });
@@ -115,15 +120,20 @@ expenseListContainer.addEventListener("click", (e) => {
         updateBarGraph(result);
         // Print the expense items list to the page...
         printExpensesToPage(result["all_expenses"], result["income_amount"]);
-        // Print total amouht paid off to the page...
+        // Print total amount paid off to the page...
         printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
       },
     });
   }
 });
 
-// Function to save the "Paid" amount within each expense item field...
-expenseListContainer.addEventListener("input", (e) => {
+// Function to save the "Spent" amount within each expense item field...
+expenseListContainer.addEventListener(
+  "input",
+  saveSpentAmountsForEachExpenseItemField
+);
+
+function saveSpentAmountsForEachExpenseItemField(e) {
   e.preventDefault();
   if (e.target.classList.contains("amount-paid-field")) {
     let expenseItemFormToAddPaymentTo = `#expense-id-${e.target.getAttribute(
@@ -135,12 +145,12 @@ expenseListContainer.addEventListener("input", (e) => {
       data: $(expenseItemFormToAddPaymentTo).serialize(),
       dataType: "json",
       success: function (result) {
-        // Print total amouht paid off to the page...
+        // Print total amount paid off to the page...
         printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
       },
     });
   }
-});
+}
 
 // Function to update bar graph and totals for each spending category...
 function updateBarGraph(result) {
@@ -309,6 +319,23 @@ function clearExpenseFields() {
     expenseName.value = "";
     expenseAmount.value = "";
   }
+}
+
+// Function to clear "Spent" fields within each expense item...
+clearAmountSpentBtn.addEventListener("click", clearSpentFields);
+
+function clearSpentFields(e) {
+  expenseAmountPaidFields = [
+    ...document.getElementsByClassName("amount-paid-field"),
+  ];
+  expenseAmountPaidFields.forEach((paidField) => {
+    paidField.value = "";
+    // Manually call save function with a fake event object for each "Spent" field...
+    saveSpentAmountsForEachExpenseItemField({
+      preventDefault: () => {},
+      target: paidField,
+    });
+  });
 }
 
 // Function to calculate percentages for each expense item in the list...

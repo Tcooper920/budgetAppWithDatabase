@@ -102,8 +102,10 @@ require("../../includes/header.php");
                     </p>
                 </div>
             </div>
-            <div class="container px-0">
-                <h2 class="mt-5 pb-3">Expenses:</h2>
+            <div class="container d-flex px-0">
+                <h2 class="mt-5 pb-3">Expenses:</h2><button id="clear-amount-spent-fields"
+                    class="btn btn-primary mt-5 mb-3 px-4 ms-auto rounded-pill" type="button">Clear
+                    amount spent</button>
             </div>
             <div id="expense-list-container"></div>
             <hr class="container my-4">
