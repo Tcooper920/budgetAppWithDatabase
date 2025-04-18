@@ -159,57 +159,32 @@ function updateBarGraph(result) {
   );
   totalBudgetAmountLeft.innerHTML = `<p class="mb-0"><strong class="me-1 fs-3">$${result["total_amount_left_to_budget_with"]}</strong> left to budget with.</p>`;
 
-  // If amount left for budget is negative, make number red:
-  if (result["total_amount_left_to_budget_with"] < 0) {
-    totalBudgetAmountLeft.classList.add("negative-balance-to-budget-with");
-  } else {
-    totalBudgetAmountLeft.classList.remove("negative-balance-to-budget-with");
-  }
+  // If amount left for budget is negative, make number red...
+  result["total_amount_left_to_budget_with"] < 0
+    ? totalBudgetAmountLeft.classList.add("negative-balance-to-budget-with")
+    : totalBudgetAmountLeft.classList.remove("negative-balance-to-budget-with");
 
   // Adjust bars in bar chart for each spending type (adjust widths and attributes)...
-  fixedSpendingGraphBar.style.width = `${result["fixed_percentage"]}%`;
-  fixedSpendingGraphBar.setAttribute(
-    "aria-valuenow",
-    `${result["fixed_percentage"]}%`
-  );
-
-  variableSpendingGraphBar.style.width = `${result["variable_percentage"]}%`;
-  variableSpendingGraphBar.setAttribute(
-    "aria-valuenow",
-    `${result["variable_percentage"]}%`
-  );
-
-  debtSpendingGraphBar.style.width = `${result["debt_percentage"]}%`;
-  debtSpendingGraphBar.setAttribute(
-    "aria-valuenow",
-    `${result["debt_percentage"]}%`
-  );
-
-  savingsSpendingGraphBar.style.width = `${result["savings_percentage"]}%`;
-  savingsSpendingGraphBar.setAttribute(
-    "aria-valuenow",
-    `${result["savings_percentage"]}%`
-  );
-
-  funSpendingGraphBar.style.width = `${result["fun_percentage"]}%`;
-  funSpendingGraphBar.setAttribute(
-    "aria-valuenow",
-    `${result["fun_percentage"]}%`
-  );
-
-  otherSpendingGraphBar.style.width = `${result["other_percentage"]}%`;
-  otherSpendingGraphBar.setAttribute(
-    "aria-valuenow",
-    `${result["other_percentage"]}%`
-  );
+  adjustBarsInGraph(result, fixedSpendingGraphBar, "fixed_percentage");
+  adjustBarsInGraph(result, variableSpendingGraphBar, "variable_percentage");
+  adjustBarsInGraph(result, debtSpendingGraphBar, "debt_percentage");
+  adjustBarsInGraph(result, savingsSpendingGraphBar, "savings_percentage");
+  adjustBarsInGraph(result, funSpendingGraphBar, "fun_percentage");
+  adjustBarsInGraph(result, otherSpendingGraphBar, "other_percentage");
 
   // Post total amounts for each spending type...
-  fixedSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Fixed:</h3> $${result["total_fixed_spending"]}<br>${result["fixed_percentage"]}%`;
-  variableSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Variable:</h3> $${result["total_variable_spending"]}<br>${result["variable_percentage"]}%`;
-  debtSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Debt:</h3> $${result["total_debt_spending"]}<br>${result["debt_percentage"]}%`;
-  savingsSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Savings:</h3> $${result["total_savings_spending"]}<br>${result["savings_percentage"]}%`;
-  funSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Fun:</h3> $${result["total_fun_spending"]}<br>${result["fun_percentage"]}%`;
-  otherSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold">Other:</h3> $${result["total_other_spending"]}<br>${result["other_percentage"]}%`;
+  fixedSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold text-decoration-none">Fixed:</h3> $${result["total_fixed_spending"]}<br>${result["fixed_percentage"]}%`;
+  variableSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold text-decoration-none">Variable:</h3> $${result["total_variable_spending"]}<br>${result["variable_percentage"]}%`;
+  debtSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold text-decoration-none">Debt:</h3> $${result["total_debt_spending"]}<br>${result["debt_percentage"]}%`;
+  savingsSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold text-decoration-none">Savings:</h3> $${result["total_savings_spending"]}<br>${result["savings_percentage"]}%`;
+  funSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold text-decoration-none">Fun:</h3> $${result["total_fun_spending"]}<br>${result["fun_percentage"]}%`;
+  otherSpendingTotal.innerHTML = `<h3 class="fs-5 fw-bold text-decoration-none">Other:</h3> $${result["total_other_spending"]}<br>${result["other_percentage"]}%`;
+}
+
+// Function to adjust bars in bar chart for each spending type (adjust widths and attributes)...
+function adjustBarsInGraph(result, barInGraph, spendingType) {
+  barInGraph.style.width = `${result[spendingType]}%`;
+  barInGraph.setAttribute("aria-valuenow", `${result[spendingType]}%`);
 }
 
 // Function to sort expense items by their expense types (i.e. Fixed, Variable, Debt, etc.)
@@ -297,7 +272,7 @@ function printExpensesToPage(result, incomeAmount) {
     expenseListContainer.append(containerForExpense);
   });
 
-  // On "amount paid" field value change, format the text field input...
+  // On "Paid" field value change, format the text field input...
   $(".amount-paid-field").on("input", restrictFieldInput);
 }
 
@@ -322,10 +297,8 @@ function clearExpenseFields() {
 }
 
 // Function to clear "Spent" fields within each expense item...
-clearAmountSpentBtn.addEventListener("click", clearSpentFields);
-
-function clearSpentFields(e) {
-  expenseAmountPaidFields = [
+clearAmountSpentBtn.addEventListener("click", (e) => {
+  const expenseAmountPaidFields = [
     ...document.getElementsByClassName("amount-paid-field"),
   ];
   expenseAmountPaidFields.forEach((paidField) => {
@@ -336,7 +309,7 @@ function clearSpentFields(e) {
       target: paidField,
     });
   });
-}
+});
 
 // Function to calculate percentages for each expense item in the list...
 function findExpensePercentageRelativeToTotalBudgetIncomeAmount(
