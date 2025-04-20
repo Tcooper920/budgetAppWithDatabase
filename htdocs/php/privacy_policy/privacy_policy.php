@@ -21,7 +21,8 @@ require("../../includes/header.php");
                     By using the App, you agree to the collection and use of information in accordance with this policy.
                 </p>
                 <hr class="mb-4">
-                <h2 class="pb-3 fw-bold">1. Information we collect</h2>
+                <h2 class="pb-3 fw-bold align-items-center d-sm-flex"><span
+                        class="circle-numbers flex-shrink-0">1</span>Information we collect</h2>
                 <p class="fs-5 mb-4">We collect the following personal information when you use the App:</p>
                 <ul class="fs-5 mb-4">
                     <li><strong class="fw-bold">Email Address:</strong> To create and manage your account.</li>
@@ -32,7 +33,7 @@ require("../../includes/header.php");
                     such as financial data, personal
                     identification numbers, or sensitive financial records.</p>
                 <hr class="mb-4">
-                <h2 class="pb-3 fw-bold">2. How we use your information</h2>
+                <h2 class="pb-3 fw-bold"><span class="circle-numbers">2</span>How we use your information</h2>
                 <p class="fs-5 mb-4">The information we collect is used for the following purposes:</p>
                 <ul class="fs-5 mb-4">
                     <li>To create and manage your user account.</li>
@@ -45,7 +46,7 @@ require("../../includes/header.php");
                     process certain information, such as your IP address, the actions you perform on the website, and
                     information about your browser and device.</p>
                 <hr class="mb-4">
-                <h2 class="pb-3 fw-bold">3. Data security</h2>
+                <h2 class="pb-3 fw-bold"><span class="circle-numbers">3</span>Data security</h2>
                 <p class="fs-5 mb-4">We employ a range of security measures to safeguard the information you provide.
                     This includes encryption, Google's reCAPTCHA service, parameterized queries, CSRF tokens, honeypots,
                     etc. to protect against unauthorized access and bots.</p>
@@ -54,20 +55,20 @@ require("../../includes/header.php");
                     information (such as Social Security Numbers, bank account details, or other confidential
                     information) within the App.</p>
                 <hr class="mb-4">
-                <h2 class="pb-3 fw-bold">4. Data retention</h2>
+                <h2 class="pb-3 fw-bold"><span class="circle-numbers">4</span>Data retention</h2>
                 <p class="fs-5 mb-4">Your personal data will be retained only for as long as needed to fulfill the
                     purposes outlined in this Privacy Policy.</p>
                 <hr class="mb-4">
-                <h2 class="pb-3 fw-bold">5. Your rights</h2>
+                <h2 class="pb-3 fw-bold"><span class="circle-numbers">5</span>Your rights</h2>
                 <p class="fs-5 mb-4">You may update or delete your account information at any time by selecting "Delete
                     account" in the navigation bar.</p>
                 <hr class="mb-4">
-                <h2 class="pb-3 fw-bold">6. Third-party services</h2>
+                <h2 class="pb-3 fw-bold"><span class="circle-numbers">6</span>Third-party services</h2>
                 <p class="fs-5 mb-4">The App may contain links to external websites or services. We are not responsible
                     for the privacy practices or content of these third-party websites. Please review their privacy
                     policies before providing any personal information.</p>
                 <hr class="mb-4">
-                <h2 class="pb-3 fw-bold">7. Limitation of liability</h2>
+                <h2 class="pb-3 fw-bold"><span class="circle-numbers">7</span>Limitation of liability</h2>
                 <p class="fs-5 mb-4">While we take reasonable precautions to protect your data, we cannot guarantee the
                     absolute security of your personal information. By using this App, you acknowledge and agree that
                     BudgetBuilder is not liable for any loss, damage, unauthorized access, disclosure, alteration, or
@@ -81,17 +82,26 @@ require("../../includes/header.php");
                 <p class="fs-5 mb-4">You use this App at your own risk, and we strongly encourage you to keep your login
                     credentials secure and avoid entering highly sensitive personal information.</p>
                 <hr class="mb-4">
-                <h2 class="pb-3 fw-bold">8. Children's privacy</h2>
+                <h2 class="pb-3 fw-bold"><span class="circle-numbers">8</span>Children's privacy</h2>
                 <p class="fs-5 mb-4">The App is not intended for use by children under the age of 13. We do not
                     knowingly collect or solicit personal data from anyone under 13. If we become aware that a child
                     under the age of 13 has provided us with personal information, we will delete that information
                     immediately.</p>
                 <hr class="mb-4">
-                <h2 class="pb-3 fw-bold">9. Changes to this privacy policy</h2>
+                <h2 class="pb-3 fw-bold"><span class="circle-numbers">9</span>Cookies and tracking technologies</h2>
+                <p class="fs-5 mb-4">We use cookies and similar technologies only as necessary for the functioning and
+                    security of the App, such as enabling reCAPTCHA. We do not use cookies for advertising or analytics
+                    purposes.</p>
+                <hr class="mb-4">
+                <h2 class="pb-3 fw-bold"><span class="circle-numbers">10</span>Changes to this privacy policy</h2>
                 <p class="fs-5 mb-4">We reserve the right to update or modify this Privacy Policy at any time. Any
                     changes will be posted on this page, and the date of the most recent update will be indicated at the
                     top of the page. We encourage you to review this Privacy Policy periodically to stay informed about
                     how we are protecting your data.</p>
+                <hr class="mb-4">
+                <h2 class="pb-3 fw-bold"><span class="circle-numbers">11</span>Consent</h2>
+                <p class="fs-5 mb-4">By using the App, you consent to the collection and use of your personal
+                    information as outlined in this Privacy Policy.</p>
                 <div class="row pt-2">
                     <div class="col-sm-7">
                         <a href="/budget_app_with_database/htdocs/index.php"
