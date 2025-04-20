@@ -17,7 +17,7 @@ function printFooterNavItem($is_logged_in, $base_url, $page_file_path, $title_at
 <div>
   <footer>
     <div class="d-flex flex-wrap justify-content-between align-items-center py-4 px-3 px-sm-5 border-top mt-5">
-      <p class="col-md-4 mb-0 text-light">© BudgetBuilder</p>
+      <p class="col-md-4 mb-0 text-light"><strong class="fw-bold">BudgetBuilder</strong></p>
 
       <a href="<?php echo $base_url ?>index.php"
         class="col-md-4 d-flex align-items-center justify-content-center me-md-auto link-body-emphasis text-decoration-none">
