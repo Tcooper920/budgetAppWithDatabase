@@ -14,11 +14,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ) {
         # Post total income to budget with...
         $userid = $_SESSION["user_id"];
-        $total_income = $_POST["total_income"];
+        $total_income = filter_input(INPUT_POST, 'total_income', FILTER_VALIDATE_INT);
 
-        $query_to_post_budget_amount = $budget_database->prepare("INSERT INTO user_income (user_id, total_income) VALUES (?, ?)");
-        $query_to_post_budget_amount->bind_param("ii", $userid, $total_income);
-        $query_to_post_budget_amount->execute();
+        if ($total_income !== false) {
+            $query_to_post_budget_amount = $budget_database->prepare("INSERT INTO user_income (user_id, total_income) VALUES (?, ?)");
+            $query_to_post_budget_amount->bind_param("ii", $userid, $total_income);
+            $query_to_post_budget_amount->execute();
+        } else {
+            # If $total_income is not an integer, it might be an attempt at a SQL injection. Throw an error...
+            header('Location: ../error_pages/form_verification_error.php');
+            exit;
+        }
 
         if (
             !empty($_POST['expense_name'])
