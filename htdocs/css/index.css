@@ -38,7 +38,6 @@ nav {
 }
 
 .active-nav-link {
-  border-bottom: 0.1rem solid black;
   color: black;
 }
 
@@ -360,6 +359,12 @@ footer a:hover {
 }
 
 /* MEDIA QUERIES *******************************************************************************************/
+
+@media screen and (min-width: 992px) {
+  .active-nav-link {
+    border-bottom: 0.1rem solid black;
+  }
+}
 
 @media screen and (min-width: 690px) {
   .toast {
