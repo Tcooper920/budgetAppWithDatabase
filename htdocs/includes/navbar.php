@@ -11,7 +11,7 @@ function print_nav_item($is_logged_in, $base_url, $page_file_path, $title_attrib
     $is_active = ($current_page == $page_file_name ? 'active-nav-link' : '');
 
     echo "
-            <li class='nav-item ps-3'>
+            <li class='nav-item ps-3 pe-3 pe-sm-0'>
               <a href='{$base_url}{$page_file_path}' title='{$title_attribute}' 
               class='nav-link fs-5 {$is_active}'>{$nav_item_name}</a>
             </li>";
