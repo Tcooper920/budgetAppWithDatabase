@@ -94,6 +94,9 @@ function ajaxRequestToPhpForProcessing(e) {
       // Print total amount paid off to the page...
       printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
     },
+    error: function () {
+      window.location.href = "../error_pages/form_verification_error.php";
+    },
   });
 }
 
@@ -122,6 +125,9 @@ expenseListContainer.addEventListener("click", (e) => {
         printExpensesToPage(result["all_expenses"], result["income_amount"]);
         // Print total amount paid off to the page...
         printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
+      },
+      error: function () {
+        window.location.href = "../error_pages/form_verification_error.php";
       },
     });
   }
@@ -232,6 +238,9 @@ function printExpensesToPage(result, incomeAmount) {
   // Sort results by expense type
   let sortedResults = sortExpenseItems(result);
 
+  // Get CSRF token from form and add it to each expense item that is printed to the page
+  const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
   expenseListContainer.innerHTML = "";
   sortedResults.forEach((expenseItem) => {
     let containerForExpense = document.createElement("div");
@@ -268,6 +277,7 @@ function printExpensesToPage(result, incomeAmount) {
         <button type="submit" aria-label="Delete item" title="Delete this item" id="${
           expenseItem[0]
         }" class="remove-btn btn fw-bolder position-absolute px-3 py-0 mt-3 top-0 end-0">✕</button>
+        <input type="hidden" name="csrf_token" value="${csrfToken}" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
       </form>`;
     expenseListContainer.append(containerForExpense);
   });

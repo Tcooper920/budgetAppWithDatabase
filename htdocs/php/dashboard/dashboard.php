@@ -48,6 +48,8 @@ require("../../includes/header.php");
                         expense</button>
                 </div>
             </div>
+            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"
+                class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
         </form>
         <div id="budget-analytics" class="">
             <div class="container px-0">

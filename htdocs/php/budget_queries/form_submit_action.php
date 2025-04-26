@@ -1,14 +1,31 @@
 <?php
 
 session_start();
+
+// Generate CSRF token if it's not already in the session
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+// Store it in a local variable for output
+$csrf_token = $_SESSION['csrf_token'];
+
 if (!isset($_SESSION['user_id'])) {
     require('../login/login_tools.php');
     load();
 }
+
 require_once('../../../config/connect_budget_database.php');
 require('../budget_queries/retrieve_income.php');
 require('../budget_queries/retrieve_expenses.php');
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Check if the CSRF token is set and matches the one stored in the session...
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        // CSRF token validation failed...
+        header('Location: ../error_pages/form_verification_error.php');
+        exit;
+    }
     if (
         !empty($_POST['total_income'])
     ) {
