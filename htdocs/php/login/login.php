@@ -1,7 +1,4 @@
 <?php
-
-require("../../includes/header.php");
-
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -10,6 +7,13 @@ if (session_status() == PHP_SESSION_NONE) {
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Generate a secure random token
 }
+
+if (isset($_SESSION['user_id'])) {
+    header("Location: ../dashboard/dashboard.php");
+    exit();
+}
+
+require("../../includes/header.php");
 
 ?>
 
