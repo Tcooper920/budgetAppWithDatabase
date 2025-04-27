@@ -54,7 +54,7 @@ const totalAmountPaid = document.getElementById("total-amount-paid");
 const totalBudgetAmount = document.getElementById("total-budget-amount");
 
 // On page load, fire AJAX to retrieve data...
-$(window).load(ajaxRequestToPhpForProcessing);
+$(window).on("load", ajaxRequestToPhpForProcessing);
 
 // Display analytics if user enters an income that isn't "0" or empty...
 displayBudgetAnalytics();
