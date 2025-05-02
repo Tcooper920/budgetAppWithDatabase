@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"
             class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
         <div class="mt-4">
-            <input type="submit" value="Confirm" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
+            <input type="submit" value="Send code" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
         </div>
     </form>
 </main>

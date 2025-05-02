@@ -36,6 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors["pass1Error"] = "Enter your password.";
     }
 
+    # Make sure password 2 is filled in (for password confirmation)...
+    if (empty($_POST['pass2'])) {
+        $errors["pass2Error"] = "Confirm your password.";
+    }
+
     # Make sure password is long enough (for security)...
     if (strlen(trim($_POST['pass1'])) < 9) {
         $errors['pass1Error'] = 'Password must be at least 9 characters long.';
