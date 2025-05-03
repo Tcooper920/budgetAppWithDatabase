@@ -83,15 +83,10 @@ function ajaxRequestToPhpForProcessing(e) {
     data: $("#income-expense-form").serialize(),
     dataType: "json",
     success: function (result) {
-      // Update bar graph...
       updateBarGraph(result);
-      // Print the expense items list to the page...
       printExpensesToPage(result["all_expenses"], result["income_amount"]);
-      // Clear expense item fields after submission...
       clearExpenseFields();
-      // Display the budget analytics if the user has entered an income amount...
       displayBudgetAnalytics();
-      // Print total amount paid off to the page...
       printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
     },
     error: function () {
@@ -119,11 +114,8 @@ expenseListContainer.addEventListener("click", (e) => {
       data: $(expenseItemFormToDelete).serialize(),
       dataType: "json",
       success: function (result) {
-        // Update bar graph...
         updateBarGraph(result);
-        // Print the expense items list to the page...
         printExpensesToPage(result["all_expenses"], result["income_amount"]);
-        // Print total amount paid off to the page...
         printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
       },
       error: function () {
@@ -151,7 +143,6 @@ function saveSpentAmountsForEachExpenseItemField(e) {
       data: $(expenseItemFormToAddPaymentTo).serialize(),
       dataType: "json",
       success: function (result) {
-        // Print total amount paid off to the page...
         printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
       },
     });
