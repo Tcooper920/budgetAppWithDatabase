@@ -3,10 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Generate a CSRF (Cross-Site Request Forgery) token if one does not exist...
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Generate a secure random token
-}
+require('../../includes/csrf.php'); // Generate CSRF token
 
 if (isset($_SESSION['user_id'])) {
     header("Location: ../dashboard/dashboard.php");
