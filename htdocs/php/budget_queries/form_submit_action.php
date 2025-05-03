@@ -32,6 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         # Post total income to budget with...
         $userid = $_SESSION["user_id"];
         $total_income = filter_input(INPUT_POST, 'total_income', FILTER_VALIDATE_INT);
+        $total_income = trim($total_income);
+        $total_income = ltrim($total_income, '0');
+
+        if ($total_income === '') {
+            $total_income = '0';
+        }
 
         if ($total_income !== false) {
             $query_to_post_budget_amount = $budget_database->prepare("INSERT INTO user_income (user_id, total_income) VALUES (?, ?)");

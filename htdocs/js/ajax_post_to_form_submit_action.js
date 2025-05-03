@@ -69,8 +69,8 @@ $("#budget-amount-field").on("input", handleBudgetAmountInput);
 $("#expense-amount").on("input", restrictFieldInput);
 
 function handleBudgetAmountInput(event) {
-  ajaxRequestToPhpForProcessing(event);
   restrictFieldInput(event);
+  ajaxRequestToPhpForProcessing(event);
 }
 
 // Function to make AJAX post to PHP for processing the user's input.
