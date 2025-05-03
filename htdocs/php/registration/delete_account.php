@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             echo '
             <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
-                <form action="delete_account.php" method="POST" class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest">
+                <form action="delete_account.php" method="POST" class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest mw-27rem">
                     <h1 class="pb-3 fw-bold">Your account has been successfully deleted.</h1>
                     <p>We hope you come back!</p>
                     <div class="mt-3">
