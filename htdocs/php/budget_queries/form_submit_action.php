@@ -2,10 +2,7 @@
 
 session_start();
 
-// Generate CSRF token if it's not already in the session
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
+require('../../includes/csrf.php'); // Generate CSRF token
 
 // Store it in a local variable for output
 $csrf_token = $_SESSION['csrf_token'];

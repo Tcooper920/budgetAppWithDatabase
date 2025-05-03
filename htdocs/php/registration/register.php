@@ -5,11 +5,7 @@ require("../../includes/header.php");
 echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
 
 require("../../includes/navbar.php");
-
-// Generate a CSRF (Cross-Site Request Forgery) token if one does not exist...
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Generate a secure random token
-}
+require('../../includes/csrf.php'); // Generate CSRF token
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once('../../../config/connect_budget_database.php');

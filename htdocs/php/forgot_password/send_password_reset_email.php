@@ -92,10 +92,7 @@ $mail->addEmbeddedImage('../../images/budget-builder-logo-horizontal.png', 'imag
 // Set the email format to HTML
 $mail->isHTML(true);
 
-// Generate a CSRF (Cross-Site Request Forgery) token if one does not exist...
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Generate a secure random token
-}
+require('../../includes/csrf.php'); // Generate CSRF token
 
 //send the message, check for errors
 if (!$mail->send()) {
