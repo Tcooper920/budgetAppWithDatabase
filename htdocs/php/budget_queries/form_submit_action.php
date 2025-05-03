@@ -19,6 +19,19 @@ require_once('../../../config/connect_budget_database.php');
 require('../budget_queries/retrieve_income.php');
 require('../budget_queries/retrieve_expenses.php');
 
+// Helper function to format numerical user inputs 
+function formatAndSanitizeNumericalInput($form_input_name_attribute)
+{
+    $user_input = filter_input(INPUT_POST, $form_input_name_attribute, FILTER_SANITIZE_NUMBER_INT);
+    $user_input = filter_var($user_input, FILTER_VALIDATE_INT);
+
+    if ($user_input === false) {
+        return 0;
+    }
+
+    return $user_input;
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
@@ -31,13 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ) {
         # Post total income to budget with...
         $userid = $_SESSION["user_id"];
-        $total_income = filter_input(INPUT_POST, 'total_income', FILTER_VALIDATE_INT);
-        $total_income = trim($total_income);
-        $total_income = ltrim($total_income, '0');
-
-        if ($total_income === '') {
-            $total_income = '0';
-        }
+        $total_income = formatAndSanitizeNumericalInput('total_income');
 
         if ($total_income !== false) {
             $query_to_post_budget_amount = $budget_database->prepare("INSERT INTO user_income (user_id, total_income) VALUES (?, ?)");
@@ -76,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     # Save "Paid" amount fields...
     if (isset($_POST['amount_paid'])) {
-        $amount_paid = $_POST['amount_paid'];
+        $amount_paid = formatAndSanitizeNumericalInput('amount_paid');
         $expense_item = $_POST["expense_item"];
 
         $query_to_post_expense = $budget_database->prepare("UPDATE user_expenses SET amount_paid = ? WHERE expense_id = ?");
