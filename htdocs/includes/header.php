@@ -1,6 +1,8 @@
 <?php
 // Define the base URL relative to the site's root to create dynamic links...
 $base_url = "/budget_app_with_database/htdocs/"; // Replace 'your_project_folder' with your actual project name if needed
+// Set the X-Frame-Options header to prevent embedding in an iframe (for security purposes)
+header("X-Frame-Options: DENY");
 ?>
 
 <!DOCTYPE html>
