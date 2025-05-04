@@ -82,7 +82,7 @@ require("../../includes/header.php");
             </div>
         </div>
     </main>
-    <script src="js/preserve_scroll_position_onload.js"></script>
+    <script src="../../js/preserve_scroll_position_onload.js"></script>
 </body>
 
 <?php include("../../includes/footer.php"); ?>
