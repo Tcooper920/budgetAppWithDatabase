@@ -42,3 +42,9 @@ function printFooterNavItem($is_logged_in, $base_url, $page_file_path, $title_at
     </div>
   </footer>
 </div>
+
+<?php
+if ($is_logged_in) {
+  echo '<script src="../../js/inactivity_logout_function.js"></script>';
+}
+?>
