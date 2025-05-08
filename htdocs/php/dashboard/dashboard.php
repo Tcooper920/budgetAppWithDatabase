@@ -23,7 +23,7 @@ require("../../includes/header.php");
                 <label>
                     Enter your budget amount:
                     <input id="budget-amount-field" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill"
-                        type="number" step="1" name="total_income" placeholder="$0" aria-label="Total Budget Amount"
+                        maxlength="9" step="1" name="total_income" placeholder="$0" aria-label="Total Budget Amount"
                         value="<?php echo "$current_income" ?>">
                 </label>
             </div>
