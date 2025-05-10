@@ -12,6 +12,9 @@ function printFooterNavItem($is_logged_in, $base_url, $page_file_path, $title_at
             </li>";
   }
 }
+
+// Popup modal included on every page (Displays if user is inactive for too long).
+require('modal.php');
 ?>
 
 <div>
@@ -45,6 +48,13 @@ function printFooterNavItem($is_logged_in, $base_url, $page_file_path, $title_at
 
 <?php
 if ($is_logged_in) {
-  echo '<script src="../../js/inactivity_logout_function.js"></script>';
+  echo '
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" 
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="../../js/inactivity_logout_function.js"></script>';
 }
 ?>
