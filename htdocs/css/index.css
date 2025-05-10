@@ -93,6 +93,10 @@ em {
   margin-right: auto;
 }
 
+.modal {
+  color: var(--darkest);
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

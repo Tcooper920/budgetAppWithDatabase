@@ -1,3 +1,8 @@
+// Popup model...
+const modelPopup = document.getElementById("popup-model");
+const okayButton = document.getElementById("modal-dismiss");
+const modalInstance = new bootstrap.Modal(modelPopup); // Create a Bootstrap modal instance
+
 // Logout user after inactivity...
 function inactivityTime() {
   let warningTimer;
@@ -10,7 +15,7 @@ function inactivityTime() {
     clearTimeout(logoutTimer);
 
     warningTimer = setTimeout(() => {
-      console.log("You will be logged out soon due to inactivity.");
+      modalInstance.show(); // Display inactivity modal popup warning
     }, warningTimeout);
 
     logoutTimer = setTimeout(() => {
@@ -42,3 +47,8 @@ function inactivityTime() {
 }
 
 inactivityTime();
+
+// Toggle off popup modal when user clicks confirm button
+okayButton.addEventListener("click", () => {
+  modalInstance.hide();
+});
