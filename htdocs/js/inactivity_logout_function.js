@@ -21,7 +21,7 @@ function inactivityTime() {
     logoutTimer = setTimeout(() => {
       window.location.href =
         window.location.origin +
-        "/budget_app_with_database/htdocs/php/login/logout.php";
+        "/budget_app_with_database/htdocs/php/login/views/logout.php";
     }, logoutTimeout);
   }
 

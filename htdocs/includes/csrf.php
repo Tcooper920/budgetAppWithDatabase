@@ -5,6 +5,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Generate a CSRF (Cross-Site Request Forgery) token if one does not exist...
-if (empty($_SESSION['csrf_token'])) {
+if (!isset($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Generate a secure random token
 }

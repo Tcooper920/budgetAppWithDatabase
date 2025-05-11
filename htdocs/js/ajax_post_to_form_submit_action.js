@@ -79,7 +79,7 @@ function ajaxRequestToPhpForProcessing(e) {
   e.preventDefault();
   $.ajax({
     type: "post",
-    url: "../budget_queries/form_submit_action.php",
+    url: "../controllers/form_submit_action.php",
     data: $("#income-expense-form").serialize(),
     dataType: "json",
     success: function (result) {
@@ -90,7 +90,8 @@ function ajaxRequestToPhpForProcessing(e) {
       printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
     },
     error: function () {
-      window.location.href = "../error_pages/form_verification_error.php";
+      window.location.href =
+        "../../error_pages/views/form_verification_error.php";
     },
   });
 }
@@ -110,7 +111,7 @@ expenseListContainer.addEventListener("click", (e) => {
     invisibleFieldForTogglingValue.value = "delete";
     $.ajax({
       type: "post",
-      url: "../budget_queries/form_submit_action.php",
+      url: "../controllers/form_submit_action.php",
       data: $(expenseItemFormToDelete).serialize(),
       dataType: "json",
       success: function (result) {
@@ -119,7 +120,8 @@ expenseListContainer.addEventListener("click", (e) => {
         printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
       },
       error: function () {
-        window.location.href = "../error_pages/form_verification_error.php";
+        window.location.href =
+          "../../error_pages/views/form_verification_error.php";
       },
     });
   }
@@ -139,7 +141,7 @@ function saveSpentAmountsForEachExpenseItemField(e) {
     )}`;
     $.ajax({
       type: "post",
-      url: "../budget_queries/form_submit_action.php",
+      url: "../controllers/form_submit_action.php",
       data: $(expenseItemFormToAddPaymentTo).serialize(),
       dataType: "json",
       success: function (result) {

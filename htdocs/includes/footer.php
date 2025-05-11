@@ -30,13 +30,13 @@ require('modal.php');
 
       <ul class="nav col-md-4 justify-content-start justify-content-sm-end mt-2 mt-sm-0 gap-3">
         <?php
-        printFooterNavItem($is_logged_in, $base_url, "php/dashboard/dashboard.php", "My budget dashboard", "My budget");
-        printFooterNavItem($is_logged_in, $base_url, "php/how_to_use/how_to_use.php", "How to use", "How to use");
-        printFooterNavItem($is_logged_in, $base_url, "php/privacy_policy/privacy_policy.php", "Privacy policy", "Privacy policy");
-        printFooterNavItem($is_logged_in, $base_url, "php/registration/delete_account.php", "Delete account", "Delete account");
-        printFooterNavItem(!$is_logged_in, $base_url, "php/registration/register.php", "Register", "Register");
-        printFooterNavItem(!$is_logged_in, $base_url, "php/login/login.php", "Login", "Login");
-        printFooterNavItem($is_logged_in, $base_url, "php/login/logout.php", "Logout", "Logout");
+        printFooterNavItem($is_logged_in, $base_url, "php/dashboard/views/dashboard.php", "My budget dashboard", "My budget");
+        printFooterNavItem($is_logged_in, $base_url, "php/how_to_use/views/how_to_use.php", "How to use", "How to use");
+        printFooterNavItem($is_logged_in, $base_url, "php/privacy_policy/views/privacy_policy.php", "Privacy policy", "Privacy policy");
+        printFooterNavItem($is_logged_in, $base_url, "php/registration/views/delete_account.php", "Delete account", "Delete account");
+        printFooterNavItem(!$is_logged_in, $base_url, "php/registration/views/register.php", "Register", "Register");
+        printFooterNavItem(!$is_logged_in, $base_url, "php/login/views/login.php", "Login", "Login");
+        printFooterNavItem($is_logged_in, $base_url, "php/login/views/logout.php", "Logout", "Logout");
         ?>
       </ul>
     </div>
@@ -45,16 +45,13 @@ require('modal.php');
     </div>
   </footer>
 </div>
+<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js'
+  integrity='sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r' crossorigin='anonymous'></script>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'
+  integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz' crossorigin='anonymous'></script>
 
 <?php
 if ($is_logged_in) {
-  echo '
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" 
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-  <script src="../../js/inactivity_logout_function.js"></script>';
+  echo "<script src='{$base_url}js/inactivity_logout_function.js'></script>";
 }
 ?>
