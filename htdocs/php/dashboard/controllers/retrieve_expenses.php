@@ -63,7 +63,7 @@ foreach ($resultset as $result) {
 }
 
 // Calculate percentages (expense type/income amount * 100) and round to 2 decimal places...
-if ($current_income != 0 && $current_income != null && $current_income != "") {
+if (!empty($current_income)) {
     $fixed_percentage = round((($fixed / $current_income) * 100), 2);
     $variable_percentage = round((($variable / $current_income) * 100), 2);
     $debt_percentage = round((($debt / $current_income) * 100), 2);
