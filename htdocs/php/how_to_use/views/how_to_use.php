@@ -39,7 +39,7 @@ require("../../../includes/header.php");
                 </h2>
                 <p class="fs-5 mb-4">
                     After entering all your expenes, you can view your budget breakdown in
-                    the graph. The graph diplays the total amount of money you have
+                    the graph. The graph displays the total amount of money you have
                     allocated for each expense type.
                 </p>
                 <p class="fs-5 mb-4">
