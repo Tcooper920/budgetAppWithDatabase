@@ -3,8 +3,13 @@ $base_url = "/budget_app_with_database/htdocs/";
 $is_logged_in = isset($_SESSION['user_id']);
 
 // Helper function to print footer nav items to the page...
-function printFooterNavItem($is_logged_in, $base_url, $page_file_path, $title_attribute, $nav_item_name)
-{
+function printFooterNavItem(
+  bool $is_logged_in,
+  string $base_url,
+  string $page_file_path,
+  string $title_attribute,
+  string $nav_item_name
+) {
   if ($is_logged_in) {
     echo "
             <li class='nav-item'>
