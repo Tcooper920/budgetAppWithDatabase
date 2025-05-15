@@ -31,31 +31,35 @@ if ($retrieve_expenses) {
 }
 
 foreach ($resultset as $result) {
-    if ($result[4] == "Fixed") {
-        $fixed += $result[3];
+    $amount = $result[3];
+    $category = $result[4];
+    $paid_off = $result[5];
+
+    if ($category == "Fixed") {
+        $fixed += $amount;
     }
 
-    if ($result[4] == "Variable") {
-        $variable += $result[3];
+    if ($category == "Variable") {
+        $variable += $amount;
     }
 
-    if ($result[4] == "Debt") {
-        $debt += $result[3];
+    if ($category == "Debt") {
+        $debt += $amount;
     }
 
-    if ($result[4] == "Savings") {
-        $savings += $result[3];
+    if ($category == "Savings") {
+        $savings += $amount;
     }
 
-    if ($result[4] == "Fun") {
-        $fun += $result[3];
+    if ($category == "Fun") {
+        $fun += $amount;
     }
 
-    if ($result[4] == "Other") {
-        $other += $result[3];
+    if ($category == "Other") {
+        $other += $amount;
     }
 
-    $total_amount_paid_off += $result[5];
+    $total_amount_paid_off += $paid_off;
 }
 
 // Calculate percentages (expense type/income amount * 100) and round to 2 decimal places...
