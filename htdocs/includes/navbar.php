@@ -7,6 +7,7 @@ $is_logged_in = isset($_SESSION['user_id']);
 // Helper function to print nav items to the page...
 function print_nav_item(
   bool $is_logged_in,
+  bool $add_button_styling,
   string $base_url,
   string $page_file_path,
   string $title_attribute,
@@ -14,15 +15,26 @@ function print_nav_item(
   string $page_file_name,
   string $nav_item_name
 ) {
-  if ($is_logged_in) {
-    $is_active = ($current_page == $page_file_name ? 'nav-link fs-5 active-nav-link' : 'nav-link fs-5');
-
-    echo "
-            <li class='nav-item ps-3 pe-3 pe-sm-0'>
-              <a href='{$base_url}{$page_file_path}' title='{$title_attribute}' 
-              class='{$is_active}'>{$nav_item_name}</a>
-            </li>";
+  if (!$is_logged_in) {
+    return;
   }
+
+  $link_classes = 'nav-link fs-5'; // Link classes
+
+  if ($current_page === $page_file_name) {
+    $link_classes .= ' active-nav-link'; // Active link class
+  }
+
+  if ($add_button_styling) {
+    $link_classes = 'fs-5 px-5 my-3 my-lg-0 btn btn-dark rounded-pill'; // Button link classes
+  }
+
+  echo "
+        <li class='nav-item ps-3 pe-3 pe-sm-0'>
+          <a href='{$base_url}{$page_file_path}' title='{$title_attribute}' 
+          class='{$link_classes}'>{$nav_item_name}</a>
+        </li>";
+
 }
 ?>
 
@@ -40,13 +52,13 @@ function print_nav_item(
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mt-3 mt-lg-0 mb-xl-0">
         <?php
-        print_nav_item($is_logged_in, $base_url, "php/dashboard/views/dashboard.php", "My budget dashboard", $current_page, "dashboard.php", "My budget");
-        print_nav_item(true, $base_url, "php/how_to_use/views/how_to_use.php", "How to use", $current_page, "how_to_use.php", "How to use");
-        print_nav_item(true, $base_url, "php/privacy_policy/views/privacy_policy.php", "Privacy policy", $current_page, "privacy_policy.php", "Privacy policy");
-        print_nav_item($is_logged_in, $base_url, "php/registration/views/delete_account.php", "Delete account", $current_page, "delete_account.php", "Delete account");
-        print_nav_item(!$is_logged_in, $base_url, "php/registration/views/register.php", "Register", $current_page, "register.php", "Register");
-        print_nav_item(!$is_logged_in, $base_url, "php/login/views/login.php", "Login", $current_page, "login.php", "Login");
-        print_nav_item($is_logged_in, $base_url, "php/login/views/logout.php", "Logout", $current_page, "logout.php", "Logout");
+        print_nav_item($is_logged_in, false, $base_url, "php/dashboard/views/dashboard.php", "My budget dashboard", $current_page, "dashboard.php", "My budget");
+        print_nav_item(true, false, $base_url, "php/how_to_use/views/how_to_use.php", "How to use", $current_page, "how_to_use.php", "How to use");
+        print_nav_item(true, false, $base_url, "php/privacy_policy/views/privacy_policy.php", "Privacy policy", $current_page, "privacy_policy.php", "Privacy policy");
+        print_nav_item($is_logged_in, false, $base_url, "php/registration/views/delete_account.php", "Delete account", $current_page, "delete_account.php", "Delete account");
+        print_nav_item(!$is_logged_in, false, $base_url, "php/registration/views/register.php", "Register", $current_page, "register.php", "Register");
+        print_nav_item(!$is_logged_in, true, $base_url, "php/login/views/login.php", "Login", $current_page, "login.php", "Login");
+        print_nav_item($is_logged_in, false, $base_url, "php/login/views/logout.php", "Logout", $current_page, "logout.php", "Logout");
         ?>
       </ul>
     </div>
