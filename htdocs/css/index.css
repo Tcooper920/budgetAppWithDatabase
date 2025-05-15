@@ -224,6 +224,10 @@ button.no-rounded-left {
   background: var(--variable-spending);
 }
 
+.invisible {
+  opacity: 0;
+}
+
 /* Spending breakdown graph ("progress" bar) */
 .progress {
   height: 4rem;
@@ -303,6 +307,12 @@ footer a:hover {
 .amount-paid-field-container .form-control {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+/* Budget dashboard */
+#add-expense-container,
+#budget-analytics {
+  transition: opacity 0.5s ease-in-out;
 }
 
 /* Keyframe animations */
