@@ -5,15 +5,22 @@ $current_page = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 $is_logged_in = isset($_SESSION['user_id']);
 
 // Helper function to print nav items to the page...
-function print_nav_item($is_logged_in, $base_url, $page_file_path, $title_attribute, $current_page, $page_file_name, $nav_item_name)
-{
+function print_nav_item(
+  bool $is_logged_in,
+  string $base_url,
+  string $page_file_path,
+  string $title_attribute,
+  string $current_page,
+  string $page_file_name,
+  string $nav_item_name
+) {
   if ($is_logged_in) {
-    $is_active = ($current_page == $page_file_name ? 'active-nav-link' : '');
+    $is_active = ($current_page == $page_file_name ? 'nav-link fs-5 active-nav-link' : 'nav-link fs-5');
 
     echo "
             <li class='nav-item ps-3 pe-3 pe-sm-0'>
               <a href='{$base_url}{$page_file_path}' title='{$title_attribute}' 
-              class='nav-link fs-5 {$is_active}'>{$nav_item_name}</a>
+              class='{$is_active}'>{$nav_item_name}</a>
             </li>";
   }
 }
