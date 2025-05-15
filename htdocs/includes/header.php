@@ -1,21 +1,7 @@
 <?php
 // Define the base URL relative to the site's root to create dynamic links...
 $base_url = "/budget_app_with_database/htdocs/"; // Replace 'your_project_folder' with your actual project name if needed
-// Set the X-Frame-Options header to prevent embedding in an iframe (for security purposes)
-header("X-Frame-Options: DENY");
-// Content Security Policy (CSP) for security
-header(
-  "Content-Security-Policy: " .
-  "default-src 'self' https://www.google.com; " .
-  "script-src 'self' https://apis.google.com https://fonts.googleapis.com https://fonts.gstatic.com https://www.google.com https://cdn.jsdelivr.net https://code.jquery.com https://www.gstatic.com; " .
-  "style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net; " .
-  "img-src 'self' https://cdn.jsdelivr.net data:; " .
-  "connect-src 'self'; " .
-  "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; " .
-  "object-src 'none'; " .
-  "frame-src 'self' https://www.google.com; " .
-  "upgrade-insecure-requests;"
-);
+require_once("security_headers.php");
 ?>
 
 <!DOCTYPE html>
