@@ -4,6 +4,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+if (isset($_SESSION['user_id'])) {
+    header("Location: php/dashboard/views/dashboard.php");
+    exit();
+}
+
 require("includes/header.php");
 
 ?>
