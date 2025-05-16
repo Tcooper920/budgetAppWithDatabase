@@ -6,6 +6,7 @@ require('../../../includes/csrf.php'); // Generate CSRF token
 $csrf_token = $_SESSION['csrf_token'];
 
 require_once('../../../../config/connect_budget_database.php');
+require_once('functions.php');
 require('retrieve_income.php');
 require('retrieve_expenses.php');
 

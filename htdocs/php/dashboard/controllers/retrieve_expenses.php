@@ -63,13 +63,13 @@ foreach ($resultset as $result) {
 }
 
 // Calculate percentages (expense type/income amount * 100) and round to 2 decimal places...
-if (!empty($current_income)) {
-    $fixed_percentage = round((($fixed / $current_income) * 100), 2);
-    $variable_percentage = round((($variable / $current_income) * 100), 2);
-    $debt_percentage = round((($debt / $current_income) * 100), 2);
-    $savings_percentage = round((($savings / $current_income) * 100), 2);
-    $fun_percentage = round((($fun / $current_income) * 100), 2);
-    $other_percentage = round((($other / $current_income) * 100), 2);
+if (!empty($current_income) && $current_income != 0) {
+    $fixed_percentage = calculatePercentageAndRound($fixed, $current_income);
+    $variable_percentage = calculatePercentageAndRound($variable, $current_income);
+    $debt_percentage = calculatePercentageAndRound($debt, $current_income);
+    $savings_percentage = calculatePercentageAndRound($savings, $current_income);
+    $fun_percentage = calculatePercentageAndRound($fun, $current_income);
+    $other_percentage = calculatePercentageAndRound($other, $current_income);
 }
 
 // Calculate total amount left to budget with...
