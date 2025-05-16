@@ -16,21 +16,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    // Regenerate the CSRF token to prevent reuse...
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Securely regenerate the token
-
     list($check, $data) = validate($budget_database, $_POST['email'], $_POST['pass']);
 
     if ($check) {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+        // Prevent session fixation...
+        session_regenerate_id(true);
 
         $_SESSION['user_id'] = $data['user_id'];
         $_SESSION['first_name'] = $data['first_name'];
         $_SESSION['last_name'] = $data['last_name'];
 
+        // Regenerate the CSRF token to prevent reuse...
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Securely regenerate the token
+
         header('Location: ../../dashboard/views/dashboard.php');
+        exit;
     } else {
         $errors = $data;
     }
