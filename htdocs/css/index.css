@@ -378,6 +378,10 @@ footer a:hover {
   .active-nav-link {
     border-bottom: 0.1rem solid black;
   }
+  nav {
+    border-bottom-right-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+  }
 }
 
 @media screen and (min-width: 690px) {
