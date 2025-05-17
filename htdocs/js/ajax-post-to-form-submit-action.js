@@ -183,7 +183,7 @@ function updateBarGraph(result) {
 // Function to adjust bars in bar chart for each spending type (adjust widths and attributes)...
 function adjustBarsInGraph(result, barInGraph, spendingType) {
   barInGraph.style.width = `${result[spendingType]}%`;
-  barInGraph.setAttribute("aria-valuenow", `${result[spendingType]}%`);
+  barInGraph.setAttribute("aria-valuenow", `${result[spendingType]}`);
 }
 
 // Function to sort expense items by their expense types (i.e. Fixed, Variable, Debt, etc.)
