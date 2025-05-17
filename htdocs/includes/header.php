@@ -5,7 +5,7 @@ require_once("security-headers.php");
 ?>
 
 <!DOCTYPE html>
-<html class="min-vh-100">
+<html class="min-vh-100" lang="en">
 
   <head>
     <!-- Standard 16x16 -->
