@@ -21,7 +21,7 @@ require("../../../includes/header.php");
     <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
         <img src="../../../images/budget-builder-logo-stacked.svg" alt="Budget Builder logo" title="Budget Builder"
             width="240" height="240" class="d-none d-sm-block mb-3">
-        <form id="form" action="/budget_app_with_database/htdocs/php/login/controllers/login_action.php" method="POST"
+        <form id="form" action="/budget_app_with_database/htdocs/php/login/controllers/login-action.php" method="POST"
             class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue mw-27rem">
 
             <!-- Error message container in form header -->
@@ -83,7 +83,7 @@ require("../../../includes/header.php");
                     <input type="button" value="Sign up"
                         class="btn border-primary-color border-2 ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
                 </a>
-                <a href="../../forgot_password/views/forgot_password.php" title="Forgot password?"
+                <a href="../../forgot-password/views/forgot-password.php" title="Forgot password?"
                     class="link-underline link-underline-opacity-0 d-block mt-3">Forgot
                     password?</a>
             </div>
@@ -91,9 +91,9 @@ require("../../../includes/header.php");
     </main>
 
     <?php include("../../../includes/footer.php"); ?>
-    <script src="../../../js/preserve_scroll_position_onload.js"></script>
-    <script src="../../../js/show_hide_password.js"></script>
-    <script src="../../../js/verify_recaptcha_response.js"></script>
+    <script src="../../../js/preserve-scroll-position-onload.js"></script>
+    <script src="../../../js/show-hide-password.js"></script>
+    <script src="../../../js/verify-recaptcha-response.js"></script>
 </body>
 
 </html>

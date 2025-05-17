@@ -5,14 +5,14 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require_once('../../../../config/connect_budget_database.php');
-    require('login_tools.php');
-    require('../../../includes/recaptcha_verification.php');
+    require_once('../../../../config/connect-budget-database.php');
+    require('login-tools.php');
+    require('../../../includes/recaptcha-verification.php');
 
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         // CSRF token validation failed...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit;
     }
 

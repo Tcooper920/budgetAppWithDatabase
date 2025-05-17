@@ -5,13 +5,13 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require_once('../../../../config/connect_budget_database.php');
+    require_once('../../../../config/connect-budget-database.php');
     $errors = array();
 
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         // CSRF token validation failed...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit;
     }
 
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
     if (!empty($_POST['honeypot'])) {
         // Bot detected. Form submission aborted...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit();
     }
 
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     # If no errors, send confirmation code via email...
     if (empty($errors)) {
-        require("send_password_reset_email.php");
+        require("send-password-reset-email.php");
         exit();
     }
 }

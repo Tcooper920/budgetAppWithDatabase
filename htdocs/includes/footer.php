@@ -36,9 +36,9 @@ require('modal.php');
       <ul class="nav col-md-4 justify-content-start justify-content-sm-end mt-2 mt-sm-0 gap-3">
         <?php
         printFooterNavItem($is_logged_in, $base_url, "php/dashboard/views/dashboard.php", "My budget dashboard", "My budget");
-        printFooterNavItem(true, $base_url, "php/how_to_use/views/how_to_use.php", "How to use", "How to use");
-        printFooterNavItem(true, $base_url, "php/privacy_policy/views/privacy_policy.php", "Privacy policy", "Privacy policy");
-        printFooterNavItem($is_logged_in, $base_url, "php/registration/views/delete_account.php", "Delete account", "Delete account");
+        printFooterNavItem(true, $base_url, "php/how-to-use/views/how-to-use.php", "How to use", "How to use");
+        printFooterNavItem(true, $base_url, "php/privacy-policy/views/privacy-policy.php", "Privacy policy", "Privacy policy");
+        printFooterNavItem($is_logged_in, $base_url, "php/registration/views/delete-account.php", "Delete account", "Delete account");
         printFooterNavItem(!$is_logged_in, $base_url, "php/registration/views/register.php", "Register", "Register");
         printFooterNavItem(!$is_logged_in, $base_url, "php/login/views/login.php", "Login", "Login");
         printFooterNavItem($is_logged_in, $base_url, "php/login/views/logout.php", "Logout", "Logout");
@@ -57,6 +57,6 @@ require('modal.php');
 
 <?php
 if ($is_logged_in) {
-  echo "<script src='{$base_url}js/inactivity_logout_function.js'></script>";
+  echo "<script src='{$base_url}js/inactivity-logout-function.js'></script>";
 }
 ?>

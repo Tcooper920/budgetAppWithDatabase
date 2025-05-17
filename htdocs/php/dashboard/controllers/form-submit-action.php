@@ -5,10 +5,10 @@ require('../../../includes/csrf.php'); // Generate CSRF token
 // Store it in a local variable for output
 $csrf_token = $_SESSION['csrf_token'];
 
-require_once('../../../../config/connect_budget_database.php');
+require_once('../../../../config/connect-budget-database.php');
 require_once('functions.php');
 require('retrieve_income.php');
-require('retrieve_expenses.php');
+require('retrieve-expenses.php');
 
 // Helper function to format numerical user inputs 
 function formatAndSanitizeNumericalInput($form_input_name_attribute)
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         // CSRF token validation failed...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit;
     }
     if (
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $query_to_post_budget_amount->execute();
         } else {
             # If $total_income is not an integer, it might be an attempt at a SQL injection. Throw an error...
-            header('Location: ../../error_pages/views/form_verification_error.php');
+            header('Location: ../../error-pages/views/form-verification-error.php');
             exit;
         }
 
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $query_to_post_expense->execute();
     }
     require('retrieve_income.php');
-    require('retrieve_expenses.php');
+    require('retrieve-expenses.php');
 
     $all_budget_data = array(
         'total_amount_left_to_budget_with' => $total_amount_left_to_budget_with,

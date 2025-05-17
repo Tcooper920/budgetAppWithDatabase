@@ -5,14 +5,14 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require_once('../../../../config/connect_budget_database.php');
-    require('../../../includes/recaptcha_verification.php');
+    require_once('../../../../config/connect-budget-database.php');
+    require('../../../includes/recaptcha-verification.php');
     $errors = array();
 
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         // CSRF token validation failed...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit;
     }
 
@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
     if (!empty($_POST['honeypot'])) {
         // Bot detected. Form submission aborted...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit;
     }
 
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         # Store user data in session...
         $_SESSION['user_data'] = array('first_name' => $fn, 'last_name' => $ln, 'email' => $e, 'password' => $p);
         # Generate confirmation code, send the code via email, and show a form for the user to enter the code...
-        require("send_confirmation_email.php");
+        require("send-confirmation-email.php");
         exit();
     }
 }

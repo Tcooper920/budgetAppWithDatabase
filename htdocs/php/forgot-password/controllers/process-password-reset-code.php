@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 /* Check if the user manually visited this page. If so, redirect them to the beginning of the 
 process to reset their password. (This prevents them from skipping any steps.) */
 if (!isset($_SESSION['user_resetting_password']) || !$_SESSION['user_resetting_password'] == true) {
-    header('Location: ../views/forgot_password.php');
+    header('Location: ../views/forgot-password.php');
     exit();
 }
 require("../../../includes/header.php");
@@ -40,12 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['code_verification_attempts'] = 0;
     }
 
-    require_once('../../../../config/connect_budget_database.php');
+    require_once('../../../../config/connect-budget-database.php');
 
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         // CSRF token validation failed...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit();
     }
 
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
     if (!empty($_POST['honeypot'])) {
         // "Bot detected. Form submission aborted...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit();
     }
 
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
               </div>';
-        require("send_password_reset_email.php");
+        require("send-password-reset-email.php");
     } else if (isset($_SESSION['confirmation_code'])) {
         $entered_code = $_POST['confirmation_code'];
         $storedCode = $_SESSION['confirmation_code'];
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             unset($_SESSION['code_verification_lockout_time']);
 
             # Navigate to page for user to reset their password...
-            header('Location: ../views/change_your_password.php');
+            header('Location: ../views/change-your-password.php');
             exit();
         } else {
             # If confirmation code is not entered correctly, display form with error message appended...
@@ -108,11 +108,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['code_verification_lockout_time'] = time() + CODE_VERIFICATION_LOCKOUT_TIME;
             }
 
-            require("../views/confirm_password_reset_code_form.php");
+            require("../views/confirm-password-reset-code-form.php");
             include("../../../includes/footer.php");
 
-            echo '<script src="../../../js/preserve_scroll_position_onload.js"></script>
-                  <script src="../../../js/resend_registration_confirmation_code.js"></script>
+            echo '<script src="../../../js/preserve-scroll-position-onload.js"></script>
+                  <script src="../../../js/resend-registration-confirmation-code.js"></script>
                   </body>
                   </html>';
         }

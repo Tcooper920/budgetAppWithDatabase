@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-require("../controllers/form_submit_action.php");
+require("../controllers/form-submit-action.php");
 require("../../../includes/header.php");
 
 ?>
@@ -134,7 +134,7 @@ require("../../../includes/header.php");
     include("../../../includes/footer.php");
     ?>
 
-    <script src="../../../js/ajax_post_to_form_submit_action.js"></script>
+    <script src="../../../js/ajax-post-to-form-submit-action.js"></script>
 </body>
 
 </html>
