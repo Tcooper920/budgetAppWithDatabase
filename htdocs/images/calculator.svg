@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 409.8910077 423.4439216">
-  <!-- Generator: Adobe Illustrator 29.1.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 142)  -->
+  <!-- Generator: Adobe Illustrator 29.5.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 141)  -->
   <defs>
     <style>
       .st0 {
@@ -31,6 +31,11 @@
         fill: #485b48;
       }
 
+      .st2 {
+        fill: url(#linear-gradient1);
+        opacity: .6;
+      }
+
       .st8 {
         fill: #67bbff;
       }
@@ -39,27 +44,36 @@
         fill: #fff;
       }
 
-      .st2, .st3 {
-        fill: url(#linear-gradient);
-      }
-
       .st10 {
         fill: #e25762;
       }
 
       .st3 {
+        fill: url(#linear-gradient);
         opacity: .41;
       }
     </style>
-    <linearGradient id="linear-gradient" x1="63.3092028" y1="410.8506418" x2="381.3980572" y2="410.8506418" gradientUnits="userSpaceOnUse">
+    <linearGradient id="linear-gradient" x1="28.5357438" y1="392.808484" x2="381.3980572" y2="392.808484" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#4b5173" stop-opacity="0"/>
+      <stop offset=".9988219" stop-color="#4b5173"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="28.5357438" y1="392.808484" x2="381.3980572" y2="392.808484" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4b5173" stop-opacity="0"/>
+      <stop offset=".0296158" stop-color="#4b5173" stop-opacity=".0871227"/>
+      <stop offset=".1400936" stop-color="#4b5173" stop-opacity=".3672442"/>
+      <stop offset=".259923" stop-color="#4b5173" stop-opacity=".5986094"/>
+      <stop offset=".3905797" stop-color="#4b5173" stop-opacity=".7773423"/>
+      <stop offset=".5374408" stop-color="#4b5173" stop-opacity=".9035785"/>
+      <stop offset=".7137692" stop-color="#4b5173" stop-opacity=".9775704"/>
       <stop offset=".9988219" stop-color="#4b5173"/>
     </linearGradient>
   </defs>
   <g class="st6">
     <g id="Calculator">
-      <ellipse class="st2" cx="222.35363" cy="410.8506418" rx="159.0444272" ry="6.7383235"/>
-      <ellipse class="st3" cx="222.35363" cy="410.8506418" rx="159.0444272" ry="6.7383235"/>
+      <g>
+        <path class="st3" d="M365.1058385,375.9309907l-220.4875234-7.6365866c-11.9618705-.4142984-24.4610212.4121187-27.9175813,1.8458517l-87.2730159,36.1995595c-3.4565601,1.4337403,3.4383741,2.9318636,15.4002445,3.3461693l212.2418636,7.6365792c11.9618705.4142984,24.4610212-.4121187,27.9175813-1.8458517l95.5186757-36.1995595c3.4565601-1.433733-3.4383741-2.9318636-15.4002445-3.346162Z"/>
+        <path class="st2" d="M365.1058385,375.9309907l-220.4875234-7.6365866c-11.9618705-.4142984-24.4610212.4121187-27.9175813,1.8458517l-87.2730159,36.1995595c-3.4565601,1.4337403,3.4383741,2.9318636,15.4002445,3.3461693l212.2418636,7.6365792c11.9618705.4142984,24.4610212-.4121187,27.9175813-1.8458517l95.5186757-36.1995595c3.4565601-1.433733-3.4383741-2.9318636-15.4002445-3.346162Z"/>
+      </g>
       <g>
         <rect class="st9" x="67.6274985" y="31.9646181" width="274.6360107" height="359.5146809" rx="22.548141" ry="22.548141" transform="translate(66.8310685 -48.5725862) rotate(16.1174637)"/>
         <rect class="st8" x="102.745167" y="114.9484299" width="64.8786702" height="64.8786702" rx="14.776655" ry="14.776655" transform="translate(46.2294297 -31.7350922) rotate(16.1174637)"/>
