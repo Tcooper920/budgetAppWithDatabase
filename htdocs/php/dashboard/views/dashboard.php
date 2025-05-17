@@ -67,20 +67,22 @@ require("../../../includes/header.php");
             <div class="container p-4 mt-2 mb-4 navy-blue-background rounded">
                 <div id="graph" class="progress container p-0">
                     <div id="fixed-spending-progress-bar" class="progress-bar light-blue-background" role="progressbar"
-                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Fixed spending amount">
                     </div>
                     <div id="variable-spending-progress-bar" class="progress-bar purple-background" role="progressbar"
-                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Variable spending amount">
                     </div>
                     <div id="debt-spending-progress-bar" class="progress-bar progress-bar-striped bg-danger"
-                        role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                        aria-label="Debt spending amount"></div>
                     <div id="savings-spending-progress-bar" class="progress-bar light-green-background"
-                        role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                        aria-label="Savings spending amount">
                     </div>
                     <div id="fun-spending-progress-bar" class="progress-bar light-yellow-background" role="progressbar"
-                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Fun spending amount"></div>
                     <div id="other-spending-progress-bar" class="progress-bar light-gray-background" role="progressbar"
-                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Other spending amount">
                     </div>
                 </div>
                 <div class="container fs-5 text mt-2 px-0" id="total-budget-amount-left"></div>
