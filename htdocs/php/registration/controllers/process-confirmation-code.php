@@ -34,12 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['code_verification_attempts'] = 0;
     }
 
-    require_once('../../../../config/connect_budget_database.php');
+    require_once('../../../../config/connect-budget-database.php');
 
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         // CSRF token validation failed...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit;
     }
 
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
     if (!empty($_POST['honeypot'])) {
         // "Bot detected. Form submission aborted...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit;
     }
 
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
               </div>';
-        require("send_confirmation_email.php");
+        require("send-confirmation-email.php");
     } else if (isset($_SESSION['confirmation_code'])) {
         $entered_code = $_POST['confirmation_code'];
         $storedCode = $_SESSION['confirmation_code'];
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                         </div>
                       </main>
-                      <script src="../../../js/preserve_scroll_position_onload.js"></script>
+                      <script src="../../../js/preserve-scroll-position-onload.js"></script>
                       </body>';
             }
             mysqli_close($budget_database);
@@ -124,11 +124,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['code_verification_lockout_time'] = time() + CODE_VERIFICATION_LOCKOUT_TIME;
             }
 
-            require("../views/confirm_code_form.php");
+            require("../views/confirm-code-form.php");
             include("../../../includes/footer.php");
 
-            echo '<script src="../../../js/preserve_scroll_position_onload.js"></script>
-                  <script src="../../../js/resend_registration_confirmation_code.js"></script>
+            echo '<script src="../../../js/preserve-scroll-position-onload.js"></script>
+                  <script src="../../../js/resend-registration-confirmation-code.js"></script>
                   </body>
                   </html>';
         }

@@ -10,7 +10,7 @@ echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
 
 require("../../../includes/navbar.php");
 require("../../../includes/csrf.php"); // Generate CSRF token
-require("../controllers/register_user.php");
+require("../controllers/register-user.php");
 
 ?>
 
@@ -83,8 +83,8 @@ require("../controllers/register_user.php");
 
 <?php include("../../../includes/footer.php"); ?>
 
-<script src="../../../js/show_hide_password.js"></script>
-<script src="../../../js//verify_recaptcha_response.js"></script>
+<script src="../../../js/show-hide-password.js"></script>
+<script src="../../../js//verify-recaptcha-response.js"></script>
 </body>
 
 </html>

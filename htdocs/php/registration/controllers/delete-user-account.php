@@ -14,14 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
     if (!empty($_POST['honeypot'])) {
         // Bot detected. Form submission aborted...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit;
     }
 
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         // CSRF token validation failed...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit;
     }
 
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if user typed "delete my account" in the input field...
     if ($delete_account_input_field_confirmation === "delete my account") {
 
-        require_once('../../../../config/connect_budget_database.php');
+        require_once('../../../../config/connect-budget-database.php');
 
         $userid = $_SESSION['user_id'];
 
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             require("../../../includes/navbar.php");
             echo '
             <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
-                <form action="delete_account.php" method="POST" class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest mw-27rem">
+                <form action="delete-account.php" method="POST" class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest mw-27rem">
                     <h1 class="pb-3 fw-bold">An error occurred.</h1>
                     <p class="error-msg text-danger">Your account was not deleted. Please try again.</p>
                     <label class="w-100 text-danger">
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             include("../../../includes/footer.php");
 
             echo '
-            <script src="../../../js/preserve_scroll_position_onload.js"></script>
+            <script src="../../../js/preserve-scroll-position-onload.js"></script>
             </body>
             </html>';
 
@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             require("../../../includes/navbar.php");
             echo '
             <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
-                <form action="delete_user_account.php" method="POST" class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest mw-27rem">
+                <form action="delete-user-account.php" method="POST" class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest mw-27rem">
                     <h1 class="pb-3 fw-bold">Your account has been successfully deleted.</h1>
                     <p>We hope you come back!</p>
                     <div class="mt-3">
@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             include("../../../includes/footer.php");
 
             echo '
-            <script src="../../../js/preserve_scroll_position_onload.js"></script>
+            <script src="../../../js/preserve-scroll-position-onload.js"></script>
             </body>
             </html>';
 

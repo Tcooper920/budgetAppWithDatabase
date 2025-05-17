@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 require('../libraries/PHPMailer/src/Exception.php');
 require('../libraries/PHPMailer/src/PHPMailer.php');
 require('../libraries/PHPMailer/src/SMTP.php');
-include('../../../../config/budget_smtp_authentication_password.php');
+include('../../../../config/budget-smtp-authentication-password.php');
 
 //Create a new PHPMailer instance
 $mail = new PHPMailer();
@@ -56,8 +56,14 @@ $mail->Password = $smtp_authentication_password;
 $mail->setFrom('budgetbuilderapp@gmail.com', 'BudgetBuilder');
 
 // Set who the message is to be sent to by entering the user's email
-if (isset($_SESSION['email'])) {
-    $mail->addAddress($_SESSION['email'], 'User');
+if (isset($_SESSION['user_data'])) {
+    $user_data = $_SESSION['user_data'];
+
+    if (isset($user_data['email'])) {
+        $mail->addAddress($user_data['email'], 'User');
+    } else {
+        die('Email address not found.');
+    }
 } else {
     die('User data not found.');
 }
@@ -67,9 +73,9 @@ $mail->Subject = 'BudgetBuilder';
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
-$mail->msgHTML(file_get_contents('../views/password_reset_email_contents.html'), __DIR__);
+$mail->msgHTML(file_get_contents('../views/confirmation-email-contents.html'), __DIR__);
 
-$htmlContent = file_get_contents('../views/password_reset_email_contents.html');
+$htmlContent = file_get_contents('../views/confirmation-email-contents.html');
 
 # Generate a confirmation code...
 $confirmation_code = rand(100000, 999999); // 6-digit code
@@ -98,11 +104,11 @@ require('../../../includes/csrf.php'); // Generate CSRF token
 if (!$mail->send()) {
     echo "<p>Mailer Error: $mail->ErrorInfo</p>";
 } else {
-    require("../views/confirm_password_reset_code_form.php");
+    require("../views/confirm-code-form.php");
     include("../../../includes/footer.php");
 
-    echo '<script src="../../../js/preserve_scroll_position_onload.js"></script>
-          <script src="../../../js/resend_registration_confirmation_code.js"></script>
+    echo '<script src="../../../js/preserve-scroll-position-onload.js"></script>
+          <script src="../../../js/resend-registration-confirmation-code.js"></script>
           </body>
           </html>';
 }

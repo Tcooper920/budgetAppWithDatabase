@@ -12,3 +12,4 @@ htdocs/images/ai/*.psd
 
 # Ignore configuration files
 config/.env
+config/php-version.php

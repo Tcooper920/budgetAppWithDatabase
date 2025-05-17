@@ -1,5 +1,5 @@
 <?php
-require_once("../../../../config/connect_recaptcha_secret_key.php");
+require_once("../../../../config/connect-recaptcha-secret-key.php");
 
 // Get the response from reCAPTCHA
 $recaptchaResponse = $_POST['gRecaptchaResponse'];
@@ -39,6 +39,6 @@ $responseKeys = json_decode($response, true);
 
 // Check if the reCAPTCHA verification was unsuccessful...
 if (intval($responseKeys['success']) !== 1) {
-    header("Location: ../../error_pages/views/form_verification_error.php");
+    header("Location: ../../error-pages/views/form-verification-error.php");
     exit();
 }

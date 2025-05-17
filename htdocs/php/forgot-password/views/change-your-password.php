@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 /* Check if the user manually visited this page. If so, redirect them to the beginning of the 
 process to reset their password. (This prevents them from skipping any steps.) */
 if (!isset($_SESSION['user_resetting_password']) || !$_SESSION['user_resetting_password'] == true) {
-    header('Location: forgot_password.php');
+    header('Location: forgot-password.php');
     exit();
 }
 require("../../../includes/header.php");
@@ -16,11 +16,11 @@ echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
 
 require("../../../includes/navbar.php");
 require('../../../includes/csrf.php'); // Generate CSRF token
-require('../controllers/change_users_password.php');
+require('../controllers/change-users-password.php');
 ?>
 
 <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
-    <form action="change_your_password.php" method="POST"
+    <form action="change-your-password.php" method="POST"
         class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue mw-27rem">
         <h1 class="pb-3">Change your password</h1>
         <label class="w-100 mt-2">
@@ -57,8 +57,8 @@ require('../controllers/change_users_password.php');
 
 <?php include("../../../includes/footer.php"); ?>
 
-<script src="../../../js/preserve_scroll_position_onload.js"></script>
-<script src="../../../js/show_hide_password.js"></script>
+<script src="../../../js/preserve-scroll-position-onload.js"></script>
+<script src="../../../js/show-hide-password.js"></script>
 </body>
 
 </html>

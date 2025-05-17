@@ -64,7 +64,7 @@ function validate($budget_database, $email = '', $pwd = '')
     // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
     if (!empty($_POST['honeypot'])) {
         // Bot detected. Form submission aborted...
-        header('Location: ../../error_pages/views/form_verification_error.php');
+        header('Location: ../../error-pages/views/form-verification-error.php');
         exit;
     }
 

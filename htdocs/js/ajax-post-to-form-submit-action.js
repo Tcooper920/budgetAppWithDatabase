@@ -74,12 +74,12 @@ function handleBudgetAmountInput(event) {
 }
 
 // Function to make AJAX post to PHP for processing the user's input.
-// Returns "$all_budget_data" array as "result" from "form_submit_action.php" file...
+// Returns "$all_budget_data" array as "result" from "form-submit-action.php" file...
 function ajaxRequestToPhpForProcessing(e) {
   e.preventDefault();
   $.ajax({
     type: "post",
-    url: "../controllers/form_submit_action.php",
+    url: "../controllers/form-submit-action.php",
     data: $("#income-expense-form").serialize(),
     dataType: "json",
     success: function (result) {
@@ -91,13 +91,13 @@ function ajaxRequestToPhpForProcessing(e) {
     },
     error: function () {
       window.location.href =
-        "../../error_pages/views/form_verification_error.php";
+        "../../error-pages/views/form-verification-error.php";
     },
   });
 }
 
 // Function to remove an item from the expense list when the user clicks the 'X' button...
-// Returns "$all_budget_data" array as "result" from "form_submit_action.php" file...
+// Returns "$all_budget_data" array as "result" from "form-submit-action.php" file...
 expenseListContainer.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.classList.contains("remove-btn")) {
@@ -111,7 +111,7 @@ expenseListContainer.addEventListener("click", (e) => {
     invisibleFieldForTogglingValue.value = "delete";
     $.ajax({
       type: "post",
-      url: "../controllers/form_submit_action.php",
+      url: "../controllers/form-submit-action.php",
       data: $(expenseItemFormToDelete).serialize(),
       dataType: "json",
       success: function (result) {
@@ -121,7 +121,7 @@ expenseListContainer.addEventListener("click", (e) => {
       },
       error: function () {
         window.location.href =
-          "../../error_pages/views/form_verification_error.php";
+          "../../error-pages/views/form-verification-error.php";
       },
     });
   }
@@ -141,7 +141,7 @@ function saveSpentAmountsForEachExpenseItemField(e) {
     )}`;
     $.ajax({
       type: "post",
-      url: "../controllers/form_submit_action.php",
+      url: "../controllers/form-submit-action.php",
       data: $(expenseItemFormToAddPaymentTo).serialize(),
       dataType: "json",
       success: function (result) {

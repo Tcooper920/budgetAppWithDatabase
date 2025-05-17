@@ -11,14 +11,14 @@ if (!isset($_SESSION['user_id'])) {
 
 require("../../../includes/csrf.php"); // Generate CSRF token
 require("../../../includes/header.php");
-require("../controllers/delete_user_account.php");
+require("../controllers/delete-user-account.php");
 
 ?>
 
 <body class="dark-blue-background min-vh-100 d-flex flex-column">
     <?php require("../../../includes/navbar.php"); ?>
     <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
-        <form action="delete_account.php" method="POST"
+        <form action="delete-account.php" method="POST"
             class="container fs-5 d-flex flex-column p-4 p-sm-5 my-5 bg-light rounded darkest mw-27rem">
             <h1 class="pb-3 fw-bold">Are you sure you want to delete your account?</h1>
             <label class="w-100">
