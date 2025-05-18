@@ -77,7 +77,7 @@ function ajaxRequestToPhpForProcessing(e) {
 			printExpensesToPage(result["all_expenses"], result["income_amount"]);
 			clearExpenseFields();
 			displayBudgetAnalytics();
-			printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
+			printTotalAmountPaidOffToPage(result["total_amount_paid_off"]);
 		},
 		error: function () {
 			window.location.href = "../../error-pages/views/form-verification-error.php";
@@ -106,7 +106,7 @@ expenseListContainer.addEventListener("click", (e) => {
 			success: function (result) {
 				updateBarGraph(result);
 				printExpensesToPage(result["all_expenses"], result["income_amount"]);
-				printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
+				printTotalAmountPaidOffToPage(result["total_amount_paid_off"]);
 			},
 			error: function () {
 				window.location.href = "../../error-pages/views/form-verification-error.php";
@@ -128,7 +128,7 @@ function saveSpentAmountsForEachExpenseItemField(e) {
 			data: $(expenseItemFormToAddPaymentTo).serialize(),
 			dataType: "json",
 			success: function (result) {
-				printTotalAmountPaidfOffToPage(result["total_amount_paid_off"]);
+				printTotalAmountPaidOffToPage(result["total_amount_paid_off"]);
 			},
 		});
 	}
@@ -260,7 +260,7 @@ function printExpensesToPage(result, incomeAmount) {
 
 // At the end of the page, print the total amount spent (This adds up all the "Paid" fields within each expense item)
 // and the total budget amount...
-function printTotalAmountPaidfOffToPage(totalAmountPaidOff) {
+function printTotalAmountPaidOffToPage(totalAmountPaidOff) {
 	// Print amount spent...
 	totalAmountPaid.innerText = totalAmountPaidOff;
 	// Print budget amount, or print "0" if empty...
