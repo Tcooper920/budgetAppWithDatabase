@@ -43,20 +43,29 @@ const totalAmountPaid = document.getElementById("total-amount-paid");
 // Variable declaration for container containing the total budget amount...
 const totalBudgetAmount = document.getElementById("total-budget-amount");
 
+// Variable declaration for budget amount field...
+const budgetAmountField = document.getElementById("budget-amount-field");
+
+// Variable declaration for expense emount field...
+const expenseAmountField = document.getElementById("expense-amount");
+
+// Variable declaration for income expense form...
+const incomeExpenseForm = document.getElementById("income-expense-form");
+
 // On page load, fire AJAX to retrieve data...
-$(window).on("load", ajaxRequestToPhpForProcessing);
+window.addEventListener("load", ajaxRequestToPhpForProcessing);
 
 // Display analytics if user enters an income that isn't "0" or empty...
 displayBudgetAnalytics();
 
 // On form submit, fire AJAX to send/retrieve data...
-$("#income-expense-form").on("submit", ajaxRequestToPhpForProcessing);
+incomeExpenseForm.addEventListener("submit", ajaxRequestToPhpForProcessing);
 
 // On "Enter your budget amount" field value change, update the displayed budget info and format the text field input...
-$("#budget-amount-field").on("input", handleBudgetAmountInput);
+budgetAmountField.addEventListener("input", handleBudgetAmountInput);
 
 // On "expense amount" field value change, format the text field input...
-$("#expense-amount").on("input", restrictFieldInput);
+expenseAmountField.addEventListener("input", restrictFieldInput);
 
 function handleBudgetAmountInput(event) {
 	restrictFieldInput(event);
