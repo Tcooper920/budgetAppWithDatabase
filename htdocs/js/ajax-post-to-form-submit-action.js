@@ -74,53 +74,80 @@ function handleBudgetAmountInput(event) {
 
 // Function to make AJAX post to PHP for processing the user's input.
 // Returns "$all_budget_data" array as "result" from "form-submit-action.php" file...
-function ajaxRequestToPhpForProcessing(e) {
+async function ajaxRequestToPhpForProcessing(e) {
 	e.preventDefault();
-	$.ajax({
-		type: "post",
-		url: "../controllers/form-submit-action.php",
-		data: $("#income-expense-form").serialize(),
-		dataType: "json",
-		success: function (result) {
-			updateBarGraph(result);
-			printExpensesToPage(result["all_expenses"], result["income_amount"]);
-			clearExpenseFields();
-			displayBudgetAnalytics();
-			printTotalAmountPaidOffToPage(result["total_amount_paid_off"]);
-		},
-		error: function () {
-			window.location.href = "../../error-pages/views/form-verification-error.php";
-		},
-	});
+
+	const formData = new FormData(incomeExpenseForm);
+	const formBody = new URLSearchParams(formData).toString();
+
+	try {
+		const response = await fetch("../controllers/form-submit-action.php", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/x-www-form-urlencoded",
+			},
+			body: formBody,
+		});
+
+		if (!response.ok) {
+			throw new Error("Network response was not ok.");
+		}
+
+		const result = await response.json();
+
+		updateBarGraph(result);
+		printExpensesToPage(result["all_expenses"], result["income_amount"]);
+		clearExpenseFields();
+		displayBudgetAnalytics();
+		printTotalAmountPaidOffToPage(result["total_amount_paid_off"]);
+	} catch (error) {
+		window.location.href = "../../error-pages/views/form-verification-error.php";
+	}
 }
 
 // Function to remove an item from the expense list when the user clicks the 'X' button...
 // Returns "$all_budget_data" array as "result" from "form-submit-action.php" file...
 expenseListContainer.addEventListener("click", (e) => {
 	e.preventDefault();
+
+	const expenseItemForm = e.target.parentNode;
+
 	if (e.target.classList.contains("remove-btn")) {
-		let expenseItemFormToDelete = `#${e.target.parentNode.id}`;
+		let expenseItemFormToDelete = `#${expenseItemForm.id}`;
+
 		// This invisible field is populated on the form item (expense item) that needs to be deleted.
 		// PHP checks if this field has been filled, and if it has, deletes the item.
-		let invisibleFieldForTogglingValue = document.getElementById(
-			`delete-${e.target.parentNode.id}`
-		);
+		let invisibleFieldForTogglingValue = document.getElementById(`delete-${expenseItemForm.id}`);
+
 		// Add "delete" value to signal to PHP that this expense needs to be deleted from database...
 		invisibleFieldForTogglingValue.value = "delete";
-		$.ajax({
-			type: "post",
-			url: "../controllers/form-submit-action.php",
-			data: $(expenseItemFormToDelete).serialize(),
-			dataType: "json",
-			success: function (result) {
+
+		(async () => {
+			const formData = new FormData(expenseItemForm);
+			const formBody = new URLSearchParams(formData).toString();
+
+			try {
+				const response = await fetch("../controllers/form-submit-action.php", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/x-www-form-urlencoded",
+					},
+					body: formBody,
+				});
+
+				if (!response.ok) {
+					throw new Error("Network response was not ok.");
+				}
+
+				const result = await response.json();
+
 				updateBarGraph(result);
 				printExpensesToPage(result["all_expenses"], result["income_amount"]);
 				printTotalAmountPaidOffToPage(result["total_amount_paid_off"]);
-			},
-			error: function () {
+			} catch (error) {
 				window.location.href = "../../error-pages/views/form-verification-error.php";
-			},
-		});
+			}
+		})();
 	}
 });
 
@@ -130,16 +157,33 @@ expenseListContainer.addEventListener("input", saveSpentAmountsForEachExpenseIte
 function saveSpentAmountsForEachExpenseItemField(e) {
 	e.preventDefault();
 	if (e.target.classList.contains("amount-paid-field")) {
-		let expenseItemFormToAddPaymentTo = `#expense-id-${e.target.getAttribute("data-expense-id")}`;
-		$.ajax({
-			type: "post",
-			url: "../controllers/form-submit-action.php",
-			data: $(expenseItemFormToAddPaymentTo).serialize(),
-			dataType: "json",
-			success: function (result) {
+		let expenseItemFormToAddPaymentTo = document.getElementById(
+			`expense-id-${e.target.getAttribute("data-expense-id")}`
+		);
+		(async () => {
+			const formData = new FormData(expenseItemFormToAddPaymentTo);
+			const formBody = new URLSearchParams(formData).toString();
+
+			try {
+				const response = await fetch("../controllers/form-submit-action.php", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/x-www-form-urlencoded",
+					},
+					body: formBody,
+				});
+
+				if (!response.ok) {
+					throw new Error("Network response was not ok.");
+				}
+
+				const result = await response.json();
+
 				printTotalAmountPaidOffToPage(result["total_amount_paid_off"]);
-			},
-		});
+			} catch (error) {
+				window.location.href = "../../error-pages/views/form-verification-error.php";
+			}
+		})();
 	}
 }
 
@@ -263,8 +307,16 @@ function printExpensesToPage(result, incomeAmount) {
 		expenseListContainer.append(containerForExpense);
 	});
 
-	// On "Paid" field value change, format the text field input...
-	$(".amount-paid-field").on("input", restrictFieldInput);
+	formatAmountSpentField();
+}
+
+// On "Spent" field value change, format the text field input...
+function formatAmountSpentField() {
+	document.addEventListener("input", (e) => {
+		if (e.target.classList.contains("amount-paid-field")) {
+			restrictFieldInput(e);
+		}
+	});
 }
 
 // At the end of the page, print the total amount spent (This adds up all the "Paid" fields within each expense item)
