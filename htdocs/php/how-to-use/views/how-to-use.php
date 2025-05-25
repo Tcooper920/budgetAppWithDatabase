@@ -13,7 +13,7 @@ require("../../../includes/header.php");
     <main class="p-3 pt-sm-5 mt-lg-5 container align-items-center flex-fill">
         <div class="row mb-2">
             <div class="col-lg-6 fade-in">
-                <h1 class="pb-3 fw-bold">How to use BudgetBuilder</h1>
+                <h1 class="pb-3 fw-bold">How to use BuildaBudge</h1>
                 <hr class="mb-4" />
                 <h2 class="pb-3 fw-bold align-items-center d-sm-flex">
                     <span class="circle-numbers flex-shrink-0">1</span>Enter the total

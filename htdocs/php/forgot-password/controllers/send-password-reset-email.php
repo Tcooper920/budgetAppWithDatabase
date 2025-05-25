@@ -53,7 +53,7 @@ $mail->Password = $smtp_authentication_password;
 //Note that with gmail you can only use your account address (same as `Username`)
 //or predefined aliases that you have configured within your account.
 //Do not use user-submitted addresses in here
-$mail->setFrom('budgetbuilderapp@gmail.com', 'BudgetBuilder');
+$mail->setFrom('budgetbuilderapp@gmail.com', 'BuildaBudge');
 
 // Set who the message is to be sent to by entering the user's email
 if (isset($_SESSION['email'])) {
@@ -63,7 +63,7 @@ if (isset($_SESSION['email'])) {
 }
 
 //Set the subject line
-$mail->Subject = 'BudgetBuilder';
+$mail->Subject = 'BuildaBudge';
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
@@ -87,7 +87,7 @@ $mail->msgHTML($htmlContent, __DIR__);
 // $mail->AltBody = 'This is a plain-text message body';
 
 // Embed necessary images
-$mail->addEmbeddedImage('../../../images/budget-builder-logo-horizontal.png', 'image_cid');
+$mail->addEmbeddedImage('../../../images/buildabudge-logo-horizontal.png', 'image_cid');
 
 // Set the email format to HTML
 $mail->isHTML(true);
