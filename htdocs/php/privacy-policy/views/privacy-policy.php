@@ -18,7 +18,7 @@ require("../../../includes/header.php");
                     <strong class="fw-bold">Effective Date:</strong> 3-30-2025
                 </p>
                 <p class="fs-5 mb-4">
-                    Thank you for using BudgetBuilder, a budgeting web application
+                    Thank you for using BuildaBudge, a budgeting web application
                     ("App"). Your privacy is very important to us, and this Privacy Policy
                     explains how we collect, use, and protect your personal information
                     when you use our website and services. By using the App, you agree to
@@ -120,7 +120,7 @@ require("../../../includes/header.php");
                 <p class="fs-5 mb-4">
                     While we take reasonable precautions to protect your data, we cannot
                     guarantee the absolute security of your personal information. By using
-                    this App, you acknowledge and agree that BudgetBuilder is not liable
+                    this App, you acknowledge and agree that BuildaBudge is not liable
                     for any loss, damage, unauthorized access, disclosure, alteration, or
                     destruction of your data, including but not limited to:
                 </p>
@@ -183,8 +183,8 @@ require("../../../includes/header.php");
                 </div>
             </div>
             <div class="col-lg-6">
-                <img src="../../../images/budget-builder-logo-3d.png"
-                    alt="The blue, red, green, and purple BudgetBuilder logo displayed in 3D." width="608" height="628"
+                <img src="../../../images/buildabudge-logo-3d.png"
+                    alt="The blue, red, green, and purple BuildaBudge logo displayed in 3D." width="608" height="628"
                     class="col w-100 mt-5 mt-lg-0 ps-lg-4 img-fluid" />
             </div>
         </div>

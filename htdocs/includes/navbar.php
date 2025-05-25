@@ -41,8 +41,8 @@ function print_nav_item(
 <nav class="navbar navbar-light navbar-expand-lg mb-4 px-0 px-sm-4 shadow-sm">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?php echo $base_url ?>index.php">
-      <img src="<?php echo $base_url ?>/images/budget-builder-logo-horizontal.svg" width="230" height="59"
-        alt="Budget Builder logo" title="Budget Builder">
+      <img src="<?php echo $base_url ?>/images/buildabudge-logo-horizontal.svg" width="230" height="65"
+        alt="BuildaBudge logo" title="BuildaBudge">
     </a>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

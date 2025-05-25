@@ -25,12 +25,12 @@ require('modal.php');
 <div>
   <footer>
     <div class="d-flex flex-wrap justify-content-between align-items-center py-4 px-3 px-sm-5 border-top mt-5">
-      <p class="col-md-4 mb-0 text-light"><strong class="fw-bold">BudgetBuilder</strong></p>
+      <p class="col-md-4 mb-0 text-light"><strong class="fw-bold">BuildaBudge</strong></p>
 
       <a href="<?php echo $base_url ?>index.php"
         class="col-md-4 d-flex align-items-center justify-content-center me-md-auto link-body-emphasis text-decoration-none">
-        <img src="<?php echo $base_url; ?>/images/budget-builder-logo.svg" class="mx-3" width="40" height="40"
-          alt="Budget Builder logo" title="Budget Builder">
+        <img src="<?php echo $base_url; ?>/images/buildabudge-logo.svg" class="mx-3" width="40" height="40"
+          alt="BuildaBudge logo" title="BuildaBudge">
       </a>
 
       <ul class="nav col-md-4 justify-content-start justify-content-sm-end mt-2 mt-sm-0 gap-3">
