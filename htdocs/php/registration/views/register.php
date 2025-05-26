@@ -64,6 +64,13 @@ require("../controllers/register-user.php");
                 <input type="password" name="pass2" value="<?php if (isset($_POST['pass2']))
                 echo htmlspecialchars($_POST['pass2']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
         </label>
+        <label class="w-100 mt-2">
+            Enter your date of birth:
+            <?php if (isset($errors['birthDateError']))
+                echo '<br><p class="error-msg text-danger mb-0">' . $errors['birthDateError'] . '</p>' ?>
+                <input type="date" id="birthdate" name="birthdate" value="<?php if (isset($_POST['birthdate'])) 
+                echo htmlspecialchars($_POST['birthdate']) ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+        </label>
         <!-- Honeypot field -->
         <input type="text" name="honeypot" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
         <!-- CSRF token field -->
