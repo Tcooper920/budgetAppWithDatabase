@@ -62,9 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (trim($_POST['pass1']) !== trim($_POST['pass2'])) {
             $errors["pass2Error"] = "Passwords do not match.";
         } else {
-            # Make sure password is long enough (for security)...
-            if (strlen(trim($_POST['pass1'])) < 9) {
-                $errors['pass1Error'] = 'Password must be at least 9 characters long.';
+            # Make sure password is long enough and contains at least one special character (for security)...
+            if ((strlen(trim($_POST['pass1'])) < 9) || (!preg_match('/[!@#$%^&*()]/', $_POST['pass1']))) {
+                $errors['pass1Error'] = 'Password must be at least 9 characters long and contain at least one special character (!@#$%^&*()).';
             } else {
                 # Hash password...
                 $p = password_hash(trim($_POST['pass1']), PASSWORD_DEFAULT);
