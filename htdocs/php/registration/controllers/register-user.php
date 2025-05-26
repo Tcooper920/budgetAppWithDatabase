@@ -72,6 +72,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
+    # Verify birth date for Children’s Online Privacy Protection Act (COPPA)...
+    if (isset($_POST['birthdate']) && !empty($_POST['birthdate'])) {
+        $birthDateInput = $_POST['birthdate'];
+        $birthDate = new DateTime($birthDateInput);
+        $todaysDate = new DateTime();
+
+        $age = $birthDate->diff($todaysDate)->y;
+
+        if ($birthDate > $todaysDate) {
+            $errors['birthDateError'] = "Birth date cannot be in the future.";
+        } else if ($age < 13) {
+            $errors['birthDateError'] = "You must be at least 13 years old to use this app.";
+        }
+    } else {
+        $errors['birthDateError'] = "Please enter your birth date.";
+    }
+
     # Check if user email already exists during registration...
     if (empty($errors)) {
         $query_to_get_user_by_email = $budget_database->prepare("SELECT user_id FROM users WHERE email=?");
