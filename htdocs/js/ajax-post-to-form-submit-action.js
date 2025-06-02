@@ -271,46 +271,39 @@ function printExpensesToPage(result, incomeAmount) {
 
 	expenseListContainer.innerHTML = "";
 	sortedResults.forEach((expenseItem) => {
-		let containerForExpense = document.createElement("div");
+		const containerForExpense = document.createElement("div");
+		const expenseItemId = expenseItem[0];
+		const userId = expenseItem[1];
+		const expenseItemName = expenseItem[2];
+		const expenseAmount = expenseItem[3];
+		const expenseCategory = expenseItem[4];
+		let expenseAmountSpent = expenseItem[5];
 
 		// Remove default zero value from "Spent" field...
-		if (expenseItem[5] == "0") {
-			expenseItem[5] = "";
+		if (expenseAmountSpent == "0") {
+			expenseAmountSpent = "";
 		}
 
 		containerForExpense.innerHTML = `
-      <form id="expense-id-${expenseItem[0]}" data-user-id="${
-			expenseItem[1]
-		}" class="container d-flex mb-3 p-3 pe-5 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
-        <input type="hidden" name="expense_id" value="${expenseItem[0]}">
-        <input id="delete-expense-id-${
-					expenseItem[0]
-				}" type="hidden" name="expense_item_delete" value="">
-        <p class="d-block mb-2 mb-sm-0 w-100 align-self-start">Name: <span class="fw-bold">${
-					expenseItem[2]
-				}</span></p>
-        <p class="d-block mb-2 mb-sm-0 w-100 align-self-start">Amount: <span class="fw-bold pe-2">$${
-					expenseItem[3]
-				}</span><span class="text-secondary d-md-block d-lg-inline">(${findExpensePercentageRelativeToTotalBudgetIncomeAmount(
-			incomeAmount,
-			expenseItem[3]
-		)}%)</span></p>
-        <p class="d-block mb-2 mb-sm-0 ps-0 ps-md-5 w-100 align-self-start"><span class="fw-bold ${
-					expenseItem[4]
-				}">${expenseItem[4]}</span></p>
-        <div class="amount-paid-field-container row align-self-start me-2">
-          <label class="col pe-0 px-md-0" for="data-expense-id-${expenseItem[0]}">Spent $</label>
-          <input id="data-expense-id-${expenseItem[0]}" data-expense-id="${
-			expenseItem[0]
-		}" class="amount-paid-field form-control col pe-0 rounded-pill" type="text" maxlength="9" name="amount_paid" min="0" placeholder="0" aria-label="Amount paid" value="${
-			expenseItem[5]
-		}">
-        </div>
-        <button type="submit" aria-label="Delete item" title="Delete this item" id="${
-					expenseItem[0]
-				}" class="remove-btn btn fw-bolder position-absolute px-3 py-0 mt-3 top-0 end-0">✕</button>
-        <input type="hidden" name="csrf_token" value="${csrfToken}" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
-      </form>`;
+		<form id="expense-id-${expenseItemId}" data-user-id="${userId}" class="container d-flex mb-3 p-3 pe-5 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
+			<input type="hidden" name="expense_id" value="${expenseItemId}">
+			<input id="delete-expense-id-${expenseItemId}" type="hidden" name="expense_item_delete" value="">
+			<p class="d-block mb-2 mb-sm-0 w-100 align-self-start">Name: <span class="fw-bold">${expenseItemName}</span></p>
+			<p class="d-block mb-2 mb-sm-0 w-100 align-self-start">Amount: <span class="fw-bold pe-2">$${expenseAmount}</span>
+				<span class="text-secondary d-md-block d-lg-inline">(
+					${findExpensePercentageRelativeToTotalBudgetIncomeAmount(incomeAmount, expenseAmount)}%)
+				</span>
+			</p>
+			<p class="d-block mb-2 mb-sm-0 ps-0 ps-md-5 w-100 align-self-start">
+				<span class="fw-bold ${expenseCategory}">${expenseCategory}</span>
+			</p>
+			<div class="amount-paid-field-container row align-self-start me-2">
+			<label class="col pe-0 px-md-0" for="data-expense-id-${expenseItemId}">Spent $</label>
+			<input id="data-expense-id-${expenseItemId}" data-expense-id="${expenseItemId}" class="amount-paid-field form-control col pe-0 rounded-pill" type="text" maxlength="9" name="amount_paid" min="0" placeholder="0" autocomplete="off" aria-label="Amount paid" value="${expenseAmountSpent}">
+			</div>
+			<button type="submit" aria-label="Delete item" title="Delete this item" id="${expenseItemId}" class="remove-btn btn fw-bolder position-absolute px-3 py-0 mt-3 top-0 end-0">✕</button>
+			<input type="hidden" name="csrf_token" value="${csrfToken}" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
+		</form>`;
 		expenseListContainer.append(containerForExpense);
 	});
 }
