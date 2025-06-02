@@ -295,7 +295,7 @@ function printExpensesToPage(result, incomeAmount) {
           <label class="me-2" for="data-expense-id-${expenseItem[0]}">Spent: </label>
           <input id="data-expense-id-${expenseItem[0]}" data-expense-id="${
 			expenseItem[0]
-		}" class="amount-paid-field form-control w-100 pe-0 rounded-pill" type="number" name="amount_paid" min="0" placeholder="$0" aria-label="Amount paid" value="${
+		}" class="amount-paid-field form-control w-100 pe-0 rounded-pill" type="text" maxlength="9" name="amount_paid" min="0" placeholder="$0" aria-label="Amount paid" value="${
 			expenseItem[5]
 		}">
         </div>
@@ -367,8 +367,8 @@ function restrictFieldInput(event) {
 	value = value.replace(/\D/g, "");
 
 	// Limit the length of the value to 11 characters
-	if (value.length > 11) {
-		value = value.slice(0, 11);
+	if (value.length > 9) {
+		value = value.slice(0, 9);
 	}
 
 	// Set the new value to the input field
