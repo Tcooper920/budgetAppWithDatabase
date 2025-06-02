@@ -32,8 +32,8 @@ require("../../../includes/header.php");
                 <label>
                     Enter your budget amount:
                     <input id="budget-amount-field" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill"
-                        maxlength="9" step="1" name="total_income" placeholder="$0" aria-label="Total Budget Amount"
-                        value="<?php echo "$current_income" ?>">
+                        maxlength="9" type="text" step="1" name="total_income" placeholder="$0" aria-label="Total Budget Amount"
+                        value="<?php echo htmlspecialchars($current_income, ENT_QUOTES, 'UTF-8'); ?>">
                 </label>
             </div>
             <div id="add-expense-container" class="container fs-5 d-flex flex-column p-4 my-3 bg-light rounded darkest">
