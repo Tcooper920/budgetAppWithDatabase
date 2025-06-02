@@ -272,6 +272,12 @@ function printExpensesToPage(result, incomeAmount) {
 	expenseListContainer.innerHTML = "";
 	sortedResults.forEach((expenseItem) => {
 		let containerForExpense = document.createElement("div");
+
+		// Remove default zero value from "Spent" field...
+		if (expenseItem[5] == "0") {
+			expenseItem[5] = "";
+		}
+
 		containerForExpense.innerHTML = `
       <form id="expense-id-${expenseItem[0]}" data-user-id="${
 			expenseItem[1]
@@ -292,11 +298,11 @@ function printExpensesToPage(result, incomeAmount) {
         <p class="d-block mb-2 mb-sm-0 ps-0 ps-md-5 w-100 align-self-start"><span class="fw-bold ${
 					expenseItem[4]
 				}">${expenseItem[4]}</span></p>
-        <div class="amount-paid-field-container d-flex align-self-start me-2">
-          <label class="me-2" for="data-expense-id-${expenseItem[0]}">Spent: </label>
+        <div class="amount-paid-field-container row align-self-start me-2">
+          <label class="col pe-0 px-md-0" for="data-expense-id-${expenseItem[0]}">Spent $</label>
           <input id="data-expense-id-${expenseItem[0]}" data-expense-id="${
 			expenseItem[0]
-		}" class="amount-paid-field form-control w-100 pe-0 rounded-pill" type="text" maxlength="9" name="amount_paid" min="0" placeholder="$0" aria-label="Amount paid" value="${
+		}" class="amount-paid-field form-control col pe-0 rounded-pill" type="text" maxlength="9" name="amount_paid" min="0" placeholder="0" aria-label="Amount paid" value="${
 			expenseItem[5]
 		}">
         </div>
