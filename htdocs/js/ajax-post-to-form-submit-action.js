@@ -276,7 +276,7 @@ function printExpensesToPage(result, incomeAmount) {
       <form id="expense-id-${expenseItem[0]}" data-user-id="${
 			expenseItem[1]
 		}" class="container d-flex mb-3 p-3 pe-5 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
-        <input type="hidden" name="expense_item" value="${expenseItem[0]}">
+        <input type="hidden" name="expense_id" value="${expenseItem[0]}">
         <input id="delete-expense-id-${
 					expenseItem[0]
 				}" type="hidden" name="expense_item_delete" value="">
@@ -320,7 +320,7 @@ function restrictFieldInput(e) {
 	value = value.slice(0, 9);
 
 	// Set the new value to the input field and remove leading zeros...
-	e.target.value = value.replace(/^0+(?=\d)/, "");
+	e.target.value = value.replace(/^0+(?!$)/, "");
 }
 
 // At the end of the page, print the total amount spent (This adds up all the "Paid" fields within each expense item)

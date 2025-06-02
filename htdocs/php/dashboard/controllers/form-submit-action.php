@@ -66,19 +66,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         !empty($_POST['expense_item_delete'])
     ) {
         # Delete expense...
-        $expense_item = $_POST["expense_item"];
+        $expense_id = $_POST["expense_id"];
 
         $query_to_delete_expense = $budget_database->prepare("DELETE FROM user_expenses WHERE expense_id = ?");
-        $query_to_delete_expense->bind_param("i", $expense_item);
+        $query_to_delete_expense->bind_param("i", $expense_id);
         $query_to_delete_expense->execute();
     }
     # Save "Paid" amount fields...
-    if (isset($_POST['amount_paid'])) {
+    if (isset($_POST['amount_paid'], $_POST['expense_id'])) {
         $amount_paid = formatAndSanitizeNumericalInput('amount_paid');
-        $expense_item = $_POST["expense_item"];
+        $expense_id = $_POST["expense_id"];
 
         $query_to_post_expense = $budget_database->prepare("UPDATE user_expenses SET amount_paid = ? WHERE expense_id = ?");
-        $query_to_post_expense->bind_param("ii", $amount_paid, $expense_item);
+        $query_to_post_expense->bind_param("ii", $amount_paid, $expense_id);
         $query_to_post_expense->execute();
     }
     require('retrieve_income.php');
