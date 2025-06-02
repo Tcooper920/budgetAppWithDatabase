@@ -179,6 +179,7 @@ function saveSpentAmountsForEachExpenseItemField(e) {
 
 				const result = await response.json();
 
+				restrictFieldInput(e);
 				printTotalAmountPaidOffToPage(result["total_amount_paid_off"]);
 			} catch (error) {
 				window.location.href = "../../error-pages/views/form-verification-error.php";
@@ -306,17 +307,20 @@ function printExpensesToPage(result, incomeAmount) {
       </form>`;
 		expenseListContainer.append(containerForExpense);
 	});
-
-	formatAmountSpentField();
 }
 
-// On "Spent" field value change, format the text field input...
-function formatAmountSpentField() {
-	document.addEventListener("input", (e) => {
-		if (e.target.classList.contains("amount-paid-field")) {
-			restrictFieldInput(e);
-		}
-	});
+// Function to limit what the user can enter into input fields...
+function restrictFieldInput(e) {
+	let value = e.target.value;
+
+	// Remove non-numeric characters...
+	value = value.replace(/\D/g, "");
+
+	// Limit the length of the value to 11 characters...
+	value = value.slice(0, 9);
+
+	// Set the new value to the input field and remove leading zeros...
+	e.target.value = value.replace(/^0+(?=\d)/, "");
 }
 
 // At the end of the page, print the total amount spent (This adds up all the "Paid" fields within each expense item)
@@ -357,24 +361,6 @@ function findExpensePercentageRelativeToTotalBudgetIncomeAmount(totalIncomeAmoun
 	let expensePercentage = (expenseAmount / totalIncomeAmount) * 100;
 	let roundedExpensePercentage = Math.round(expensePercentage * 100) / 100;
 	return roundedExpensePercentage;
-}
-
-// Function to limit what the user can enter into input fields...
-function restrictFieldInput(event) {
-	let value = event.target.value;
-
-	// Remove non-numeric characters...
-	value = value.replace(/\D/g, "");
-
-	// Limit the length of the value to 11 characters
-	if (value.length > 9) {
-		value = value.slice(0, 9);
-	}
-
-	// Set the new value to the input field
-	if (!isNaN(parseFloat(event.target.value))) {
-		event.target.value = parseInt(value);
-	}
 }
 
 // Function to display "Add an expense" form and budget analytics if the user's income field is not set to "0" or empty...
