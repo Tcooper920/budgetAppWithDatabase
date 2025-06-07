@@ -156,6 +156,9 @@ expenseListContainer.addEventListener("input", saveSpentAmountsForEachExpenseIte
 
 function saveSpentAmountsForEachExpenseItemField(e) {
 	e.preventDefault();
+
+	restrictFieldInput(e); // Format "Spent" field text
+
 	if (e.target.classList.contains("amount-paid-field")) {
 		let expenseItemFormToAddPaymentTo = document.getElementById(
 			`expense-id-${e.target.getAttribute("data-expense-id")}`
@@ -179,7 +182,6 @@ function saveSpentAmountsForEachExpenseItemField(e) {
 
 				const result = await response.json();
 
-				restrictFieldInput(e);
 				printTotalAmountPaidOffToPage(result["total_amount_paid_off"]);
 			} catch (error) {
 				window.location.href = "../../error-pages/views/form-verification-error.php";
