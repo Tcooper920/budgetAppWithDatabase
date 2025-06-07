@@ -37,8 +37,11 @@ const budgetAnalyticsContainer = document.getElementById("budget-analytics");
 // Variable declaration for expense list container...
 const expenseListContainer = document.getElementById("expense-list-container");
 
-// Variable declaration for container containing the total amount paid off...
+// Variable declaration for container containing the total amount paid and the total budget amount off...
 const totalAmountPaid = document.getElementById("total-amount-paid");
+
+// Variable declaration for container containing the total amount paid off...
+const totalAmountSpentContainer = document.getElementById("total-amount-spent-container");
 
 // Variable declaration for container containing the total budget amount...
 const totalBudgetAmount = document.getElementById("total-budget-amount");
@@ -334,6 +337,8 @@ function printTotalAmountPaidOffToPage(totalAmountPaidOff) {
 	if (totalBudgetAmount.innerText == "") {
 		totalBudgetAmount.innerText = "0";
 	}
+
+	checkIfAmountSpentExceedsBudgetAmount();
 }
 
 // Function to clear expense fields after each submission...
@@ -376,4 +381,11 @@ function displayBudgetAnalytics() {
 	// Toggle analytics visibility...
 	budgetAnalyticsContainer.classList.toggle("visible", isVisible);
 	budgetAnalyticsContainer.classList.toggle("invisible", !isVisible);
+}
+
+function checkIfAmountSpentExceedsBudgetAmount() {
+	let budget = parseInt(budgetAmountField.value);
+	let spent = parseInt(totalAmountPaid.innerText);
+
+	totalAmountSpentContainer.classList.toggle("exceeded-budget-amount", spent > budget);
 }
