@@ -1,246 +1,247 @@
 * {
-  scroll-behavior: auto !important;
+	scroll-behavior: auto !important;
 }
 
 /* Color variables */
 :root {
-  --primary-color: #4b5173;
-  --primary-color-dark: #00000045;
-  --secondary-color: #f37b35;
-  --secondary-color-dark: #e16823;
-  --fixed-spending: #67bcff;
-  --variable-spending: rgb(203 91 203);
-  --debt-spending: #dc3545;
-  --savings-spending: #83db87;
-  --fun-spending: #f1e57d;
-  --other-spending: lightgray;
-  --white: white;
-  --darkest: #24273a;
-  --error-field-outlines: rgb(220, 53, 69);
-  --error-dark: rgb(191 28 44);
-  --form-field-border-style: #ced4da;
-  --negative-amount-to-budget-with: #ff8282;
-  --focus: rgb(164, 164, 164);
+	--primary-color: #4b5173;
+	--primary-color-dark: #00000045;
+	--secondary-color: #f37b35;
+	--secondary-color-dark: #e16823;
+	--fixed-spending: #67bcff;
+	--variable-spending: rgb(203 91 203);
+	--debt-spending: #dc3545;
+	--savings-spending: #83db87;
+	--fun-spending: #f1e57d;
+	--other-spending: lightgray;
+	--white: white;
+	--darkest: #24273a;
+	--error-field-outlines: rgb(220, 53, 69);
+	--error-dark: rgb(191 28 44);
+	--form-field-border-style: #ced4da;
+	--negative-amount-to-budget-with: #ff8282;
+	--focus: rgb(164, 164, 164);
 }
 
 *:focus {
-  box-shadow: none !important;
-  outline: 0.15rem dashed var(--focus) !important;
+	box-shadow: none !important;
+	outline: 0.15rem dashed var(--focus) !important;
 }
 
 .gradient-background {
-  background: linear-gradient(45deg, #4b5173 33%, #bd62c5 147%);
+	background: linear-gradient(45deg, #4b5173 33%, #bd62c5 147%);
 }
 
 nav {
-  background: var(--white);
-  z-index: 0;
+	background: var(--white);
+	z-index: 0;
 }
 
 .active-nav-link {
-  color: black;
+	color: black;
 }
 
 body {
-  font-family: "Outfit", sans-serif;
+	font-family: "Outfit", sans-serif;
 }
 
 main {
-  max-width: 60rem;
-  margin: 0 auto;
+	max-width: 60rem;
+	margin: 0 auto;
 }
 
 .toast {
-  z-index: 1;
+	z-index: 1;
 }
 
 form {
-  color: var(--darkest);
+	color: var(--darkest);
 }
 
 h1 {
-  font-size: 2rem;
+	font-size: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
 h3 {
-  font-size: 1.4rem;
-  text-decoration: underline;
+	font-size: 1.4rem;
+	text-decoration: underline;
 }
 
 em {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 .circle-numbers {
-  display: inline-block;
-  margin-right: 0.5rem;
+	display: inline-block;
+	margin-right: 0.5rem;
 }
 
 .circle-numbers::after {
-  content: ".";
+	content: ".";
 }
 
 /* Toast alerts */
 .toast {
-  left: 0;
-  width: 90%;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
+	left: 0;
+	width: 90%;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .modal {
-  color: var(--darkest);
+	color: var(--darkest);
 }
 
 .cursor-pointer {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 /* Underline text links on hover */
 .link-underline-opacity-0:hover {
-  --bs-link-underline-opacity: 1;
+	--bs-link-underline-opacity: 1;
 }
 
 /* Custom max width class */
 .mw-27rem {
-  max-width: 27rem;
+	max-width: 27rem;
 }
 
 /* Form field errors */
 .error-msg + input,
 .error-msg + div > .input {
-  border: 0.1rem solid var(--error-field-outlines);
+	border: 0.1rem solid var(--error-field-outlines);
 }
 
 ::marker {
-  color: var(--secondary-color);
-  font-weight: bold;
+	color: var(--secondary-color);
+	font-weight: bold;
 }
 
 /* Border radius customizations (Bootstrap overrides) */
 .no-rounded-right {
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
 }
 button.no-rounded-left {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
 }
 .form-field-border-style {
-  border: 1px solid var(--form-field-border-style);
+	border: 1px solid var(--form-field-border-style);
 }
 
 /* Buttons */
 .btn-primary {
-  background: var(--secondary-color);
-  border-color: var(--secondary-color-dark);
+	background: var(--secondary-color);
+	border-color: var(--secondary-color-dark);
 }
 .btn-primary:active {
-  background-color: var(--secondary-color-dark);
-  border-color: var(--secondary-color-dark);
+	background-color: var(--secondary-color-dark);
+	border-color: var(--secondary-color-dark);
 }
 .btn-primary:hover {
-  background-color: var(--secondary-color-dark);
-  border-color: var(--secondary-color-dark);
+	background-color: var(--secondary-color-dark);
+	border-color: var(--secondary-color-dark);
 }
 .border-primary-color {
-  color: var(--secondary-color-dark);
-  border-color: var(--secondary-color-dark);
+	color: var(--secondary-color-dark);
+	border-color: var(--secondary-color-dark);
 }
 .btn:hover {
-  color: var(--white);
-  background-color: var(--secondary-color-dark);
-  border-color: var(--secondary-color-dark);
+	color: var(--white);
+	background-color: var(--secondary-color-dark);
+	border-color: var(--secondary-color-dark);
 }
 .btn-check:checked + .btn,
 .btn.active,
 .btn.show,
 .btn:first-child:active,
 :not(.btn-check) + .btn:active {
-  background-color: var(--secondary-color-dark);
+	background-color: var(--secondary-color-dark);
 }
 /* Remove button ("X") for expense item list */
 .remove-btn:hover {
-  color: var(--error-dark);
-  background-color: transparent;
-  border-color: transparent;
+	color: var(--error-dark);
+	background-color: transparent;
+	border-color: transparent;
 }
 /* Warning buttons */
 .btn.warning {
-  background-color: var(--error-field-outlines);
-  color: white;
+	background-color: var(--error-field-outlines);
+	color: white;
 }
 .btn.warning:hover {
-  color: white;
-  background-color: var(--error-dark);
-  transition: background-color 0.5s;
+	color: white;
+	background-color: var(--error-dark);
+	transition: background-color 0.5s;
 }
 /* Buttons with text only on white backgrounds (appear like standard links) */
 .text-button:hover,
 .text-button:focus {
-  background-color: transparent;
-  border: 1px solid;
+	background-color: transparent;
+	border: 1px solid;
 }
 /* Toggle password eye */
 #togglePassword:hover {
-  border: 1px solid;
-  color: initial;
+	border: 1px solid;
+	color: initial;
 }
 #togglePassword:focus-visible {
-  border-color: var(--bs-link-color-rgb);
+	border-color: var(--bs-link-color-rgb);
 }
 
 /* Color classes */
 .light-blue-background {
-  background: var(--fixed-spending);
+	background: var(--fixed-spending);
 }
 .light-green-background {
-  background: var(--savings-spending);
+	background: var(--savings-spending);
 }
 .light-yellow-background {
-  background: var(--fun-spending);
+	background: var(--fun-spending);
 }
 .light-gray-background {
-  background: var(--other-spending);
+	background: var(--other-spending);
 }
 .dark-blue-background {
-  background: var(--primary-color);
+	background: var(--primary-color);
 }
 .navy-blue-background {
-  background: var(--primary-color-dark);
+	background: var(--primary-color-dark);
 }
 .white-background {
-  background: var(--white);
+	background: var(--white);
 }
 .white {
-  color: var(--white);
+	color: var(--white);
 }
 .purple-background {
-  background: var(--variable-spending);
+	background: var(--variable-spending);
 }
 
 .invisible {
-  opacity: 0;
+	opacity: 0;
 }
 
 /* Spending breakdown graph ("progress" bar) */
 .progress {
-  height: 4rem;
-  background: var(--darkest);
+	height: 4rem;
+	background: var(--darkest);
 }
 .progress strong {
-  text-shadow: 0px 0px 9px rgb(70 70 70 / 78%);
-  font-weight: bold;
+	text-shadow: 0px 0px 9px rgb(70 70 70 / 78%);
+	font-weight: bold;
 }
 
 /* Dynamically add this class to the "{amount left} to budget with" when the amount left is a negative number */
-.negative-balance-to-budget-with {
-  color: var(--negative-amount-to-budget-with);
+.negative-balance-to-budget-with,
+.exceeded-budget-amount {
+	color: var(--negative-amount-to-budget-with);
 }
 
 /* Color block before spending type text in itemized list */
@@ -250,160 +251,160 @@ button.no-rounded-left {
 .Savings::before,
 .Fun::before,
 .Other::before {
-  border-radius: 0.2rem;
-  margin-right: 0.5rem;
+	border-radius: 0.2rem;
+	margin-right: 0.5rem;
 }
 .Fixed::before {
-  content: "";
-  border-left: 1.2rem solid var(--fixed-spending);
+	content: "";
+	border-left: 1.2rem solid var(--fixed-spending);
 }
 .border-left-fixed {
-  border-left: 0.3rem solid var(--fixed-spending);
+	border-left: 0.3rem solid var(--fixed-spending);
 }
 .Variable::before {
-  content: "";
-  border-left: 1.2rem solid rgb(177 68 177);
+	content: "";
+	border-left: 1.2rem solid rgb(177 68 177);
 }
 .border-left-variable {
-  border-left: 0.3rem solid rgb(177 68 177);
+	border-left: 0.3rem solid rgb(177 68 177);
 }
 .Debt::before {
-  content: "";
-  border-left: 1.2rem solid var(--debt-spending);
+	content: "";
+	border-left: 1.2rem solid var(--debt-spending);
 }
 .border-left-debt {
-  border-left: 0.3rem solid var(--debt-spending);
+	border-left: 0.3rem solid var(--debt-spending);
 }
 .Savings::before {
-  content: "";
-  border-left: 1.2rem solid var(--savings-spending);
+	content: "";
+	border-left: 1.2rem solid var(--savings-spending);
 }
 .border-left-savings {
-  border-left: 0.3rem solid var(--savings-spending);
+	border-left: 0.3rem solid var(--savings-spending);
 }
 .Fun::before {
-  content: "";
-  border-left: 1.2rem solid var(--fun-spending);
+	content: "";
+	border-left: 1.2rem solid var(--fun-spending);
 }
 .border-left-fun {
-  border-left: 0.3rem solid var(--fun-spending);
+	border-left: 0.3rem solid var(--fun-spending);
 }
 .Other::before {
-  content: "";
-  border-left: 1.2rem solid var(--other-spending);
+	content: "";
+	border-left: 1.2rem solid var(--other-spending);
 }
 .border-left-other {
-  border-left: 0.3rem solid var(--other-spending);
+	border-left: 0.3rem solid var(--other-spending);
 }
 footer a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 .amount-paid-field-container {
-  width: 30rem;
-  max-width: 10rem;
+	width: 30rem;
+	max-width: 10rem;
 }
 
 .amount-paid-field-container .form-control {
-  padding-top: 0;
-  padding-bottom: 0;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
 /* Budget dashboard */
 #add-expense-container,
 #budget-analytics {
-  transition: opacity 0.5s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
 }
 
 /* Keyframe animations */
 @keyframes bar-graph-slide-in {
-  from {
-    transform: scaleX(0);
-  }
+	from {
+		transform: scaleX(0);
+	}
 
-  to {
-    transform: scaleX(1);
-  }
+	to {
+		transform: scaleX(1);
+	}
 }
 @keyframes fade-in-rise {
-  0% {
-    opacity: 0;
-    transform: translateY(50px); /* Start slightly below */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0); /* End at normal position */
-  }
+	0% {
+		opacity: 0;
+		transform: translateY(50px); /* Start slightly below */
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0); /* End at normal position */
+	}
 }
 @keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 .fade-in-and-rise {
-  animation: fade-in-rise 1s ease forwards;
+	animation: fade-in-rise 1s ease forwards;
 }
 
 .fade-in {
-  animation: fade-in 0.8s ease forwards;
+	animation: fade-in 0.8s ease forwards;
 }
 
 .progress-bar {
-  outline: 1px solid var(--darkest);
+	outline: 1px solid var(--darkest);
 }
 
 #graph > .progress-bar {
-  transform-origin: 0% 0%;
-  animation: bar-graph-slide-in 0.5s;
+	transform-origin: 0% 0%;
+	animation: bar-graph-slide-in 0.5s;
 }
 
 .footer-author-container {
-  background-color: rgb(35 35 35);
+	background-color: rgb(35 35 35);
 }
 
 /* Google reCAPTCHA styling */
 .g-recaptcha {
-  justify-content: center;
-  align-items: center;
-  display: flex;
+	justify-content: center;
+	align-items: center;
+	display: flex;
 }
 
 /* MEDIA QUERIES *******************************************************************************************/
 
 @media screen and (min-width: 992px) {
-  .active-nav-link {
-    border-bottom: 0.1rem solid black;
-  }
-  nav {
-    border-bottom-right-radius: 1.5rem;
-    border-bottom-left-radius: 1.5rem;
-  }
+	.active-nav-link {
+		border-bottom: 0.1rem solid black;
+	}
+	nav {
+		border-bottom-right-radius: 1.5rem;
+		border-bottom-left-radius: 1.5rem;
+	}
 }
 
 @media screen and (min-width: 690px) {
-  .toast {
-    width: 30rem;
-    margin-right: 3rem;
-  }
+	.toast {
+		width: 30rem;
+		margin-right: 3rem;
+	}
 }
 
 @media screen and (min-width: 576px) {
-  .circle-numbers {
-    background: #3e2e52;
-    margin-right: 1rem;
-    border-radius: 50%;
-    width: 3.5rem;
-    height: 3.5rem;
-    text-align: center;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .circle-numbers::after {
-    content: "";
-  }
+	.circle-numbers {
+		background: #3e2e52;
+		margin-right: 1rem;
+		border-radius: 50%;
+		width: 3.5rem;
+		height: 3.5rem;
+		text-align: center;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.circle-numbers::after {
+		content: "";
+	}
 }
