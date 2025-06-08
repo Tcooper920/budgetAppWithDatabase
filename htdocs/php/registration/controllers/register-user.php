@@ -29,23 +29,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST['first_name'])) {
         $errors["firstNameError"] = "Enter your first name.";
     } else {
-        $fn = mysqli_real_escape_string($budget_database, trim($_POST['first_name']));
+        $fn = trim($_POST['first_name']);
+        if (!preg_match("/^[a-zA-Z\s'-]+$/", $fn)) {
+            $errors["firstNameError"] = "First name contains invalid characters.";
+        }
     }
 
     # Make sure last name is filled in...
     if (empty($_POST['last_name'])) {
         $errors["lastNameError"] = "Enter your last name.";
     } else {
-        $ln = mysqli_real_escape_string($budget_database, trim($_POST['last_name']));
+        $ln = trim($_POST['last_name']);
+        if (!preg_match("/^[a-zA-Z\s'-]+$/", $ln)) {
+            $errors["lastNameError"] = "Last name contains invalid characters.";
+        }
     }
 
     # Make sure email is filled in...
     if (empty($_POST['email'])) {
         $errors["emailAddressError"] = "Enter your email address.";
     } else {
-        $email = $_POST['email'];
+        $email = strtolower(trim($_POST['email']));
         if (isValidEmail($email)) {
-            $e = mysqli_real_escape_string($budget_database, trim($_POST['email']));
+            $e = $email;
         } else {
             $errors["emailAddressError"] = "This email address is not valid.";
         }

@@ -48,17 +48,15 @@ function validate($budget_database, $email = '', $pwd = '')
     }
 
     // Check that email has been filled...
+    $email =  strtolower(trim($email));
     if (empty($email)) {
         $errors["emailError"] = "Enter your email address.";
-    } else {
-        $email = trim($email); // trim and use prepared statement
     }
 
     // Check that password has been filled...
-    if (empty($pwd)) {
+    $pass = trim($pwd);
+    if (empty($pass)) {
         $errors["passwordError"] = "Enter your password.";
-    } else {
-        $pass = trim($pwd); // just trim spaces for the password
     }
 
     // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
