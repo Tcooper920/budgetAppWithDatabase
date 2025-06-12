@@ -24,7 +24,7 @@ require("../controllers/delete-user-account.php");
             <label class="w-100">
                 Type 'delete my account' to confirm account deletion. Then click the 'Delete my account' button.
                 <input type="text" autocomplete="off" placeholder="delete my account" name="delete_account_field"
-                    value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+                    value="" class="form-control m-2 mt-3 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <!-- Honeypot field -->
             <input type="text" name="honeypot" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
