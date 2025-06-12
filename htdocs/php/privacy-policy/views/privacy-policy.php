@@ -140,7 +140,8 @@ require("../../../includes/header.php");
                     <span class="circle-numbers">8</span>Children's privacy
                 </h2>
                 <p class="fs-5 mb-4">
-                    The App is not intended for use by children under the age of 13. We do
+                    <em>The Children's Online Privacy Protection Act (COPPA):</em>
+                    This App is not intended for use by children under the age of 13. We do
                     not knowingly collect or solicit personal data from anyone under 13.
                     If we become aware that a child under the age of 13 has provided us
                     with personal information, we will delete that information
