@@ -274,7 +274,11 @@ function printExpensesToPage(result, incomeAmount) {
 	// Get CSRF token from form and add it to each expense item that is printed to the page
 	const csrfToken = document.querySelector('input[name="csrf_token"]').value;
 
-	expenseListContainer.innerHTML = "";
+	expenseListContainer.innerHTML =
+		"<p id='no-expenses-message' class='fs-6 opacity-50'>No expenses added yet.</p>";
+
+	const noExpensesMessage = document.getElementById("no-expenses-message");
+
 	sortedResults.forEach((expenseItem) => {
 		const containerForExpense = document.createElement("div");
 		const expenseItemId = expenseItem[0];
@@ -289,17 +293,20 @@ function printExpensesToPage(result, incomeAmount) {
 			expenseAmountSpent = "";
 		}
 
+		// Hide "No expenses added yet" message...
+		noExpensesMessage.classList.add("d-none");
+
 		containerForExpense.innerHTML = `
 		<form id="expense-id-${expenseItemId}" data-user-id="${userId}" class="container d-flex mb-3 p-3 pe-5 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
 			<input type="hidden" name="expense_id" value="${expenseItemId}">
 			<input id="delete-expense-id-${expenseItemId}" type="hidden" name="expense_item_delete" value="">
-			<p class="d-block mb-2 mb-sm-0 w-100 align-self-start">Name: <span class="fw-bold">${expenseItemName}</span></p>
-			<p class="d-block mb-2 mb-sm-0 w-100 align-self-start">Amount: <span class="fw-bold pe-2">$${expenseAmount}</span>
+			<p class="d-block mb-0 w-100 align-self-start">Name: <span class="fw-bold">${expenseItemName}</span></p>
+			<p class="d-block mb-0 w-100 align-self-start">Amount: <span class="fw-bold pe-1">$${expenseAmount}</span>
 				<span class="text-secondary d-md-block d-lg-inline">(
 					${findExpensePercentageRelativeToTotalBudgetIncomeAmount(incomeAmount, expenseAmount)}%)
 				</span>
 			</p>
-			<p class="d-block mb-2 mb-sm-0 ps-0 ps-md-5 w-100 align-self-start">
+			<p class="d-block mb-0 ps-0 ps-md-5 w-100 align-self-start">
 				<span class="fw-bold ${expenseCategory}">${expenseCategory}</span>
 			</p>
 			<div class="amount-paid-field-container row align-self-start me-2">

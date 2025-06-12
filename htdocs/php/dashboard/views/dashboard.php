@@ -122,7 +122,7 @@ require("../../../includes/header.php");
             </div>
             <div id="expense-list-container"></div>
             <hr class="container my-4">
-            <div class="total-amount-paid-container container text-md-end">
+            <div class="total-amount-paid-container container text-sm-end ps-0">
                 <p class="fs-5"><span class="me-1">Total amount spent:</span> <span id="total-amount-spent-container"><span class="fs-3 fw-bold">$</span><span
                             id="total-amount-paid" class="fs-3 fw-bold"></span></span></p>
                 <p class="fs-5"><span class="me-1">Total budget amount:</span> <span class="fs-3 fw-bold">$</span><span
