@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: /budget_app_with_database/htdocs/php/login/views/login.php');
+    header("Location: /$root_folder/htdocs/php/login/views/login.php");
     exit();
 }
 

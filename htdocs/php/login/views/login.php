@@ -21,7 +21,7 @@ require("../../../includes/header.php");
     <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
         <img src="../../../images/buildabudge-logo-stacked.svg" alt="BuildaBudge logo" title="BuildaBudge"
             width="240" height="240" class="d-none d-sm-block mb-3">
-        <form id="form" action="/budget_app_with_database/htdocs/php/login/controllers/login-action.php" method="POST"
+        <form id="form" action="/<?php echo $root_folder ?>/htdocs/php/login/controllers/login-action.php" method="POST"
             class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue mw-27rem">
 
             <!-- Error message container in form header -->
@@ -46,16 +46,16 @@ require("../../../includes/header.php");
                 Email Address:
                 <?php if (isset($errors['emailError']))
                     echo '<br><p class="error-msg text-danger mb-0">' . $errors['emailError'] . '</p>' ?>
-                    <input type="text" name="email" autocomplete="on" value="<?php if (isset($_POST['email']))
-                    echo htmlspecialchars($_POST["email"]); ?>"
+                <input type="text" name="email" autocomplete="on" value="<?php if (isset($_POST['email']))
+                                                                                echo htmlspecialchars($_POST["email"]); ?>"
                     class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
             </label>
             <label class="w-100 mt-2">
                 Password:
                 <?php if (isset($errors['passwordError']))
                     echo '<br><p class="error-msg text-danger mb-0">' . $errors['passwordError'] . '</p>' ?>
-                    <div class="d-flex"><input id="password" type="password" name="pass" autocomplete="off" value="<?php if (isset($_POST['pass']))
-                    echo htmlspecialchars($_POST["pass"]); ?>"
+                <div class="d-flex"><input id="password" type="password" name="pass" autocomplete="off" value="<?php if (isset($_POST['pass']))
+                                                                                                                    echo htmlspecialchars($_POST["pass"]); ?>"
                         class="form-control m-2 mx-0 p-2 ps-4 fs-5 rounded-pill border-end-0 no-rounded-right input">
                     <button class="btn bg-white my-2 rounded-pill no-rounded-left input form-field-border-style"
                         type="button" id="togglePassword">
