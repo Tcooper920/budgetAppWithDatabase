@@ -11,6 +11,10 @@ if (!isset($_SESSION['user_resetting_password']) || !$_SESSION['user_resetting_p
     exit();
 }
 
+require("../../../includes/header.php");
+
+echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
+
 // Function to convert seconds into minutes and seconds...
 function convertSeconds($seconds)
 {

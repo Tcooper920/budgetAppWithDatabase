@@ -10,6 +10,7 @@ if (!isset($_SESSION['user_resetting_password']) || !$_SESSION['user_resetting_p
     header('Location: forgot-password.php');
     exit();
 }
+
 require("../../../includes/header.php");
 
 echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
@@ -27,9 +28,9 @@ require('../controllers/change-users-password.php');
             Enter your new Password:
             <?php if (isset($errors['pass1Error']))
                 echo '<br><p class="error-msg text-danger mb-0">' . $errors['pass1Error'] . '</p>' ?>
-                <div class="d-flex">
-                    <input id="password" type="password" name="pass1" value="<?php if (isset($_POST['pass1']))
-                echo htmlspecialchars($_POST['pass1']); ?>"
+            <div class="d-flex">
+                <input id="password" type="password" name="pass1" value="<?php if (isset($_POST['pass1']))
+                                                                                echo htmlspecialchars($_POST['pass1']); ?>"
                     class="form-control m-2 mx-0 p-2 ps-4 fs-5 rounded-pill border-end-0 no-rounded-right input">
                 <button class="btn bg-white my-2 rounded-pill no-rounded-left input form-field-border-style"
                     type="button" id="togglePassword">
@@ -41,8 +42,8 @@ require('../controllers/change-users-password.php');
             Confirm Password:
             <?php if (isset($errors['pass2Error']))
                 echo '<br><p class="error-msg text-danger mb-0">' . $errors['pass2Error'] . '</p>' ?>
-                <input type="password" name="pass2" value="<?php if (isset($_POST['pass2']))
-                echo htmlspecialchars($_POST['pass2']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
+            <input type="password" name="pass2" value="<?php if (isset($_POST['pass2']))
+                                                            echo htmlspecialchars($_POST['pass2']); ?>" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill">
         </label>
         <!-- Honeypot field -->
         <input type="text" name="honeypot" value="" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
