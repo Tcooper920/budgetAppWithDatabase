@@ -19,13 +19,13 @@ require("../../../includes/header.php");
                 <p class="fs-5 mb-4">Please check the URL or return to the homepage.</p>
                 <div class="row pt-2">
                     <div class="col-sm-7">
-                        <a href="../../../index.php" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill"
+                        <a href="<?php echo $base_url ?>index.php" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill"
                             title="Return to homepage">Return to homepage</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 d-flex">
-                <img src="../../../images/calculator.svg" alt="Calculator graphic with a screen that reads, 'OOPS!'."
+                <img src="<?php echo $base_url ?>images/calculator.svg" alt="Calculator graphic with a screen that reads, 'OOPS!'."
                     width="450" height="465" class="col w-100 mt-5 mt-lg-0 ps-lg-4 ">
             </div>
         </div>
