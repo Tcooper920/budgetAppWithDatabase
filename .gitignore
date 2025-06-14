@@ -3,11 +3,11 @@
 .DS_Store?
 
 # Ignore Ai files
-htdocs/images/ai/*.ai
+public_html/htdocs/images/ai/*.ai
 *.ai
 
 # Ignore Ps files
-htdocs/images/ai/*.psd
+public_html/htdocs/images/ai/*.psd
 *.psd
 
 # Ignore configuration files
