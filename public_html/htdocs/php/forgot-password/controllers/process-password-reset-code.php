@@ -61,8 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if user is resending a confirmation code...
     if (isset($_POST['resend_code']) && $_POST['resend_code'] == '1') {
         // Resend confirmation code email...
-        echo '<div class="container col-lg-5 px-3">
-                <div class="toast position-fixed top-2 white-background fade show" role="alert" aria-live="assertive" aria-atomic="true">
+        echo '<div class="container position-fixed col-lg-5 mt-5 pt-4 px-3">
+                <div class="toast position-fixed mt-5 white-background fade show z-1" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex flex-column">
                         <button type="button" class="align-self-end btn-close p-3" data-bs-dismiss="toast" aria-label="Close"></button>
                         <div class="toast-body fs-6 p-4 border-top border-1 border-dark-subtle">
