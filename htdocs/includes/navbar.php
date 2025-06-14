@@ -1,6 +1,6 @@
 <?php
 // Define the base URL relative to the site's root to create dynamic links...
-$base_url = "/budget_app_with_database/htdocs/";
+$base_url = "/$root_folder/htdocs/";
 $current_page = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 $is_logged_in = isset($_SESSION['user_id']);
 
@@ -34,7 +34,6 @@ function print_nav_item(
           <a href='{$base_url}{$page_file_path}' title='{$title_attribute}' 
           class='{$link_classes}'>{$nav_item_name}</a>
         </li>";
-
 }
 ?>
 

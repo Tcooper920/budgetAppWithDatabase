@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: /budget_app_with_database/htdocs/php/login/views/login.php');
+    header("Location: /$root_folder/htdocs/php/login/views/login.php");
     exit();
 }
 
@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <h1 class="pb-3 fw-bold">Your account has been successfully deleted.</h1>
                     <p>We hope you come back!</p>
                     <div class="mt-3">
-                        <a href="../../dashboard/views/dashboard.php" title="Return to login">
+                        <a href="../../login/views/login.php" title="Return to login">
                             <input type="button" value="Return to login" class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill">
                         </a>
                     </div>
@@ -150,7 +150,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $get_income_by_user_id->free();
 
             exit();
-
         }
     }
 }

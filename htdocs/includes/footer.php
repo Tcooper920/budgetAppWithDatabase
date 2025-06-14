@@ -1,5 +1,5 @@
 <?php // Define the base URL relative to the site's root to create dynamic links...
-$base_url = "/budget_app_with_database/htdocs/";
+$base_url = "/$root_folder/htdocs/";
 $is_logged_in = isset($_SESSION['user_id']);
 
 // Helper function to print footer nav items to the page...
