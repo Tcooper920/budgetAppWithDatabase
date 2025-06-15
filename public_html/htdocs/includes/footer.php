@@ -55,8 +55,11 @@ require('modal.php');
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'
   integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz' crossorigin='anonymous'></script>
 
-<?php
-if ($is_logged_in) {
-  echo "<script src='{$base_url}js/inactivity-logout-function.js'></script>";
-}
-?>
+<!-- If logged in, pass the root folder name to the JavaScript file (inactivity-logout-function.js) to redirect when the user is inactive -->
+<?php if ($is_logged_in): ?>
+  <div
+    id="logout-config"
+    data-logout-url="/<?= $root_folder ?>/public_html/htdocs/php/login/views/logout.php">
+  </div>
+  <script src="/<?= $root_folder ?>/public_html/htdocs/js/inactivity-logout-function.js"></script>
+<?php endif; ?>

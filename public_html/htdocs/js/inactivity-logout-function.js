@@ -2,6 +2,8 @@
 const modelPopup = document.getElementById("popup-model");
 const okayButton = document.getElementById("modal-dismiss");
 const modalInstance = new bootstrap.Modal(modelPopup); // Create a Bootstrap modal instance
+const configEl = document.getElementById("logout-config");
+const logoutUrl = configEl.getAttribute("data-logout-url");
 
 // Logout user after inactivity...
 function inactivityTime() {
@@ -19,11 +21,7 @@ function inactivityTime() {
 		}, warningTimeout);
 
 		logoutTimer = setTimeout(() => {
-			window.location.href =
-				window.location.origin +
-				"/" +
-				$root_folder +
-				"/public_html/htdocs/php/login/views/logout.php";
+			window.location.href = window.location.origin + logoutUrl;
 		}, logoutTimeout);
 	}
 
