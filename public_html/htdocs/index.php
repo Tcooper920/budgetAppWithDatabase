@@ -15,7 +15,7 @@ require("includes/header.php");
 
 <body class="white min-vh-100 d-flex flex-column gradient-background">
     <?php require("includes/navbar.php"); ?>
-    <main class="p-3 pt-sm-5 mt-lg-5 container align-items-center flex-fill">
+    <main class="p-3 pt-sm-5 my-lg-5 container align-items-center flex-fill">
         <div class="row mb-2">
             <div class="col-lg-6 fade-in">
                 <h1 class="pb-3 fw-bold">Welcome to BuildaBudge!</h1>
