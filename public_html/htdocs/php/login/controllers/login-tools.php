@@ -24,6 +24,10 @@ function trackLoginAttempts()
         $_SESSION['login_attempts'] = 0;
     }
 
+    if (!isset($_SESSION['lockout_time'])) {
+        $_SESSION['lockout_time'] = 0;
+    }
+
     // Add 1 login attempt...
     $_SESSION['login_attempts']++;
 
@@ -47,6 +51,12 @@ function validate($budget_database, $email = '', $pwd = '')
         return array(false, $errors);
     }
 
+    // If lockout time has expired, reset login attempts
+    if (isset($_SESSION['lockout_time']) && time() >= $_SESSION['lockout_time']) {
+        $_SESSION['login_attempts'] = 0;
+        $_SESSION['lockout_time'] = 0;
+    }
+
     // Check that email has been filled...
     $email =  strtolower(trim($email));
     if (empty($email)) {
@@ -60,7 +70,7 @@ function validate($budget_database, $email = '', $pwd = '')
     }
 
     // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
-    if (!empty($_POST['honeypot'])) {
+    if (isset($_POST['honeypot']) && !empty($_POST['honeypot'])) {
         // Bot detected. Form submission aborted...
         header('Location: ../../error-pages/views/form-verification-error.php');
         exit;
