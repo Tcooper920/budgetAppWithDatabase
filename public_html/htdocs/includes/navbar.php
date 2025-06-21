@@ -1,6 +1,5 @@
 <?php
 // Define the base URL relative to the site's root to create dynamic links...
-$base_url = "/$root_folder/public_html/htdocs/";
 $current_page = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 $is_logged_in = isset($_SESSION['user_id']);
 
@@ -40,7 +39,7 @@ function print_nav_item(
 <nav class="navbar navbar-light navbar-expand-lg mb-4 px-0 px-sm-4 shadow-sm">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?php echo $base_url ?>index.php">
-      <img src="<?php echo $base_url ?>/images/buildabudge-logo-horizontal.svg" width="230" height="65"
+      <img src="<?php echo $base_url ?>images/buildabudge-logo-horizontal.svg" width="220" height="62"
         alt="BuildaBudge logo" title="BuildaBudge">
     </a>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"

@@ -177,7 +177,7 @@ require("../../../includes/header.php");
                 </p>
                 <div class="row pt-2">
                     <div class="col-sm-7">
-                        <a href="/<?php echo $root_folder ?>/public_html/htdocs/index.php"
+                        <a href="../../../index.php"
                             class="btn btn-primary ms-0 m-2 ms-0 w-100 p-2 fs-5 rounded-pill"
                             title="Return to homepage">Return to homepage</a>
                     </div>

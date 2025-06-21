@@ -1,7 +1,6 @@
 <?php
 // Define the base URL relative to the site's root to create dynamic links...
 require_once(__DIR__ . "/../../../config/return-root-folder.php"); // Get root folder
-$base_url = "/$root_folder/public_html/htdocs/"; // Set base URL
 require_once("security-headers.php");
 ?>
 

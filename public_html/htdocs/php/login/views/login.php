@@ -21,7 +21,7 @@ require("../../../includes/header.php");
     <main class="d-flex flex-column p-3 mt-5 container col col-md-6 col-xl-4 align-items-center flex-fill">
         <img src="../../../images/buildabudge-logo-stacked.svg" alt="BuildaBudge logo" title="BuildaBudge"
             width="240" height="240" class="d-none d-sm-block mb-3">
-        <form id="form" action="/<?php echo $root_folder ?>/public_html/htdocs/php/login/controllers/login-action.php" method="POST"
+        <form id="form" action="../controllers/login-action.php" method="POST"
             class="fs-5 p-4 p-sm-5 my-3 bg-light rounded dark-blue mw-27rem">
 
             <!-- Error message container in form header -->

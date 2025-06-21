@@ -1,6 +1,5 @@
 <?php // Define the base URL relative to the site's root to create dynamic links...
 require_once(__DIR__ . "/../../../config/return-root-folder.php"); // Get root folder
-$base_url = "/$root_folder/public_html/htdocs/";
 $is_logged_in = isset($_SESSION['user_id']);
 
 // Helper function to print footer nav items to the page...
@@ -29,7 +28,7 @@ require('modal.php');
 
       <a href="<?php echo $base_url ?>index.php"
         class="col-md-4 d-flex align-items-center justify-content-center me-md-auto link-body-emphasis text-decoration-none">
-        <img src="<?php echo $base_url; ?>/images/buildabudge-logo.svg" class="mx-3" width="40" height="40"
+        <img src="<?php echo $base_url; ?>images/buildabudge-logo.svg" class="mx-3" width="40" height="40"
           alt="BuildaBudge logo" title="BuildaBudge">
       </a>
 
@@ -59,7 +58,7 @@ require('modal.php');
 <?php if ($is_logged_in): ?>
   <div
     id="logout-config"
-    data-logout-url="/<?= $root_folder ?>/public_html/htdocs/php/login/views/logout.php">
+    data-logout-url="/<?= $base_url ?>php/login/views/logout.php">
   </div>
-  <script src="/<?= $root_folder ?>/public_html/htdocs/js/inactivity-logout-function.js"></script>
+  <script src="<?= $base_url ?>js/inactivity-logout-function.js"></script>
 <?php endif; ?>
