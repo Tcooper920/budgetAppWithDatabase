@@ -2,6 +2,14 @@
 /* 
 This file reads the .env file and sets the variables in PHP.
 This simple function loads the file and populates the $_ENV or $_SERVER superglobals. 
+
+The .env file is formatted like this:
+DB_HOST=
+DB_USER=
+DB_PASS=
+DB_NAME=
+GMAIL_SMTP_AUTHENTICATION_PASSWORD=
+GOOGLE_RECAPTCHA_PASS=
 */
 function loadEnv($file)
 {
