@@ -126,8 +126,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
     if (!empty($_POST['honeypot'])) {
         // Bot detected. Form submission aborted...
-        header('Location: ../../error-pages/views/form-verification-error.php');
-        exit;
+        require('../../error-pages/views/form-verification-error.php');
+        exit();
     }
 
     # Create a new user in the database...
