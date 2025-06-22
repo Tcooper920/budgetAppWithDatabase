@@ -11,10 +11,6 @@ if (!isset($_SESSION['user_resetting_password']) || !$_SESSION['user_resetting_p
     exit();
 }
 
-require("../../../includes/header.php");
-
-echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
-
 // Function to convert seconds into minutes and seconds...
 function convertSeconds($seconds)
 {
@@ -61,7 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if user is resending a confirmation code...
     if (isset($_POST['resend_code']) && $_POST['resend_code'] == '1') {
         // Resend confirmation code email...
-        echo '<div class="container position-fixed col-lg-5 mt-5 pt-4 px-3">
+        require("../../../includes/header.php");
+        echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">
+              <div class="container position-fixed col-lg-5 mt-5 pt-4 px-3">
                 <div class="toast position-fixed mt-5 white-background fade show z-1" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex flex-column">
                         <button type="button" class="align-self-end btn-close p-3" data-bs-dismiss="toast" aria-label="Close"></button>
