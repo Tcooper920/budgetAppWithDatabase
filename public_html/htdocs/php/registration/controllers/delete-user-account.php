@@ -4,11 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: ../../login/views/login.php");
-    exit();
-}
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Honeypot field: If invisible field is filled in by a bot, do not submit the form...
@@ -21,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if the CSRF token is set and matches the one stored in the session...
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         // CSRF token validation failed...
-        header('Location: ../../error-pages/views/form-verification-error.php');
+        require("../../error-pages/views/form-verification-error.php");
         exit;
     }
 

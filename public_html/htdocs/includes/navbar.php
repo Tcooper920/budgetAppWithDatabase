@@ -1,5 +1,7 @@
 <?php
 // Define the base URL relative to the site's root to create dynamic links...
+require_once(__DIR__ . "/../../../config/return-root-folder.php"); // Get root folder
+// Define the base URL relative to the site's root to create dynamic links...
 $current_page = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 $is_logged_in = isset($_SESSION['user_id']);
 
