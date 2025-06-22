@@ -8,7 +8,7 @@ header(
         "default-src 'self' https://www.google.com; " .
         "script-src 'self' https://apis.google.com https://fonts.googleapis.com https://fonts.gstatic.com https://www.google.com https://cdn.jsdelivr.net https://code.jquery.com https://www.gstatic.com; " .
         "style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net; " .
-        "img-src 'self' https://cdn.jsdelivr.net data:; " .
+        "img-src 'self' https://cdn.jsdelivr.net https://images data:; " .
         "connect-src 'self' https://www.google.com https://www.gstatic.com; " .
         "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; " .
         "object-src 'none'; " .

@@ -9,19 +9,19 @@ require_once("security-headers.php");
 
 <head>
   <!-- Standard 16x16 -->
-  <link rel="icon" href="<?php echo $base_url ?>/images/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="icon" href="<?php echo $base_url ?>images/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
   <!-- Standard 32x32 -->
-  <link rel="icon" href="<?php echo $base_url ?>/images/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="<?php echo $base_url ?>images/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
   <!-- Android Chrome (192x192) -->
-  <link rel="icon" href="<?php echo $base_url ?>/images/favicon/android-chrome-192x192.png" sizes="192x192"
+  <link rel="icon" href="<?php echo $base_url ?>images/favicon/android-chrome-192x192.png" sizes="192x192"
     type="image/png">
   <!-- Android Chrome (512x512) -->
-  <link rel="icon" href="<?php echo $base_url ?>/images/favicon/android-chrome-512x512.png" sizes="512x512"
+  <link rel="icon" href="<?php echo $base_url ?>images/favicon/android-chrome-512x512.png" sizes="512x512"
     type="image/png">
   <!-- Apple Touch Icon -->
-  <link rel="apple-touch-icon" href="<?php echo $base_url ?>/images/favicon/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="<?php echo $base_url ?>images/favicon/apple-touch-icon.png">
   <!-- Standard ICO file -->
-  <link rel="icon" href="<?php echo $base_url ?>/images/favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="<?php echo $base_url ?>images/favicon/favicon.ico" type="image/x-icon">
 
   <title>Start Building a Budget</title>
   <meta name="description" content="A free application for building a budget and tracking your expenses." />
