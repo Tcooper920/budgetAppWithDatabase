@@ -1,5 +1,4 @@
 <?php
-// Define the base URL relative to the site's root to create dynamic links...
 require_once(__DIR__ . "/../../../config/return-root-folder.php"); // Get root folder
 require_once("security-headers.php");
 ?>
