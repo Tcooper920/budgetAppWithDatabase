@@ -14,8 +14,7 @@ require("../../../includes/header.php");
         <div class="row mb-2">
             <div class="col-lg-6 fade-in">
                 <h1 class="pb-3 fw-bold">Oops! - Form verification error</h1>
-                <p class="fs-5 mb-4">Sorry, there was a form verification error because our system thought you were a
-                    bot.</p>
+                <p class="fs-5 mb-4">Sorry, there was a form verification error.</p>
                 <p class="fs-5 mb-4">Please return to the homepage and try again. We are sorry for the inconvenience.
                 </p>
                 <div class="row pt-2">
