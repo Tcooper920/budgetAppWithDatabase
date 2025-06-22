@@ -1,4 +1,4 @@
-<?php // Define the base URL relative to the site's root to create dynamic links...
+<?php
 require_once(__DIR__ . "/../../../config/return-root-folder.php"); // Get root folder
 $is_logged_in = isset($_SESSION['user_id']);
 
