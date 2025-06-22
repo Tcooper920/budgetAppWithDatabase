@@ -4,10 +4,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once("../../../includes/header.php");
-echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
 require('../../../includes/csrf.php'); // Generate CSRF token
 require('../controllers/verify-email.php');
+require_once("../../../includes/header.php");
+echo '<body class="dark-blue-background min-vh-100 d-flex flex-column">';
 require("../../../includes/navbar.php");
 ?>
 
