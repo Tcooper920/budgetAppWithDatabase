@@ -24,10 +24,6 @@ function trackLoginAttempts()
         $_SESSION['login_attempts'] = 0;
     }
 
-    if (!isset($_SESSION['lockout_time'])) {
-        $_SESSION['lockout_time'] = 0;
-    }
-
     // Add 1 login attempt...
     $_SESSION['login_attempts']++;
 
@@ -46,15 +42,13 @@ function validate($budget_database, $email = '', $pwd = '')
     if (isset($_SESSION['lockout_time']) && time() < $_SESSION['lockout_time']) {
         $remaining_lockout_time = $_SESSION['lockout_time'] - time();
         $errors["youAreLockedOutError"] = "You are locked out after " . MAX_LOGIN_ATTEMPTS . " login attempts. Please try again in " . convertSeconds($remaining_lockout_time) . ".";
-
-        // Don't reset login attempts yet, return early
-        return array(false, $errors);
+        return array(false, $errors); // Exit early, don't reset
     }
 
-    // If lockout time has expired, reset login attempts
+    // If lockout has expired, clear the lockout and reset the attempt counter...
     if (isset($_SESSION['lockout_time']) && time() >= $_SESSION['lockout_time']) {
+        unset($_SESSION['lockout_time']);
         $_SESSION['login_attempts'] = 0;
-        $_SESSION['lockout_time'] = 0;
     }
 
     // Check that email has been filled...
