@@ -302,9 +302,10 @@ function printExpensesToPage(result, incomeAmount) {
 			<input id="delete-expense-id-${expenseItemId}" type="hidden" name="expense_item_delete" value="">
 			<p class="d-block mb-0 w-100 align-self-start">Name: <span class="fw-bold">${expenseItemName}</span></p>
 			<p class="d-block mb-0 w-100 align-self-start">Amount: <span class="fw-bold pe-1">$${expenseAmount}</span>
-				<span class="text-secondary d-md-block d-lg-inline">(
-					${findExpensePercentageRelativeToTotalBudgetIncomeAmount(incomeAmount, expenseAmount)}%)
-				</span>
+				<span class="text-secondary d-md-block d-lg-inline">(${findExpensePercentageRelativeToTotalBudgetIncomeAmount(
+					incomeAmount,
+					expenseAmount
+				)}%)</span>
 			</p>
 			<p class="d-block mb-0 ps-0 ps-md-5 w-100 align-self-start">
 				<span class="fw-bold ${expenseCategory}">${expenseCategory}</span>
