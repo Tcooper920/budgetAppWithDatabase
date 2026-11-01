@@ -11,6 +11,9 @@ if (isset($_SESSION['user_id'])) {
     exit();
 }
 
+require("../../../includes/set-site-key-in-html.php");
+/** @var string $dataSitekeyInHtml */
+
 require("../../../includes/header.php");
 
 ?>
@@ -70,7 +73,7 @@ require("../../../includes/header.php");
                 class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
             <!-- reCAPTCHA -->
             <div class="mt-4">
-                <div class="g-recaptcha" data-sitekey="6LftRuAqAAAAAIFxD5R1sB5ZnFchGxZMv4OKj_qz" data-theme="light"
+                <div class="g-recaptcha" data-sitekey="<?php echo $dataSitekeyInHtml ?>" data-theme="light"
                     data-size="normal">
                 </div>
             </div>
