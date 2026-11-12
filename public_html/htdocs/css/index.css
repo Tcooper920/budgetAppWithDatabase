@@ -336,6 +336,7 @@ footer a:hover {
 
 .fade-out > * {
 	height: 0;
+	opacity: 0;
 }
 
 /* Keyframe animations */

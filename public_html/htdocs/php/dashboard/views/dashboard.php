@@ -31,7 +31,7 @@ require("../../../includes/header.php");
             <div id="enter-income-form" class="container fs-5 d-flex flex-column p-4 my-3 bg-light rounded dark-blue">
                 <label>
                     Enter your budget amount:
-                    <input id="budget-amount-field" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill"
+                    <input id="budget-amount-field" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded"
                         maxlength="9" type="text" step="1" name="total_income" placeholder="$0" aria-label="Total Budget Amount"
                         value="<?php echo htmlspecialchars($current_income, ENT_QUOTES, 'UTF-8'); ?>">
                 </label>
@@ -39,11 +39,11 @@ require("../../../includes/header.php");
             <div id="add-expense-container" class="container fs-5 d-flex flex-column p-4 my-3 bg-light rounded darkest">
                 <label for="expense" class="d-flex">Add an expense:</label>
                 <div class="d-flex flex-column flex-md-row">
-                    <input id="expense" class="form-control m-2 ms-0 expense-name p-2 ps-4 fs-5 rounded-pill"
+                    <input id="expense" class="form-control m-2 ms-0 expense-name p-2 ps-4 fs-5 rounded"
                         type="text" name="expense_name" placeholder="Expense Name" aria-label="Expense Name">
-                    <input id="expense-amount" class="form-control m-2 ms-0 expense-amount p-2 ps-4 fs-5 rounded-pill"
+                    <input id="expense-amount" class="form-control m-2 ms-0 expense-amount p-2 ps-4 fs-5 rounded"
                         type="number" step="1" name="expense_amount" placeholder="$0" aria-label="Expense Amount">
-                    <select class="form-select m-2 mx-0 expense-type  p-2 ps-4 fs-5 rounded-pill cursor-pointer"
+                    <select class="form-select m-2 mx-0 expense-type  p-2 ps-4 fs-5 rounded cursor-pointer"
                         aria-label="Type of Expense" name="expense_type">
                         <option value="Fixed" selected>Fixed</option>
                         <option value="Variable">Variable</option>
@@ -53,12 +53,12 @@ require("../../../includes/header.php");
                         <option value="Other">Other</option>
                     </select>
                     <button id="submit-form" type="submit"
-                        class="add-entry btn btn-primary ms-0 ms-md-2 m-2 me-0 w-100 p-2 fs-5 rounded-pill">+ Add
+                        class="add-entry btn btn-primary ms-0 ms-md-2 m-2 me-0 w-100 p-2 fs-5 rounded">+ Add
                         expense</button>
                 </div>
             </div>
             <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"
-                class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
+                class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded d-none">
         </form>
         <div id="budget-analytics" class="invisible">
             <div class="container px-0">
@@ -117,7 +117,7 @@ require("../../../includes/header.php");
             </div>
             <div class="container d-flex px-0">
                 <h2 class="mt-5 pb-3">Expenses:</h2><button id="clear-amount-spent-fields"
-                    class="btn btn-primary mt-5 mb-3 px-4 ms-auto rounded-pill" type="button">Clear
+                    class="btn btn-primary mt-5 mb-3 px-4 ms-auto rounded" type="button">Clear
                     amount spent</button>
             </div>
             <div id="expense-list-container"></div>
