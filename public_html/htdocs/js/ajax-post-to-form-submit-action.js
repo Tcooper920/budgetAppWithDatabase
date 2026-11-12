@@ -110,47 +110,61 @@ async function ajaxRequestToPhpForProcessing(e) {
 
 // Function to remove an item from the expense list when the user clicks the 'X' button...
 // Returns "$all_budget_data" array as "result" from "form-submit-action.php" file...
-expenseListContainer.addEventListener("click", (e) => {
+expenseListContainer.addEventListener("click", async (e) => {
 	e.preventDefault();
 
 	const expenseItemForm = e.target.parentNode;
 
-	if (e.target.classList.contains("remove-btn")) {
-		let expenseItemFormToDelete = `#${expenseItemForm.id}`;
+	// Return if not clicking the remove button.
+	if (!e.target.classList.contains("remove-btn")) {
+		return;
+	}
 
-		// This invisible field is populated on the form item (expense item) that needs to be deleted.
-		// PHP checks if this field has been filled, and if it has, deletes the item.
-		let invisibleFieldForTogglingValue = document.getElementById(`delete-${expenseItemForm.id}`);
+	// Prevent duplicate submissions if user clicks the same 'X' button more than once.
+	e.target.disabled = true;
 
-		// Add "delete" value to signal to PHP that this expense needs to be deleted from database...
-		invisibleFieldForTogglingValue.value = "delete";
+	// This invisible field is populated on the form item (expense item) that needs to be deleted.
+	// PHP checks if this field has been filled, and if it has, deletes the item.
+	const invisibleFieldForTogglingValue = document.getElementById(`delete-${expenseItemForm.id}`);
 
-		(async () => {
-			const formData = new FormData(expenseItemForm);
-			const formBody = new URLSearchParams(formData).toString();
+	// Add "delete" value to signal to PHP that this expense needs to be deleted from database...
+	invisibleFieldForTogglingValue.value = "delete";
 
-			try {
-				const response = await fetch("../controllers/form-submit-action.php", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/x-www-form-urlencoded",
-					},
-					body: formBody,
-				});
+	const itemToBeDeleted = document.getElementById(`${expenseItemForm.id}`);
 
-				if (!response.ok) {
-					throw new Error("Network response was not ok.");
-				}
+	itemToBeDeleted.classList.add("fade-out");
 
-				const result = await response.json();
+	// After deleted item fades out, delete from the database...
+	setTimeout(() => {
+		removeItemFromDataBaseAndReprintRemainingItemsToPage();
+	}, 200);
 
-				updateBarGraph(result);
-				printExpensesToPage(result["all_expenses"], result["income_amount"]);
-				printTotalAmountPaidOffToPage(result["total_amount_paid_off"]);
-			} catch (error) {
-				window.location.href = "../../error-pages/views/form-verification-error.php";
+	// Proceed to remove the item from the database and reprint the remaining items to the screen...
+	async function removeItemFromDataBaseAndReprintRemainingItemsToPage() {
+		const formData = new FormData(expenseItemForm);
+		const formBody = new URLSearchParams(formData).toString();
+
+		try {
+			const response = await fetch("../controllers/form-submit-action.php", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded",
+				},
+				body: formBody,
+			});
+
+			if (!response.ok) {
+				throw new Error("Network response was not ok.");
 			}
-		})();
+
+			const result = await response.json();
+
+			updateBarGraph(result);
+			printExpensesToPage(result["all_expenses"], result["income_amount"]);
+			printTotalAmountPaidOffToPage(result["total_amount_paid_off"]);
+		} catch (error) {
+			window.location.href = "../../error-pages/views/form-verification-error.php";
+		}
 	}
 });
 
@@ -164,7 +178,7 @@ function saveSpentAmountsForEachExpenseItemField(e) {
 
 	if (e.target.classList.contains("amount-paid-field")) {
 		let expenseItemFormToAddPaymentTo = document.getElementById(
-			`expense-id-${e.target.getAttribute("data-expense-id")}`
+			`expense-id-${e.target.getAttribute("data-expense-id")}`,
 		);
 		(async () => {
 			const formData = new FormData(expenseItemFormToAddPaymentTo);
@@ -274,8 +288,7 @@ function printExpensesToPage(result, incomeAmount) {
 	// Get CSRF token from form and add it to each expense item that is printed to the page
 	const csrfToken = document.querySelector('input[name="csrf_token"]').value;
 
-	expenseListContainer.innerHTML =
-		"<p id='no-expenses-message' class='fs-6 opacity-50'>No expenses added yet.</p>";
+	expenseListContainer.innerHTML = "<p id='no-expenses-message' class='fs-6 opacity-50'>No expenses added yet.</p>";
 
 	const noExpensesMessage = document.getElementById("no-expenses-message");
 
@@ -304,7 +317,7 @@ function printExpensesToPage(result, incomeAmount) {
 			<p class="d-block mb-0 w-100 align-self-start">Amount: <span class="fw-bold pe-1">$${expenseAmount}</span>
 				<span class="text-secondary d-md-block d-lg-inline">(${findExpensePercentageRelativeToTotalBudgetIncomeAmount(
 					incomeAmount,
-					expenseAmount
+					expenseAmount,
 				)}%)</span>
 			</p>
 			<p class="d-block mb-0 ps-0 ps-md-5 w-100 align-self-start">

@@ -317,6 +317,27 @@ footer a:hover {
 	transition: opacity 0.5s ease-in-out;
 }
 
+/* Expense item */
+[id^="expense-id"] {
+	opacity: 1;
+	overflow: hidden;
+	transition: opacity .2s ease-in-out, 
+		padding-top .2s ease-in-out,
+		padding-bottom .2s ease-in-out,
+		height .2s ease-in-out;
+}
+
+/* fade out class added by JS when user deletes an expense item */
+.fade-out {
+	padding-top: 0 !important;
+    padding-bottom: 0 !important;
+	opacity: 0;
+}
+
+.fade-out > * {
+	height: 0;
+}
+
 /* Keyframe animations */
 @keyframes bar-graph-slide-in {
 	from {
