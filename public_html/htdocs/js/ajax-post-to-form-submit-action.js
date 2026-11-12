@@ -313,9 +313,9 @@ function printExpensesToPage(result, incomeAmount) {
 		<form id="expense-id-${expenseItemId}" data-user-id="${userId}" class="container d-flex mb-3 p-3 pe-5 flex-column flex-md-row position-relative align-items-center bg-light rounded expense-entry-block">
 			<input type="hidden" name="expense_id" value="${expenseItemId}">
 			<input id="delete-expense-id-${expenseItemId}" type="hidden" name="expense_item_delete" value="">
-			<p class="d-block mb-0 w-100 align-self-start">Name: <span class="fw-bold">${expenseItemName}</span></p>
-			<p class="d-block mb-0 w-100 align-self-start">Amount: <span class="fw-bold pe-1">$${expenseAmount}</span>
-				<span class="text-secondary d-md-block d-lg-inline">(${findExpensePercentageRelativeToTotalBudgetIncomeAmount(
+			<p class="d-block mb-0 w-100 align-self-start" data-expense-item="name"><span class="fw-bold">${expenseItemName}</span></p>
+			<p class="d-block mb-0 w-100 align-self-start" data-expense-item="amount"><span class="fw-bold pe-1">$${expenseAmount}</span>
+				<span class="text-secondary d-lg-inline">(${findExpensePercentageRelativeToTotalBudgetIncomeAmount(
 					incomeAmount,
 					expenseAmount,
 				)}%)</span>
@@ -325,10 +325,10 @@ function printExpensesToPage(result, incomeAmount) {
 			</p>
 			<div class="amount-paid-field-container row align-self-start me-2">
 			<label class="col pe-0 px-md-0" for="data-expense-id-${expenseItemId}">Spent $</label>
-			<input id="data-expense-id-${expenseItemId}" data-expense-id="${expenseItemId}" class="amount-paid-field form-control col pe-0 rounded-pill" type="text" maxlength="9" name="amount_paid" min="0" placeholder="0" autocomplete="off" aria-label="Amount paid" value="${expenseAmountSpent}">
+			<input id="data-expense-id-${expenseItemId}" data-expense-id="${expenseItemId}" class="amount-paid-field form-control col pe-0 rounded" type="text" maxlength="9" name="amount_paid" min="0" placeholder="0" autocomplete="off" aria-label="Amount paid" value="${expenseAmountSpent}">
 			</div>
 			<button type="submit" aria-label="Delete item" title="Delete this item" id="${expenseItemId}" class="remove-btn btn fw-bolder position-absolute px-3 py-0 mt-3 top-0 end-0">✕</button>
-			<input type="hidden" name="csrf_token" value="${csrfToken}" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded-pill d-none">
+			<input type="hidden" name="csrf_token" value="${csrfToken}" class="form-control m-2 ms-0 p-2 ps-4 fs-5 rounded d-none">
 		</form>`;
 		expenseListContainer.append(containerForExpense);
 	});
