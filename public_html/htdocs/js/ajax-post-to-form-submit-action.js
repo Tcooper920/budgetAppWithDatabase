@@ -62,7 +62,10 @@ window.addEventListener("load", ajaxRequestToPhpForProcessing);
 displayBudgetAnalytics();
 
 // On form submit, fire AJAX to send/retrieve data...
-incomeExpenseForm.addEventListener("submit", ajaxRequestToPhpForProcessing);
+incomeExpenseForm.addEventListener("submit", async (e) => {
+	await ajaxRequestToPhpForProcessing(e);
+	clearExpenseFields();
+});
 
 // On "Enter your budget amount" field value change, update the displayed budget info and format the text field input...
 budgetAmountField.addEventListener("input", handleBudgetAmountInput);
@@ -71,8 +74,10 @@ budgetAmountField.addEventListener("input", handleBudgetAmountInput);
 expenseAmountField.addEventListener("input", restrictFieldInput);
 
 function handleBudgetAmountInput(event) {
+	expenseName.disabled = true; // Don't submit expense item fields when budget amount is changed.
 	restrictFieldInput(event);
 	ajaxRequestToPhpForProcessing(event);
+	expenseName.disabled = false;
 }
 
 // Function to make AJAX post to PHP for processing the user's input.
@@ -100,7 +105,6 @@ async function ajaxRequestToPhpForProcessing(e) {
 
 		updateBarGraph(result);
 		printExpensesToPage(result["all_expenses"], result["income_amount"]);
-		clearExpenseFields();
 		displayBudgetAnalytics();
 		printTotalAmountPaidOffToPage(result["total_amount_paid_off"]);
 	} catch (error) {
